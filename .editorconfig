@@ -14,15 +14,5 @@ insert_final_newline = true           # - For VCS, end files with an empty line.
 max_line_length = 120                 # - Lines should not exceed this length.
 trim_trailing_whitespace = true       # - No whitespace on the end of lines.
 
-[*.bat]                               # Windows Batch files:
-end_of_line = crlf                    # - Require \r\n line endings.
-
 [*.md]                                # Markdown:
 trim_trailing_whitespace = false      # - Leave trailing whitespace.
-
-[*.php]                               # PHP:
-indent_size = 4                       # - 4-space indents are conventional.
-
-[{Makefile,**.mk}]                    # Makefiles:
-indent_style = tab                    # - Require tabs for indentation.
-

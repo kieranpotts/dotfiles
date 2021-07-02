@@ -1,3 +1,3 @@
-if [ -f ~/dotfiles/.main ]; then
-  . ~/dotfiles/.main
+if [ -f ~/dotfiles/main.sh ]; then
+  . ~/dotfiles/main.sh
 fi
