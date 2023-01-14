@@ -1,5 +1,9 @@
 # Dotfiles
 
+**A baseline, extensible UNIX user configuration**
+
+
+
 -----
 
-© Kieran Potts – [CC BY-SA 4.0](./LICENSE.txt)
+© Kieran Potts – [MIT](./LICENSE.txt)
