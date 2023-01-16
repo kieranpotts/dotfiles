@@ -6,7 +6,7 @@ labels: support
 assignees: ''
 ---
 
-Use this template to ask for technical help from the project's maintainers. While we do review all support tickets, we regret it may not be possible to respond to all enquiries.
+Use this issue to ask for technical help from the project's maintainers. While we do review all support tickets, we regret it may not be possible to respond to all enquiries.
 
 Please confirm the following by checking all the boxes `[x]`:
 

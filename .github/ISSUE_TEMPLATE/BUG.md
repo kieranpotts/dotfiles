@@ -1,12 +1,14 @@
 ---
 name: Bug
-about: Report an error or regression in the expected behavior
+about: Report an error or regression in an expected behavior
 title: ''
 labels: bug
 assignees: ''
 ---
 
-Use this template to record a suspected bug in the software system under source control. Bugs are errors or regressions in the expected behavior of a computer program, either in its functionality and behaviors or in terms of its attributes such as performance and availability. Software bugs are caused by mistakes in the business logic of production code or configuration, causing the program to behave in unintended ways, to produce incorrect results, or to otherwise not work as specified.
+Report a suspected bug in the software system under source control. 
+
+Bugs are errors or regressions in the expected behavior of a computer program, either in its functionality and behaviors or in terms of its attributes such as performance and availability. Software bugs are caused by mistakes in the business logic of production code or configuration, causing the program to behave in unintended ways, to produce incorrect results, or to otherwise not work as specified.
 
 If possible, provide easy-to-follow step-by-step instructions to reproduce the error, for example:
 
