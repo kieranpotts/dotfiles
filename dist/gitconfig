@@ -1,0 +1,976 @@
+# -----------------------------------------------------------------------------
+# Git config
+#
+# This files establishes global options for the Git version control system.
+# These settings are scoped to the system user.
+#
+# https://git-scm.com/docs/git-config
+# -----------------------------------------------------------------------------
+
+[alias]
+
+  # Git Aliases
+  #
+  # Documentation:
+  # - https://git-scm.com/docs/git-config#Documentation/git-config.txt-alias
+  # - https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases
+  #
+
+  # `git aliases`
+  #
+  # List all aliases, including this one, in an easy-to-read format.
+  #
+  # Aliases are listed in the order they are defined in the Git config.
+  #
+  ; aliases = config --get-regexp alias
+  aliases = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+
+  # `git amend`
+  #
+  # Amend the last commit with all working changes.
+  #
+  # The message of the previous commit is maintained (`--no-edit`).
+  #
+  # This is intended to be a quick operation for modifying work-in-progress.
+  # Therefore, the message of the previous commit is maintained (`--no-edit`)
+  # and the `--no-verify` flag is used to disable validation hooks. You can
+  # add the `--verify` option to the command to re-enable Git hooks.
+  #
+  # This command may be useful in conjunction with `git wip`. You can also use
+  # `git fixup` to achieve the same result. After this command you can run
+  # `git reword` to change the message of the newly-amended commit.
+  #
+  amend = ! git add --all && git commit --amend --no-edit --no-verify
+
+  # `git br [branch_name]`
+  #
+  # Create a new branch at the current position.
+  #
+  # After creating the new branch, this command immediately switches to the new
+  # branch and pushes it into the upstream "origin" repository, so setting up
+  # tracking from the start of the branch's existence.
+  #
+  # This operation fails with an error if the branch name is already taken.
+  #
+  ; br = checkout -b
+  br = "! f() { git branch $1 && git checkout $1 && git push --set-upstream origin HEAD; }; f"
+
+  # `git branches`
+  #
+  # An alternative to `git branch`, this alias lists all existing branches in
+  # order of the date of the last commit in each. Thus, the most recently-
+  # updated branches are at the bottom of the list.
+  #
+  branches = for-each-ref --sort='authordate:iso8601' --format='  %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
+
+  # `git cm (-m "[comment]")`
+  #
+  # Shortcut for `git add --all && git commit`. Both tracked and untracked
+  # files that have been added or modified in the working tree are added to
+  # the repository's staging index, and then immediately committed – a common
+  # workflow.
+  #
+  # Files that should remain untracked will need to be added to `.gitignore`
+  # to exclude them from being added to the repository by this command. Ignore
+  # rules can be defined in the repository and/or the user's own space, see:
+  #
+  # - https://git-scm.com/docs/gitignore
+  # - https://stackoverflow.com/a/5724484
+  #
+  # This is intended to be a fast operation so it disables any verifications
+  # plugged in via Git hooks. Git hooks can be re-enabled again by adding the
+  # `--verify` flag.
+  #
+  ; cm = commit --all --no-verify # Does not capture new, untracked files
+  cm = ! git add --all && git commit --no-verify
+
+  # `git changed [hash]`
+  #
+  # List the files added, deleted or changed in a specific revision.
+  #
+  ; changed  = "!f() { git ll "$1"^.."$1"; }; f"
+  ; changed  = "!f() { git diff "$1"^.."$1"; }; f"
+  changed = "! f() { git diff --name-status \"$1^\" \"$1\"; }; f"
+
+  # `git changes`
+  #
+  # Show changes made since the last commit.
+  #
+  ; stats = diff --stat -r
+  changes = diff --name-status -r
+
+  ; List the files modified in the last commit:
+  ; git ll -1
+
+  ; Show a diff for the last commit:
+  ; diff --cached HEAD^
+
+  # `git cl`
+  #
+  # Shortcut for `git clone`.
+  #
+  cl = clone
+
+  # `git co`
+  #
+  # Shortcut for `git checkout`.
+  #
+  # See also `git sw` which aliases `git switch`, a similar operation.
+  #
+  co = checkout
+
+  # `git configure`
+  #
+  # Open the `~/.gitconfig` file in your default text editor.
+  #
+  configure = config --global -e
+
+  # `git contrib`
+  #
+  # List all contributors to this repository.
+  #
+  # This alias is configured to show email addresses (`-e`) and total commit
+  # counts (`--summary`). The contributors are ordered by their commit count
+  # (`--numbered`), so producing a sort-of leaderboard of committers.
+  #
+  contrib = git shortlog -e --summary --numbered
+
+  # `git current`
+  #
+  # Show the name of the current branch.
+  #
+  # This alias is identical to `git downstream`. See also the `git upstream`
+  # alias, which returns the name of the tracked upstream branch.
+  #
+  ; current = branch --show-current # Git >= 2.22
+  current = rev-parse --abbrev-ref HEAD
+
+  # `git default`
+  #
+  # Fetches the name of the default branch.
+  #
+  # This alias parses the local `origin/HEAD` reference, which points to the
+  # name of the default branch in the upstream "origin" repository.
+  #
+  # WARNING: The `origin/HEAD` ref can become out-of-date. It is set when you
+  # `git clone` the upstream repository, and is not subsequently updated - it
+  # is not changed by commands like `git fetch` or `git remote update`.
+  # Therefore, if the default branch is subsequently changed in the reference
+  # repository, it will need to be manually updated in all the clones for
+  # this alias to work correctly.
+  #
+  # The easiest way to update the `origin/HEAD` ref is to run the following
+  # command in the local repository. This command updates local knowledge of
+  # what the remote considers to be the default branch.
+  #
+  # ```
+  # git remote set-head origin -a
+  # ```
+  #
+  # (NOTE: Prior to Git v1.8.4.3, `origin/HEAD` could be set incorrectly
+  # because of potential ambiguity over what is the default branch when `HEAD`
+  # referened a commit SHA that was at the tip of more than one branch. This
+  # issue is now resolved in Git and we can rely on `git clone` and the above
+  # command setting `origin/HEAD` correctly in clones.)
+  #
+  # Alternatively, you can manually edit your `.git/refs/remotes/origin/HEAD`
+  # file. If your default branch is named "dev", the contents of this file
+  # should be:
+  #
+  # ```
+  # ref: refs/remotes/origin/dev
+  # ```
+  #
+  # Source: https://haacked.com/archive/2014/07/28/github-flow-aliases/
+  #
+  default = ! git remote set-head origin -a > /dev/null && git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+
+  # `git delete [branch_name]`
+  #
+  # Deletes both the local and upstream versions of a branch, but the delete
+  # operation succeeds only if the changes in the branch are merged elsewhere
+  # (in other words, there must not be any unique commits in the branch's
+  # history). It assumes tracking is configured for the branch – the `push`
+  # operation will fail if it is not.
+  #
+  delete = "! f() { git branch --delete $1 && git push --delete origin $1 2> /dev/null; }; f"
+
+  # `git delete-force [branch_name]`
+  #
+  # A more dangerous version of `git delete`. This risks permanently losing
+  # commits that don't exist in the history of any other branch in either
+  # the local or tracked upstream repositories.
+  #
+  delete-force = "! f() { git branch --delete --force $1 && git push --delete --force origin $1 2> /dev/null; }; f"
+
+  # `git discard [file1] [file2]...`
+  #
+  # Discard working changes to a particular file. Equivalent of VSCode's undo
+  # operation. Multiple file paths may be inputted, but additional options
+  # are not accepted (disabled by `--`).
+  #
+  # Example: `git discard path/to/file.ext`
+  #
+  discard = checkout -q --
+
+  ; In some workflows I want to keep feature branches for a while longer, for
+  ; reference. To help me sort through my active branches, I would rename this
+  ; stale branches, adding the `done/` prefix. Here is the alias that came out
+  ; of that workflow:
+  ; Source: https://www.durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+  ; done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
+
+  # `git down`
+  #
+  # `git down` is `git pull` using the rebasing integration strategy. Use
+  # with the `--interactive` | `-i` option to edit local commit history.
+  #
+  # This mirrors the `git up` alias. See also `git sync`, which combines the
+  # two into a single operation.
+  #
+  down = pull --rebase
+
+  # `git download`
+  #
+  # Fetch tags and branches (collectively: refs) from one "origin" or the
+  # tracked remote.
+  #
+  # Also removes any remote-tracking references that no longer exist in any
+  # remote (`-P`) and remove any local tags that no longer exist upstream
+  # either (`-p`).
+  #
+  # Tip: pruning can be made automatic with the following configuration:
+  # `git config --global fetch.prune true`
+  #
+  download = fetch --all --tags -Pp
+
+  # `git downstream`
+  #
+  # Show the name of the current branch. This alias mirrors `git upstream`,
+  # which returns the name of the tracked upstream branch.
+  #
+  # This alias is identical to `git current`.
+  #
+  ; downstream = branch --show-current # Git >= 2.22
+  downstream = rev-parse --abbrev-ref HEAD
+
+  # `git experiment "[comment]"`
+  #
+  # Shortcut for committing experimental work, eg from technical spikes.
+  #
+  experiment = "! f() { \
+    if [ -z "${1}" ]; then \
+      echo \"Require commit message\" >&2; \
+      exit 1; \
+    fi; \
+    git add --all && git commit --no-verify --message \"experiment: ${1}\"; \
+  }; f"
+
+  # `git feat(ure) "[comment]"`
+  #
+  # Shortcut for committing feature work.
+  #
+  feat = "! f() { \
+    if [ -z "${1}" ]; then \
+      echo \"Require commit message\" >&2; \
+      exit 1; \
+    fi; \
+    git add --all && git commit --no-verify --message \"feature: ${1}\"; \
+  }; f"
+  feature = feat
+
+  # `git fell` | `git fell [main_branch]`
+  #
+  # Delete any local branches that have been merged into the default branch,
+  # or that have been merged into another specified mainline branch.
+  #
+  # Usage:
+  #
+  # - `git fell`
+  # - `git fell [main_branch]`
+  #
+  # It works like this:
+  #
+  # 1. Get a list of branches that have been merged into the specified branch,
+  #    falling back on the default branch if there are no parameters.
+  # 2. Use `grep -v` to print a list of branch names that DO NOT match the
+  #    name of the mainline or default branch.
+  # 3. Pipe this to `xargs` which takes the standard input and executes the
+  #    command `git branch --delete` for each line.
+  # 4. In the event that all branches have been merged, the delete branch
+  #    operation will error with the message "fatal: branch name required".
+  #    We can safely silence the standard error output.
+  #
+  # This alias does not delete any corresponding upstream branches. This would
+  # be a too-dangerous operation to automate, in case there are other shared
+  # mainline tracks besides the default branch.
+  #
+  # See also `git weed` which deletes local branches that no longer exist on
+  # the remote.
+  #
+  # Sources:
+  # - https://haacked.com/archive/2014/07/28/github-flow-aliases/
+  # - https://stackoverflow.com/a/18380712
+  # - https://stackoverflow.com/a/41465769
+  #
+  fell = "!f() { DEFAULT=$(git default); git branch --merged ${1-$DEFAULT} | grep -v " ${1-$DEFAULT}$" | xargs git branch --delete 2> /dev/null; }; f"
+
+  # `git fetched`
+  #
+  # List all new commits since the last update to HEAD, ie after a fetch
+  # operation. Append `--no-merges` to exclude merge commits from the log.
+  #
+  ; fetched = log ORIG_HEAD.. --stat --no-merges --date=local
+  fetched = log ORIG_HEAD.. --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit
+
+  # `git filelog`
+  #
+  # View the commit history for an individual file. Usage:
+  # `git filelog path/to/file`
+  #
+  # Blocks additional options after `--`.
+  #
+  ; A minimal version of this alias:
+  ; filelog = log -u
+  filelog = "! f() { git log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit -- \"$1\"; }; f"
+
+  # `git files`
+  #
+  # @deprecated
+  #
+  # List all tracked files.
+  #
+  # TODO: This is not very helpful, and the output is ugly.
+  #
+  ; files = ls-tree --full-tree -r --name-only HEAD
+
+  # `git findpath [partial]`
+  #
+  # Find the path to the file where the name includes the given partial string.
+  #
+  # Example:
+  #
+  # ```
+  # $ git findpath README
+  # dist/README.md
+  # ```
+  #
+  ; findpath = "!git ls-files | grep -i"
+
+  ; Source:
+  ; https://www.durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+  ;
+  ; Search your entire codebase for a string:
+  ; grep = grep -Ii
+  ;
+  ; Or to ensure search from repository's root directory:
+  ; grep = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
+
+  # `git fix|bug "[comment]"`
+  #
+  # Shortcut for committing bug fixes.
+  #
+  fix = "! f() { \
+    if [ -z "${1}" ]; then \
+      echo \"Require commit message\" >&2; \
+      exit 1; \
+    fi; \
+    git add --all && git commit --no-verify --message \"fix: ${1}\"; \
+  }; f"
+  bug = fix
+
+  # `git fixup`
+  #
+  # Create a "fixup!" commit from the staging index + working tree, and
+  # immediately rebase to squash the changes into the target commit. The
+  # original commit message will be preserved.
+  #
+  # Use this to fix mistakes made in prior commits.
+  #
+  # Usage examples:
+  # - `git fixup` or `git fixup HEAD` to fix the last commit, equivalent to `git amend`
+  # - `git fixup HEAD^` to fix the last-but-one commit
+  # - `git fixup [sha]` to fix a prior commit
+  # - `git fixup :/foo` to fix the most recent commit containing the string "foo"
+  #
+  # Additional parameters will be forwarded to the `commit` command.
+  #
+  # Sources:
+  # https://gist.github.com/simonwagner/9552064
+  # https://gist.github.com/peschee/6e8f490167037cb2a3489052501ae0bb
+  # https://words.filippo.io/git-fixup-amending-an-older-commit/
+  # https://medium.com/quick-code/useful-git-alias-926f27a27f92
+  # http://stackoverflow.com/a/21148981/460564
+  # https://stackoverflow.com/a/65305169
+  #
+  # See:
+  # https://greich.com/2021/10/08/git-fixup-clean-history/
+  # https://dev.to/koffeinfrei/the-git-fixup-workflow-386d
+  # https://stackoverflow.com/questions/3103589/
+  # https://git-scm.com/docs/git-rev-parse
+  #
+  ; fuse = !sh -c 'REV=$(git rev-parse $1) && git commit --squash $@ && git rebase -i --autosquash $REV^' -
+  fixup = "! f() { local REV=$(git rev-parse ${1:-HEAD}) && git add --all && git commit --no-verify --fixup=${REV} ${@:2} && git rebase --interactive --autosquash ${REV}~1; }; f"
+
+  # Note: another option would be to keep the "fixup" operation separate from
+  # the "rebase" one. An implementation may look something like the below
+  # aliases. However, it's nice to clean-up the history as you go along.
+  ; fixup = ! sh -c 'git commit --fixup=$1' -
+  ; rewrite = rebase --interactive --autosquash
+
+  # `git fast-forward|ff`
+  #
+  # Fast-forward merges. Fails if a ff is not possible.
+  #
+  fast-forward = merge --ff-only
+  ff = fast-forward
+
+  # `git graph`
+  #
+  # Detailed graph view of `git log`.
+  #
+  graph = log --oneline --decorate --graph --all
+
+  # `git history`
+  #
+  # Cleaner `git log`. Can be combined with other options like `-n 10` to show
+  # only the last 10 commit.
+  #
+  history = log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit
+
+  # `git k`
+  #
+  # Opens gitk. The usual gitk options can be provided.
+  #
+  k = ! gitk
+
+  # `git last`
+  #
+  # Show detailed information on the last commit.
+  #
+  last = log -1 HEAD --stat
+
+  ; Print the last tag:
+  ; lasttag = describe --tags --abbrev=0
+
+  # `git maint "[comment]"`
+  #
+  # Shortcut for committing maintenance work.
+  #
+  # Note, we can't use the alias "maintenance" as this already exists as a
+  # built-in Git command.
+  #
+  maint = "! f() { \
+    if [ -z "${1}" ]; then \
+      echo \"Require commit message\" >&2; \
+      exit 1; \
+    fi; \
+    git add --all && git commit --no-verify --message \"maintenance: ${1}\"; \
+  }; f"
+
+  # `git new HEAD`
+  #
+  # List new commits added since last command, typically since a `git pull`
+  # operation.
+  #
+  # Source: https://git.wiki.kernel.org/index.php/Aliases
+  #
+  ; new = ! gitk --all --not ORIG_HEAD
+  new = ! sh -c 'git log $1@{1}..$1@{0} "$@"'
+
+  # `git nfr "[comment]"` | `git quality "[comment]"`
+  #
+  # Shortcut for committing changes that implement non-functional requirements
+  # to improve the quality attributes of the software.
+  #
+  # TODO: Rename this to "attribute" or similar.
+  #
+  nfr = "! f() { \
+    if [ -z "${1}" ]; then \
+      echo \"Require commit message\" >&2; \
+      exit 1; \
+    fi; \
+    git add --all && git commit --no-verify --message \"quality: ${1}\"; \
+  }; f"
+  quality = nfr
+
+  # `git orphan`
+  #
+  # Create a new branch with no parents (an orphan). All files in the current
+  # working directory are added to the staging area, from where they can be
+  # removed or editing before being committed to the new branch.
+  #
+  # Unlike the branching aliases, the new branch cannot be immediately synced
+  # with the upstream reference repository. That's because, until there is at
+  # last one commit in the branche's history, there is no HEAD reference.
+  #
+  orphan = "! f() { git checkout --orphan $1; }; f"
+
+  # `git orphan-fresh`
+  #
+  # Creates a new branch with no parents and also automatically removes all
+  # files from the working tree, so starting a new commit chronology
+  # fully afresh.
+  #
+  orphan-fresh = "! f() { git switch --orphan $1 }; f"
+
+  # `git pick`
+  #
+  # Because `cherry-pick` is annoying to type and an unnecessary metaphor for
+  # a perfectly self-explanatory operation.
+  #
+  pick = cherry-pick
+
+  # `git recent`
+  #
+  # Shorter version of the `git history` alias, shows last 25 commits only.
+  #
+  recent = log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit -n 25
+
+  # `git redo`
+  #
+  # Restores the contents of the "--SAVEPOINT--" commit produced by the
+  # `git undo` operation to the working directory. This works only if `undo`
+  # was the last operation, because the "--SAVEPOINT--" commit is expected to
+  # be at the `HEAD@{1}` position.
+  #
+  # TODO: This is a work-in-progress. The existing solution does not work,
+  # we need a reliable way of picking up the most recent commit with the
+  # message "--SAVEPOINT--".
+  #
+  # `git reflog --grep="--SAVEPOINT--"` seems to be our best bet, but it
+  # returns some other commits, and we need to capture the first line that
+  # includes "commit: --SAVEPOINT--".
+  #
+  ; redo =  "! f() { \
+  ;   MSG=$(git show -s --format=%B HEAD@{1}); \
+  ;   if [ "${MSG}" != "--SAVEPOINT--" ]; then \
+  ;     echo \"Cannot redo last undo operation, use 'git reflog' to recover your work\" >&2; \
+  ;     exit 1; \
+  ;   fi; \
+  ;   git cherry-pick HEAD@{1}; \
+  ;   git reset HEAD@{1} --mixed; \
+  ; }; f"
+
+  # `git refactor "[comment]"`
+  #
+  # Shortcut for committing refactoring work.
+  #
+  refactor = "! f() { \
+    if [ -z "${1}" ]; then \
+      echo \"Require commit message\" >&2; \
+      exit 1; \
+    fi; \
+    git add --all && git commit --no-verify --message \"refactor: ${1}\"; \
+  }; f"
+
+  # `git remotes`
+  #
+  # List the URLs of all remotes.
+  #
+  remotes = remote -v
+
+  # `git reword`
+  #
+  # Change the message of the previous commit.
+  #
+  # Note: while this operation does not stage anything, files already staged
+  # will be added to the previous commit, too.
+  #
+  # This also changes the hash of the previous commit, so the change may need
+  # to be force-pushed into remotes that have the existing commit.
+  #
+  # TODO: Should this be used with --fixup?
+  # TODO: Can we reword the message of the previous commit without adding
+  # anything in the staging area to the last commit, too?
+  #
+  reword = commit --amend --no-verify
+
+  # `git status`
+  #
+  # Short-format view of the working tree's current state, with branch and
+  # tracking info added for good measure.
+  #
+  state = status --short --branch
+
+  # `git squash`
+  #
+  # @deprecated
+  #
+  # This alias is for `git merge --squash`, temporarily disabling our default
+  # `--ff-only` setting for merges, which blocks any kind of merge (even
+  # squashed merges) when there is divergent work in both the source and
+  # target branches.
+  #
+  # See https://stackoverflow.com/questions/36486966 for a discussion on this
+  # issue.
+  #
+  ; squash = ! git -c merge.ff=true merge --squash
+
+  # `git squash`
+  #
+  # When `merge.ff=false` by default, we can still perform squash merges by
+  # combining `--squash` with the `--ff` flag.
+  #
+  # Unlike when `merge.ff=true`, we do not need to explicitly override the
+  # default configuration when attempting a squashed merge.
+  #
+  squash = merge --ff --squash
+
+  # `git stashed`
+  #
+  # Show the current number of entries in the stash.
+  #
+  stashed = status --show-stash
+
+  # `git sw`
+  #
+  # Shortcut for `git switch`.
+  #
+  sw = switch
+
+  # `git sync`
+  #
+  # `git sync` is `git pull` using the rebasing integration strategy,
+  # followed by `git push`. It is equivalent to VS Code's branch sync
+  # operation.
+  #
+  ; sync = ! git pull --rebase && git push --set-upstream origin HEAD --follow-tags
+
+  # `git pull --rebase` will fail if the local branch does not already track
+  # another upstream branch. For this reason we run this command only if
+  # tracking is already established for the branch. We've tested a couple of
+  # different possible solutions. The first checks the return value of our
+  # `git upstream` value. Git returns the error code 128 for fatal application
+  # errors, which happens when `git pull` is run before branch tracking is
+  # established. See: https://www.git-scm.com/docs/api-error-handling
+  #
+  ; sync = "! f() { \
+  ;   git upstream; \
+  ;   retval=$?; \
+  ;   if [ $retval -ne 128 ]; then \
+  ;     git pull --rebase; \
+  ;   fi; \
+  ;   git push --set-upstream origin HEAD --follow-tags; \
+  ; }; f"
+
+  # This is the second implementation. It is better because if a remote
+  # branch is already tracked, we maintain the existing tracking. Else we
+  # push the local branch to an upstream branch of the same name, and we
+  # establish tracking for next time.
+  #
+  sync = "! f() { \
+    upstreamBranch=$(git upstream); \
+    if [ ! -z "$upstreamBranch" ]; then \
+      git pull --rebase; \
+      git push --follow-tags; \
+    else \
+      git push --set-upstream origin HEAD --follow-tags; \
+    fi; \
+  }; f"
+
+  # `git tags`
+  #
+  # List all tags, sorted by commit date. Use `git download` to download all
+  # tags as well as branches (collectively, refs) in the upstream repositories.
+  #
+  tags = tag -l --sort=committerdate
+
+  # `git track`
+  #
+  # Alias for `git add` and the opposite action of the `git untrack` alias.
+  #
+  # Adds specific files, defined by a path pattern, to the staging index.
+  #
+  # Examples:
+  #
+  # - `git track .` stages everything in the current work tree, including
+  #   new/untracked files
+  # - `git track path/to/file.ext` stages one or more specific files
+  # - `git track --all` updates the staging index to match exactly the working
+  #   tree (adds, modifes and removes index entries as required).
+  #
+  track = add
+
+  # `git tracking`
+  #
+  # Same as `git branches` but shows tracked upstream branches, too.
+  #
+  # Use `git upstream` to get only the name of the upstream branch that is
+  # tracked by the current downstream branch.
+  #
+  tracking = for-each-ref --sort='authordate:iso8601' --format='  %(color:green)%(authordate:relative)%09%(color:white)%(refname:short) %(color:cyan)➔ %(upstream:short)' refs/heads
+
+  # `git weed`
+  #
+  # Delete any local branches that no longer exist in the origin repository.
+  # See also to `git fell`, which is a similar garbage collection alias for
+  # stale branches.
+  #
+  # Sources:
+  # - https://digitaldrummerj.me/git-remove-local-merged-branches/
+  # - https://stackoverflow.com/a/33548037
+  #
+  # TODO: This is generating a syntax error.
+  #
+  ; weed = "! f() { \
+  ;   git fetch -p \
+  ;   for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do \
+  ;     git branch --delete $branch; \
+  ;   done; \
+  ; }; f"
+
+  # `git unamend`
+  #
+  # If you have amended the previous commit (`git commit --amend`), this will
+  # undo the amend operation, leaving the commit in its original state before
+  # it was amended.
+  #
+  # The amended changes will be returned to the staging index. Change the
+  # option from `--soft` to `--mixed` to have the amended changes left in the
+  # working tree instead.
+  #
+  # If the previous operation was NOT an amend, the behavior of this command
+  # will be identical to `git uncommit`.
+  #
+  unamend = reset HEAD@{1} --soft
+
+  # `git uncommit`
+  #
+  # Undoes the last commit, discards the commit but re-stages the commit's
+  # changes, ready for re-commit.
+  #
+  # Combine with `git undo` to full delete the staged changes. Executing
+  # `git uncommit && git undo` is equivalent to `git reset HEAD~1 --hard`.
+  #
+  uncommit = reset HEAD~1 --soft
+
+  # `git undo`
+  #
+  # Deletes all working and staged changes since the last commit.
+  #
+  # The WIP is committed with the message "--SAVEPOINT--" and then the branch
+  # is hard-reset to the prior commit. It means the "--SAVEPOINT--" commit is
+  # removed from the branch's history, but it is still reachable via the
+  # `git reflog` command, and therefore the work can be restored if a mistake
+  # was made with the reset.
+  #
+  # See also `git redo`, which can be used to restore the contents of the
+  # `--SAVEPOINT-- ` commit to the working tree.
+  #
+  ; This is a simple implementation, but a dangerous one, because the effects
+  ; of the operation cannot be undone:
+  ; undo = reset --hard
+  undo = !git add --all && git commit -qm '--SAVEPOINT--' && git reset HEAD~1 --hard
+
+  # `git unstage`
+  #
+  # Removes everything from the staging area, but doesn't delete any
+  # uncommitted changes.
+  #
+  unstage = reset
+
+  # `git untrack [path]`
+  #
+  # Untrack a file. The `rm` command combined with the `--cache` option
+  # removes a file from the staging index but maintains the file in the
+  # working tree.
+  #
+  # When the next commit is made, the untracked file(s) will be removed from
+  # the repository, but not deleted from the local filesystem.
+  #
+  # This cannot be combined with additional options, because the `--` option
+  # marks the start of the file list.
+  #
+  # Usage: `git untrack path/to/file.ext`
+  #
+  # See: https://git-scm.com/docs/git-rm
+  #
+  untrack = rm --cache --
+
+  ; Remove from repo:
+  ; git rm -rf *
+
+  ; Unstage a directory
+  ; git rm --cached -r dir
+
+  # `git up`
+  #
+  # Push the current branch up to a brach of the same name in the origin
+  # repository, setting up tracking. Also push any new tags.
+  #
+  # Note, a better way to setup remote tracking automatically for all
+  # `git push` operations is with the following config, but this is available
+  # only since Git 2.37:
+  #
+  # `git config --global --add --bool push.autoSetupRemote true`
+  #
+  up = push --set-upstream origin HEAD --follow-tags
+
+  # `git up-force`
+  #
+  # Force-push changes up to the remote, without accidentally overriding stuff
+  # other people have committed there (force-with-lease).
+  #
+  up-force = push --set-upstream origin HEAD --follow-tags --force-with-lease
+
+  # `git upstream`
+  #
+  # Show the name of the tracked upstream branch.
+  #
+  # Use `git tracking` to list all tracked branches.
+  #
+  upstream = rev-parse --abbrev-ref --symbolic-full-name @{upstream}
+
+  # `git versions`
+  #
+  # List tags prefixed with the lower case letter "v", sorted numerically.
+  #
+  versions = tag -l --sort=-version:refname v*
+
+  # `git wip` | `git wip "[comment]"`
+  #
+  # Stages and commits all working changes, temporarily disabling commit hooks
+  # which may run time-consuming validation routines.
+  #
+  # If an unset-or-empty commit message is provided, "WIP" becomes the commit
+  # message, else " - WIP" is appended to the custom message. For example,
+  # the command `git wip "My commit message"` produces a new commit with the
+  # log message "My commit message - WIP".
+  #
+  # WIP commits are intended for backup purposes and to be fixed-up *manually*
+  # later, or ultimately squashed into another branch. `git fixup` provides
+  # an alternative workflow for WIP.
+  #
+  ; wip = commit --all --message 'WIP' --no-verify
+  ; git add --all && git commit --no-verify --message \"${1+wip! }${1:-wip!}\"; }; \
+  wip = "! f() { \
+    git add --all && git commit --no-verify --message \"${1:-WIP}${1+ - WIP}\"; \
+  }; f"
+
+[core]
+
+  # core.excludesFile
+  #
+  # Establish a global `.gitignore` file, which will be applied to all local
+  # Git repositories but never be committed to any repository. Use this to
+  # include TODOs, scratch files or any other personal materials to the
+  # working directories of local Git repositories without running the risk of
+  # those files being committed to the repository.
+  #
+  excludesFile = ~/.local.gitignore
+
+[fetch]
+
+  # fetch.prune
+  #
+  # Automatically prune from the local repository any references to branches
+  # and tags in the upstream repository that no longer exist there.
+  #
+  prune = true
+
+[merge]
+
+  # merge.ff
+  #
+  # @deprecated
+  #
+  # Refuse to handle merges that cannot be simply fast-forwarded. This means
+  # target branches must be rebased on source branches before the merge
+  # operation can be done.
+  #
+  # Unfortuntely, this also blocks squash-merges when there is divergent work
+  # in both the source and target branches.
+  #
+  ; ff = only
+
+  # merge.ff
+  #
+  # Change default behavior of `git merge` to always performing a true merge,
+  # where an explicit merge commit is recorded, even if one is not needed to
+  # resolve differences between the integrated branches.
+  #
+  ff = false
+
+[pull]
+
+  # pull.rebase
+  #
+  # On `git pull` operations, always rebase the current branch on top of the
+  # upstream branch after fetching. This helps to maintain a clean, linear
+  # commit history.
+  #
+  rebase = true
+
+[push]
+
+  # push.followTags
+  #
+  # Push tags with commits by default. Equivalent to `--follow-tags` option.
+  #
+  followTags = true
+
+  # push.default
+  #
+  # By default, push branches to branches of the same name on "origin". It
+  # means you can `git push` excluding the `<remote> <branch>` parameters.
+  #
+  default = current
+
+  # push.autoSetupRemote
+  #
+  # Automatically set up branch tracking. This is equivalent to using
+  # `--set-upstream` | `-u` on `git push`. This option must be used in
+  # conjunction with an appropriate `default` option, eg `default = current`.
+  #
+  # This option is enabled since Git 2.37.
+  #
+  autoSetupRemote = true
+
+[rebase]
+
+  # rebase.autosquash
+  #
+  # Add the `--autosquash` option to every `rebase` operation by default. This
+  # will automatically handle commit messages that are prefixed "squash!",
+  # "fixup!" or "amend!", changing the rebase action from "pick" to "squash",
+  # "fixup" and "fixup -C" respectively.
+  #
+  # (Note: "fixup -C" is the same as "fixup" except the log message of the
+  # "fixup!" commit replaces the message of the target commit, rather than the
+  # other way around.)
+  #
+  # This is a better default because interactive rebase still gives us the
+  # chance to edit the action per commit, before the rebase operation proper.
+  #
+  # This behavior can be disabled on a case-by-case basis by adding the
+  # `--no-autosquash` option to the `git rebase` command.
+  #
+  # https://stackoverflow.com/a/66833278
+  #
+  autosquash = true
+
+[safe]
+
+  # safe.directory
+  #
+  # If your Git repositories are on an external drive, Git will consider them
+  # to be owned by someone else and therefore unsafe by default. This setting
+  # completely opts-out of this security check.
+  #
+  # https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory
+  #
+  directory = *
+
+[include]
+
+  # include.path
+  #
+  # Allow extensions to this base Git configuration via `~/.local.gitconfig`.
+  #
+  # Note, the `include.path` config MUST be maintained at the bottom of the
+  # `.gitconfig` template, as the contents of the included path are injected
+  # at this position and we want the included file to have the opportunity to
+  # override _anything_ in the `.gitconfig` template.
+  #
+  path = ~/.local.gitconfig

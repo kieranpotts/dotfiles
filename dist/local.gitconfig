@@ -1,0 +1,21 @@
+# -----------------------------------------------------------------------------
+# Git config
+#
+# This file SHOULD be used to extend and overwrite the default user-level Git
+# configuration symlinked from `~/.gitconfig`. You SHOULD edit this file
+# directly, rather than use the `git config --global` command.
+#
+# https://git-scm.com/docs/git-config
+# -----------------------------------------------------------------------------
+
+[user]
+
+  # user.name and user.email
+  #
+  # These settings determine what values end up in the `author` and `committer`
+  # fields of commit objects.
+  #
+  # https://git-scm.com/docs/git-config#Documentation/git-config.txt-username
+  #
+  email = [your-email-address]
+  name = [your-name-or-username]

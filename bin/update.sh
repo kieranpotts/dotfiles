@@ -28,10 +28,10 @@ fi
 # are not dot-prefixed in the `dist` directory.
 cp -Rf dist/* ~/dotfiles
 
-# Copy the `.gitconfig.local` and `.gitignore.local` templates directly into the
+# Copy the `.local.gitconfig` and `.local.gitignore` templates directly into the
 # user's home directory, unless they already exist there.
-cp -n ~/dotfiles/gitconfig.local ~/.gitconfig.local
-cp -n ~/dotfiles/gitignore.local ~/.gitignore.local
+cp -n ~/dotfiles/local.gitconfig ~/.local.gitconfig
+cp -n ~/dotfiles/local.gitignore ~/.local.gitignore
 
 # Create symlinks to the `.gitconfig` and various UNIX profile files. Existing
 # files will not be overwritten. Error output is silenced because it is okay

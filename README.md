@@ -13,6 +13,7 @@ A baseline, extensible user profile configuration for UNIX-like systems (includi
 ## Requirements
 
 - UNIX-like environment ([Git Bash for Windows](https://gitforwindows.org/) is supported)
+- [Git](https://git-scm.com/) >= v29
 - [Oh My Posh](https://ohmyposh.dev/docs/) pre-installed
 
 ## Prerequisites
@@ -53,10 +54,10 @@ The `bin/update.sh` script will establish various symlinks in your home director
 
 The following files will be added to your home directory. These are not symlinked and they will not be overwritten by subsequent `bin/update.sh` executions. Therefore, you can safely edit these files without risk of your changes being lost:
 
-- `~/.gitconfig.local`
-- `~/.gitignore.local`
+- `~/.local.gitconfig`
+- `~/.local.gitignore`
 
-You MUST edit the `~/.gitconfig.local` file to configure your Git user profile information. This data will be embedded in commit objects: 
+You MUST edit the `~/.local.gitconfig` file to configure your Git user profile information. This data will be embedded in commit objects: 
 
 ```txt
 [user]
@@ -64,11 +65,11 @@ You MUST edit the `~/.gitconfig.local` file to configure your Git user profile i
   name = Your Name
 ```
 
-You MAY make further edits to the `~/.gitconfig.local` file. This is how you can override and extend the baseline Git configurations (in `~/.gitconfig`). You SHOULD NOT use the `git config --global` command to update your Git configuration. This will update the file symlinked from `~/.gitconfig` and those changes will be overwritten whenever you re-run the `bin/update.sh` script. To avoid this, you SHOULD instead edit the `~/.gitconfig.local` directly.
+You MAY make further edits to the `~/.local.gitconfig` file. This is how you can override and extend the baseline Git configurations (in `~/.gitconfig`). You SHOULD NOT use the `git config --global` command to update your Git configuration. This will update the file symlinked from `~/.gitconfig` and those changes will be overwritten whenever you re-run the `bin/update.sh` script. To avoid this, you SHOULD instead edit the `~/.local.gitconfig` directly.
 
-The `~/.gitignore.local` file MAY be used to configure global [Git ignore rules](https://git-scm.com/docs/gitignore). By default, this file adds a rule that will ignore any files or directories named `__TODO__` in any Git repository on your local filesystem. It means the contents of `__TODO__` paths will be private to you and will not be committed to source control. You MAY extend `~/.gitignore.local` with any additional rules you like.
+The `~/.local.gitignore` file MAY be used to configure global [Git ignore rules](https://git-scm.com/docs/gitignore). By default, this file adds a rule that will ignore any files or directories named `__TODO__` in any Git repository on your local filesystem. It means the contents of `__TODO__` paths will be private to you and will not be committed to source control. You MAY extend `~/.local.gitignore` with any additional rules you like.
 
-**Any changes you make to any of the `*.local` files will NOT be overwritten when you re-run the `bin/update.sh` script.**
+**Any changes you make to any of the "local" Git files will NOT be overwritten when you re-run the `bin/update.sh` script.**
 
 ## Shell configuration
 
@@ -92,15 +93,15 @@ The `~/.bash_profile` file is also used to configure prompt customizations (usin
 
 Finally, a `~/bashrc` file is included, too. This "Bash run command" file is used to define additional scripts that should be run every time the `bash` command is called to execute a script (which happens in interactive non-login mode). This is a good place to reset environment variables and other globals that you want to be consistent for every script you run in your terminal. As per common practice, the `~/.bashrc` file is sourced from `~/.bash_profile`, so ensuring consistent behavior of all commands run in a terminal – whether by direct invocation or via inclusion in a script.
 
-### Environment variables
+### Shell environment variables
 
 TODO: List environment variables
 
-### Aliases
+### Shell aliases
 
 TODO: List aliases
 
-### Functions
+### Shell functions
 
 TODO: Add functions
 
@@ -108,9 +109,81 @@ TODO: Add functions
 
 TODO: Describe what configuration is included, and what additional configuration may be added.
 
+### Git aliases
+
+The following Git aliases provide shortcut commands for common source control operations. This table provides a short summary of each alias's behavior – see the inline code comments in `dotfiles/gitconfig` for more documentation.
+
+| Command                    | Description                                     |
+|----------------------------|-------------------------------------------------|
+| `git aliases`              | List all available aliases                      |
+| `git amend`                | Amend the last commit with all working changes  |
+| `git br`                   | Create a branch, switch to it and push upstream |
+| `git branches`             | List all branches by order of last commit       |
+| `git cm (-m "[comment]")`  | Stage and commit all changes in working tree    |
+| `git changed [hash]`       | List the files changed in a specified commit    |
+| `git changes`              |  |
+| `git cl`                   | Shortcut for `git clone`                        |
+| `git co`                   |  |
+| `git configure`            |  |
+| `git contrib`              |  |
+| `git current`              |  |
+| `git default`              |  |
+| `git delete`               |  |
+| `git delete-force`         |  |
+| `git discard`              |  |
+| `git down`                 |  |
+| `git download`             |  |
+| `git downstream`           |  |
+| `git experiment`           |  |
+| `git feat(ure)`            |  |
+| `git fell ([branch])`      |  |
+| `git fetched`              |  |
+| `git filelog`              | List all the commits that changed a file        |
+| `git fix|bug "[comment]"`  |  |
+| `git fixup`                |  |
+| `git fixup HEAD^`          |  |
+| `git fixup [sha]`          |  |
+| `git fixup :/foo`          |  |
+| `git fast-forward|ff`      |  |
+| `git graph`                |  |
+| `git history`              |  |
+| `git k`                    | Opens `gitk`                                    |
+| `git last`                 |  |
+| `git maint`                |  |
+| `git new`                  |  |
+| `git nfr|quality`          |  |
+| `git orphan`               |  |
+| `git orphan-fresh`         |  |
+| `git pick`                 |  |
+| `git recent`               |  |
+| `git refactor`             |  |
+| `git remotes`              |  |
+| `git reword`               |  |
+| `git state`                |  |
+| `git squash`               |  |
+| `git stashed`              |  |
+| `git sw`                   |  |
+| `git sync`                 |  |
+| `git tags`                 |  |
+| `git track`                |  |
+| `git tracking`             |  |
+| `git unamend`              |  |
+| `git uncommit`             |  |
+| `git undo`                 |  |
+| `git unstage`              |  |
+| `git untrack`              |  |
+| `git up`                   |  |
+| `git up-force`             |  |
+| `git upstream`             |  |
+| `git versions`             |  |
+| `git wip`                  |  |
+
 ## Acknowledgments
 
 - [Thoughtbot's dotfiles](https://github.com/thoughtbot/dotfiles)
+- [Nicola Paolucci's dotfiles](https://github.com/durdn/cfg)
+- [YADR – Yet Another Dotfile Repo](https://github.com/skwp/dotfiles)
+- [Git Wiki: Aliases](https://git.wiki.kernel.org/index.php/Aliases)
 
 -----
 
