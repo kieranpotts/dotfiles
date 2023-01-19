@@ -10,7 +10,7 @@
 
 [user]
 
-  # user.name and user.email
+  # user.name, user.email
   #
   # These settings determine what values end up in the `author` and `committer`
   # fields of commit objects.
