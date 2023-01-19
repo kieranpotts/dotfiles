@@ -12,9 +12,9 @@ A baseline, extensible user profile configuration for UNIX-like systems (includi
 
 ## Requirements
 
-- UNIX-like environment ([Git Bash for Windows](https://gitforwindows.org/) is supported)
-- [Git](https://git-scm.com/) >= v29
-- [Oh My Posh](https://ohmyposh.dev/docs/) pre-installed
+- UNIX-like environment – [Git Bash for Windows](https://gitforwindows.org/) is supported
+- [Git](https://git-scm.com/) ≥ v29
+- [Oh My Posh](https://ohmyposh.dev/docs/)
 
 ## Prerequisites
 
@@ -24,6 +24,10 @@ The installation script will attempt to replace the following files in your home
 - `~/.bashrc`
 - `~/.gitconfig`
 - `~/.profile`
+
+## Disclaimer
+
+Some of the operations enabled by this dotfiles configuration are potentially destructive. For example, some Git aliases rewrite commit histories. If you choose to use these tools, you do so at your own risk.
 
 ## Installation
 
@@ -67,7 +71,7 @@ You MUST edit the `~/.local.gitconfig` file to configure your Git user profile i
 
 You MAY make further edits to the `~/.local.gitconfig` file. This is how you can override and extend the baseline Git configurations (in `~/.gitconfig`). You SHOULD NOT use the `git config --global` command to update your Git configuration. This will update the file symlinked from `~/.gitconfig` and those changes will be overwritten whenever you re-run the `bin/update.sh` script. To avoid this, you SHOULD instead edit the `~/.local.gitconfig` directly.
 
-The `~/.local.gitignore` file MAY be used to configure global [Git ignore rules](https://git-scm.com/docs/gitignore). By default, this file adds a rule that will ignore any files or directories named `__TODO__` in any Git repository on your local filesystem. It means the contents of `__TODO__` paths will be private to you and will not be committed to source control. You MAY extend `~/.local.gitignore` with any additional rules you like.
+The `~/.local.gitignore` file MAY be used to configure global [Git ignore rules](https://git-scm.com/docs/gitignore). By default, this file adds a rule that will ignore any files or directories named `__TODO__` or `__NOTES__` in any Git repository on your local filesystem. It means the contents of these paths will be private to you and will not be committed to source control. You MAY extend `~/.local.gitignore` with any additional rules you like.
 
 **Any changes you make to any of the "local" Git files will NOT be overwritten when you re-run the `bin/update.sh` script.**
 
@@ -111,80 +115,78 @@ TODO: Describe what configuration is included, and what additional configuration
 
 ### Git aliases
 
-The following Git aliases provide shortcut commands for common source control operations. This table provides a short summary of each alias's behavior – see the inline code comments in `dotfiles/gitconfig` for more documentation.
+The following Git aliases provide shortcut commands for common source control operations. This table provides a short summary of each alias's API and behavior – see the inline code comments in `dotfiles/gitconfig` for more comprehensive documentation.
 
-| Command                    | Description                                     |
-|----------------------------|-------------------------------------------------|
-| `git aliases`              | List all available aliases                      |
-| `git amend`                | Amend the last commit with all working changes  |
-| `git br`                   | Create a branch, switch to it and push upstream |
-| `git branches`             | List all branches by order of last commit       |
-| `git cm (-m "[comment]")`  | Stage and commit all changes in working tree    |
-| `git changed [hash]`       | List the files changed in a specified commit    |
-| `git changes`              |  |
-| `git cl`                   | Shortcut for `git clone`                        |
-| `git co`                   |  |
-| `git configure`            |  |
-| `git contrib`              |  |
-| `git current`              |  |
-| `git default`              |  |
-| `git delete`               |  |
-| `git delete-force`         |  |
-| `git discard`              |  |
-| `git down`                 |  |
-| `git download`             |  |
-| `git downstream`           |  |
-| `git experiment`           |  |
-| `git feat(ure)`            |  |
-| `git fell ([branch])`      |  |
-| `git fetched`              |  |
-| `git filelog`              | List all the commits that changed a file        |
-| `git fix|bug "[comment]"`  |  |
-| `git fixup`                |  |
-| `git fixup HEAD^`          |  |
-| `git fixup [sha]`          |  |
-| `git fixup :/foo`          |  |
-| `git fast-forward|ff`      |  |
-| `git graph`                |  |
-| `git history`              |  |
-| `git k`                    | Opens `gitk`                                    |
-| `git last`                 |  |
-| `git maint`                |  |
-| `git new`                  |  |
-| `git nfr|quality`          |  |
-| `git orphan`               |  |
-| `git orphan-fresh`         |  |
-| `git pick`                 |  |
-| `git recent`               |  |
-| `git refactor`             |  |
-| `git remotes`              |  |
-| `git reword`               |  |
-| `git state`                |  |
-| `git squash`               |  |
-| `git stashed`              |  |
-| `git sw`                   |  |
-| `git sync`                 |  |
-| `git tags`                 |  |
-| `git track`                |  |
-| `git tracking`             |  |
-| `git unamend`              |  |
-| `git uncommit`             |  |
-| `git undo`                 |  |
-| `git unstage`              |  |
-| `git untrack`              |  |
-| `git up`                   |  |
-| `git up-force`             |  |
-| `git upstream`             |  |
-| `git versions`             |  |
-| `git wip`                  |  |
+| Command                          | Description                                                                       |
+|----------------------------------|-----------------------------------------------------------------------------------|
+| `git aliases`                    | List all configured aliases                                                       |
+| `git amend`                      | Add all working changes to the last commit, including new (untracked) files       |
+| `git attr(ibute) "[comment]"`    | Creates a commit with the message "attribute: [comment]"                          |
+| `git br [branch_name]`           | Create a branch, switch to it, and push upstream immediately to setup tracking    |
+| `git branches`                   | List all branches by order of last commit                                         |
+| `git cm (-m "[comment]")`        | Stage and commit all changes in the working tree, including new (untracked) files |
+| `git changed [hash]`             | List the files changed in a specific commit                                       |
+| `git changes`                    | Reveal the changes made since the last commit                                     |
+| `git cl`                         | Shortcut for `git clone`                                                          |
+| `git co`                         | Shortcut for `git checkout`                                                       |
+| `git configure`                  | Open the `~/.gitconfig` file in your default text editor                          |
+| `git contrib`                    | List all contributors to the repository, ordered by their commit count            |
+| `git current`                    | Show the name of the current branch                                               |
+| `git default`                    | Fetches the name of the default branch, as configured in the "origin" repo        |
+| `git delete [branch_name]`       | Deletes both the local and upstream versions of a branch, if it is merged         |
+| `git delete-force [branch_name]` | Deletes both the local and upstream versions of a branch, even if it's not merged |
+| `git discard [file1] [file2]...` | Discard working changes made to a particular file since the last commit           |
+| `git down`                       | Maps to `git pull` with the rebasing integration strategy enabled                 |
+| `git download`                   | Downloads and prunes local objects, tags and branches to match all remotes        |
+| `git experiment "[comment]"`     | Creates a commit with the message "experiment: [comment]"                         |
+| `git feat(ure) "[comment]`       | Creates a commit with the message "feature: [comment]"                            |
+| `git fell ([main_branch])`       | Delete all branches that have been merged with the default or specified branch    |
+| `git fetched`                    | List all new commits since the last update to HEAD                                |
+| `git filelog  [path/to/file]`    | List all the commits that have modified a specific file                           |
+| `git fix|bug "[comment]"`        | Creates a commit with the message "fix: [comment]"                                |
+| `git fixup ([sha])`              | Fix something in the previous commit, or an earlier specified commit              |
+| `git ff|fast-forward`            | Do a fast-forward merge                                                           |
+| `git graph`                      | Detailed graph view of `git log`                                                  |
+| `git history`                    | Cleaner `git log`                                                                 |
+| `git k`                          | Opens `gitk`, Git's built-in repository browser                                   |
+| `git last`                       | Show detailed information on the last commit                                      |
+| `git maint "[comment]"`          | Creates a commit with the message "maintenance: [comment]"                        |
+| `git orphan`                     | Create a new branch with no parents                                               |
+| `git orphan-fresh`               | Create a new branch with no parents, and remove all working changes               |
+| `git pick`                       | Shortcut for `git cherry-pick`                                                    |
+| `git recent`                     | Equivalent to the `git history` alias but showing only the last 25 commits        |
+| `git refactor "[comment]"`       | Creates a commit with the message "refactor: [comment]"                           |
+| `git remotes`                    | List the URLs of all remotes                                                      |
+| `git reword`                     | Change the message of the previous commit (adds staged files, too)                |
+| `git state`                      | Short-format view of the working tree's current state                             |
+| `git squash`                     | Perform a `merge --squash` operation                                              |
+| `git stashed`                    | Show the current number of entries in the stash                                   |
+| `git sw`                         | Shortcut for `git switch`                                                         |
+| `git sync`                       | Sync the local and tracked upstream branches                                      |
+| `git tags`                       | List all tags, sorted by commit date                                              |
+| `git track`                      | Alias for `git add` and the opposite action of the `git untrack` alias            |
+| `git tracking`                   | Same as `git branches` but shows tracked upstream branches, too                   |
+| `git unamend`                    | Undo the previous `git amend` operation                                           |
+| `git uncommit`                   | Undoes the last commit, returns the changes to the staging index                  |
+| `git undo`                       | Undoes all working and staged changes since the last commit                       |
+| `git unstage`                    | Alias for `git reset`, removes everything from the staging index                  |
+| `git untrack [path/to/file]`     | Untrack a file                                                                    |
+| `git up`                         | Maps to `git push`, pushing tags and setting up tracking too                      |
+| `git up-force`                   | Force-push changes up to the remote, overwrite own work but not other people's    |
+| `git upstream`                   | Show the name of the tracked upstream branch                                      |
+| `git versions`                   | List tags prefixed with the lower case letter "v", sorted numerically             |
+| `git wip ("[comment]")`          | Commits all working changes with the comment "WIP" or appending " - WIP"          |
 
-## Acknowledgments
+-----
+
+Acknowledgments
 
 - [Thoughtbot's dotfiles](https://github.com/thoughtbot/dotfiles)
 - [Nicola Paolucci's dotfiles](https://github.com/durdn/cfg)
 - [YADR – Yet Another Dotfile Repo](https://github.com/skwp/dotfiles)
+- [Ramesh Padmanabhaiah's Base framework](https://github.com/codeforester/base)
+- [Phil Haack's dotfiles](https://github.com/haacked/dotfiles)
 - [Git Wiki: Aliases](https://git.wiki.kernel.org/index.php/Aliases)
 
------
-
-© Kieran Potts – [MIT](./LICENSE.txt)
+Copyright © 2020-2023 Kieran Potts \
+[MIT license](./LICENSE.txt)
