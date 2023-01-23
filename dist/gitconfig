@@ -711,9 +711,12 @@
   #
   # Show the name of the tracked upstream branch.
   #
+  # Silences fatal "no upstream configured" error if no upstream repository
+  # is configured.
+  #
   # Use `git tracking` to list all tracked branches.
   #
-  upstream = rev-parse --abbrev-ref --symbolic-full-name @{upstream}
+  upstream = ! git rev-parse --abbrev-ref --symbolic-full-name @{upstream} 2> /dev/null
 
   # `git versions`
   #
