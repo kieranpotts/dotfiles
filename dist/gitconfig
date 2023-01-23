@@ -22,7 +22,7 @@
   #
   # Aliases are listed in the order they are defined in the Git config.
   #
-  aliases = "! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / #"
+  aliases = "! git config --get-regexp ^alias\\. | sed --expression s/^alias\\.// --expression s/\\ /\\ =\\ / #"
 
   # `git amend`
   #
@@ -101,9 +101,12 @@
 
   # `git changes`
   #
-  # Show changes made since the last commit.
+  # Shows files staged for committing. LIsts names and status (Added, Modified,
+  # Deleted) of changed files.
   #
-  changes = diff --name-status -r
+  # The `git staged` alias is identical.
+  #
+  changes = diff --name-status --staged HEAD
 
   # `git cl`
   #
@@ -123,17 +126,17 @@
   #
   # Open the `~/.gitconfig` file in your default text editor.
   #
-  configure = config --global -e
+  configure = config --global --edit
 
   # `git contrib`
   #
   # List all contributors to the repository, ordered by their commit count.
   #
-  # This alias is configured to show email addresses (`-e`) and total commit
-  # counts (`--summary`). The contributors are ordered by their commit count
-  # (`--numbered`) – the biggest committers first.
+  # This alias is configured to show email addresses (`--email`) and total
+  # commit counts (`--summary`). The contributors are ordered by their commit
+  # count (`--numbered`) – the biggest committers first.
   #
-  contrib = shortlog -e --summary --numbered
+  contrib = shortlog --email --summary --numbered
 
   # `git current`
   #
@@ -164,7 +167,7 @@
   # what the remote considers to be the default branch.
   #
   # ```
-  # git remote set-head origin -a
+  # git remote set-head origin --auto|-a
   # ```
   #
   # (NOTE: Prior to Git v1.8, the above command could set the `origin/HEAD` ref
@@ -244,9 +247,12 @@
   # Updates local objects and refs (tags and branches) to match all remotes.
   #
   # This command also removes any refs from the local repository that no longer
-  # exist in any remote (`-p`) including tags (`-P`).
+  # exist in any remote, including tags. Careful, any tags newly-created in the
+  # downstream repository will be deleted unless they have been already pushed
+  # upstream. Local branches will not be deleted, however – only references to
+  # branches in the upstream repository are deleted.
   #
-  download = fetch --all --tags -Pp
+  download = fetch --all --tags --prune --prune-tags
 
   # `git experiment "[comment]"`
   #
@@ -298,7 +304,9 @@
   # List all new commits since the last update to HEAD.
   #
   # This command is useful to see what has been committed locally since the last
-  # `git fetch` operation. Append `--no-merges` to exclude merge commits from the log.
+  # `git fetch` operation.
+  #
+  # Append `--no-merges` to exclude merge commits from the log.
   #
   fetched = log ORIG_HEAD.. --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit
 
@@ -347,7 +355,7 @@
   # - https://stackoverflow.com/questions/3103589/
   # - https://git-scm.com/docs/git-rev-parse
   #
-  fixup = "! f() { local REV=$(git rev-parse ${1:-HEAD}) && git add --all && git commit --no-verify --fixup=${REV} ${@:2} && git rebase --interactive --autosquash ${REV}~1; }; f"
+  fixup = "! f() { REV=$(git rev-parse ${1:-HEAD}) && git add --all && git commit --no-verify --fixup=${REV} ${@:2} && git rebase --interactive --autosquash ${REV}~1; }; f"
 
   # `git ff|fast-forward`
   #
@@ -387,7 +395,7 @@
 
   # `git last`
   #
-  # Show detailed information on the last commit.
+  # Show detailed information on the last commit (`-1`).
   #
   last = log -1 HEAD --stat
 
@@ -435,7 +443,7 @@
   #
   # Equivalent to the `git history` alias but limited to the last 25 commits.
   #
-  recent = log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit -n 25
+  recent = log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit --max-count=25
 
   # `git refactor "[comment]"`
   #
@@ -513,6 +521,15 @@
   #
   squash = merge --ff --squash
 
+  # `git staged`
+  #
+  # Shows files staged for committing. LIsts names and status (Added, Modified,
+  # Deleted) of changed files.
+  #
+  # The `git changes` alias is identical.
+  #
+  staged = diff --name-status --staged HEAD
+
   # `git stashed`
   #
   # Show the current number of entries in the stash.
@@ -562,7 +579,7 @@
   # Use `git download` to download all tags as well as branches from all the
   # upstream repositories.
   #
-  tags = tag -l --sort=committerdate
+  tags = tag --list --sort=committerdate
 
   # `git track`
   #
@@ -630,7 +647,7 @@
   # Source:
   # - https://haacked.com/archive/2014/07/28/github-flow-aliases/
   #
-  undo = "! git add --all && git commit -qm '--SAVEPOINT--' && git reset HEAD~1 --hard #"
+  undo = "! git add --all && git commit --quiet --message '--SAVEPOINT--' && git reset HEAD~1 --hard #"
 
   # `git unstage`
   #
@@ -645,7 +662,7 @@
   # Untrack a file.
   #
   # The `rm` command combined with the `--cache` option removes a file from the
-  # staging index but maintains the file in the working tree.When the next
+  # staging index but maintains the file in the working tree. When the next
   # commit is made, the untracked file(s) will be removed from the repository,
   # but not deleted from the local filesystem.
   #
@@ -704,7 +721,7 @@
   #
   # List tags prefixed with the lower case letter "v", sorted numerically.
   #
-  versions = tag -l --sort=-version:refname v*
+  versions = tag --list --sort=-version:refname v*
 
   # `git wip ("[comment]")`
   #

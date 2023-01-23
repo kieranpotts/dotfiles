@@ -6,5 +6,5 @@
 # See `~/.gitconfig` for usage instructions.
 # -----------------------------------------------------------------------------
 
-git remote set-head origin -a > /dev/null
+git remote set-head origin --auto > /dev/null
 git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'

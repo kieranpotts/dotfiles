@@ -8,7 +8,7 @@
 # -----------------------------------------------------------------------------
 
 # Get default branch (see `default` Git alias).
-git remote set-head origin -a > /dev/null
+git remote set-head origin --auto > /dev/null
 DEFAULT=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
 
-git branch --merged ${1-$DEFAULT} | grep -v " ${1-$DEFAULT}$" | xargs git branch --delete 2> /dev/null
+git branch --merged ${1-$DEFAULT} | grep --invert-match " ${1-$DEFAULT}$" | xargs git branch --delete 2> /dev/null

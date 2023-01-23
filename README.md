@@ -126,7 +126,7 @@ The following Git aliases provide shortcut commands for common source control op
 | `git branches`                   | List all branches by order of last commit                                         |
 | `git cm (-m "[comment]")`        | Stage and commit all changes in the working tree, including new (untracked) files |
 | `git changed [hash]`             | List the files changed in a specific commit                                       |
-| `git changes`                    | Reveal the changes made since the last commit                                     |
+| `git changes`                    | Lists files staged for committing                                                 |
 | `git cl`                         | Shortcut for `git clone`                                                          |
 | `git co`                         | Shortcut for `git checkout`                                                       |
 | `git configure`                  | Open the `~/.gitconfig` file in your default text editor                          |
@@ -160,6 +160,7 @@ The following Git aliases provide shortcut commands for common source control op
 | `git reword`                     | Change the message of the previous commit (adds staged files, too)                |
 | `git state`                      | Short-format view of the working tree's current state                             |
 | `git squash`                     | Perform a `merge --squash` operation                                              |
+| `git staged`                     | Lists files staged for committing                                                 |
 | `git stashed`                    | Show the current number of entries in the stash                                   |
 | `git sw`                         | Shortcut for `git switch`                                                         |
 | `git sync`                       | Sync the local and tracked upstream branches                                      |
