@@ -269,7 +269,7 @@
     git add --all && git commit --no-verify --message \"experiment: ${1}\"; \
   }; f"
 
-  # `git feat(ure) "[comment]"`
+  # `git feature "[comment]"`
   #
   # Shortcut for committing functional changes.
   #
@@ -280,7 +280,6 @@
     fi; \
     git add --all && git commit --no-verify --message \"feature: ${1}\"; \
   }; f"
-  feat = feature
 
   # `git fell ([main_branch])`
   #
@@ -330,7 +329,7 @@
   #
   filelog = "! f() { git log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit -- \"$1\"; }; f"
 
-  # `git fix|bug "[comment]"`
+  # `git fix "[comment]"`
   #
   # Shortcut for committing bug fixes.
   #
@@ -341,7 +340,6 @@
     fi; \
     git add --all && git commit --no-verify --message \"fix: ${1}\"; \
   }; f"
-  bug = fix
 
   # `git fixup`
   #

@@ -139,11 +139,11 @@ The following Git aliases provide shortcut commands for common source control op
 | `git down`                       | Maps to `git pull` with the rebasing integration strategy enabled                 |
 | `git download`                   | Downloads and prunes local objects, tags and branches to match all remotes        |
 | `git experiment "[comment]"`     | Creates a commit with the message "experiment: [comment]"                         |
-| `git feat(ure) "[comment]`       | Creates a commit with the message "feature: [comment]"                            |
+| `git feature "[comment]`         | Creates a commit with the message "feature: [comment]"                            |
 | `git fell ([main_branch])`       | Delete all branches that have been merged with the default or specified branch    |
 | `git fetched`                    | List all new commits since the last update to HEAD                                |
 | `git filelog  [path/to/file]`    | List all the commits that have modified a specific file                           |
-| `git fix|bug "[comment]"`        | Creates a commit with the message "fix: [comment]"                                |
+| `git fix "[comment]"`            | Creates a commit with the message "fix: [comment]"                                |
 | `git fixup ([sha])`              | Fix something in the previous commit, or an earlier specified commit              |
 | `git ff|fast-forward`            | Do a fast-forward merge                                                           |
 | `git graph`                      | Detailed graph view of `git log`                                                  |
