@@ -23,7 +23,8 @@
   # Aliases are listed in the order they are defined in the Git config.
   #
   ; aliases = config --get-regexp alias
-  aliases = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+  ; aliases = "! git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' #"
+  aliases = "! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / #"
 
   # `git amend`
   #
@@ -194,7 +195,7 @@
   # Sources:
   # - https://haacked.com/archive/2014/07/28/github-flow-aliases/
   #
-  default = ! git remote set-head origin -a > /dev/null && git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+  default = "! git remote set-head origin -a > /dev/null && git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@' #"
 
   # `git delete [branch_name]`
   #
@@ -247,7 +248,7 @@
   # See also the `git up` alias, which mirrors this, and `git sync`, which
   # combines the two into a single operation.
   #
-  down = pull --rebase
+  down = pull --rebase --prune
 
   # `git download`
   #
@@ -282,7 +283,6 @@
     git add --all && git commit --no-verify --message \"feature: ${1}\"; \
   }; f"
   feat = feature
-
 
   # `git fell ([main_branch])`
   #
@@ -543,12 +543,12 @@
   # to be resolved manually.
   #
   # Note, the StackOverflow answer linked below suggests using the following
-  # command. This uses the `c` parameter to override the `merge.ff` config
-  # temporarily. However, in testing it seems sufficient to just use the `--ff`
-  # flag, which achieves the same thing.
+  # command. This uses the `-c` parameter to make a one-time configuration
+  # change, overriding the default `merge.ff` setting. However, in testing it
+  # seems sufficient to just use the `--ff` flag, which achieves the same thing.
   #
   # ```
-  # git -c merge.ff=true merge --squash
+  # squash = -c merge.ff=true merge --squash
   # ```
   #
   # Sources:
@@ -590,7 +590,7 @@
   sync = "! f() { \
     upstreamBranch=$(git upstream); \
     if [ ! -z "$upstreamBranch" ]; then \
-      git pull --rebase; \
+      git pull --rebase --prune; \
       git push --follow-tags; \
     else \
       git push --set-upstream origin HEAD --follow-tags; \
@@ -672,7 +672,7 @@
   # Source:
   # - https://haacked.com/archive/2014/07/28/github-flow-aliases/
   #
-  undo = !git add --all && git commit -qm '--SAVEPOINT--' && git reset HEAD~1 --hard
+  undo = "! git add --all && git commit -qm '--SAVEPOINT--' && git reset HEAD~1 --hard #"
 
   # `git unstage`
   #
@@ -715,8 +715,22 @@
 
   # `git up-force`
   #
-  # Force-push changes up to the remote, without accidentally overriding stuff
-  # other people have committed there (force-with-lease).
+  # Force-push changes up to the remote.
+  #
+  # The `--force` flag should never be used against shared branches. The similar
+  # `--force-with-lease` option is a little bit safer – it _partially_ protects
+  # against destructive pushes. What it does is check that the downstream
+  # branch has all the commits that exist in the upstream one, and therefore
+  # we can be more confident that we will not overwrite work that other people
+  # have committed there. But it is not a perfect failsafe. For example,
+  # `--force-with-lease` will delete upstream commits when the downstream
+  # repository has been updated with `git fetch` and not a subsequent `git merge`
+  # (or a `git pull` which combines both operations). See the following
+  # Atlassian article for more bakcground to the dangers of force pushing:
+  # - https://blog.developer.atlassian.com/force-with-lease/
+  #
+  # Sources:
+  # - https://pbassiner.github.io/blog/git_aliases_to_the_rescue.html
   #
   up-force = push --set-upstream origin HEAD --follow-tags --force-with-lease
 
