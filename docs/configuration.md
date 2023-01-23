@@ -9,7 +9,7 @@ The following files will be added to your home directory. These are not symlinke
 
 You MUST edit the `~/.local.gitconfig` file to configure your Git user profile information. This data will be embedded in commit objects: 
 
-```txt
+```
 [user]
   email = you@example.com
   name = Your Name
