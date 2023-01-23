@@ -22,8 +22,6 @@
   #
   # Aliases are listed in the order they are defined in the Git config.
   #
-  ; aliases = config --get-regexp alias
-  ; aliases = "! git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' #"
   aliases = "! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / #"
 
   # `git amend`
