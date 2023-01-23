@@ -48,7 +48,7 @@
   # non-functional requirements.
   #
   attribute = "! f() { \
-    if [ -z "${1}" ]; then \
+    if [ -z \"${1}\" ]; then \
       echo \"Require commit message\" >&2; \
       exit 1; \
     fi; \
@@ -262,7 +262,7 @@
   # Shortcut for committing experimental work, eg from technical spikes.
   #
   experiment = "! f() { \
-    if [ -z "${1}" ]; then \
+    if [ -z \"${1}\" ]; then \
       echo \"Require commit message\" >&2; \
       exit 1; \
     fi; \
@@ -274,7 +274,7 @@
   # Shortcut for committing functional changes.
   #
   feature = "! f() { \
-    if [ -z "${1}" ]; then \
+    if [ -z \"${1}\" ]; then \
       echo \"Require commit message\" >&2; \
       exit 1; \
     fi; \
@@ -313,7 +313,7 @@
   # - https://stackoverflow.com/a/18380712
   # - https://stackoverflow.com/a/41465769
   #
-  fell = "!f() { DEFAULT=$(git default); git branch --merged ${1-$DEFAULT} | grep -v " ${1-$DEFAULT}$" | xargs git branch --delete 2> /dev/null; }; f"
+  fell = "!f() { DEFAULT=$(git default); git branch --merged ${1-$DEFAULT} | grep -v \" ${1-$DEFAULT}$\" | xargs git branch --delete 2> /dev/null; }; f"
 
   # `git fetched`
   #
@@ -335,7 +335,7 @@
   # Shortcut for committing bug fixes.
   #
   fix = "! f() { \
-    if [ -z "${1}" ]; then \
+    if [ -z \"${1}\" ]; then \
       echo \"Require commit message\" >&2; \
       exit 1; \
     fi; \
@@ -428,7 +428,7 @@
   # built-in Git command.
   #
   maint = "! f() { \
-    if [ -z "${1}" ]; then \
+    if [ -z \"${1}\" ]; then \
       echo \"Require commit message\" >&2; \
       exit 1; \
     fi; \
@@ -477,7 +477,7 @@
   # Shortcut for committing refactoring work.
   #
   refactor = "! f() { \
-    if [ -z "${1}" ]; then \
+    if [ -z \"${1}\" ]; then \
       echo \"Require commit message\" >&2; \
       exit 1; \
     fi; \
@@ -585,13 +585,30 @@
   # done. The local branch is pushed to a branch of the same name in the
   # "origin" remote, and tracking is established for next time.
   #
+  # Anything in the staging index plus working changes (including new as-yet
+  # untracked files) are temporarily stashed. (We check the stash counts to make
+  # sure we don't reapply work that was stashed earlier.) By temporarily
+  # stashing work-in-progress we can pull remote updates into a dirty local
+  # tree.
+  #
+  # This command works only after an initial commit has been made to the local
+  # repository.
+  #
   sync = "! f() { \
+    initialStashCount=$(git rev-list --walk-reflogs --count refs/stash 2> /dev/null); \
+    git stash push --include-untracked; \
+    \
     upstreamBranch=$(git upstream); \
-    if [ ! -z "$upstreamBranch" ]; then \
+    if [ ! -z \"$upstreamBranch\" ]; then \
       git pull --rebase --prune; \
       git push --follow-tags; \
     else \
       git push --set-upstream origin HEAD --follow-tags; \
+    fi; \
+    \
+    newStashCount=$(git rev-list --walk-reflogs --count refs/stash 2> /dev/null); \
+    if [ \"${newStashCount:-0}\" != \"${initialStashCount:-0}\" ]; then \
+      git stash pop; \
     fi; \
   }; f"
 
