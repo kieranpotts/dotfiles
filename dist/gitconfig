@@ -184,7 +184,7 @@
   # Sources:
   # - https://haacked.com/archive/2014/07/28/github-flow-aliases/
   #
-  default = "! git remote set-head origin -a > /dev/null && git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@' #"
+  default = ! sh ~/dotfiles/bin/default.sh
 
   # `git delete [branch_name]`
   #
@@ -291,7 +291,7 @@
   # - https://stackoverflow.com/a/18380712
   # - https://stackoverflow.com/a/41465769
   #
-  fell = "!f() { DEFAULT=$(git default); git branch --merged ${1-$DEFAULT} | grep -v \" ${1-$DEFAULT}$\" | xargs git branch --delete 2> /dev/null; }; f"
+  fell = ! sh ~/dotfiles/bin/fell.sh
 
   # `git fetched`
   #

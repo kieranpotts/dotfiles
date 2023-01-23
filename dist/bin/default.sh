@@ -1,14 +1,10 @@
 #!/bin/sh
 
 # -----------------------------------------------------------------------------
-# Script for committing bug fixes.
+# Script for getting the name of the default branch in the upstream repository.
 #
 # See `~/.gitconfig` for usage instructions.
 # -----------------------------------------------------------------------------
 
-if [ -z "${1}" ]; then
-  echo "Require commit message" >&2
-  exit 1
-fi
-
-git add --all && git commit --no-verify --message "fix: ${1}"
+git remote set-head origin -a > /dev/null
+git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
