@@ -23,6 +23,9 @@ if windows; then
   export MSYS=winsymlinks:nativestrict
 fi
 
+# Make the `~/dotfiles` directory
+mkdir ~/dotfiles
+
 # Copy the contents of the `dist` directory into `~/dotfiles`, replacing
 # the files if they already exist in the destination. Note, `cp` will not
 # copy hidden dot-prefixed files with this command, which is why files like
@@ -31,9 +34,10 @@ cp --recursive --force dist/* ~/dotfiles
 
 # Create backups of `~/.local.**` files, if they exist, before overwriting them.
 # These files are not expected to be references (symlinks) but in case they are
-# we make sure we backup the referenced file, not the symlink.
-cp --dereference ~/.local.gitconfig ~/.backup.gitconfig
-cp --dereference ~/.local.gitignore ~/.backup.gitignore
+# we make sure we backup the referenced file, not the symlink. Errors are
+# hidden because it is okay for the source files to not exist.
+cp --dereference ~/.local.gitconfig ~/.backup.gitconfig 2> /dev/null
+cp --dereference ~/.local.gitignore ~/.backup.gitignore 2> /dev/null
 
 # Copy the `.local.gitconfig` and `.local.gitignore` templates directly into the
 # user's home directory, unless they already exist there.
@@ -43,11 +47,12 @@ cp --no-clobber ~/dotfiles/local.gitignore ~/.local.gitignore
 # Create backups of home-directory files that will be overwritten. This is
 # especially important on the first install, to make sure the user does not lose
 # existing dotfile configurations. Symbolic links are followed to ensure the
-# actual files are backed up, not just the symlinks to them.
-cp --dereference ~/.bash_profile ~/.backup.bash_profile
-cp --dereference ~/.bashrc ~/.backup.bashrc
-cp --dereference ~/.gitconfig ~/.backup.gitconfig
-cp --dereference ~/.profile ~/.backup.profile
+# actual files are backed up, not just the symlinks to them. Errors are hidden
+# because it is okay for the source files to not exist.
+cp --dereference ~/.bash_profile ~/.backup.bash_profile 2> /dev/null
+cp --dereference ~/.bashrc ~/.backup.bashrc 2> /dev/null
+cp --dereference ~/.gitconfig ~/.backup.gitconfig 2> /dev/null
+cp --dereference ~/.profile ~/.backup.profile 2> /dev/null
 
 # Create symbolic links (not hard links) to `.gitconfig` and various UNIX files.
 # Existing files will be overwritten (`--force`). Potential errors are NOT
