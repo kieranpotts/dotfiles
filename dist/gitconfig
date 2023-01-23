@@ -47,14 +47,7 @@
   # Shortcut for committing changes that improve quality attributes or implement
   # non-functional requirements.
   #
-  attribute = "! f() { \
-    if [ -z \"${1}\" ]; then \
-      echo \"Require commit message\" >&2; \
-      exit 1; \
-    fi; \
-    git add --all && git commit --no-verify --message \"attribute: ${1}\"; \
-  }; f"
-  attr = attribute
+  attribute = ! sh ~/dotfiles/bin/attribute.sh
 
   # `git br [branch_name]`
   #
@@ -140,7 +133,7 @@
   # counts (`--summary`). The contributors are ordered by their commit count
   # (`--numbered`) – the biggest committers first.
   #
-  contrib = git shortlog -e --summary --numbered
+  contrib = shortlog -e --summary --numbered
 
   # `git current`
   #
@@ -149,10 +142,8 @@
   # See also the `git upstream` alias, which returns the name of the tracked
   # upstream branch.
   #
+  ; current = rev-parse --abbrev-ref HEAD # Git < 2.22
   current = branch --show-current
-
-  # Git < 2.22
-  ; current = rev-parse --abbrev-ref HEAD
 
   # `git default`
   #
@@ -261,25 +252,13 @@
   #
   # Shortcut for committing experimental work, eg from technical spikes.
   #
-  experiment = "! f() { \
-    if [ -z \"${1}\" ]; then \
-      echo \"Require commit message\" >&2; \
-      exit 1; \
-    fi; \
-    git add --all && git commit --no-verify --message \"experiment: ${1}\"; \
-  }; f"
+  experiment = ! sh ~/dotfiles/bin/experiment.sh
 
   # `git feature "[comment]"`
   #
   # Shortcut for committing functional changes.
   #
-  feature = "! f() { \
-    if [ -z \"${1}\" ]; then \
-      echo \"Require commit message\" >&2; \
-      exit 1; \
-    fi; \
-    git add --all && git commit --no-verify --message \"feature: ${1}\"; \
-  }; f"
+  feature = ! sh ~/dotfiles/bin/feature.sh
 
   # `git fell ([main_branch])`
   #
@@ -333,13 +312,7 @@
   #
   # Shortcut for committing bug fixes.
   #
-  fix = "! f() { \
-    if [ -z \"${1}\" ]; then \
-      echo \"Require commit message\" >&2; \
-      exit 1; \
-    fi; \
-    git add --all && git commit --no-verify --message \"fix: ${1}\"; \
-  }; f"
+  fix = ! sh ~/dotfiles/bin/fix.sh
 
   # `git fixup`
   #
@@ -425,13 +398,7 @@
   # Note, we can't use the alias "maintenance" as this already exists as a
   # built-in Git command.
   #
-  maint = "! f() { \
-    if [ -z \"${1}\" ]; then \
-      echo \"Require commit message\" >&2; \
-      exit 1; \
-    fi; \
-    git add --all && git commit --no-verify --message \"maintenance: ${1}\"; \
-  }; f"
+  maint = ! sh ~/dotfiles/bin/maint.sh
 
   # `git orphan`
   #
@@ -474,13 +441,7 @@
   #
   # Shortcut for committing refactoring work.
   #
-  refactor = "! f() { \
-    if [ -z \"${1}\" ]; then \
-      echo \"Require commit message\" >&2; \
-      exit 1; \
-    fi; \
-    git add --all && git commit --no-verify --message \"refactor: ${1}\"; \
-  }; f"
+  refactor = ! sh ~/dotfiles/bin/refactor.sh
 
   # `git remotes`
   #
@@ -592,23 +553,7 @@
   # This command works only after an initial commit has been made to the local
   # repository.
   #
-  sync = "! f() { \
-    initialStashCount=$(git rev-list --walk-reflogs --count refs/stash 2> /dev/null); \
-    git stash push --include-untracked; \
-    \
-    upstreamBranch=$(git upstream); \
-    if [ ! -z \"$upstreamBranch\" ]; then \
-      git pull --rebase --prune; \
-      git push --follow-tags; \
-    else \
-      git push --set-upstream origin HEAD --follow-tags; \
-    fi; \
-    \
-    newStashCount=$(git rev-list --walk-reflogs --count refs/stash 2> /dev/null); \
-    if [ \"${newStashCount:-0}\" != \"${initialStashCount:-0}\" ]; then \
-      git stash pop; \
-    fi; \
-  }; f"
+  sync = ! sh ~/dotfiles/bin/sync.sh
 
   # `git tags`
   #
@@ -777,9 +722,7 @@
   # later, or ultimately squashed into another branch. `git fixup` provides
   # an alternative workflow for WIP.
   #
-  wip = "! f() { \
-    git add --all && git commit --no-verify --message \"${1:-WIP}${1+ - WIP}\"; \
-  }; f"
+  wip = ! sh ~/dotfiles/bin/wip.sh
 
 [core]
 

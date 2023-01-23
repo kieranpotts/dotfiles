@@ -52,7 +52,7 @@ To update your dotfiles with the latest configuration in this repository, `git p
 reload!
 ```
 
-## Configuring
+## Configuration
 
 The `bin/update.sh` script will establish various symlinks in your home directory. For example, `~/.gitconfig` will be symlinked to `~/dotfiles/gitconfig`. You SHOULD NOT edit the symlinks and you SHOULD NOT edit the contents of the `~/dotfiles` directory, either. That's because these files will be overwritten whenever you re-run the `bin/update.sh` script.
 
@@ -121,7 +121,7 @@ The following Git aliases provide shortcut commands for common source control op
 |----------------------------------|-----------------------------------------------------------------------------------|
 | `git aliases`                    | List all configured aliases                                                       |
 | `git amend`                      | Add all working changes to the last commit, including new (untracked) files       |
-| `git attr(ibute) "[comment]"`    | Creates a commit with the message "attribute: [comment]"                          |
+| `git attribute "[comment]"`      | Creates a commit with the message "attribute: [comment]"                          |
 | `git br [branch_name]`           | Create a branch, switch to it, and push upstream immediately to setup tracking    |
 | `git branches`                   | List all branches by order of last commit                                         |
 | `git cm (-m "[comment]")`        | Stage and commit all changes in the working tree, including new (untracked) files |
