@@ -60,14 +60,24 @@
   "cSpell.allowCompoundWords": false,
 
   // A list of words to be considered correct spellings.
-  "cSpell.words": [],
+  "cSpell.words": [
+    "Dotfile",
+    "Dotfiles",
+  ],
 
   // Spellings to always ignore. These are not real words, but are names or
   // identifiers of some kind: people's names, domain names, URL slugs, etc.
   "cSpell.ignoreWords": [
+    "Biven's",
+    "Haack's",
     "kieran",
     "kieranpotts",
     "potts",
+    "Padmanabhaiah's",
+    "Paolucci's",
+    "Ramesh",
+    "thoughtbot's",
+    "YADR",
   ],
 
   // Spellings always considered incorrect.
