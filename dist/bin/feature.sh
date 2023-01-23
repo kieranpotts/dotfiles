@@ -11,4 +11,4 @@ if [ -z "${1}" ]; then
   exit 1
 fi
 
-git add --all && git commit --no-verify --message "feature: ${1}"
+git add --all && git commit --quiet --message "feature: ${1}"

@@ -6,4 +6,4 @@
 # See `~/.gitconfig` for usage instructions.
 # -----------------------------------------------------------------------------
 
-git add --all && git commit --no-verify --message "${1:-WIP}${1+ - WIP}"
+git add --all && git commit --quiet --message "${1:-WIP}${1+ - WIP}"

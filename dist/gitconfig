@@ -29,9 +29,7 @@
   # Add all working changes to the last commit, including new (untracked) files.
   #
   # This is intended to be a quick operation for modifying work-in-progress.
-  # Therefore, the message of the previous commit is maintained (`--no-edit`)
-  # and the `--no-verify` flag is used to disable validation hooks. (You can
-  # add the `--verify` option to the command to re-enable Git hooks.)
+  # Therefore, the message of the previous commit is maintained (`--no-edit`).
   #
   # This command may be useful in conjunction with `git wip`. You can also use
   # `git fixup` to achieve the same result. After this command you can run
@@ -40,7 +38,7 @@
   # See also `git unamend`, which is capable of undoing this operation and
   # returning the commit to its previous state.
   #
-  amend = ! git add --all && git commit --amend --no-edit --no-verify
+  amend = ! git add --all && git commit --amend --no-edit --quiet
 
   # `git attr(ibute) "[comment]"`
   #
@@ -84,14 +82,14 @@
   # "added" to the Git repository to track its changes:
   #
   # ```
-  # commit --all --no-verify
+  # commit --all
   # ```
   #
   # This is intended to be a fast operation so it disables any verifications
   # plugged in via Git hooks. Git hooks can be re-enabled again by adding the
   # `--verify` flag to the command.
   #
-  cm = ! git add --all && git commit --no-verify
+  cm = ! git add --all && git commit --quiet
 
   # `git changed [hash]`
   #
@@ -355,7 +353,7 @@
   # - https://stackoverflow.com/questions/3103589/
   # - https://git-scm.com/docs/git-rev-parse
   #
-  fixup = "! f() { REV=$(git rev-parse ${1:-HEAD}) && git add --all && git commit --no-verify --fixup=${REV} ${@:2} && git rebase --interactive --autosquash ${REV}~1; }; f"
+  fixup = "! f() { REV=$(git rev-parse ${1:-HEAD}) && git add --all && git commit --quiet --fixup=${REV} ${@:2} && git rebase --interactive --autosquash ${REV}~1; }; f"
 
   # `git ff|fast-forward`
   #
@@ -467,7 +465,7 @@
   # This also changes the hash of the previous commit, so the change may need
   # to be force-pushed into remotes that have the existing commit.
   #
-  reword = commit --amend --no-verify
+  reword = commit --amend --quiet
 
   # `git status`
   #
