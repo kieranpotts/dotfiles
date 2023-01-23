@@ -19,12 +19,12 @@ Features include:
 
 ### Features
 
-- [Shell](./docs/features/shell.md)
+- [Shells](./docs/features/shells.md)
 - [Git](./docs/features/git.md)
 
 -----
 
-Acknowledgments
+#### Acknowledgments
 
 - [Thoughtbot's dotfiles](https://github.com/thoughtbot/dotfiles)
 - [Nicola Paolucci's dotfiles](https://github.com/durdn/cfg)
