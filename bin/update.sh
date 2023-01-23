@@ -23,8 +23,8 @@ if windows; then
   export MSYS=winsymlinks:nativestrict
 fi
 
-# Make the `~/dotfiles` directory
-mkdir ~/dotfiles
+# Make the `~/dotfiles` directory, ignore warnings if it already exists.
+mkdir ~/dotfiles 2> /dev/null
 
 # Copy the contents of the `dist` directory into `~/dotfiles`, replacing
 # the files if they already exist in the destination. Note, `cp` will not
@@ -57,10 +57,15 @@ cp --dereference ~/.profile ~/.backup.profile 2> /dev/null
 # Create symbolic links (not hard links) to `.gitconfig` and various UNIX files.
 # Existing files will be overwritten (`--force`). Potential errors are NOT
 # silenced because privileges may need to be elevated to do this operation.
-ln --symbolic --force ~/dotfiles/bash_profile ~/.bash_profile
-ln --symbolic --force ~/dotfiles/bashrc ~/.bashrc
-ln --symbolic --force ~/dotfiles/gitconfig ~/.gitconfig
-ln --symbolic --force ~/dotfiles/profile ~/.profile
+ln --symbolic --force ~/dotfiles/bash_profile ~/.bash_profile 2> /dev/null
+ln --symbolic --force ~/dotfiles/bashrc ~/.bashrc 2> /dev/null
+ln --symbolic --force ~/dotfiles/gitconfig ~/.gitconfig 2> /dev/null
+ln --symbolic --force ~/dotfiles/profile ~/.profile 2> /dev/null
+
+retval=$?
+if [ ! $retval -eq 0 ]; then
+  echo "Failed to create symbolic links in your home directory, try again with elevated privileges"
+fi;
 
 # Print confirmation message.
 echo '== UPDATED DOTFILES =='
