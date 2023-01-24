@@ -55,8 +55,8 @@ cp --dereference ~/.gitconfig ~/.backup.gitconfig 2> /dev/null
 cp --dereference ~/.profile ~/.backup.profile 2> /dev/null
 
 # Create symbolic links (not hard links) to `.gitconfig` and various UNIX files.
-# Existing files will be overwritten (`--force`). Potential errors are NOT
-# silenced because privileges may need to be elevated to do this operation.
+# Existing files will be overwritten (`--force`). Errors in the linking
+# operation are re-printed with more useful user feedback.
 ln --symbolic --force ~/dotfiles/bash_profile ~/.bash_profile 2> /dev/null
 ln --symbolic --force ~/dotfiles/bashrc ~/.bashrc 2> /dev/null
 ln --symbolic --force ~/dotfiles/gitconfig ~/.gitconfig 2> /dev/null
