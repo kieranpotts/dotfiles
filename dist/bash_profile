@@ -19,9 +19,10 @@ if [ -f ~/dotfiles/bashrc ]; then
 fi
 
 # Start Oh My Posh. Load the Agnosterish theme, which is a custom fork of the
-# popular Agnoster theme that is included with Oh My Posh.
+# popular Agnoster theme that is included with Oh My Posh. Redirect errors to
+# standard error – oh-my-posh is a dependency so may not be available.
 # https://ohmyposh.dev/
-eval "$(oh-my-posh init bash --config ~/dotfiles/poshthemes/agnosterish.omp.json)"
+eval "$(oh-my-posh init bash --config ~/dotfiles/poshthemes/agnosterish.omp.json 2> /dev/null)"
 
 # Add an alias to reload this script. This will override the alias
 # of the same name included in `~/.profile`.
