@@ -39,8 +39,11 @@ cp --recursive --force dist/* ~/dotfiles
 cp --dereference ~/.local.gitconfig ~/.backup.gitconfig 2> /dev/null
 cp --dereference ~/.local.gitignore ~/.backup.gitignore 2> /dev/null
 
-# Copy the `.local.gitconfig` and `.local.gitignore` templates directly into the
-# user's home directory, unless they already exist there.
+# Copy the `.local.**` templates directly into the user's home directory, unless
+# they already exist there.
+cp --no-clobber ~/dotfiles/local.profile ~/.local.profile
+cp --no-clobber ~/dotfiles/local.bash_profile ~/.local.bash_profile
+cp --no-clobber ~/dotfiles/local.bashrc ~/.local.bashrc
 cp --no-clobber ~/dotfiles/local.gitconfig ~/.local.gitconfig
 cp --no-clobber ~/dotfiles/local.gitignore ~/.local.gitignore
 
@@ -49,18 +52,18 @@ cp --no-clobber ~/dotfiles/local.gitignore ~/.local.gitignore
 # existing dotfile configurations. Symbolic links are followed to ensure the
 # actual files are backed up, not just the symlinks to them. Errors are hidden
 # because it is okay for the source files to not exist.
+cp --dereference ~/.profile ~/.backup.profile 2> /dev/null
 cp --dereference ~/.bash_profile ~/.backup.bash_profile 2> /dev/null
 cp --dereference ~/.bashrc ~/.backup.bashrc 2> /dev/null
 cp --dereference ~/.gitconfig ~/.backup.gitconfig 2> /dev/null
-cp --dereference ~/.profile ~/.backup.profile 2> /dev/null
 
 # Create symbolic links (not hard links) to `.gitconfig` and various UNIX files.
 # Existing files will be overwritten (`--force`). Errors in the linking
 # operation are re-printed with more useful user feedback.
-ln --symbolic --force ~/dotfiles/bash_profile ~/.bash_profile 2> /dev/null
-ln --symbolic --force ~/dotfiles/bashrc ~/.bashrc 2> /dev/null
-ln --symbolic --force ~/dotfiles/gitconfig ~/.gitconfig 2> /dev/null
-ln --symbolic --force ~/dotfiles/profile ~/.profile 2> /dev/null
+ln --symbolic --force ~/dotfiles/global.profile ~/.profile 2> /dev/null
+ln --symbolic --force ~/dotfiles/global.bash_profile ~/.bash_profile 2> /dev/null
+ln --symbolic --force ~/dotfiles/global.bashrc ~/.bashrc 2> /dev/null
+ln --symbolic --force ~/dotfiles/global.gitconfig ~/.gitconfig 2> /dev/null
 
 retval=$?
 if [ ! $retval -eq 0 ]; then
