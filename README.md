@@ -9,8 +9,12 @@ Features include:
 - Global `.gitignore` file
 - Customized Bash prompt
 - Handy UNIX aliases
+- Ships with [lazygit](https://github.com/jesseduffield/lazygit), a terminal UI for Git repositories (Windows only)
+- Bundles [oh-my-posh](https://ohmyposh.dev/), a theme framework for the prompt line of any shell (Windows only) 
 
 ## Documentation
+
+### Getting started
 
 - [Requirements](./docs/requirements.md)
 - [Installation](./docs/installation.md)
@@ -19,12 +23,28 @@ Features include:
 
 ### Features
 
-- [Shells](./docs/features/shells.md)
-- [Git](./docs/features/git.md)
+#### Shells
+
+- [Shell startup scripts](./docs/features/shells/startup-scripts.md)
+- [Shell environment variables](./docs/features/shells/environment-variables.md)
+- [Shell aliases](./docs/features/shells/aliases.md)
+- [Shell functions](./docs/features/shells/functions.md)
+
+#### Git
+
+- [Git config](./docs/features/git/config.md)
+- [Git aliases](./docs/features/git/aliases.md)
+- [Git tools](./docs/features/git/tools.md)
+
+### Contributing
+
+This section provides documentation for maintainers and contributors of this project.
+
+- [Dependencies](./docs/contributing/dependencies.md)
 
 -----
 
-#### Acknowledgments
+**Acknowledgments:**
 
 - [Thoughtbot's dotfiles](https://github.com/thoughtbot/dotfiles)
 - [Nicola Paolucci's dotfiles](https://github.com/durdn/cfg)

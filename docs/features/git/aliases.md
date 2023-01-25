@@ -1,18 +1,4 @@
-# Git features
-
-## Git config
-
-The `.gitconfig` file installed from this repository modifies Git's default behavior in the following ways:
-
-- `git merge` records explicit merge commits (ie `--no-ff` is the default)
-- `git fetch` automatically prunes refs to non-existent upstream branches and deletes non-existent tags
-- `git pull` rebases by default
-- `--autosquash` rules are automatically on rebase operations
-- `git push` pushed up new tags along with new commits
-- Upstream branches are tracked automatically, and tracked branches are constrained to have the same names
-- Opts-out of security checks for Git repositories on external storage devices (`safe.directory`)
-
-## Git aliases
+# Git aliases
 
 The following Git aliases provide shortcut commands for common source control operations. This table provides a short summary of each alias's API and behavior – see the inline code comments in `dotfiles/gitconfig` for more comprehensive documentation.
 
