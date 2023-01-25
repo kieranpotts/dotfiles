@@ -52,17 +52,19 @@ To get Oh My Posh working in Git Bash for Windows, follow these steps:
 These dotfiles ship with an Oh My Posh theme based on the popular Agnoster theme. Run the commands below to install other themes. (Note, `wget` is not pre-installed in Git Bash. Download the [binary from here](https://eternallybored.org/misc/wget/) then add the `wget.exe` file to `C:\Program Files\Git\usr\bin` or another location in your PATH.)
 
 ```sh
-$ mkdir ~/.poshthemes
-$ wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
-$ unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
-$ chmod u+rw ~/.poshthemes/*.json
-$ rm ~/.poshthemes/themes.zip
+$ mkdir ~/poshthemes
+$ wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/poshthemes/themes.zip
+$ unzip ~/poshthemes/themes.zip -d ~/poshthemes
+$ chmod u+rw ~/poshthemes/*.json
+$ rm ~/poshthemes/themes.zip
 ```
 
-Now change the `oh-my-posh init` command in your `~/.local.bashrc` to enable your desired theme:
+Now change the `oh-my-posh init` command in your `~/.local.bash_profile` to enable your desired theme. Example:
 
 ```sh
-eval "$(oh-my-posh init bash --config ~/.poshthemes/atomicBit.omp.json)"
+eval "$(oh-my-posh init bash --config ~/poshthemes/clean-detailed.omp.json)"
 ```
+
+To enable the theme, type `reload!` into your terminal, which will re-source your shell startup scripts.
 
 Oh My Posh is highly customizable — see [the website](https://ohmyposh.dev/docs/) for more options. What is great about Oh My Posh is that, as a consistent cross-platform framework, configurations can be shared between shells. Thus, you can expose your Powershell, Git Bash and WSL environments to the same configuration, so you have a consistent prompt in every terminal.
