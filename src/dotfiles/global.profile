@@ -9,7 +9,7 @@
 #
 # You SHOULD NOT edit this file, as your changes here will be lost next time you
 # fetch updates from the dotfiles repository. Instead, you MAY extend this
-# script via the `~/.local.profile` file.
+# script via the `~/local.profile` file.
 # -----------------------------------------------------------------------------
 
 # Load aliases that are compatible with all POSIX-compliant shells.
@@ -18,11 +18,11 @@ if [ -f ~/dotfiles/aliases/posix/index.sh ]; then
   source ~/dotfiles/aliases/posix/index.sh
 fi
 
-# Load the user's `~/.local.profile` file, which can be used to override
+# Load the user's `~/local.profile` file, which can be used to override
 # anything set in this file.
 #
-if [ -f ~/.local.profile ]; then
-  source ~/.local.profile
+if [ -f ~/local.profile ]; then
+  source ~/local.profile
 fi
 
 # Add an alias to reload this profile. This alias SHOULD be overridden in

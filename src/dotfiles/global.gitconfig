@@ -45,7 +45,7 @@
   # Shortcut for committing changes that improve quality attributes or implement
   # non-functional requirements.
   #
-  attribute = ! sh ~/dotfiles/bin/attribute.sh
+  attribute = ! sh ~/bin/git-attribute.sh
 
   # `git br [branch_name]`
   #
@@ -185,7 +185,7 @@
   # Sources:
   # - https://haacked.com/archive/2014/07/28/github-flow-aliases/
   #
-  default = ! sh ~/dotfiles/bin/default.sh
+  default = ! sh ~/bin/git-default.sh
 
   # `git delete [branch_name]`
   #
@@ -256,13 +256,13 @@
   #
   # Shortcut for committing experimental work, eg from technical spikes.
   #
-  experiment = ! sh ~/dotfiles/bin/experiment.sh
+  experiment = ! sh ~/bin/git-experiment.sh
 
   # `git feature "[comment]"`
   #
   # Shortcut for committing functional changes.
   #
-  feature = ! sh ~/dotfiles/bin/feature.sh
+  feature = ! sh ~/bin/git-feature.sh
 
   # `git fell ([main_branch])`
   #
@@ -295,7 +295,7 @@
   # - https://stackoverflow.com/a/18380712
   # - https://stackoverflow.com/a/41465769
   #
-  fell = ! sh ~/dotfiles/bin/fell.sh
+  fell = ! sh ~/bin/git-fell.sh
 
   # `git fetched`
   #
@@ -318,7 +318,7 @@
   #
   # Shortcut for committing bug fixes.
   #
-  fix = ! sh ~/dotfiles/bin/fix.sh
+  fix = ! sh ~/bin/git-fix.sh
 
   # `git fixup`
   #
@@ -404,7 +404,7 @@
   # Note, we can't use the alias "maintenance" as this already exists as a
   # built-in Git command.
   #
-  maint = ! sh ~/dotfiles/bin/maint.sh
+  maint = ! sh ~/bin/git-maint.sh
 
   # `git orphan`
   #
@@ -447,7 +447,7 @@
   #
   # Shortcut for committing refactoring work.
   #
-  refactor = ! sh ~/dotfiles/bin/refactor.sh
+  refactor = ! sh ~/bin/git-refactor.sh
 
   # `git remotes`
   #
@@ -568,7 +568,7 @@
   # This command works only after an initial commit has been made to the local
   # repository.
   #
-  sync = ! sh ~/dotfiles/bin/sync.sh
+  sync = ! sh ~/bin/git-sync.sh
 
   # `git tags`
   #
@@ -740,7 +740,7 @@
   # later, or ultimately squashed into another branch. `git fixup` provides
   # an alternative workflow for WIP.
   #
-  wip = ! sh ~/dotfiles/bin/wip.sh
+  wip = ! sh ~/bin/git-wip.sh
 
 [core]
 
@@ -752,7 +752,7 @@
   # working directories of local Git repositories without running the risk of
   # those files being committed to the repository.
   #
-  excludesFile = ~/.local.gitignore
+  excludesFile = ~/local.gitignore
 
 [fetch]
 
@@ -878,11 +878,11 @@
 
   # include.path
   #
-  # Allow extensions to this base Git configuration via `~/.local.gitconfig`.
+  # Allow extensions to this base Git configuration via `~/local.gitconfig`.
   #
   # Note, the `include.path` config MUST be maintained at the bottom of the
   # `.gitconfig` template, as the contents of the included path are injected
   # at this position and we want the included file to have the opportunity to
   # override _anything_ in the `.gitconfig` template.
   #
-  path = ~/.local.gitconfig
+  path = ~/local.gitconfig

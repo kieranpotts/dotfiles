@@ -5,7 +5,7 @@
 Features include:
 
 - Better Git defaults
-- Extensive suite of useful Git aliases
+- Extensive suite of useful Git aliases including `git sync`, `git amend`, `git squash`, `git fixup` and `git undo`
 - Global `.gitignore` file
 - Customized Bash prompt
 - Handy UNIX aliases

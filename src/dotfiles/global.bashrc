@@ -9,11 +9,11 @@
 #
 # You SHOULD NOT edit this file, as your changes here will be lost next time you
 # fetch updates from the dotfiles repository. Instead, you MAY extend this
-# script via the `~/.local.bashrc` file.
+# script via the `~/local.bashrc` file.
 # -----------------------------------------------------------------------------
 
-# Load the user's `~/.local.bashrc` file.
+# Load the user's `~/local.bashrc` file.
 #
-if [ -f ~/.local.bashrc ]; then
-  source ~/.local.bashrc
+if [ -f ~/local.bashrc ]; then
+  source ~/local.bashrc
 fi

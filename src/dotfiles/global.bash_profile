@@ -5,7 +5,7 @@
 #
 # You SHOULD NOT edit this file, as your changes here will be lost next time you
 # fetch updates from the dotfiles repository. Instead, you MAY extend this
-# script via the `~/.local.bash_profile` file.
+# script via the `~/local.bash_profile` file.
 # -----------------------------------------------------------------------------
 
 # Load the startup script for all shells, to capture our POSIX-compliant
@@ -15,11 +15,11 @@ if [ -f ~/.profile ]; then
   source ~/.profile
 fi
 
-# Load the user's `~/.local.bash_profile` file, which can be used to override
+# Load the user's `~/local.bash_profile` file, which can be used to override
 # anything set in this file.
 #
-if [ -f ~/.local.bash_profile ]; then
-  source ~/.local.bash_profile
+if [ -f ~/local.bash_profile ]; then
+  source ~/local.bash_profile
 fi
 
 # Load the main `~/.bashrc` file, to ensure a consistent environment between

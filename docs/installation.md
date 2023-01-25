@@ -10,21 +10,21 @@ Clone this repository to any location on your local filesystem:
 git clone git@github.com:kieranpotts/dotfiles.git
 ```
 
-Change to the root directory of the cloned repository and run the `bin/update.sh` script. Bash is the only shell supported at this time. If using Git Bash for Windows, the shell MUST be run with administrator privileges in order for the necessary symlinks to be created.
+Change to the root directory of the cloned repository and run the `bin/update.sh` script using `bash` (Bash is the only shell supported at this time). If using Git Bash for Windows, your terminal MUST be run with administrator privileges in order for the script to be able to create the necessary symlinks.
 
 ```sh
 cd dotfiles
 bash bin/update.sh
 ```
 
-This will install and enable the dotfiles configuration. The first time you do this, you will need to exit the shell then login again. Doing so will create a new login shell, which will load the newly-installed dotfiles configuration at startup.
+The update script will install and enable the dotfiles configuration. The first time you do this, you will need to exit your terminal program then restart it. Doing so will create a new login shell, which will load the newly-installed dotfiles configuration at startup.
 
-The installation script will attempt to replace the following files in your home directory. If you already have any of these files, they will be renamed with the ".backup" prefix – for example, your existing `~/.bashrc` file will be renamed `~/.backup.bashrc`.
+The installation script will attempt to replace the following files in your home directory. If you already have any of these files, they will be renamed with the "backup" prefix – for example, your existing `~/.bashrc` file will be renamed `~/backup.bashrc`.
 
+- `~/.profile`
 - `~/.bash_profile`
 - `~/.bashrc`
 - `~/.gitconfig`
-- `~/.profile`
 
 ## Oh My Posh installation
 
@@ -59,7 +59,7 @@ $ chmod u+rw ~/poshthemes/*.json
 $ rm ~/poshthemes/themes.zip
 ```
 
-Now change the `oh-my-posh init` command in your `~/.local.bash_profile` to enable your desired theme. Example:
+Now change the `oh-my-posh init` command in your `~/local.bash_profile` to enable your desired theme. Example:
 
 ```sh
 eval "$(oh-my-posh init bash --config ~/poshthemes/clean-detailed.omp.json)"
