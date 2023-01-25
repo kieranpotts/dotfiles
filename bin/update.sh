@@ -26,11 +26,11 @@ fi
 # Make the `~/dotfiles` directory, ignore warnings if it already exists.
 mkdir ~/dotfiles 2> /dev/null
 
-# Copy the contents of the `dist` directory into `~/dotfiles`, replacing
+# Copy the contents of the `src` directory into `~/dotfiles`, replacing
 # the files if they already exist in the destination. Note, `cp` will not
 # copy hidden dot-prefixed files with this command, which is why files like
-# `bashrc` are not dot-prefixed in the `dist` directory.
-cp --recursive --force dist/* ~/dotfiles
+# `bashrc` are not dot-prefixed in the `src` directory.
+cp --recursive --force src/* ~/dotfiles
 
 # Create backups of `~/.local.**` files, if they exist, before overwriting them.
 # These files are not expected to be references (symlinks) but in case they are
