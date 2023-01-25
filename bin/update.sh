@@ -75,6 +75,8 @@ ln --symbolic --force ~/dotfiles/bin/git-maint ~/bin/git-maint 2> /dev/null
 ln --symbolic --force ~/dotfiles/bin/git-refactor ~/bin/git-refactor 2> /dev/null
 ln --symbolic --force ~/dotfiles/bin/git-sync ~/bin/git-sync 2> /dev/null
 ln --symbolic --force ~/dotfiles/bin/git-wip ~/bin/git-wip 2> /dev/null
+ln --symbolic --force ~/dotfiles/bin/lazygit.exe ~/bin/lazygit.exe 2> /dev/null
+ln --symbolic --force ~/dotfiles/bin/oh-my-posh.exe ~/bin/oh-my-posh.exe 2> /dev/null
 
 retval=$?
 if [ ! $retval -eq 0 ]; then

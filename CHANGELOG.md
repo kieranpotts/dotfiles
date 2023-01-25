@@ -20,6 +20,8 @@
 - Rebase by default on `git pull`
 - Push tags by default with `git push`
 - Automatically setup remote branch tracking
-- Tracks branches of the same name by default
+- Track branches of the same name by default
 - Apply `--autosquash` rules automatically on rebase operations
 - Opt-out of security checks for Git repositories on external storage (`safe.directory`)
+- Ship with `lazygit` binary for Windows
+- Ship with `oh-my-posh` binary for Windows
