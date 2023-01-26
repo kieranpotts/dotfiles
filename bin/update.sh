@@ -25,6 +25,7 @@ fi
 
 # Make the necessary directories in the user's home space, ignoring warnings if
 # the destinations already exist.
+mkdir ~/bin 2> /dev/null
 mkdir ~/dotfiles 2> /dev/null
 mkdir ~/dotfiles/aliases 2> /dev/null
 mkdir ~/dotfiles/bin 2> /dev/null
