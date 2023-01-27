@@ -1,43 +1,53 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": true,
   "blocks": [
     {
+      "type": "prompt",
       "alignment": "left",
       "segments": [
         {
-          "background": "#100e23",
-          "foreground": "#ffffff",
-          "powerline_symbol": "\ue0b0",
+          "type": "shell",
           "style": "powerline",
-          "template": " {{ .UserName }}@{{ .HostName }} ",
-          "type": "session"
-        },
-        {
-          "background": "#91ddff",
-          "foreground": "#100e23",
-          "powerline_symbol": "\ue0b0",
+          "background": "#0077C2",
+          "foreground": "#FFFFFF",
           "properties": {
-            "folder_icon": "\uf115",
-            "folder_separator_icon": " \ue0b1 ",
-            "home_icon": "\uf7db",
-            "style": "agnoster"
+            "mapped_shell_names": {
+              "pwsh": "PS"
+            }
           },
-          "style": "powerline",
-          "template": " {{ .Path }} ",
-          "type": "path"
+          "template": " {{ .Name  }} "
         },
         {
-          "background": "#95ffa4",
-          "foreground": "#193549",
-          "powerline_symbol": "\ue0b0",
+          "type": "path",
           "style": "powerline",
-          "template": " {{ .HEAD }} ",
-          "type": "git"
+          "powerline_symbol": "\uE0B0",
+          "background": "#91DDFF",
+          "foreground": "#193549",
+          "properties": {
+            "style": "agnoster_short",
+            "max_depth": 2
+          },
+          "template": " {{ .Path }} "
+        },
+        {
+          "type": "project",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "background": "#FFD60A",
+          "foreground": "#193549",
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Name }}{{ .Name }}{{ end }}{{ if .Version }}{{ .Version }}{{ end }}{{ end }} "
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "background": "#FFEB3B",
+          "foreground": "#193549",
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }} "
         }
-      ],
-      "type": "prompt"
+      ]
     }
-  ],
-  "final_space": true,
-  "version": 2
+  ]
 }
