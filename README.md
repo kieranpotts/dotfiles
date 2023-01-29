@@ -10,7 +10,7 @@ Features include:
 - Customized Bash prompt
 - Handy UNIX aliases
 
-These dotfiles also ship with a couple of TUI utilities (Windows binaries only, at this time:
+These dotfiles also ship with a couple of TUI utilities – only Windows binaries are included at this time:
 
 - Jesse Duffield's [lazygit](https://github.com/jesseduffield/lazygit), a terminal UI for Git repositories with lots of [hidden features](https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Keybindings_en.md)
 - [oh-my-posh](https://ohmyposh.dev/), a theme framework for the prompt line of any shell
