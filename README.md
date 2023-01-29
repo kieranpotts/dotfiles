@@ -9,8 +9,11 @@ Features include:
 - Global `.gitignore` file
 - Customized Bash prompt
 - Handy UNIX aliases
-- Ships with [lazygit](https://github.com/jesseduffield/lazygit), a terminal UI for Git repositories (Windows only)
-- Bundles [oh-my-posh](https://ohmyposh.dev/), a theme framework for the prompt line of any shell (Windows only) 
+
+These dotfiles also ship with a couple of TUI utilities (Windows binaries only, at this time:
+
+- Jesse Duffield's [lazygit](https://github.com/jesseduffield/lazygit), a terminal UI for Git repositories with lots of [hidden features](https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Keybindings_en.md)
+- [oh-my-posh](https://ohmyposh.dev/), a theme framework for the prompt line of any shell
 
 ## Documentation
 

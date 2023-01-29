@@ -2,6 +2,8 @@
 
 The following Git aliases provide shortcut commands for common source control operations. This table provides a short summary of each alias's API and behavior – see the inline code comments in `dotfiles/gitconfig` for more comprehensive documentation.
 
+Note: A small subset of these aliases are implemented as shell scripts that are symlinked from your `~/bin` directory, and can therefore be executed directly, eg `git-feature`.
+
 | Command                               | Description                                                                  |
 |---------------------------------------|------------------------------------------------------------------------------|
 | `git aliases`                         | List all configured aliases                                                  |
