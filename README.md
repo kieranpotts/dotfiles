@@ -9,6 +9,7 @@ Features include:
 - Global `.gitignore` file
 - Customized Bash prompt
 - Handy UNIX aliases
+- Windows Terminal settings
 
 These dotfiles also ship with a couple of TUI utilities – only Windows binaries are included at this time:
 
@@ -38,6 +39,10 @@ These dotfiles also ship with a couple of TUI utilities – only Windows binarie
 - [Git config](./docs/features/git/config.md)
 - [Git aliases](./docs/features/git/aliases.md)
 - [Git tools](./docs/features/git/tools.md)
+
+#### Terminals
+
+- [Windows Terminal settings](./docs/features/wt.md)
 
 ### Contributing
 
