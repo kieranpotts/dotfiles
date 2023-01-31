@@ -14,10 +14,10 @@ To install:
 
 5.  Run Windows Powershell as Administrator. Use the old Powershell program, not the new Windows Terminal, as doing so will recreate WT's `settings.json` file – which MUST not exist for the next step to succeed.
 
-6.  Run the following Powershell command to create a hard link to the `wt.json` file distributed in this repository.
+6.  Run the following Powershell command to create a hard link to the `src/configs/wt.json` file distributed in this repository.
 
     ```
-    New-Item -ItemType HardLink -Path "C:\Users\Kieran\AppData\Local\Packages\Microsoft.WindowsTerminal_[hash]\LocalState\settings.json" -Target "C:\path/to\dotfiles\src\dotfiles\configs\wt.json"
+    New-Item -ItemType HardLink -Path "C:\Users\Kieran\AppData\Local\Packages\Microsoft.WindowsTerminal_[hash]\LocalState\settings.json" -Target "C:\path/to\dotfiles\src\configs\wt.json"
     ```
 
 7.  Open **Windows Terminal** to check the changes are effective.
