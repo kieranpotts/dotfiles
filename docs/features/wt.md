@@ -16,7 +16,7 @@ To install:
 
 6.  Run the following Powershell command to create a hard link to the `src/configs/wt.json` file distributed in this repository.
 
-    ```
+    ```powershell
     New-Item -ItemType HardLink -Path "C:\Users\Kieran\AppData\Local\Packages\Microsoft.WindowsTerminal_[hash]\LocalState\settings.json" -Target "C:\path/to\dotfiles\src\configs\wt.json"
     ```
 
@@ -26,7 +26,7 @@ To install:
 
 WT's `settings.json` supports a `startupActions` property that can be used to [configure default command line arguments](https://learn.microsoft.com/en-us/windows/terminal/customize-settings/startup#startup-actions), which will be used if no arguments are provided to `wt.exe` at execution. Example:
 
-```
+```json
 {
   "startupActions": "--profile \"Git Bash\" --title \"Personal\" -d \"C:\\dev\\personal\"; new-tab --profile \"Git Bash\" --title \"Work\" -d \"C:\\dev\\work\"; focus-tab -t 1 "
 }
@@ -37,3 +37,5 @@ Because the default tabs and panes I have vary from project to project, I tend t
 ```bat
 start "Windows Terminal" "C:\Program Files\WindowsApps\...\wt.exe" --profile "Git Bash" --title "Personal" -d "C:\dev\personal"; new-tab --profile "Git Bash" --title "Work" -d "C:\dev\work"; focus-tab -t 1
 ```
+
+Alternatively, you could bind the `wt` startup command to a hotkey using [AutoHotkey](https://www.autohotkey.com/) or just create a Windows shortcut and pin it to your desktop or taskbar.
