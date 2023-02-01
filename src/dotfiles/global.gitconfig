@@ -227,6 +227,9 @@
   # git discard path/to/file.ext
   # ```
   #
+  # This is a destructive operation. If you accidentally discard working
+  # changes, they cannot be retrieved.
+  #
   discard = checkout -q --
 
   # `git down`
