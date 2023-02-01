@@ -672,7 +672,7 @@
   # See:
   # - https://git-scm.com/docs/git-rm
   #
-  untrack = rm --cache --
+  untrack = rm --cached --
 
   # `git up`
   #
