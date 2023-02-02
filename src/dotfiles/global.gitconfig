@@ -99,10 +99,11 @@
 
   # `git changes`
   #
-  # Shows files staged for committing. LIsts names and status (Added, Modified,
+  # Shows files staged for committing. Lists names and status (Added, Modified,
   # Deleted) of changed files.
   #
-  # The `git staged` alias is identical.
+  # The `git staged` alias is identical. See also `git working` which shows the
+  # current unstaged changes (working tree or working copy).
   #
   changes = diff --name-status --staged HEAD
 
@@ -524,10 +525,11 @@
 
   # `git staged`
   #
-  # Shows files staged for committing. LIsts names and status (Added, Modified,
+  # Shows files staged for committing. Lists names and status (Added, Modified,
   # Deleted) of changed files.
   #
-  # The `git changes` alias is identical.
+  # The `git changes` alias is identical. See also `git working` which shows the
+  # current unstaged changes (working tree or working copy).
   #
   staged = diff --name-status --staged HEAD
 
@@ -744,6 +746,15 @@
   # an alternative workflow for WIP.
   #
   wip = ! sh ~/bin/git-wip.sh
+
+  # `git working`
+  #
+  # Shows files in the working tree (ie unstaged changes). Lists names and
+  # status (Added, Modified, Deleted) of changed files.
+  #
+  # See also `git staged` which shows the changes staged for committing.
+  #
+  working = diff --name-status
 
 [core]
 

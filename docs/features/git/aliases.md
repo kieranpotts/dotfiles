@@ -64,3 +64,4 @@ Note: A small subset of these aliases are implemented as shell scripts that are 
 | `git upstream`                        | Show the name of the tracked upstream branch                                 |
 | `git versions`                        | List tags prefixed with the lower case letter "v", sorted numerically        |
 | `git wip ("[comment]")`               | Commits all working changes with the comment "WIP" or appending " - WIP"     |
+| `git working`                         | List all unstaged changes (working copy)                                     |
