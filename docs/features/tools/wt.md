@@ -14,10 +14,10 @@ To install:
 
 5.  Run Windows Powershell as Administrator. Use the old Powershell program, not the new Windows Terminal, as doing so will recreate WT's `settings.json` file – which MUST not exist for the next step to succeed.
 
-6.  Run the following Powershell command to create a hard link to the `src/configs/wt.json` file distributed in this repository.
+6.  Run the following Powershell command to create a hard link to the `src/configs/wt.json` file distributed in this repository. Update the paths as necessary.
 
     ```powershell
-    New-Item -ItemType HardLink -Path "C:\Users\Kieran\AppData\Local\Packages\Microsoft.WindowsTerminal_[hash]\LocalState\settings.json" -Target "C:\path/to\dotfiles\src\configs\wt.json"
+    New-Item -ItemType SymbolicLink -Path "C:\Users\Kieran\AppData\Local\Packages\Microsoft.WindowsTerminal_[hash]\LocalState\settings.json" -Target "C:\path\to\dotfiles\src\configs\wt.json"
     ```
 
 7.  Open **Windows Terminal** to check the changes are effective.
@@ -32,10 +32,10 @@ WT's `settings.json` supports a `startupActions` property that can be used to [c
 }
 ```
 
-Because the default tabs and panes I have vary from project to project, I tend to use different [command line arguments](https://learn.microsoft.com/en-us/windows/terminal/command-line-arguments) on different machines. For this reason I prefer to create a `.bat` file for starting up Windows Terminal with my machine-specific defaults. Example:
+Because the default tabs and panes I have vary from project to project, I tend to use different [command line arguments](https://learn.microsoft.com/en-us/windows/terminal/command-line-arguments) to start Windows Terminal on different machines. For this reason I prefer to create a `.bat` file for starting up Windows Terminal. Example:
 
 ```bat
 start "Windows Terminal" "C:\Program Files\WindowsApps\...\wt.exe" --profile "Git Bash" --title "Personal" -d "C:\dev\personal"; new-tab --profile "Git Bash" --title "Work" -d "C:\dev\work"; focus-tab -t 1
 ```
 
-Alternatively, you could bind the `wt` startup command to a hotkey using [AutoHotkey](https://www.autohotkey.com/) or just create a Windows shortcut and pin it to your desktop or taskbar.
+Alternatively, you could bind the `wt` command to a hotkey using [AutoHotkey](https://www.autohotkey.com/), or just create a Windows shortcut and pin it to your desktop or taskbar.
