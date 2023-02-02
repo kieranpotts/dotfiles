@@ -40,9 +40,10 @@ These dotfiles also ship with a couple of TUI utilities – only Windows binarie
 - [Git aliases](./docs/features/git/aliases.md)
 - [Git tools](./docs/features/git/tools.md)
 
-#### Terminals
+#### Tools
 
 - [Windows Terminal settings](./docs/features/wt.md)
+- [Fonts](./docs/features/fonts.md)
 
 ### Contributing
 
