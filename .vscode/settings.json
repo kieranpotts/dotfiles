@@ -61,22 +61,23 @@
 
   // A list of words to be considered correct spellings.
   "cSpell.words": [
-    "Dotfile",
-    "Dotfiles",
+    "dotfile",
+    "dotfiles",
+    "powerline"
   ],
 
   // Spellings to always ignore. These are not real words, but are names or
   // identifiers of some kind: people's names, domain names, URL slugs, etc.
   "cSpell.ignoreWords": [
-    "Biven's",
-    "Haack's",
+    "biven",
+    "haack",
     "kieran",
     "kieranpotts",
     "potts",
-    "Padmanabhaiah's",
-    "Paolucci's",
-    "Ramesh",
-    "thoughtbot's",
+    "padmanabhaiah",
+    "paolucci",
+    "ramesh",
+    "thoughtbot",
     "YADR",
   ],
 
