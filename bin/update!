@@ -1,0 +1,120 @@
+#!/bin/sh
+
+# ==============================================================================
+# Script to update the dotfiles and to establish the necessary symlinks in
+# the user's home directory.
+#
+# From this repository's root directory, run:
+#
+# ```
+# sh bin/update!
+# ```
+#
+# Alternatively, add this repository's `./bin` directory to your system PATH
+# then run the following command whenever you want to update to the latest
+# dotfiles configuration:
+#
+# ```
+# update!
+# ```
+# ==============================================================================
+
+# This is required for the `ln` command to generate proper symlinks in
+# MSysGit / Git for Windows. Without this configuration the `ln` command in
+# this runtime environment will create copies of the dotfiles rather than
+# symlinks to them.
+#
+windows() { [ -n "$WINDIR" ]; }
+if windows; then
+  export MSYS=winsymlinks:nativestrict
+fi
+
+# Absolute path to this script, e.g. /path/to/dotfiles/bin/foo.sh
+#
+FILE_PATH=$(readlink -f "$0")
+
+# Absolute path this script is in, thus /path/to/dotfiles/bin
+#
+BIN_PATH=$(dirname "$FILE_PATH")
+
+# Absolute path this repo, thus /path/to/dotfiles
+#
+REPO_PATH=$(dirname "$BIN_PATH")
+
+# Fetch the latest updates from the upstream dotfiles repository.
+#
+# ( cd "${REPO_PATH}" && git switch dev && git pull )
+
+# ------------------------------------------------------------------------------
+# Note: `cp` will not, by default, copy hidden dot-prefixed files. This is why
+# none of the source file are dot-prefixed, eg `.bashrc`.
+# ------------------------------------------------------------------------------
+
+# Copy the `local.*` templates directly into the user's home directory, unless
+# they already exist there (`--no-clobber`).
+#
+cp --no-clobber "${REPO_PATH}/home/local.profile" ~/local.profile
+cp --no-clobber "${REPO_PATH}/home/local.bash_profile" ~/local.bash_profile
+cp --no-clobber "${REPO_PATH}/home/local.bashrc" ~/local.bashrc
+cp --no-clobber "${REPO_PATH}/home/local.gitconfig" ~/local.gitconfig
+cp --no-clobber "${REPO_PATH}/home/local.gitignore" ~/local.gitignore
+
+# Make the necessary directories in the user's home space, ignoring warnings if
+# the destinations already exist.
+#
+mkdir ~/dotfiles 2> /dev/null
+mkdir ~/dotfiles/includes 2> /dev/null
+
+# Copy the contents of `dist/includes` directory into `~/dotfiles/includes`,
+# replacing the target files if they already exist in the destination.
+#
+( cd "${REPO_PATH}" && cp --recursive --force dist/includes/* ~/dotfiles/includes )
+
+# Copy the "global" dotfiles from the root of this repository's `dist` folder
+# to the user's `~/dotfiles` directory. Replace the target files if they already
+# exist in the destination.
+#
+cp --force "${REPO_PATH}/dist/global.profile" ~/dotfiles/global.profile
+cp --force "${REPO_PATH}/dist/global.bash_profile" ~/dotfiles/global.bash_profile
+cp --force "${REPO_PATH}/dist/global.bashrc" ~/dotfiles/global.bashrc
+cp --force "${REPO_PATH}/dist/global.gitconfig" ~/dotfiles/global.gitconfig
+
+# Create backups of system files that will be overwritten. This is especially
+# important on the first install, to make sure the user does not lose existing
+# dotfile configurations. For this reason, we use the `--no-clobber` option so
+# we don't overwrite existing backups. Symbolic links are followed to ensure the
+# actual files – not their symlinks – are backed up (`--dereference`). Errors
+# are hidden because it is okay for the source files to not exist.
+#
+cp --no-clobber --dereference ~/.profile ~/backup.profile 2> /dev/null
+cp --no-clobber --dereference ~/.bash_profile ~/backup.bash_profile 2> /dev/null
+cp --no-clobber --dereference ~/.bashrc ~/backup.bashrc 2> /dev/null
+cp --no-clobber --dereference ~/.gitconfig ~/backup.gitconfig 2> /dev/null
+
+# Create symbolic links (not hard links) in the user's home directory to
+# `.gitconfig` and the various shell startup scripts. Existing files will be
+# overwritten (`--force`).
+#
+ln --symbolic --force ~/dotfiles/global.profile ~/.profile 2> /dev/null
+ln --symbolic --force ~/dotfiles/global.bash_profile ~/.bash_profile 2> /dev/null
+ln --symbolic --force ~/dotfiles/global.bashrc ~/.bashrc 2> /dev/null
+ln --symbolic --force ~/dotfiles/global.gitconfig ~/.gitconfig 2> /dev/null
+
+# If there were errors with the above linking operations, provide useful
+# feedback to the user to help them resolve the issue.
+#
+retval=$?
+if [ ! $retval -eq 0 ]; then
+  echo "Failed to create symbolic links in your home directory, try again with elevated privileges"
+else
+
+  # Try reloading the shell startup scripts. This won't work the first time
+  # because the terminal will need to be restarted to create a new shell session
+  # that sources the startup scripts, which define the `reload!` function.
+  #
+  reload! 2> /dev/null
+
+  echo '== UPDATED DOTFILES =='
+  echo "Restart your terminal for the changes to take effect."
+
+fi;

@@ -1,7 +1,7 @@
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # The `.gitattributes` file tells the Git source control system what settings to
 # automatically apply when handling various file types.
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Auto detect text files and normalize line-endings to Unix format, in both the
 # remote repository and the local working directory.

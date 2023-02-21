@@ -11,10 +11,12 @@ Features include:
 - Handy UNIX aliases
 - Windows Terminal settings
 
-These dotfiles also ship with a couple of TUI utilities – only Windows binaries are included at this time:
+These dotfiles also ship with a couple of TUI utilities:
 
 - Jesse Duffield's [lazygit](https://github.com/jesseduffield/lazygit), a terminal UI for Git repositories with lots of [hidden features](https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Keybindings_en.md)
 - [oh-my-posh](https://ohmyposh.dev/), a theme framework for the prompt line of any shell
+
+(Only Windows binaries are included at this time.)
 
 ## Documentation
 
@@ -22,7 +24,6 @@ These dotfiles also ship with a couple of TUI utilities – only Windows binarie
 
 - [Requirements](./docs/requirements.md)
 - [Installation](./docs/installation.md)
-- [Updating](./docs/updating.md)
 - [Configuration](./docs/configuration.md)
 
 ### Features
@@ -40,28 +41,15 @@ These dotfiles also ship with a couple of TUI utilities – only Windows binarie
 - [Git aliases](./docs/features/git/aliases.md)
 - [Git tools](./docs/features/git/tools.md)
 
-#### Tools
-
-- [Windows Terminal settings](./docs/features/wt.md)
-- [Fonts](./docs/features/fonts.md)
-
 ### Contributing
 
-This section provides documentation for maintainers and contributors of this project.
+The following documentation is for maintainers and contributors of this project:
 
 - [Dependencies](./docs/contributing/dependencies.md)
+- [Filesystem](./docs/contributing/filesystem.md)
+- [Acknowledgments](./docs/contributing/acknowledgments.md)
 
 -----
-
-**Acknowledgments:**
-
-- [Thoughtbot's dotfiles](https://github.com/thoughtbot/dotfiles)
-- [Nicola Paolucci's dotfiles](https://github.com/durdn/cfg)
-- [YADR – Yet Another Dotfile Repo](https://github.com/skwp/dotfiles)
-- [Ramesh Padmanabhaiah's Base framework](https://github.com/codeforester/base)
-- [Phil Haack's dotfiles](https://github.com/haacked/dotfiles)
-- [Michael Biven's dotfiles](https://github.com/michaelbiven/dotfiles)
-- [Git Wiki: Aliases](https://git.wiki.kernel.org/index.php/Aliases)
 
 Copyright © 2020-2023 Kieran Potts \
 [MIT license](./LICENSE.txt)

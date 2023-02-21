@@ -2,19 +2,19 @@
 
 The following shell aliases are enabled.
 
-| Alias          | Command              | Description                                         | Compatibility |
-|----------------|----------------------|-----------------------------------------------------|---------------|
-| `..`           | `cd ..`              | Change up one directory                             | POSIX         |
-| `...`          | `cd ../..`           | Change up two directories                           | POSIX         |
-| `....`         | `cd ../../..`        | Change up three directories                         | POSIX         |
-| `.....`        | `cd ../../../..`     | Change up four directories                          | POSIX         |
-| `egrep`        | `egrep --color=auto` | Enable colorized output by default                  | POSIX         |
-| `fgrep`        | `fgrep --color=auto` | Enable colorized output by default                  | POSIX         |
-| `g`            | `git`                | Shortcut for the oft-typed `git` command            | POSIX         |
-| `grep`         | `grep --color=auto`  | Enable colorized output by default                  | POSIX         |
-| `l`            | `ls -laF --color`    | List all files (including hidden ones) in long-form | POSIX         |
-| `ld`           | `ls -laF --color | grep --color=never '^d'` | List only directories        | POSIX         |
-| `lf`           | `ls -laF --color | grep --color=never '^-'` | List only files              | POSIX         |
-| `ls`           | `ls --color`         | Enable colorized output by default                  | POSIX         |
-| `mkdir`        | `mkdir -p`           | Make directories recursively by default             | POSIX         |
-| `s`            | `sudo`               | Shortcut for `sudo` ("superuser do")                | POSIX         |
+| Alias   | Command                              | Description                                         | Compatibility |
+|---------|--------------------------------------|-----------------------------------------------------|---------------|
+| `..`    | `cd ..`                              | Change up one directory                             | POSIX         |
+| `...`   | `cd ../..`                           | Change up two directories                           | POSIX         |
+| `....`  | `cd ../../..`                        | Change up three directories                         | POSIX         |
+| `.....` | `cd ../../../..`                     | Change up four directories                          | POSIX         |
+| `egrep` | `egrep --color=auto`                 | Enable colorized output by default                  | POSIX         |
+| `fgrep` | `fgrep --color=auto`                 | Enable colorized output by default                  | POSIX         |
+| `g`     | `git`                                | Shortcut for the oft-typed `git` command            | POSIX         |
+| `grep`  | `grep --color=auto`                  | Enable colorized output by default                  | POSIX         |
+| `l`     | `ls -laF --color`                    | List all files (including hidden ones) in long-form | POSIX         |
+| `ld`    | `ls -laF --color | grep --color=never '^d'` | List only directories                        | POSIX         |
+| `lf`    | `ls -laF --color | grep --color=never '^-'` | List only files                              | POSIX         |
+| `ls`    | `ls --color`                         | Enable colorized output by default                  | POSIX         |
+| `mkdir` | `mkdir -p`                           | Make directories recursively by default             | POSIX         |
+| `s`     | `sudo`                               | Shortcut for `sudo` ("superuser do")                | POSIX         |

@@ -1,4 +1,4 @@
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # The `.gitignore` file tells the Git version control system what content on the
 # local filesystem should not be tracked.
 #
@@ -8,4 +8,4 @@
 #
 # GitHub provides a collection of useful `.gitignore` templates for a variety of
 # software stacks here: https://github.com/github/gitignore
-# ------------------------------------------------------------------------------
+# ==============================================================================
