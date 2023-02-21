@@ -14,7 +14,7 @@ If you already had files like `.profile` or `.gitconfig` in your user directory,
 
 ## Git configuration
 
-You MUST edit the `~/local.gitconfig` file to configure your Git user profile information. This data will be embedded in commit objects: 
+You MUST edit the `~/local.gitconfig` file to configure your Git user profile information. This data will be embedded in commit objects:
 
 ```txt
 [user]
@@ -65,13 +65,13 @@ Oh My Posh is highly customizable — see [the website](https://ohmyposh.dev/doc
 
 My Windows Terminal settings are included with these dotfiles, for easy portability between machines. To enable the settings:
 
-1.  Open Windows Terminal. 
+1.  Open Windows Terminal.
 
 2.  Go to **Settings** and follow the link to **Open JSON File**.
 
 3.  In **Explorer** navigate to the directory containing your Windows Terminal `settings.json` file.
 
-4.  Close Windows Terminal and delete the `settings.json` file. 
+4.  Close Windows Terminal and delete the `settings.json` file.
 
 5.  Run Windows Powershell as Administrator. Use the old Powershell program, not the new Windows Terminal, as doing so will recreate WT's `settings.json` file – which MUST not exist for the next step to succeed.
 
@@ -96,7 +96,7 @@ WT's `settings.json` supports a `startupActions` property that can be used to [c
 Because the default tabs and panes I have vary from project to project, I tend to use different [command line arguments](https://learn.microsoft.com/en-us/windows/terminal/command-line-arguments) to start Windows Terminal on different machines. For this reason I prefer to create a `.bat` file for starting up Windows Terminal. Example:
 
 ```bat
-start "Windows Terminal" "C:\Program Files\WindowsApps\...\wt.exe" --profile "Git Bash" --title "Personal" -d "C:\dev\personal"; new-tab --profile "Git Bash" --title "Work" -d "C:\dev\work"; focus-tab -t 1
+start "Windows Terminal" wt.exe --profile "Git Bash" --title "Personal" -d "C:\dev\personal"; new-tab --profile "Git Bash" --title "Work" -d "C:\dev\work"; focus-tab -t 1
 ```
 
 Alternatively, you could bind the `wt` command to a hotkey using [AutoHotkey](https://www.autohotkey.com/), or just create a Windows shortcut and pin it to your desktop or taskbar.
@@ -108,6 +108,6 @@ When you've installed the Nerd Font of your choice, simply set your terminal to 
 ```json
 {
   "terminal.integrated.defaultProfile.windows": "Git Bash",
-  "terminal.integrated.fontFamily": "Nerd NF",
+  "terminal.integrated.fontFamily": "Nerd NF"
 }
 ```
