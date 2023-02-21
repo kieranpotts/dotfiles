@@ -45,7 +45,9 @@
             {
                 "face": "Hack NF",
                 "size": 10.0
-            }
+            },
+            "suppressApplicationTitle": true,
+            "useAtlasEngine": true
         },
         "list": 
         [
