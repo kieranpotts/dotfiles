@@ -39,7 +39,7 @@ Follow these steps to install the dotfiles on a new computer for the first time.
 
     Both these fonts are included in the `./vendor/fonts` directory and need to be installed manually. The Hack Nerd Font is the Windows-compatible version.
 
-5.  **Create hardlinks to other configuration files**
+5.  **Create links to other configuration files**
 
     While the `update!` script automates most of the work, some steps need to be performed manually.
 
@@ -47,16 +47,10 @@ Follow these steps to install the dotfiles on a new computer for the first time.
 
     Open Windows Terminal, go to "Settings", and follow the link to "Open JSON File".
 
-    Now, you have two options. You can either copy-and-paste the contents of `etc/wt.json` into the `settings.json` file that Windows Terminal reads on your computer. Alternatively, you can create a hardlink from WT's `settings.json` file to the `etc/wt.json` file in this repository. The second option is a little more complicated but has the advantage of capturing in the repository any changes you subsequently make to the settings of Windows Terminal.
-
-    To create the hardlink, you must first delete WT's own `settings.json` file.
-
-    Next, run Windows Powershell as Administrator. If you use Windows Terminal for this step, it will recreate it's own `settings.json` file, but that MUST NOT exist for the next step to succeed.
-
-    Run the below Powershell command to create a hard link to the `etc/wt.json` file distributed in this repository. Update the paths as necessary.
+    Now, you have two options. You can either copy-and-paste the contents of `etc/wt.json` into the `settings.json` file that Windows Terminal reads on your computer. Alternatively, you can create a link from WT's `settings.json` file to the `etc/wt.json` file in this repository. To create the link, run Windows Powershell as Administrator, and execute the following command, changing the filesystem paths as necessary:
 
     ```powershell
-    New-Item -ItemType SymbolicLink -Path "C:\Users\Kieran\AppData\Local\Packages\Microsoft.WindowsTerminal_[hash]\LocalState\settings.json" -Target "C:\path\to\dotfiles\etc\wt.json"
+    New-Item -ItemType SymbolicLink -Path "C:\Users\Kieran\AppData\Local\Packages\Microsoft.WindowsTerminal_[hash]\LocalState\settings.json" -Target "C:\path\to\dotfiles\etc\wt.json" -Force
     ```
 
-    Open Windows Terminal to check the changes are effective.
+    Re-open Windows Terminal to check the changes are effective.

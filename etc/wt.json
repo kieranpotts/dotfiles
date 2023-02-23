@@ -1,10 +1,11 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+
+    "actions":
     [
         {
-            "command": 
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -36,12 +37,12 @@
     "initialCols": 90,
     "initialRows": 30,
     "launchMode": "maximized",
-    "profiles": 
+    "profiles":
     {
-        "defaults": 
+        "defaults":
         {
             "colorScheme": "KP",
-            "font": 
+            "font":
             {
                 "face": "Hack NF",
                 "size": 10.0
@@ -49,11 +50,11 @@
             "suppressApplicationTitle": true,
             "useAtlasEngine": true
         },
-        "list": 
+        "list":
         [
             {
                 "colorScheme": "KP",
-                "font": 
+                "font":
                 {
                     "face": "Hack NF",
                     "size": 10.0
@@ -65,7 +66,7 @@
             },
             {
                 "colorScheme": "KP",
-                "font": 
+                "font":
                 {
                     "face": "Hack NF",
                     "size": 10.0
@@ -77,7 +78,7 @@
             },
             {
                 "colorScheme": "KP",
-                "font": 
+                "font":
                 {
                     "face": "Hack NF",
                     "size": 10.0
@@ -90,7 +91,7 @@
             },
             {
                 "colorScheme": "KP",
-                "font": 
+                "font":
                 {
                     "face": "Hack NF",
                     "size": 10.0
@@ -103,7 +104,7 @@
             },
             {
                 "colorScheme": "KP",
-                "font": 
+                "font":
                 {
                     "face": "Hack NF",
                     "size": 10.0
@@ -116,7 +117,7 @@
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#0C0C0C",
