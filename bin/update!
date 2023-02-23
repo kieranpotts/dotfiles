@@ -56,17 +56,6 @@ cp --no-clobber "${REPO_PATH}/home/local.bashrc" ~/local.bashrc
 cp --no-clobber "${REPO_PATH}/home/local.gitconfig" ~/local.gitconfig
 cp --no-clobber "${REPO_PATH}/home/local.gitignore" ~/local.gitignore
 
-# Copy the poshthemes into the user's home directory, too. These must be
-# local to `local.bash_profile`, which sources the themes.
-mkdir ~/poshthemes 2> /dev/null
-( cd "${REPO_PATH}" && cp --recursive --force home/poshthemes/* ~/poshthemes )
-
-# Also, copy the shell aliases into the user's home directory, as these too are
-# sources from the "local" shell startup scripts.
-mkdir ~/aliases 2> /dev/null
-mkdir ~/aliases/posix 2> /dev/null
-( cd "${REPO_PATH}" && cp --recursive --force home/aliases/* ~/aliases )
-
 # Create backups of system files that will be overwritten. This is especially
 # important on the first install, to make sure the user does not lose existing
 # dotfile configurations. For this reason, we use the `--no-clobber` option so

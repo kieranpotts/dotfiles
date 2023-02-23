@@ -17,4 +17,4 @@
 # Documentation:
 # https://ohmyposh.dev/
 #
-eval "$(oh-my-posh init bash --config ~/poshthemes/hacks.omp.json 2> /dev/null)"
+eval "$(oh-my-posh init bash --config ~/dotfiles/etc/poshthemes/hacks.omp.json 2> /dev/null)"

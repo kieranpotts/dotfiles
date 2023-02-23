@@ -12,6 +12,11 @@
 # script via the `~/local.profile` file.
 # ==============================================================================
 
+# Load aliases that are compatible with all POSIX-compliant shells.
+if [ -f ~/dotfiles/dist/aliases/posix/index.sh ]; then
+  source ~/dotfiles/dist/aliases/posix/index.sh
+fi
+
 # Load the user's `~/local.profile` file, which can be used to override
 # anything set in this file.
 if [ -f ~/local.profile ]; then

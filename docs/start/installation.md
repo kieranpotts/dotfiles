@@ -7,10 +7,20 @@ Follow these steps to install the dotfiles on a new computer for the first time.
 
 1.  **Clone this repository**
 
-    You may clone this repository to any location on your local filesystem.
+    You should clone this repository directly into your user home directory.
 
     ```sh
     git clone git@github.com:kieranpotts/dotfiles.git
+    ```
+
+    Alternatively, after cloning the repository elsewhere, create a link to it from `~/dotfiles`. (On Windows, use Powershell running with Administrator privileges.)
+
+    ```sh
+    ln -s path/to/dotfiles ~/dotfiles
+    ```
+
+    ```powershell
+    New-Item -ItemType SymbolicLink -Path "C:\Users\[Username]\dotfiles" -Target "C:\path\to\dotfiles"
     ```
 
 2.  **Run the update script**
