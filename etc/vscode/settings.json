@@ -1,4 +1,7 @@
 {
+  // Disable the breadcrum trail across the top of editors.
+  "breadcrumbs.enabled": false,
+
   // Clear the terminal before running a new debugging session.
   "debug.terminal.clearBeforeReusing": true,
 
