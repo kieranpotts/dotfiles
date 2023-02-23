@@ -1,5 +1,8 @@
 # Acknowledgments
 
+Inspiration has been taken – and code shamelessly copied – from some of these related repositories:
+
+- [Sebastien Rousseau's dotfiles.io](https://dotfiles.io/)
 - [Thoughtbot's dotfiles](https://github.com/thoughtbot/dotfiles)
 - [Nicola Paolucci's dotfiles](https://github.com/durdn/cfg)
 - [YADR – Yet Another Dotfile Repo](https://github.com/skwp/dotfiles)

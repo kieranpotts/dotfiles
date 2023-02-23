@@ -1,8 +1,8 @@
 # Git aliases
 
-The following Git aliases provide shortcut commands for common source control operations. This table provides a short summary of each alias's API and behavior – see the inline code comments in `dotfiles/gitconfig` for more comprehensive documentation.
+The following Git aliases provide shortcut commands for common source control operations. This table provides a short summary of each alias's API and behavior. For comprehensive documentation, see the inline code comments in `dist/global.gitconfig` – which will be symlinked from `~/.gitconfig` when you install these dotfiles.
 
-Note: A small subset of these aliases are implemented as shell scripts that are symlinked from your `~/bin` directory, and can therefore be executed directly, eg `git-feature`.
+Note: A small subset of these aliases are implemented as shell scripts in this repository's `bin` directory. For these aliases to work, this repository's `bin` directory must be added to your system PATH environment variable.
 
 | Command                               | Description                                                                  |
 |---------------------------------------|------------------------------------------------------------------------------|

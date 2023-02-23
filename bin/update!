@@ -43,7 +43,7 @@ REPO_PATH=$(dirname "$BIN_PATH")
 
 # Fetch the latest updates from the upstream dotfiles repository.
 #
-# ( cd "${REPO_PATH}" && git switch dev && git pull )
+( cd "${REPO_PATH}" && git switch dev && git pull )
 
 # ------------------------------------------------------------------------------
 # Note: `cp` will not, by default, copy hidden dot-prefixed files. This is why
