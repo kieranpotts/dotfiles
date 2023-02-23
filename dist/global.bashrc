@@ -13,7 +13,6 @@
 # ==============================================================================
 
 # Load the user's `~/local.bashrc` file.
-#
 if [ -f ~/local.bashrc ]; then
   source ~/local.bashrc
 fi

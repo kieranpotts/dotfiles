@@ -5,3 +5,8 @@
 #
 # All commands in this script MUST be POSIX-compliant and shell-agnostic.
 # ==============================================================================
+
+# Load aliases that are compatible with all POSIX-compliant shells.
+if [ -f ~/aliases/posix/index.sh ]; then
+  source ~/aliases/posix/index.sh
+fi

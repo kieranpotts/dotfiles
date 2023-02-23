@@ -33,7 +33,7 @@ You MAY also edit the `~/local.gitignore` file to configure global [Git ignore r
 The `local.bash_profile` file, copied to your home directory, includes the following command:
 
 ```sh
-eval "$(oh-my-posh init bash --config ~/dotfiles/poshthemes/hacks.omp.json 2> /dev/null)"
+eval "$(oh-my-posh init bash --config ~/poshthemes/hacks.omp.json 2> /dev/null)"
 ```
 
 You can change this command to load different themes for your shell's prompt line. More themes can be installed by running the commands below.
