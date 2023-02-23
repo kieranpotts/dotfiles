@@ -1,0 +1,71 @@
+{
+  "recommendations": [
+
+    // Code Spell Checker
+    "streetsidesoftware.code-spell-checker",
+
+    // Dev Containers
+    "ms-vscode-remote.remote-containers",
+
+    // DotENV
+    "mikestead.dotenv",
+
+    // Editor Config
+    "editorconfig.editorconfig",
+
+    // Feature Syntax Highlight and Snippets (Gherkin)
+    "Blodwynn.featurehighlight",
+
+    // Fold Plus
+    "dakara.dakara-foldplus",
+
+    // Git History
+    "donjayamanne.githistory",
+
+    // GitHub Repositories
+    "GitHub.remotehub",
+
+    // GitHub Theme
+    "GitHub.github-vscode-theme",
+
+    // Live Preview
+    "ms-vscode.live-server",
+
+    // Live Share
+    "ms-vsliveshare.vsliveshare",
+
+    // Markdown Preview Enhanced
+    "shd101wyy.markdown-preview-enhanced",
+
+    // Markdown Lint
+    "davidanson.vscode-markdownlint",
+
+    // Remote - SSH
+    "ms-vscode-remote.remote-ssh",
+
+    // Remote - SSH: Editing Configuration Files
+    "ms-vscode-remote.remote-ssh-edit",
+
+    // Remote Repositories
+    "ms-vscode.remote-repositories",
+
+    // Render Line Endings
+    "medo64.render-crlf",
+
+    // SVG
+    "jock.svg",
+
+    // Todo Tree
+    "gruntfuggly.todo-tree",
+
+    // Vagrantfile Support
+    "marcostazi.VS-code-vagrantfile",
+
+    // vscode-pdf
+    "tomoki1207.pdf",
+
+    // WSL
+    "ms-vscode-remote.remote-wsl"
+
+  ]
+}

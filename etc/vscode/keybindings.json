@@ -1,0 +1,28 @@
+[
+  // Toggle built-in panel.
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+
+  // Open external terminal in own window (start at current working directory).
+  {
+    "key": "ctrl+alt+t",
+    "command": "workbench.action.terminal.openNativeConsole",
+    "when": "!terminalFocus"
+  },
+
+  // Open external terminal in new tab (start at current working directory).
+  {
+    "key": "ctrl+shift+t",
+    "command": "workbench.action.terminal.newWithCwd",
+    "when": "terminalProcessSupported"
+  },
+
+  // Toggle zen mode.
+  {
+    "key": "ctrl+alt+z",
+    "command": "workbench.action.toggleZenMode"
+  }
+]

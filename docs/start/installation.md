@@ -53,14 +53,19 @@ Follow these steps to install the dotfiles on a new computer for the first time.
 
     While the `update!` script automates most of the work, some steps need to be performed manually.
 
-    My Windows Terminal settings are included with these dotfiles, for easy portability between machines. The file is `etc/wt.json`. In order to enable these settings in WT, follow these steps:
-
-    Open Windows Terminal, go to "Settings", and follow the link to "Open JSON File".
-
-    Now, you have two options. You can either copy-and-paste the contents of `etc/wt.json` into the `settings.json` file that Windows Terminal reads on your computer. Alternatively, you can create a link from WT's `settings.json` file to the `etc/wt.json` file in this repository. To create the link, run Windows Powershell as Administrator, and execute the following command, changing the filesystem paths as necessary:
+    My Windows Terminal settings are included with these dotfiles, for easy portability between machines. The file is `etc/wt/settings.json`. In order to enable these settings in WT, open Windows Terminal, go to "Settings", and follow the link to "Open JSON File". Now, you have two options. You can either copy-and-paste the contents of `etc/wt/settings.json` into the `settings.json` file that Windows Terminal reads on your computer. Alternatively, you can create a link from WT's `settings.json` file to the `etc/wt/settings.json` file in this repository. To create the link, run Windows Powershell as Administrator, and execute the following command, changing the filesystem paths as necessary:
 
     ```powershell
-    New-Item -ItemType SymbolicLink -Path "C:\Users\Kieran\AppData\Local\Packages\Microsoft.WindowsTerminal_[hash]\LocalState\settings.json" -Target "C:\path\to\dotfiles\etc\wt.json" -Force
+    New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Local\Packages\Microsoft.WindowsTerminal_[hash]\LocalState\settings.json" -Target "C:\path\to\dotfiles\etc\wt\settings.json" -Force
     ```
 
-    Re-open Windows Terminal to check the changes are effective.
+    To use the `settings.json` and `keybindings.json` files for VSCode, follow similar steps to setup the necessary
+    symlinks.
+
+    ```powershell
+    New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Roaming\Code\User\settings.json" -Target "C:\path\to\dotfiles\etc\vscode\settings.json" -Force
+
+    New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Roaming\Code\User\keybindings.json" -Target "C:\path\to\dotfiles\etc\vscode\keybindings.json" -Force
+    ```
+
+    The `extensions.json` can be symlinked from the `.vscode` directory of single-folder workspaces. See the VSCode documentation on [workspace recommended extensions](https://code.visualstudio.com/docs/editor/extension-marketplace#_workspace-recommended-extensions).
