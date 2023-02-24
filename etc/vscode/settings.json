@@ -28,6 +28,13 @@
   "editor.formatOnSave": false,
   "editor.formatOnType": false,
 
+  // Render guidelines for indentation and bracket pairs.
+  "editor.guides.indentation": true,
+  "editor.guides.bracketPairs": true,
+
+  // Disable inlay hints, which get injected within code (eg showing function parameter names).
+  "editor.inlayHints.enabled": "off",
+
   // Show line numbers but hide the minimap.
   "editor.lineNumbers": "on",
   "editor.minimap.enabled": false,
@@ -108,11 +115,15 @@
   // Open new VSCode windows maximized.
   "window.newWindowDimensions": "maximized",
 
-  // Use lighter colors for those squiggly underlines.
   "workbench.colorCustomizations": {
+    // Use lighter colors for those squiggly underlines.
     "editorError.foreground": "#ff000077",
     "editorWarning.foreground": "#ffee0099",
-    "editorInfo.foreground": "#00aaff88"
+    "editorInfo.foreground": "#00aaff88",
+
+    // Make the line highlight color very subtle.
+    "editor.lineHighlightBackground": "#f9f9f9",
+    "editor.lineHighlightBorder": "#f9f9f9"
   },
 
   // Themes.
