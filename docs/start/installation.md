@@ -68,4 +68,4 @@ Follow these steps to install the dotfiles on a new computer for the first time.
     New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Roaming\Code\User\keybindings.json" -Target "C:\path\to\dotfiles\etc\vscode\keybindings.json" -Force
     ```
 
-    The `extensions.json` can be symlinked from the `.vscode` directory of single-folder workspaces. See the VSCode documentation on [workspace recommended extensions](https://code.visualstudio.com/docs/editor/extension-marketplace#_workspace-recommended-extensions).
+    The `extensions.json` can be symlinked from the `.vscode` directory of single-folder workspaces. For multi-root workspaces, copy the extension IDs to `extensions.recommendations` in the workspace's `.code-workspace` file, and then enable the extensions through the **Workspace Recommendations** section of the **Extensions** panel. See the VSCode documentation on [workspace recommended extensions](https://code.visualstudio.com/docs/editor/extension-marketplace#_workspace-recommended-extensions) for more details.
