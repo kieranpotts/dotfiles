@@ -21,6 +21,7 @@
 - push tags by default with `git push`
 - automatically setup remote branch tracking
 - track branches of the same name by default
+- set default branch name to "dev" on `git init`
 - apply `--autosquash` rules automatically on rebase operations
 - opt-out of security checks for Git repositories on external storage (`safe.directory`)
 - add `lazygit` binary for Windows

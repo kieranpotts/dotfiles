@@ -777,6 +777,15 @@
   #
   prune = true
 
+[init]
+
+  # init.defaultBranch
+  #
+  # Change the name of the default branch, which gets sets when a new Git
+  # repository is initialized the first time.
+  #
+	defaultBranch = dev
+
 [merge]
 
   # merge.ff
