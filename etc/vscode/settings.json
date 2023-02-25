@@ -53,9 +53,8 @@
   "editor.snippetSuggestions": "top",
   "editor.suggestSelection": "first",
 
-  // Turn off tab completion for everything. It means snippet suggestions etc.
-  // must be explicitly selected.
-  "editor.tabCompletion":"off",
+  // Turn on tab completion for snippets.
+  "editor.tabCompletion": "onlySnippets",
 
   // Transform tab indents to two spaces.
   "editor.tabSize": 2,
