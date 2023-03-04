@@ -766,6 +766,18 @@
   #
 	autocrlf = false
 
+  # core.eol
+  #
+  # Normalizes the line endings to the Unix standard (LF) on all files that Git
+  # auto-detects as being text based. This is equivalent to adding the following
+  # rule to `.gitattributes`:
+  #
+  # ```
+  # * text=auto eol=lf
+  # ```
+  #
+  eol = lf
+
   # core.excludesFile
   #
   # Establish a global `.gitignore` file, which will be applied to all local
