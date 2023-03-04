@@ -3,8 +3,7 @@
 # automatically apply when handling various file types.
 # ==============================================================================
 
-# Auto detect text files and normalize line-endings to Unix format, in both the
-# remote repository and the local working directory.
+# Auto detect text files and normalize line-endings to Unix format.
 * text=auto eol=lf
 
 # Treat SVGs as text files. They are handled as assets (binary) by default.
