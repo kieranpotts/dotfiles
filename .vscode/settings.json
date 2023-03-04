@@ -1,11 +1,9 @@
 {
-  // Render vertical rulers at 80 and 120 columns.
+  // Render vertical rulers at 80, 100 and 120 columns.
   //
-  // Code lines and standard comments SHOULD be less than 80 characters long,
-  // while JSDoc-style docblocks SHOULD be shorter than 120 characters. But in
-  // either case, these are not hard limits — some lines MAY be longer where
-  // this is best for readability.
-  "editor.rulers": [80, 120],
+  // Code and comment lines SHOULD be less than 80 characters long, and MUST be
+  // be less than 120 characters.
+  "editor.rulers": [80, 100, 120],
 
   // Transform tabs into two spaces.
   "editor.tabSize": 2,
@@ -14,9 +12,9 @@
   "editor.wordWrap": "on",
 
   // There is no maximum line length for Markdown files. In the editor, lines
-  // wrap themselves after 80 characters.
+  // wrap themselves after 120 characters.
   "[markdown]":{
-    "editor.rulers": [80, 120],
+    "editor.rulers": [],
     "editor.wordWrap": "bounded",
     "editor.wordWrapColumn": 120,
   },

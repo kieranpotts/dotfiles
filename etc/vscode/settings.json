@@ -46,8 +46,8 @@
   "editor.renderControlCharacters": true,
   "editor.renderWhitespace": "all",
 
-  // Show guides in 20 character increments from 80 to 160.
-  "editor.rulers": [80, 100, 120, 140, 160],
+  // Show guides in 20 character increments from 80 to 120.
+  "editor.rulers": [80, 100, 120],
 
   // Prioritize snippet suggestions over all other hints. Pre-select the first.
   "editor.snippetSuggestions": "top",
@@ -64,9 +64,25 @@
     "–": true // Don't warn about use of en-dash (–) characters in code.
   },
 
-  // Wrap long lines at the viewport or 160 characters.
+  // Wrap long lines at the viewport or 120 characters.
   "editor.wordWrap": "bounded",
-  "editor.wordWrapColumn": 160,
+  "editor.wordWrapColumn": 120,
+
+  // Don't implement word wrap for HTML documents, and disable guidelines to
+  // indicate there should not be any imposition of maximum line length.
+  "[html]":{
+    "editor.rulers": [],
+    "editor.wordWrap": "off"
+  },
+
+  // For Markdown files, lines wrap themselves in the editor at 120 characters,
+  // but no guidelines are shown since there does not need to be a maximum
+  // line length for Markdown files.
+  "[markdown]":{
+    "editor.rulers": [],
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 120,
+  },
 
   // Auto-save changes after 5 seconds inactivity.
   "files.autoSave": "afterDelay",
