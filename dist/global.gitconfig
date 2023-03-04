@@ -758,6 +758,14 @@
 
 [core]
 
+  # core.autocrlf
+  #
+  # Do not transform line endings to CRLF on Windows clients at checkout. This
+  # is unnecessary since all modern code editors can be configured to support
+  # Unix line endings (LF).
+  #
+	autocrlf = false
+
   # core.excludesFile
   #
   # Establish a global `.gitignore` file, which will be applied to all local
