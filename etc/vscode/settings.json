@@ -69,17 +69,17 @@
   "editor.wordWrapColumn": 120,
 
   // Don't implement word wrap for HTML documents, and disable guidelines to
-  // indicate there should not be any imposition of maximum line length.
+  // indicate there should not be any imposition of maximum line length
+  // for this file type.
   "[html]":{
     "editor.rulers": [],
     "editor.wordWrap": "off"
   },
 
-  // For Markdown files, lines wrap themselves in the editor at 120 characters,
-  // but no guidelines are shown since there does not need to be a maximum
-  // line length for Markdown files.
+  // There is no maximum line length for Markdown file, though code blocks
+  // SHOULD be kept under 80 characters. In the editor, lines wrap themselves
+  // after 120 characters.
   "[markdown]":{
-    "editor.rulers": [],
     "editor.wordWrap": "bounded",
     "editor.wordWrapColumn": 120,
   },

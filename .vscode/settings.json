@@ -11,10 +11,10 @@
   // Lines will wrap at the edge of the editor area.
   "editor.wordWrap": "on",
 
-  // There is no maximum line length for Markdown files. In the editor, lines
-  // wrap themselves after 120 characters.
+  // There is no maximum line length for Markdown file, though code blocks
+  // SHOULD be kept under 80 characters. In the editor, lines wrap themselves
+  // after 120 characters.
   "[markdown]":{
-    "editor.rulers": [],
     "editor.wordWrap": "bounded",
     "editor.wordWrapColumn": 120,
   },
