@@ -28,6 +28,11 @@
   "editor.formatOnSave": false,
   "editor.formatOnType": false,
 
+  // Re-inforce disabling of auto-fixes.
+  "editor.codeActionsOnSave": {
+    "source.fixAll": false
+  },
+
   // Render guidelines for indentation and bracket pairs.
   "editor.guides.indentation": true,
   "editor.guides.bracketPairs": true,
