@@ -19,6 +19,9 @@
     // Fold Plus
     "dakara.dakara-foldplus",
 
+    // Git Blame
+    "waderyan.gitblame",
+
     // Git History
     "donjayamanne.githistory",
 
