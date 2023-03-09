@@ -1,5 +1,6 @@
 {
   "recommendations": [
+    "darkriszty.markdown-table-prettify",
     "davidanson.vscode-markdownlint",
     "editorconfig.editorconfig",
     "gruntfuggly.todo-tree",

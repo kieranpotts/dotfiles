@@ -43,6 +43,9 @@
     // Markdown Lint
     "davidanson.vscode-markdownlint",
 
+    // Markdown Table Prettifier
+    "darkriszty.markdown-table-prettify",
+
     // Remote - SSH
     "ms-vscode-remote.remote-ssh",
 
