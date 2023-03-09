@@ -797,6 +797,18 @@
   #
   prune = true
 
+[filter "lfs"]
+
+  # filter "lfs"
+  #
+  # Default configuration for Git LFS. This configuration was added by the
+  # `git lfs install` command.
+  #
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+
 [init]
 
   # init.defaultBranch
