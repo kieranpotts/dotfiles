@@ -802,7 +802,7 @@
   # filter "lfs"
   #
   # Default configuration for Git LFS. This configuration was added by the
-  # `git lfs install` command.
+  # `git lfs install` command. See: https://git-lfs.com/
   #
   process = git-lfs filter-process
   required = true
