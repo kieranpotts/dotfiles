@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- use vimdiff as Git merge and diff tool
+- add `~/.vimrc`
 - add modified Agnoster prompt theme via Oh My Posh
 - add `~/.profile` for all POSIX-compliant shells
 - add `~/.bash_profile` and `~/.bashrc` startup scripts for Bash sessions

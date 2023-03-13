@@ -788,6 +788,14 @@
   #
   excludesFile = ~/local.gitignore
 
+[diff]
+
+  # diff.tool
+  #
+  # Use vimdiff as diff tool.
+  #
+	tool = vimdiff
+
 [fetch]
 
   # fetch.prune
@@ -858,6 +866,18 @@
   # integration strategies.
   #
   ff = false
+
+  # merge.tool
+  #
+  # Sets default for `git mergetool --tool=[tool]`. For vimdiff, the following 
+  # values are supported:
+  # 
+  # - vimdiff:  use Vim with a custom layout as specified using separate hints
+  # - vimdiff1: use Vim with a 2 panes layout: LOCAL and REMOTE
+  # - vimdiff2: use Vim with a 3 panes layout: LOCAL, MERGED and REMOTE
+  # - vimdiff3: use Vim where only the MERGED file is shown
+  #
+	tool = vimdiff3
 
 [pull]
 

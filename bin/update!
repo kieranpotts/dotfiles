@@ -74,6 +74,7 @@ ln --symbolic --force "${REPO_PATH}/dist/global.profile" ~/.profile 2> /dev/null
 ln --symbolic --force "${REPO_PATH}/dist/global.bash_profile" ~/.bash_profile 2> /dev/null
 ln --symbolic --force "${REPO_PATH}/dist/global.bashrc" ~/.bashrc 2> /dev/null
 ln --symbolic --force "${REPO_PATH}/dist/global.gitconfig" ~/.gitconfig 2> /dev/null
+ln --symbolic --force "${REPO_PATH}/dist/global.vimrc" ~/.vimrc 2> /dev/null
 
 # If there were errors with the above linking operations, provide useful
 # feedback to the user to help them resolve the issue.
