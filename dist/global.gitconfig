@@ -796,6 +796,14 @@
   #
 	tool = vimdiff
 
+[difftool]
+
+  # difftool.prompt
+  #
+  # Don't prompt to open the configured difftool.
+  #
+	prompt = false
+
 [fetch]
 
   # fetch.prune
@@ -878,6 +886,14 @@
   # - vimdiff3: use Vim where only the MERGED file is shown
   #
 	tool = vimdiff3
+
+[mergetool]
+
+  # mergetool.prompt
+  #
+  # Don't prompt to open the configured mergetool.
+  #
+	prompt = false
 
 [pull]
 
