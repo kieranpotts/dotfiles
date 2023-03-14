@@ -17,7 +17,7 @@
               "pwsh": "PS"
             }
           },
-          "template": " {{ .Name  }} "
+          "template": "\u00A0{{ .Name  }}\u00A0"
         },
         {
           "type": "path",
@@ -29,7 +29,7 @@
             "style": "agnoster_short",
             "max_depth": 2
           },
-          "template": " {{ .Path }} "
+          "template": "\u00A0{{ .Path }}\u00A0"
         },
         {
           "type": "project",
@@ -37,7 +37,7 @@
           "powerline_symbol": "\uE0B0",
           "background": "#FFD60A",
           "foreground": "#193549",
-          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Name }}{{ .Name }}{{ end }}{{ if .Version }}{{ .Version }}{{ end }}{{ end }} "
+          "template": "\u00A0{{ if .Error }}{{ .Error }}{{ else }}{{ if .Name }}{{ .Name }}{{ end }}{{ if .Version }}{{ .Version }}{{ end }}{{ end }}\u00A0"
         },
         {
           "type": "git",
@@ -45,7 +45,7 @@
           "powerline_symbol": "\ue0b0",
           "background": "#FFEB3B",
           "foreground": "#193549",
-          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }} "
+          "template": "\u00A0{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }}\u00A0"
         }
       ]
     }
