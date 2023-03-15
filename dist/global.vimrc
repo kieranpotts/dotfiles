@@ -29,7 +29,7 @@ set number
 set cursorline
 
 " Highlight the current cursor column (vertical).
-set cursorcolumn
+" set cursorcolumn
 
 " Set shift width to 4 spaces.
 set shiftwidth=4
