@@ -1,8 +1,8 @@
-# ==============================================================================
-# The `~/.vimrc` file contains initialization commands for Vim.
-#
-# See: https://vimhelp.org/starting.txt.html#vimrc
-# ==============================================================================
+" ==============================================================================
+" The `~/.vimrc` file contains initialization commands for Vim.
+"
+" See: https://vimhelp.org/starting.txt.html#vimrc
+" ==============================================================================
 
 " Disable compatibility with Vi, which can cause unexpected issues.
 set nocompatible
