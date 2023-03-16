@@ -59,13 +59,14 @@ Follow these steps to install the dotfiles on a new computer for the first time.
     New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Local\Packages\Microsoft.WindowsTerminal_[hash]\LocalState\settings.json" -Target "C:\path\to\dotfiles\etc\wt\settings.json" -Force
     ```
 
-    To use the `settings.json` and `keybindings.json` files for VSCode, follow similar steps to setup the necessary
-    symlinks.
+    To use the `settings.json`, `keybindings.json` and `global.code-snippets` files for VSCode, follow similar steps to setup the necessary symlinks.
 
     ```powershell
     New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Roaming\Code\User\settings.json" -Target "C:\path\to\dotfiles\etc\vscode\settings.json" -Force
 
     New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Roaming\Code\User\keybindings.json" -Target "C:\path\to\dotfiles\etc\vscode\keybindings.json" -Force
+
+    New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Roaming\Code\User\snippets\global.code-snippets" -Target "C:\path\to\dotfiles\etc\vscode\global.code-snippets" -Force
     ```
 
     The `extensions.json` can be symlinked from the `.vscode` directory of single-folder workspaces. For multi-root workspaces, copy the extension IDs to `extensions.recommendations` in the workspace's `.code-workspace` file, and then enable the extensions through the **Workspace Recommendations** section of the **Extensions** panel. See the VSCode documentation on [workspace recommended extensions](https://code.visualstudio.com/docs/editor/extension-marketplace#_workspace-recommended-extensions) for more details.

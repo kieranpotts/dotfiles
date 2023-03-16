@@ -1,0 +1,65 @@
+{
+  "Ellipsis": {
+		"prefix": "...",
+	 	"body": [
+	 		"…",
+	 	],
+	 	"description": "Replace three consecutive dots with an ellipsis"
+	},
+	"En_Dash": {
+		"prefix": "--",
+	 	"body": [
+	 		"–",
+	 	],
+	 	"description": "Replace double-hyphen with a single en-dash"
+  },
+  "Em_Dash": {
+		"prefix": "---",
+	 	"body": [
+	 		"—",
+	 	],
+	 	"description": "Replace double-hyphen with a single em-dash"
+	},
+  "Right_Arrow": {
+		"prefix": "->",
+	 	"body": [
+	 		"→",
+	 	],
+	 	"description": "Replace dash + right angle bracket with right arrow"
+	},
+  "Left_Arrow": {
+		"prefix": "<-",
+	 	"body": [
+	 		"←",
+	 	],
+	 	"description": "Replace left angle bracket + dash with left arrow"
+	},
+  "Long_Right_Arrow": {
+		"prefix": "-->",
+	 	"body": [
+	 		"🡒",
+	 	],
+	 	"description": "Replace dash + dash + right angle bracket with 'rightwards sans-serif arrow'"
+	},
+  "Long_Left_Arrow": {
+		"prefix": "<--",
+	 	"body": [
+	 		"🡐",
+	 	],
+	 	"description": "Replace left angle bracket + dash + dash with 'leftwards sans-serif arrow'"
+	},
+  "Greater_Than_Or_Equal_To": {
+		"prefix": ">=",
+	 	"body": [
+	 		"≥",
+	 	],
+	 	"description": "Replace right angle bracket + equal sign with greater-than-or-equal-to character"
+	},
+  "Less_Than_Or_Equal_To": {
+		"prefix": "<=",
+	 	"body": [
+	 		"≤",
+	 	],
+	 	"description": "Replace left angle bracket + equal sign with less-than-or-equal-to character"
+	}
+}
