@@ -94,6 +94,8 @@
   "files.autoSaveDelay": 5000,
 
   // Built-in Git GUI.
+  "git.allowNoVerifyCommit": true, // Allow overriding of Git hooks on commit operations.
+  "git.confirmNoVerifyCommit": false, // Don't confirm `--no-verify` commits, the option must be explicitly selected.
   "git.autofetch": true, // Automatically fetch new commits from origin.
   "git.autoStash": true, // Use temporary stash to enable syncing when working tree dirty.
   "git.confirmSync": false, // Confirm before running sync operation (as may rewrite history).
