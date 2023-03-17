@@ -6,4 +6,16 @@
 # See `~/.gitconfig` for usage instructions.
 # ==============================================================================
 
-git add --all && git commit --quiet --message "${1:-WIP}${1+ - WIP}"
+git add --all
+
+# If there's an environment variable called `X_GIT_COMMIT_VERIFY` and its value
+# is `0`, then we apply the `--no-verify` flag to the `git commit` operation.
+VERIFY=${X_GIT_COMMIT_VERIFY:-1}
+
+if [ "$VERIFY" -eq "0" ]; then
+  git commit --quiet --no-verify --message "${1:-WIP}${1+ - WIP}"
+else
+  git commit --quiet --message "${1:-WIP}${1+ - WIP}"
+fi
+
+

@@ -5,3 +5,8 @@
 #
 # All commands in this script MUST be POSIX-compliant and shell-agnostic.
 # ==============================================================================
+
+# === ENVIRONMENT VARIABLES ===
+
+# Set to `0` to apply `--no-verify` flag to aliased `git commit` operations.
+export X_GIT_COMMIT_VERIFY=1
