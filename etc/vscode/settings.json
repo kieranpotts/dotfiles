@@ -78,15 +78,7 @@
   // for this file type.
   "[html]":{
     "editor.rulers": [],
-    "editor.wordWrap": "off"
-  },
-
-  // There is no maximum line length for Markdown file, though code blocks
-  // SHOULD be kept under 80 characters. In the editor, lines wrap themselves
-  // after 120 characters.
-  "[markdown]":{
-    "editor.wordWrap": "bounded",
-    "editor.wordWrapColumn": 120,
+    "editor.wordWrap": "on",
   },
 
   // Auto-save changes after 5 seconds inactivity.
