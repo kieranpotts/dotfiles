@@ -6,3 +6,6 @@
 
 # Shortcut for `git`.
 alias g="git"
+
+# Shortcut for `lazygit`
+alias lg="lazygit"
