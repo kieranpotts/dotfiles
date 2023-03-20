@@ -48,3 +48,5 @@ The following documentation is for maintainers and contributors of this project.
 
 Copyright © 2020-2023 Kieran Potts \
 [MIT license](./LICENSE.txt)
+
+The executable binaries redistributed via this repository are copyright their respective authors and may be subject to alternative free and open source software licenses.

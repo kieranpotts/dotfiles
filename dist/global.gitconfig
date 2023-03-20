@@ -764,7 +764,7 @@
   # is unnecessary since all modern code editors can be configured to support
   # Unix line endings (LF).
   #
-	autocrlf = false
+  autocrlf = false
 
   # core.eol
   #
@@ -788,13 +788,62 @@
   #
   excludesFile = ~/local.gitignore
 
+  # core.pager
+  #
+  # By default Git uses `less` to page output from commands like `log` and
+  # `diff`. This option is used to set a different paging utility. I prefer
+  # Delta: https://github.com/dandavison/delta
+  #
+  pager = delta
+
+[delta]
+
+  # Custom configuration for the Delta pager.
+
+  # delta.light
+  #
+  # This needs to be set to true if your terminal has a light
+  # background colour.
+  #
+  light = false
+
+  # delta.line-numbers
+  #
+  # Show line numbers with diff output.
+  #
+  line-numbers = true
+
+  # delta.navigation
+  #
+  # use `n` and `N` to move between diff sections.
+  #
+  navigate = true
+
+  # delta.side-by-side
+  #
+  # Shows diffs in two vertical panels.
+  #
+  # https://dandavison.github.io/delta/side-by-side-view.html
+  #
+  side-by-side = true
+
 [diff]
+
+  # diff.colorMoved
+  #
+  # Color moved lines differently from changed lines. Equivalent to adding the
+  # `--color-moved` flag to all `diff` operations. Options are "no", "default",
+  # "plain", "zebra" and "dimmed_zebra".
+  #
+  # https://git-scm.com/docs/diff-options
+  #
+  colorMoved = default
 
   # diff.tool
   #
   # Use vimdiff as diff tool.
   #
-	tool = vimdiff
+  tool = vimdiff
 
 [difftool]
 
@@ -802,7 +851,7 @@
   #
   # Don't prompt to open the configured difftool.
   #
-	prompt = false
+  prompt = false
 
 [fetch]
 
@@ -832,9 +881,38 @@
   # Change the name of the default branch, which gets sets when a new Git
   # repository is initialized the first time.
   #
-	defaultBranch = dev
+  defaultBranch = dev
+
+[interactive]
+
+  # interactive.diffFilter
+  #
+  # When an interactive command such as `git add --patch` shows a colorized
+  # diff, Git will pipe the diff through the shell command defined by this
+  # configuration variable. The command may further markup the diff before
+  # rendering. This can be used to pipe the diff through the Delta pager.
+  # Delta's `--color-only` flag disables Delta from structurally changing the
+  # diff, which is required to maintain compatibility with Git.
+  #
+  # https://git-scm.com/docs/git-config
+  #
+  diffFilter = delta --color-only
 
 [merge]
+
+  # merge.conflictStyle
+  #
+  # Specifies the style in which conflicted hunks are written out in working
+  # tree files. The default option is "merge", which prints `=======` to
+  # demarcateconflicting changes, which are themselves ringfenced by `<<<<<<<`
+  # on one side and `>>>>>>>` on the other.
+  #
+  # An alternate style, "diff3", adds a `|||||||` marker and the original text
+  # before the `=======` marker.
+  #
+  # https://git-scm.com/docs/merge-config
+  #
+  conflictStyle = diff3
 
   # merge.ff
   #
@@ -877,15 +955,15 @@
 
   # merge.tool
   #
-  # Sets default for `git mergetool --tool=[tool]`. For vimdiff, the following 
+  # Sets default for `git mergetool --tool=[tool]`. For vimdiff, the following
   # values are supported:
-  # 
+  #
   # - vimdiff:  use Vim with a custom layout as specified using separate hints
   # - vimdiff1: use Vim with a 2 panes layout: LOCAL and REMOTE
   # - vimdiff2: use Vim with a 3 panes layout: LOCAL, MERGED and REMOTE
   # - vimdiff3: use Vim where only the MERGED file is shown
   #
-	tool = vimdiff3
+  tool = vimdiff3
 
 [mergetool]
 
@@ -893,7 +971,7 @@
   #
   # Don't prompt to open the configured mergetool.
   #
-	prompt = false
+  prompt = false
 
 [pull]
 
