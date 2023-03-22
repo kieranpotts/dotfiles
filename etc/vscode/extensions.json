@@ -10,6 +10,9 @@
     // DotENV
     "mikestead.dotenv",
 
+    // DrawIO
+    "hediet.vscode-drawio",
+
     // Editor Config
     "editorconfig.editorconfig",
 
