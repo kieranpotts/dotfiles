@@ -647,10 +647,15 @@
   # branch's history but is still reachable via `git reflog`, and can therefore
   # be restored if a mistake was made with the reset.
   #
+  # Following the `reset` with the `clean -fd` command will also remove
+  # untracked files recursively throughout the working tree. So the net effect
+  # of these two commands is to completely blow away all changes made since the
+  # last commit, but with the option to undo the undo!!
+  #
   # Source:
   # - https://haacked.com/archive/2014/07/28/github-flow-aliases/
   #
-  undo = "! git add --all && git commit --quiet --message '--SAVEPOINT--' && git reset HEAD~1 --hard #"
+  undo = "! git add --all && git commit --quiet --message '--SAVEPOINT--' && git reset HEAD~1 --hard && git clean -fd#"
 
   # `git unstage`
   #
