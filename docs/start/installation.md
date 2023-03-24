@@ -51,7 +51,7 @@ Follow these steps to install the dotfiles on a new computer for the first time.
 
 5.  **Create links to other configuration files**
 
-    While the `update!` script automates most of the work, some steps need to be performed manually.
+    While the `update!` script automates most of the work, some installation steps must be performed manually.
 
     My Windows Terminal settings are included with these dotfiles, for easy portability between machines. The file is `etc/wt/settings.json`. In order to enable these settings in WT, open Windows Terminal, go to "Settings", and follow the link to "Open JSON File". Now, you have two options. You can either copy-and-paste the contents of `etc/wt/settings.json` into the `settings.json` file that Windows Terminal reads on your computer. Alternatively, you can create a link from WT's `settings.json` file to the `etc/wt/settings.json` file in this repository. To create the link, run Windows Powershell as Administrator, and execute the following command, changing the filesystem paths as necessary:
 

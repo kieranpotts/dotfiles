@@ -33,7 +33,7 @@ You MAY also edit the `~/local.gitignore` file to configure global [Git ignore r
 The `local.bash_profile` file, copied to your home directory, includes the following command:
 
 ```sh
-eval "$(oh-my-posh init bash --config ~/poshthemes/hacks.omp.json 2> /dev/null)"
+eval "$(oh-my-posh init bash --config ~/dotfiles/etc/poshthemes/hacks.omp.json 2> /dev/null)"
 ```
 
 You can change this command to load different themes for your shell's prompt line. More themes can be installed by running the commands below.
@@ -52,7 +52,7 @@ $ rm themes.zip
 Next, change the value of the `--config` parameter to reference a theme file that you want to try out. For example:
 
 ```sh
-eval "$(oh-my-posh init bash --config ~/poshthemes/clean-detailed.omp.json)"
+eval "$(oh-my-posh init bash --config ~/dotfiles/etc/poshthemes/clean-detailed.omp.json)"
 ```
 
 To enable the theme, type `reload!` into your terminal, which will re-source your shell's startup scripts.
