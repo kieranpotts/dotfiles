@@ -1,0 +1,26 @@
+gui:
+  border: 'hidden'
+  showIcons: true # Requires Nerd Font
+  showRandomTip: false
+  sidePanelWidth: 0.333
+  theme:
+    # Color names map to ANSI colors configured in terminal.
+    activeBorderColor:
+      - green
+      - bold
+    inactiveBorderColor:
+      - white
+    optionsTextColor:
+      - blue
+    selectedLineBgColor:
+      - reverse
+    selectedRangeBgColor:
+      - reverse
+    cherryPickedCommitBgColor:
+      - cyan
+    cherryPickedCommitFgColor:
+      - blue
+    unstagedChangesColor:
+      - red
+    defaultFgColor:
+      - default

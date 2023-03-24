@@ -70,3 +70,11 @@ Follow these steps to install the dotfiles on a new computer for the first time.
     ```
 
     The `extensions.json` can be symlinked from the `.vscode` directory of single-folder workspaces. For multi-root workspaces, copy the extension IDs to `extensions.recommendations` in the workspace's `.code-workspace` file, and then enable the extensions through the **Workspace Recommendations** section of the **Extensions** panel. See the VSCode documentation on [workspace recommended extensions](https://code.visualstudio.com/docs/editor/extension-marketplace#_workspace-recommended-extensions) for more details.
+
+    Finally, to use the LazyGit configuration:
+
+    ```powershell
+    New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Roaming\lazygit\config.yml" -Target "C:\path\to\dotfiles\etc\lazygit\config.yml" -Force
+    ```
+
+    See [lazygit's documentation](https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md) for further details.
