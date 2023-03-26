@@ -24,7 +24,12 @@ gui:
       - red
     defaultFgColor:
       - default
+git:
+  branchLogCmd: 'git log --graph --color=always --decorate --date=relative --oneline {{branchName}} --'
+  allBranchesLogCmd: 'git log --graph --all --color=always --decorate --date=relative  --oneline'
 customCommands:
+  # Overrides built-in 'c' hotkey. The built-in 'C' hotkey may still be used to
+  # edit the commit message manually in the default system text editor program.
   - key: 'c'
     description: 'commit using SrcFlow convention'
     command: 'git commit --message="{{index .PromptResponses 0}}: {{index .PromptResponses 1}}"'
@@ -34,7 +39,7 @@ customCommands:
       - type: 'menu'
         title: 'What kind of change is this?'
         options:
-          - value: 'attribute'
+          - value: 'attribute' # "property"?
           - value: 'experiment'
           - value: 'feature'
           - value: 'fix'
