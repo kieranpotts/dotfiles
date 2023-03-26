@@ -1,7 +1,5 @@
 gui:
   border: 'hidden'
-  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --"
-  allBranchesLogCmd: 'git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium'
   showIcons: true # Requires Nerd Font
   showRandomTip: false
   sidePanelWidth: 0.333
