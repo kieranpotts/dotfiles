@@ -24,3 +24,22 @@ gui:
       - red
     defaultFgColor:
       - default
+customCommands:
+  - key: 'c'
+    description: 'commit using SrcFlow convention'
+    command: 'git commit --message="{{index .PromptResponses 0}}: {{index .PromptResponses 1}}"'
+    context: 'files'
+    subprocess: true
+    prompts:
+      - type: 'menu'
+        title: 'What kind of change is this?'
+        options:
+          - value: 'attribute'
+          - value: 'experiment'
+          - value: 'feature'
+          - value: 'fix'
+          - value: 'maintenance'
+          - value: 'refactor'
+      - type: 'input'
+        title: 'Describe the change briefly (lower case text)'
+        initialValue: ''
