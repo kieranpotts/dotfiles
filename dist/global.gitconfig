@@ -771,6 +771,19 @@
   #
   autocrlf = false
 
+  # core.editor
+  #
+  # Configure the default text editor that Git will use when it needs you to
+  # edit a file or type an extended input message. If not configured, Git
+  # uses your system's default editor.
+  #
+  # Note: LazyGit will also read this setting and use the configured editor
+  # for file editing operations.
+  #
+  # https://www.git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config#ch_core_editor
+  #
+	editor = vim --nofork
+
   # core.eol
   #
   # Normalizes the line endings to the Unix standard (LF) on all files that Git
