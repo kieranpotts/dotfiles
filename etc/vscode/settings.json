@@ -20,7 +20,7 @@
   // Editor font.
   "editor.fontFamily": "Hack, monospace",
   "editor.fontLigatures": true,
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.fontWeight": "400",
 
   // Disable various auto-formatting mechanisms in the code editor.
