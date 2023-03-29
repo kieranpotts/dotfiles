@@ -926,11 +926,12 @@
   # on one side and `>>>>>>>` on the other.
   #
   # An alternate style, "diff3", adds a `|||||||` marker and the original text
-  # before the `=======` marker.
+  # before the `=======` marker. This is not recommended since not all
+  # mainstream merge tools understand this syntax.
   #
   # https://git-scm.com/docs/merge-config
   #
-  conflictStyle = diff3
+  # conflictStyle = diff3
 
   # merge.ff
   #
@@ -981,9 +982,16 @@
   # - vimdiff2: use Vim with a 3 panes layout: LOCAL, MERGED and REMOTE
   # - vimdiff3: use Vim where only the MERGED file is shown
   #
-  tool = vimdiff3
+  tool = vimdiff2
 
 [mergetool]
+
+  # mergetool.keepBackup
+  #
+  # Prevent generation of `.orig` files, which can all-too-easily get committed
+  # to source control by accident.
+  #
+  keepBackup = false
 
   # mergetool.prompt
   #
