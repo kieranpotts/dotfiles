@@ -1,12 +1,11 @@
 #!/bin/sh
 
 # ==============================================================================
-# Script for showing files that have changes staged for committing. This command
-# lists the named and status (Added, Modified, Deleted) or each file.
+# Script for showing files that have changes staged for committing.
 #
 # See also the `git-working` script, which lists files with unstaged changes in
 # the repository's working tree, and `git-changed` which lists all changed
 # files (unstaged + staged).
 # ==============================================================================
 
-git diff --name-status --staged HEAD
+git diff --stat --staged HEAD

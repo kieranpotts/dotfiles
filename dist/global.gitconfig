@@ -399,7 +399,7 @@
   #
   # Show detailed information on the last commit (`-1`).
   #
-  last = log -1 HEAD --stat
+  ; last = log -1 HEAD --stat
 
   # `git maint "[comment]"`
   #

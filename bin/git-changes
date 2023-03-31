@@ -2,22 +2,19 @@
 
 # ==============================================================================
 # Script for showing all changes in a Git repository since the last commit,
-# including both staged and unstaged (working) changes. This command lists
-# the names of files that contain changes, and the status of each: Added,
-# Modified or Deleted.
+# including both staged and unstaged (working) changes.
 #
 # See also `git-staged`, which lists only staged changes, and `git-working`,
 # which lists unstaged changes.
 #
 # If a commit hash is provided as an input parameter, this command will
 # instead list the files that were committed with changes in the given
-# commit.
-#
-# See `~/.gitconfig` for usage instructions.
+# commit. See also `git-last`, a shortcut for showing details information on
+# changes introduced in the last commit.
 # ==============================================================================
 
 if [ -z "${1}" ]; then
-  git diff --name-status HEAD
+  git diff --stat HEAD
 else 
-  git diff --name-status "$1^".."$1"
+  git diff --stat "$1^".."$1"
 fi

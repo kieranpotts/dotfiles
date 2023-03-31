@@ -2,11 +2,10 @@
 
 # ==============================================================================
 # Script for showing files in a Git repository that have been changed in the
-# working tree but have not yet had all their changes staged. The command lists
-# the names and states (Added, Modified, Deleted) of each working file.
+# working tree but have not yet had all their changes staged.
 #
 # See also `git-staged`, which shows the changes staged for committing, and
 # `git-changes`, whcih shows staged + unstaged (working) changes.
 # ==============================================================================
 
-git diff --name-status
+git diff --stat
