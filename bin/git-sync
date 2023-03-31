@@ -1,10 +1,38 @@
 #!/bin/sh
 
 # ==============================================================================
-# Script for syncing the current checked out Git branch with the branch it
-# tracks in the upstream "origin" repository.
+# Git alias that combines `pull` and `push` operations to sync the current
+# checked out Git branch with the upstream branch it tracks.
 #
-# See `~/.gitconfig` for usage instructions.
+# Usage:
+#
+# ```
+# git sync
+# ```
+#
+# The behavior of this alias is equivalent to VSCode's branch syncing
+# operation, and it is equivalent to chaining the `git down &&  git up`
+# aliases. By using the rebasing strategy on `pull`, it maintains a
+# linear commit history even if there is divergent work between the local
+# and upstream branches.
+#
+# `git pull --rebase` will fail if the local branch does not yet track an
+# upstream branch. So this command is run only if tracking is already
+# established for the branch. If it is, the existing tracking is maintained –
+# this supports the local and tracked upstream branches having different names.
+#
+# If tracking is not yet established for the local branch, only a `push` is
+# done. The local branch is pushed to a branch of the same name in the
+# "origin" remote, and tracking is established for next time.
+#
+# Anything in the staging index plus working changes (including new as-yet
+# untracked files) are temporarily stashed. (We check the stash counts to make
+# sure we don't reapply work that was stashed earlier.) By temporarily
+# stashing work-in-progress we can pull remote updates into a dirty local
+# tree.
+#
+# This command works only after an initial commit has been made to the local
+# repository.
 # ==============================================================================
 
 initialStashCount=$(git rev-list --walk-reflogs --count refs/stash 2> /dev/null)

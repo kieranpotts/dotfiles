@@ -1,13 +1,23 @@
 #!/bin/sh
 
 # ==============================================================================
-# Script for committing implementations of non-functional requirements or
+# Git alias for committing implementations of non-functional requirements or
 # otherwise improving non-quality attributes such as performance and security.
 #
-# See `~/.gitconfig` for usage instructions.
+# Usage:
+# 
+# ```
+# git attribute ("[comment]")
+# ```
 # ==============================================================================
 
-if [ -z "${1}" ]; then
+msg="${1}"
+
+if [ -z "${msg}" ]; then
+  read -p "Type a short commit message: " msg
+fi
+
+if [ -z "${msg}" ]; then
   echo "Require commit message" >&2
   exit 1
 fi
@@ -19,7 +29,7 @@ git add --all
 VERIFY=${X_GIT_COMMIT_VERIFY:-1}
 
 if [ "$VERIFY" -eq "0" ]; then
-  git commit --quiet --no-verify --message "attribute: ${1}";
+  git commit --quiet --no-verify --message "attribute: ${msg}"
 else
-  git commit --quiet --message "attribute: ${1}";
+  git commit --quiet --message "attribute: ${msg}"
 fi

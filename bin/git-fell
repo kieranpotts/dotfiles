@@ -1,10 +1,35 @@
 #!/bin/sh
 
 # ==============================================================================
-# Script to delete any local branches that have been merged into the default
+# Git alias to delete any local branches that have been merged into the default
 # branch, or that have been merged into another specified mainline branch.
 #
-# See `~/.gitconfig` for usage instructions.
+# Usage:
+#
+# ```
+# git fell ([main-branch])
+# ```
+#
+# It works like this:
+#
+# 1. Get a list of branches that have been merged into the specified branch,
+#    falling back on the default branch if there are no parameters.
+# 2. Use `grep -v` to print a list of branch names that DO NOT match the
+#    name of the target branch branch.
+# 3. Pipe this to `xargs`, which takes the standard input and executes the
+#    command `git branch --delete` for each line.
+# 4. In the event that all branches have been merged, the `branch --delete`
+#    operation will error with the message "fatal: branch name required".
+#    We can safely silence this output to stderr.
+#
+# This alias does not delete any corresponding upstream branches. This would
+# be a too-dangerous operation to automate, in case there are other shared
+# mainline tracks besides the default branch.
+#
+# Sources:
+# - https://haacked.com/archive/2014/07/28/github-flow-aliases/
+# - https://stackoverflow.com/a/18380712
+# - https://stackoverflow.com/a/41465769
 # ==============================================================================
 
 # Get default branch (see `default` Git alias).

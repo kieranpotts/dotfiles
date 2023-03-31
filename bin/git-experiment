@@ -1,12 +1,22 @@
 #!/bin/sh
 
 # ==============================================================================
-# Script for committing experimental work.
+# Git alias for committing experimental work, eg from technical spikes.
 #
-# See `~/.gitconfig` for usage instructions.
+# Usage:
+#
+# ```
+# git experiment ("[comment]")
+# ```
 # ==============================================================================
 
-if [ -z "${1}" ]; then
+msg="${1}"
+
+if [ -z "${msg}" ]; then
+  read -p "Type a short commit message: " msg
+fi
+
+if [ -z "${msg}" ]; then
   echo "Require commit message" >&2
   exit 1
 fi
@@ -18,7 +28,7 @@ git add --all
 VERIFY=${X_GIT_COMMIT_VERIFY:-1}
 
 if [ "$VERIFY" -eq "0" ]; then
-  git commit --quiet --no-verify --message "experiment: ${1}";
+  git commit --quiet --no-verify --message "experiment: ${1}"
 else
-  git commit --quiet --message "experiment: ${1}";
+  git commit --quiet --message "experiment: ${1}"
 fi

@@ -1,9 +1,49 @@
 #!/bin/sh
 
 # ==============================================================================
-# Script for getting the name of the default branch in the upstream repository.
+# Git alias for getting the name of the default branch in the upstream
+# repository.
 #
-# See `~/.gitconfig` for usage instructions.
+# Usage:
+#
+# ```
+# git default
+# ```
+#
+# This alias parses the local `origin/HEAD` reference, which points to the
+# name of the default branch in the upstream "origin" repository.
+#
+# WARNING: The `origin/HEAD` ref can become out-of-date. It is set when you
+# `git clone` the upstream repository, and is not subsequently updated - it
+# is not changed by commands like `git fetch` or `git remote update`.
+# Therefore, if the default branch is subsequently changed in the reference
+# repository, it will need to be manually updated in all the clones for
+# this alias to work correctly.
+#
+# The easiest way to update the `origin/HEAD` ref is to run the following
+# command in the local repository. This command updates local knowledge of
+# what the remote considers to be the default branch.
+#
+# ```
+# git remote set-head origin --auto|-a
+# ```
+#
+# (NOTE: Prior to Git v1.8, the above command could set the `origin/HEAD` ref
+# incorrectly, due to potential ambiguity over what is the default branch when
+# the upstream `HEAD` referenes a commit SHA that is at the tip of more than
+# one branch. This issue is now resolved in Git and we can rely on `git clone`
+# and the above command setting `origin/HEAD` correctly in clones.)
+#
+# Alternatively, you can manually edit your `.git/refs/remotes/origin/HEAD`
+# file. If your default branch is named "dev", the contents of this file
+# should be:
+#
+# ```
+# ref: refs/remotes/origin/dev
+# ```
+#
+# Sources:
+# - https://haacked.com/archive/2014/07/28/github-flow-aliases/
 # ==============================================================================
 
 git remote set-head origin --auto > /dev/null

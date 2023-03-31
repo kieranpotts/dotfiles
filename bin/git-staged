@@ -1,11 +1,17 @@
 #!/bin/sh
 
 # ==============================================================================
-# Script for showing files that have changes staged for committing.
+# Git alias to show files that have changes staged for committing.
+#
+# Usage:
+#
+# ```
+# git staged
+# ```
 #
 # See also the `git-working` script, which lists files with unstaged changes in
-# the repository's working tree, and `git-changed` which lists all changed
-# files (unstaged + staged).
+# the repository's working tree, and `git-changes`, which lists all files
+# changed since the last commit, whether or not those changes have been staged.
 # ==============================================================================
 
 git diff --stat --staged HEAD

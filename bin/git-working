@@ -1,11 +1,17 @@
 #!/bin/sh
 
 # ==============================================================================
-# Script for showing files in a Git repository that have been changed in the
-# working tree but have not yet had all their changes staged.
+# Git alias for listing files that have been changed in the working tree since
+# the last commit, but have not yet had all their changes staged.
+#
+# Usage:
+#
+# ```
+# git working
+# ```
 #
 # See also `git-staged`, which shows the changes staged for committing, and
-# `git-changes`, whcih shows staged + unstaged (working) changes.
+# `git-changes`, whcih shows staged + unstaged/working changes.
 # ==============================================================================
 
 git diff --stat

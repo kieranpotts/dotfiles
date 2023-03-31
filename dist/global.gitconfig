@@ -40,13 +40,6 @@
   #
   amend = ! git add --all && git commit --amend --no-edit --quiet
 
-  # `git attr(ibute) "[comment]"`
-  #
-  # Shortcut for committing changes that improve quality attributes or implement
-  # non-functional requirements.
-  #
-  ;attribute = ! sh ~/bin/git-attribute.sh
-
   # `git br [branch_name]`
   #
   # Create a branch, switch to it, and push upstream immediately.
@@ -91,22 +84,6 @@
   #
   cm = ! git add --all && git commit --quiet
 
-  # `git changed [hash]`
-  #
-  # List the files added, deleted or changed in a specific commit.
-  #
-  ;changesin = "! f() { git diff --name-status \"$1^\"..\"$1\"; }; f"
-
-  # `git changes`
-  #
-  # Shows files staged for committing. Lists names and status (Added, Modified,
-  # Deleted) of changed files.
-  #
-  # The `git staged` alias is identical. See also `git working` which shows the
-  # current unstaged changes (working tree or working copy).
-  #
-  ;changes = diff --name-status --staged HEAD
-
   # `git cl`
   #
   # Shortcut for `git clone`.
@@ -146,47 +123,6 @@
   #
   ; current = rev-parse --abbrev-ref HEAD # Git < 2.22
   current = branch --show-current
-
-  # `git default`
-  #
-  # Fetches the name of the default branch, as configured in the "origin" repo.
-  #
-  # This alias parses the local `origin/HEAD` reference, which points to the
-  # name of the default branch in the upstream "origin" repository.
-  #
-  # WARNING: The `origin/HEAD` ref can become out-of-date. It is set when you
-  # `git clone` the upstream repository, and is not subsequently updated - it
-  # is not changed by commands like `git fetch` or `git remote update`.
-  # Therefore, if the default branch is subsequently changed in the reference
-  # repository, it will need to be manually updated in all the clones for
-  # this alias to work correctly.
-  #
-  # The easiest way to update the `origin/HEAD` ref is to run the following
-  # command in the local repository. This command updates local knowledge of
-  # what the remote considers to be the default branch.
-  #
-  # ```
-  # git remote set-head origin --auto|-a
-  # ```
-  #
-  # (NOTE: Prior to Git v1.8, the above command could set the `origin/HEAD` ref
-  # incorrectly, due to potential ambiguity over what is the default branch when
-  # the upstream `HEAD` referenes a commit SHA that is at the tip of more than
-  # one branch. This issue is now resolved in Git and we can rely on `git clone`
-  # and the above command setting `origin/HEAD` correctly in clones.)
-  #
-  # Alternatively, you can manually edit your `.git/refs/remotes/origin/HEAD`
-  # file. If your default branch is named "dev", the contents of this file
-  # should be:
-  #
-  # ```
-  # ref: refs/remotes/origin/dev
-  # ```
-  #
-  # Sources:
-  # - https://haacked.com/archive/2014/07/28/github-flow-aliases/
-  #
-  ;default = ! sh ~/bin/git-default.sh
 
   # `git delete [branch_name]`
   #
@@ -256,51 +192,6 @@
   #
   download = fetch --all --tags --prune --prune-tags
 
-  # `git experiment "[comment]"`
-  #
-  # Shortcut for committing experimental work, eg from technical spikes.
-  #
-  ;experiment = ! sh ~/bin/git-experiment.sh
-
-  # `git feature "[comment]"`
-  #
-  # Shortcut for committing functional changes.
-  #
-  ;feature = ! sh ~/bin/git-feature.sh
-
-  # `git fell ([main_branch])`
-  #
-  # Delete any local branches that have been merged into the default branch,
-  # or that have been merged into another specified mainline branch.
-  #
-  # Usage:
-  #
-  # - `git fell`
-  # - `git fell [main_branch]`
-  #
-  # It works like this:
-  #
-  # 1. Get a list of branches that have been merged into the specified branch,
-  #    falling back on the default branch if there are no parameters.
-  # 2. Use `grep -v` to print a list of branch names that DO NOT match the
-  #    name of the target branch branch.
-  # 3. Pipe this to `xargs`, which takes the standard input and executes the
-  #    command `git branch --delete` for each line.
-  # 4. In the event that all branches have been merged, the `branch --delete`
-  #    operation will error with the message "fatal: branch name required".
-  #    We can safely silence this output to stderr.
-  #
-  # This alias does not delete any corresponding upstream branches. This would
-  # be a too-dangerous operation to automate, in case there are other shared
-  # mainline tracks besides the default branch.
-  #
-  # Sources:
-  # - https://haacked.com/archive/2014/07/28/github-flow-aliases/
-  # - https://stackoverflow.com/a/18380712
-  # - https://stackoverflow.com/a/41465769
-  #
-  ;fell = ! sh ~/bin/git-fell.sh
-
   # `git fetched`
   #
   # List all new commits since the last update to HEAD.
@@ -317,12 +208,6 @@
   # List all the commits that have modified a specific file.
   #
   filelog = "! f() { git log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit -- \"$1\"; }; f"
-
-  # `git fix "[comment]"`
-  #
-  # Shortcut for committing bug fixes.
-  #
-  ;fix = ! sh ~/bin/git-fix.sh
 
   # `git fixup`
   #
@@ -359,7 +244,7 @@
   #
   fixup = "! f() { REV=$(git rev-parse ${1:-HEAD}) && git add --all && git commit --quiet --fixup=${REV} ${@:2} && git rebase --interactive --autosquash ${REV}~1; }; f"
 
-  # `git ff|fast-forward`
+  # `git ff`
   #
   # Do a fast-forward merge.
   #
@@ -367,8 +252,7 @@
   # branch that is not in the target branch. In this situation, the current
   # branch much be rebased on the target branch beforehand.
   #
-  fast-forward = merge --ff-only
-  ff = fast-forward
+  ff = merge --ff-only
 
   # `git graph`
   #
@@ -394,21 +278,6 @@
   # https://git-scm.com/docs/gitk
   #
   k = ! gitk
-
-  # `git last`
-  #
-  # Show detailed information on the last commit (`-1`).
-  #
-  ; last = log -1 HEAD --stat
-
-  # `git maint "[comment]"`
-  #
-  # Shortcut for committing maintenance work.
-  #
-  # Note, we can't use the alias "maintenance" as this already exists as a
-  # built-in Git command.
-  #
-  ;maint = ! sh ~/bin/git-maint.sh
 
   # `git orphan`
   #
@@ -446,12 +315,6 @@
   # Equivalent to the `git history` alias but limited to the last 25 commits.
   #
   recent = log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit --max-count=25
-
-  # `git refactor "[comment]"`
-  #
-  # Shortcut for committing refactoring work.
-  #
-  ;refactor = ! sh ~/bin/git-refactor.sh
 
   # `git remotes`
   #
@@ -523,16 +386,6 @@
   #
   squash = merge --ff --squash
 
-  # `git staged`
-  #
-  # Shows files staged for committing. Lists names and status (Added, Modified,
-  # Deleted) of changed files.
-  #
-  # The `git changes` alias is identical. See also `git working` which shows the
-  # current unstaged changes (working tree or working copy).
-  #
-  ;staged = diff --name-status --staged HEAD
-
   # `git stashed`
   #
   # Show the current number of entries in the stash.
@@ -544,36 +397,6 @@
   # Shortcut for `git switch`.
   #
   sw = switch
-
-  # `git sync`
-  #
-  # Sync the local and tracked upstream branches by combining `pull` and `push`.
-  #
-  # The behavior of this alias is equivalent to VSCode's branch syncing
-  # operation, and it is equivalent to chaining the `git down &&  git up`
-  # operations. By using the rebasing strategy on `pull`, it maintains a
-  # linear commit history even if there is divergent work between the local
-  # and upstream branches.
-  #
-  # `git pull --rebase` will fail if the local branch does not yet track an
-  # upstream branch. So this command is run only if tracking is already
-  # established for the branch. If it is, the existing tracking is maintained –
-  # this supports the local and tracked upstream branches having different names.
-  #
-  # If tracking is not yet established for the local branch, only a `push` is
-  # done. The local branch is pushed to a branch of the same name in the
-  # "origin" remote, and tracking is established for next time.
-  #
-  # Anything in the staging index plus working changes (including new as-yet
-  # untracked files) are temporarily stashed. (We check the stash counts to make
-  # sure we don't reapply work that was stashed earlier.) By temporarily
-  # stashing work-in-progress we can pull remote updates into a dirty local
-  # tree.
-  #
-  # This command works only after an initial commit has been made to the local
-  # repository.
-  #
-  ;sync = ! sh ~/bin/git-sync.sh
 
   # `git tags`
   #
@@ -602,7 +425,7 @@
   # Same as `git branches` but shows tracked upstream branches, too.
   #
   # Use `git upstream` to get only the name of the upstream branch that is
-  # tracked by the current checked out downstream branch.
+  # tracked by the current checked-out downstream branch.
   #
   tracking = for-each-ref --sort='authordate:iso8601' --format='  %(color:green)%(authordate:relative)%09%(color:white)%(refname:short) %(color:cyan)➔ %(upstream:short)' refs/heads
 
@@ -733,34 +556,6 @@
   # List tags prefixed with the lower case letter "v", sorted numerically.
   #
   versions = tag --list --sort=-version:refname v*
-
-  # `git wip ("[comment]")`
-  #
-  # Shortcut for saving work-in-progress.
-  #
-  # If an unset-or-empty commit message is provided, "WIP" becomes the commit
-  # message, else " - WIP" is appended to the custom message. For example,
-  # the command `git wip "My commit message"` produces a new commit with the
-  # log message "My commit message - WIP".
-  #
-  # Temporarily disables commit hooks, which may run time-consuming validation
-  # routines.
-  #
-  # WIP commits are intended for backup purposes and to be fixed-up manually
-  # later, or ultimately squashed into another branch. `git fixup` provides
-  # an alternative workflow for WIP.
-  #
-  ;wip = ! sh ~/bin/git-wip.sh
-
-  # `git working`
-  #
-  # Shows files in the working tree (ie unstaged changes). Lists names and
-  # status (Added, Modified, Deleted) of changed files.
-  #
-  # See also `git staged` which shows the changes staged for committing,
-  # and `git changes` which shows staged + unstaged (working) changes.
-  #
-  ;working = diff --name-status
 
 [core]
 

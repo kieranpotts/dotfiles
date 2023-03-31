@@ -1,8 +1,13 @@
 #!/bin/sh
 
 # ==============================================================================
-# Script for showing a detailed view of changes introduced in the last commit
-# (`-1`).
+# Git alias to show a detailed view of changes introduced in the last commit.
+#
+# Usage:
+#
+# ```
+# git last
+# ```
 # ==============================================================================
 
 git log -1 HEAD --stat

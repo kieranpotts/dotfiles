@@ -1,9 +1,22 @@
 #!/bin/sh
 
 # ==============================================================================
-# Script for quickly saving work-in-progress in a Git repository.
+# Git alias for quickly saving work-in-progress.
 #
-# See `~/.gitconfig` for usage instructions.
+# Usage:
+#
+# ```
+# git wip ("[comment]")
+# ```
+#
+# If an unset-or-empty commit message is provided, "WIP" becomes the commit
+# message, else " - WIP" is appended to the custom message. For example,
+# the command `git wip "My commit message"` produces a new commit with the
+# log message "My commit message - WIP".
+#
+# WIP commits are intended for backup purposes and to be fixed-up manually
+# later, or ultimately squashed into another branch. `git fixup` provides
+# an alternative workflow.
 # ==============================================================================
 
 git add --all
@@ -17,5 +30,3 @@ if [ "$VERIFY" -eq "0" ]; then
 else
   git commit --quiet --message "${1:-WIP}${1+ - WIP}"
 fi
-
-
