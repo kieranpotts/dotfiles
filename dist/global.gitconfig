@@ -95,7 +95,7 @@
   #
   # List the files added, deleted or changed in a specific commit.
   #
-  changed = "! f() { git diff --name-status \"$1^\"..\"$1\"; }; f"
+  ;changesin = "! f() { git diff --name-status \"$1^\"..\"$1\"; }; f"
 
   # `git changes`
   #
@@ -105,7 +105,7 @@
   # The `git staged` alias is identical. See also `git working` which shows the
   # current unstaged changes (working tree or working copy).
   #
-  changes = diff --name-status --staged HEAD
+  ;changes = diff --name-status --staged HEAD
 
   # `git cl`
   #
@@ -531,7 +531,7 @@
   # The `git changes` alias is identical. See also `git working` which shows the
   # current unstaged changes (working tree or working copy).
   #
-  staged = diff --name-status --staged HEAD
+  ;staged = diff --name-status --staged HEAD
 
   # `git stashed`
   #
@@ -757,9 +757,10 @@
   # Shows files in the working tree (ie unstaged changes). Lists names and
   # status (Added, Modified, Deleted) of changed files.
   #
-  # See also `git staged` which shows the changes staged for committing.
+  # See also `git staged` which shows the changes staged for committing,
+  # and `git changes` which shows staged + unstaged (working) changes.
   #
-  working = diff --name-status
+  ;working = diff --name-status
 
 [core]
 
