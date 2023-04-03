@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# ==============================================================================
+# Alias for a quick Git fixup workflow. Use this to fix mistakes made in
+# prior commits.
+#
+# Creates a "fixup!" commit from the staging index + working tree, and
+# immediately rebases to squash the changes into the target commit. The
+# original commit message is preserved.
+#
+# Usage examples:
+#
+# - `git fixup` or `git fixup HEAD` to fix the last commit
+# - `git fixup HEAD^` to fix the last-but-one commit
+# - `git fixup [sha]` to fix a prior commit
+# - `git fixup :/foo` to fix the most recent commit with "foo" in the message
+#
+# The outcome of `git fixup (HEAD)` will be identical to `git amend`.
+#
+# Additional parameters will be forwarded to the `commit` command.
+#
+# Sources:
+# - https://gist.github.com/simonwagner/9552064
+# - https://gist.github.com/peschee/6e8f490167037cb2a3489052501ae0bb
+# - https://words.filippo.io/git-fixup-amending-an-older-commit/
+# - https://medium.com/quick-code/useful-git-alias-926f27a27f92
+# - http://stackoverflow.com/a/21148981/460564
+# - https://stackoverflow.com/a/65305169
+#
+# See:
+# - https://greich.com/2021/10/08/git-fixup-clean-history/
+# - https://dev.to/koffeinfrei/the-git-fixup-workflow-386d
+# - https://stackoverflow.com/questions/3103589/
+# - https://git-scm.com/docs/git-rev-parse
+# ==============================================================================
+
+REV=$(git rev-parse ${1:-HEAD})
+git add --all
+git commit --quiet --fixup=${REV} ${@:2}
+git rebase --interactive --autosquash ${REV}~1

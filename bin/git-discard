@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to discard working changes made to one or more fils since the last
+# commit.
+#
+# Usage:
+#
+# ```
+# git discard [file1] [file2]...
+# ```
+#
+# This is equivalent of the undo operation in VSCode's built-in Git GUI.
+#
+# Multiple file paths may be inputted, but additional options are not accepted
+# (they are disabled by the double hyphen `--` which marks the start of the
+# file list).
+#
+# This is a destructive operation. If you accidentally discard working
+# changes, they cannot be retrieved.
+# ==============================================================================
+
+# TODO: Use same SAVEPOINT strategy as for `git undo`?
+
+if [ -z "${1}" ]; then
+  echo "Require at least one file" >&2
+  exit 1
+fi
+
+git checkout -q -- ${@:1}

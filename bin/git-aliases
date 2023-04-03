@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to list all configured aliases.
+#
+# Aliases are listed in the order in which they are configured in Git config.
+# This does not capture aliases that are enabled by adding `git-*` files to 
+# the system PATH.
+#
+# Usage:
+#
+# ```
+# git xxx
+# ```
+# ==============================================================================
+
+# TODO: Pretty-print the full list of aliases.
+
+# git config --get-regexp ^alias\\. | sed --expression s/^alias\\.// --expression s/\\ /\\ =\\ /

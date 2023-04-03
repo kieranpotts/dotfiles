@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to create a new branch with no parents, and remove all working
+# changes. This is useful to start a fresh trunk that is not based on any
+# previous work.
+#
+# Usage:
+#
+# ```
+# git orphan-fresh ([branch-name])
+# ```
+# ==============================================================================
+
+# TODO: Combine this with `git orphan`. If there are working/staged changes, 
+# prompt the use to keep or discard them.
+
+branch="${1}"
+
+if [ -z "${branch}" ]; then
+  read -p "Type a branch name: " branch
+fi
+
+if [ -z "${branch}" ]; then
+  echo "Require branch name" >&2
+  exit 1
+fi
+
+git switch --orphan "${branch}"

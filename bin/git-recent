@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# ==============================================================================
+# Alias for `git log`. This is identical to `git history` except the output is
+# restricted to the last 25 entries, and therefore is not paged.
+#
+# Usage:
+#
+# ```
+# git recent
+# ```
+# ==============================================================================
+
+git log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit --max-count=25

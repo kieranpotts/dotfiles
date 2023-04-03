@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to list all the new commits since the last update to HEAD.
+#
+# This command is useful to see what has been committed locally since the last
+# `git fetch` operation.
+#
+# Additional parameters will be passed to `git log`. Append `--no-merges` to
+# exclude merge commits from the log.
+#
+# Usage:
+#
+# ```
+# git fetched ([params...])
+# ```
+# ==============================================================================
+
+git log ORIG_HEAD.. --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit ${@:1}

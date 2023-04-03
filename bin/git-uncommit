@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to undo the last commit, discarding the commit object but re-staging
+# the commit's changes, ready for re-commit.
+#
+# Usage:
+#
+# ```
+# git uncommit
+# ```
+#
+# Combine with `git undo` to fully delete the changes. Running both commands,
+# `git uncommit && git undo`, is equivalent to doing `git reset HEAD~1 --hard`.
+# ==============================================================================
+
+git reset HEAD~1 --soft

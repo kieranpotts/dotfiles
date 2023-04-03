@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to update local objects and refs (ie branches and tags) to match
+# all remotes.
+#
+# This command also removes any refs from the local repository that no longer
+# exist in any remote, including tags. Careful, any tags newly-created in the
+# downstream repository will be deleted unless they have been already pushed
+# upstream. Local branches will not be deleted, however – only references to
+# branches in the upstream repository are deleted.
+#
+# Usage:
+#
+# ```
+# git download
+# ```
+# ==============================================================================
+
+git fetch --all --tags --prune --prune-tags

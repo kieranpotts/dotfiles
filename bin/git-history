@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# ==============================================================================
+# Alias for `git log` with more concise output.
+#
+# Usage:
+#
+# ```
+# git history
+# ```
+#
+# See also `git recent`, which limits the output to the last 25 log entries.
+# ==============================================================================
+
+git log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit

@@ -28,8 +28,7 @@ git add --all
 VERIFY=${X_GIT_COMMIT_VERIFY:-1}
 
 if [ "$VERIFY" -eq "0" ]; then
-  git commit --quiet --no-verify --message "feature: ${1}"
+  git commit --quiet --no-verify --message "feature: ${msg}"
 else
-  git commit --quiet --message "feature: ${1}"
+  git commit --quiet --message "feature: ${msg}"
 fi
-

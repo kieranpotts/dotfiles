@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# ==============================================================================
+# Alias for `git status`, providing a short-format view of the working tree's
+# current state, with branch and tracking information added.
+#
+# Usage:
+#
+# ```
+# git state
+# ```
+# ==============================================================================
+
+git status --short --branch

@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to perform a fast-forward merge.
+#
+# Usage:
+#
+# ```
+# git ff
+# ```
+#
+# This operation fails if there is divergent work in the current (source) branch
+# that is not in the target branch. In this situation, the current branch must
+# be rebased on the target branch beforehand.
+# ==============================================================================
+
+branch="${1}"
+
+if [ -z "${branch}" ]; then
+  read -p "Type a branch name: " branch
+fi
+
+if [ -z "${branch}" ]; then
+  echo "Require branch name" >&2
+  exit 1
+fi
+
+git merge --ff-only "${branch}"

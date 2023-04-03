@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# ==============================================================================
+# Alias for `git add`. Adds specific files, defined by a path pattern, to the
+# staging index
+#
+# Usage:
+#
+# ```
+# # Add all changes in whole working tree
+# git add (--all|-A)
+#
+# # Add all changes in current path
+# git add .
+#
+# # Add one or more specific files
+# git add path/to/file.ext
+# ```
+# ==============================================================================
+
+path="${1}"
+
+if [ -z "${path}" ]; then
+  git add --all
+elif
+  git add "${path}"
+fi

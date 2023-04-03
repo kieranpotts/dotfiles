@@ -1,0 +1,58 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias for performing `merge --squash` operation.
+#
+# This alias is designed to work regardless of the `merge.ff` setting. A
+# simple implementation would be:
+#
+# ```
+# git merge --squash
+# ```
+#
+# However, this fails if the `merge.ff` setting has the value `false`. This
+# is equivalent to using the `--no-ff` flag and this can't be used with
+# `--squash`. That's because you're asking Git to record an explicit merge
+# commit (`--no-ff`) and create a new normal commit (`--squash`) at the same
+# time. This mix of options doesn't make sense – it is explained well here:
+# https://stackoverflow.com/a/14322024
+#
+# The `--squash` option also does not always play nicely when `merge.ff` is
+# set to "only". It is possible to combine `--squash` with `--ff-only` and
+# much of the time this works perfectly well. However, with this combination,
+# if both branches have unique commits, the "fast-forward only" test will fail
+# and therefore the subsequent squash operation will not happen. This
+# constraint is rarely useful, because conflicts could be resolved manually
+# and included in the squash commit.
+#
+# The solution is to combine the `--squash` flag with the `--ff` flag. This
+# is equivalent to setting `merge.ff` to `true` which disables the check to
+# perform the merge only if a fast-forward is possible. Conflicts will need
+# to be resolved manually.
+#
+# Note, the StackOverflow answer linked below suggests using the following
+# command. This uses the `-c` parameter to make a one-time configuration
+# change, overriding the default `merge.ff` setting. However, in testing it
+# seems sufficient to just use the `--ff` flag, which achieves the same thing.
+#
+# ```
+# squash = -c merge.ff=true merge --squash
+# ```
+#
+# Sources:
+# - https://stackoverflow.com/questions/36486966/
+#
+# ==============================================================================
+
+branch="${1}"
+
+if [ -z "${branch}" ]; then
+  read -p "Type a branch name: " branch
+fi
+
+if [ -z "${branch}" ]; then
+  echo "Require branch name" >&2
+  exit 1
+fi
+
+git merge --ff --squash "${branch}"

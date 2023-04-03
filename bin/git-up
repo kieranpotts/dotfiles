@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to push commits and tags to the upstream "origin" repository. Setup
+# branch tracking if it is not already established.
+#
+# Usage:
+#
+# ```
+# git up
+# ```
+#
+# This command assumes that the tracked upstream branch will always have
+# an identical name to the local one.
+#
+# See also the `git down` alias, with mirrors this one, and `git sync`,
+# which combines the two into a single operation.
+# ==============================================================================
+
+# TODO: Only set the upstream branch if it is not already set. 
+
+git push --set-upstream origin HEAD --follow-tags

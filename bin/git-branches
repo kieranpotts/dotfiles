@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to list all branches by order of last commit.
+#
+# Usage:
+#
+# ```
+# git branches
+# ```
+#
+# This is an alternative to `git branch`. It has nicer formatting and the
+# ordering is more useful. The most-recently revised branches are at the
+# bottom of the list.
+# ==============================================================================
+
+git for-each-ref --sort='authordate:iso8601' --format='  %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads

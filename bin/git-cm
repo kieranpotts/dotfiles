@@ -1,16 +1,20 @@
 #!/bin/sh
 
 # ==============================================================================
-# Git alias for committing maintenance work.
+# Git alias to stage and commit all changes in the working tree.
 #
 # Usage:
 #
 # ```
-# git maint ("[comment]")
+# git cm ("[comment]")
 # ```
 #
-# Note, we can't use the alias "maintenance" as this already exists as a
-# built-in Git command.
+# Both tracked and untracked files that have been added or modified in the
+# working tree are added to the repository's staging index, and then
+# immediately committed – this is a common Git workflow.
+#
+# Files that should remain untracked will need to be added to `gitignore`
+# rules. See https://git-scm.com/docs/gitignore.
 # ==============================================================================
 
 msg="${1}"
@@ -31,7 +35,7 @@ git add --all
 VERIFY=${X_GIT_COMMIT_VERIFY:-1}
 
 if [ "$VERIFY" -eq "0" ]; then
-  git commit --quiet --no-verify --message "maintenance: ${msg}"
+  git commit --quiet --no-verify --message "${msg}"
 else
-  git commit --quiet --message "maintenance: ${msg}"
+  git commit --quiet --message "${msg}"
 fi

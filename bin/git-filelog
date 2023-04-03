@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to list all the commits that have modified a specific file.
+#
+# Usage:
+#
+# ```
+# git filelog [path/to/file.ext]
+# ```
+# ==============================================================================
+
+file="${1}"
+
+if [ -z "${file}" ]; then
+  read -p "Type a file path: " file
+fi
+
+if [ -z "${file}" ]; then
+  echo "Require a file path" >&2
+  exit 1
+fi
+
+git log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit -- "${file}"

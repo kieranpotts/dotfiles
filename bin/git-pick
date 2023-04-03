@@ -1,14 +1,13 @@
 #!/bin/sh
 
 # ==============================================================================
-# Aliases for `git`
+# Shortcut for `git cherry-pick`.
+#
+# Usage:
+#
+# ```
+# git pick ([params...])
+# ```
 # ==============================================================================
 
-# Shortcut for `git`.
-alias g="git"
-
-# Shortcut for `lazygit`
-alias lg="lazygit"
-
-# Shortcut for `gitk`
-alias gk="gitk"
+git cherry-pick ${@:1}

@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to delete both the local and upstream versions of branch, succeeding
+# only if the branches have been merged.
+#
+# Usage:
+#
+# ```
+# git delete [branch]
+# ```
+#
+# This is a safe delete operation. It will succeed only if the commits in the
+# branch exist in other branches – in other words, the branch will be deleted
+# only if it does not contain any unique commits.
+#
+# The `push` operation will fail if remote tracking is not established for
+# the branch, and we can safely ignore that error as it just means there is
+# no upstream version of the branch to delete.
+# ==============================================================================
+
+branch="${1}"
+
+if [ -z "${branch}" ]; then
+  read -p "Type a branch name: " branch
+fi
+
+if [ -z "${branch}" ]; then
+  echo "Require branch name" >&2
+  exit 1
+fi
+
+git branch --delete ${branch}
+git push --delete origin ${branch} 2> /dev/null

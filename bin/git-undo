@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to undo all working and staged changes since the last commit.
+#
+# Usage:
+#
+# ```
+# git undo
+# ```
+#
+# A simple but dangerous operation would be:
+#
+# ```
+# reset --hard
+# ```
+#
+# The effects of this operation could not be undone. The solution is to commit
+# all work-in-progress with the message "--SAVEPOINT--" then hard-reset the
+# branch to the prior commit. The "--SAVEPOINT--" commit is removed from the
+# branch's history but is still reachable via `git reflog`, and can therefore
+# be restored if a mistake was made with the reset.
+#
+# Following the `reset` with the `clean -fd` command will also remove
+# untracked files recursively throughout the working tree. So the net effect
+# of these two commands is to completely blow away all changes made since the
+# last commit, but with the option to undo the undo!!
+#
+# Source:
+# - https://haacked.com/archive/2014/07/28/github-flow-aliases/
+# ==============================================================================
+
+# TODO: Prompt the user with a warning
+
+git add --all
+git commit --quiet --message '--SAVEPOINT--'
+git reset HEAD~1 --hard
+git clean -fd
+
+# TODO: Show a message regarding the --SAVEPOINT-- commit

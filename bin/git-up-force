@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to force-push changes up to the remote.
+#
+# Usage:
+#
+# ```
+# git force
+# ```
+#
+# The `--force` flag should never be used against shared branches. The similar
+# `--force-with-lease` option is a little bit safer – it _partially_ protects
+# against destructive pushes. What it does is check that the downstream
+# branch has all the commits that exist in the upstream one, and therefore
+# we can be more confident that we will not overwrite work that other people
+# have committed there. But it is not a perfect failsafe. For example,
+# `--force-with-lease` will delete upstream commits when the downstream
+# repository has been updated with `git fetch` and not a subsequent `git merge`
+# (or a `git pull` which combines both operations). See the following
+# Atlassian article for more bakcground to the dangers of force pushing:
+# - https://blog.developer.atlassian.com/force-with-lease/
+#
+# Sources:
+# - https://pbassiner.github.io/blog/git_aliases_to_the_rescue.html
+# ==============================================================================
+
+# TODO: Consider integrating this with `git up`. If `git up` fails, the user 
+# should be prompted if they would like to try a forced push.
+
+git push --set-upstream origin HEAD --follow-tags --force-with-lease

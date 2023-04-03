@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to create a new branch, switch to it, and push upstream immediately,
+# establishing tracking from the start of the branch's existence.
+#
+# This operation fails with an error if the branch name is already taken.
+#
+# Usage:
+#
+# ```
+# git br [branch]
+# ```
+# ==============================================================================
+
+branch="${1}"
+
+if [ -z "${branch}" ]; then
+  read -p "Type a branch name: " branch
+fi
+
+if [ -z "${branch}" ]; then
+  echo "Require branch name" >&2
+  exit 1
+fi
+
+git branch ${branch} && git checkout ${branch} && git push --set-upstream origin HEAD

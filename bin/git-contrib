@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to list all contributors to the repository, ordered by their total
+# commit count.
+#
+# Usage:
+#
+# ```
+# git contrib
+# ```
+#
+# This alias is configured to show email addresses (`--email`) and total
+# commit counts (`--summary`). The contributors are ordered by their commit
+# count (`--numbered`) – the biggest committers first.
+# ==============================================================================
+
+git shortlog --email --summary --numbered

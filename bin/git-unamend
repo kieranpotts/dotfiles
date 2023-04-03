@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to undo a prior `git commit --amend` operation.
+#
+# Usage:
+#
+# ```
+# git unamend
+# ```
+#
+# If you have amended the previous commit (`git commit --amend`), this will
+# undo the amend operation, leaving the commit in its original state before
+# it was amended.
+#
+# The amendements will be returned to the staging index (`--soft`).
+#
+# If the previous operation was NOT an amend, the behavior of this command
+# will be identical to the `git uncommit` alias.
+# ==============================================================================
+
+git reset HEAD@{1} --soft

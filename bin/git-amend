@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to add all working changes to the last commit, including new
+# (untracked) files.
+#
+# Usage:
+#
+# ```
+# git amend
+# ```
+#
+# This is intended to be a quick operation for modifying work-in-progress.
+# Therefore, the message of the previous commit is maintained (`--no-edit`).
+#
+# This command may be useful in conjunction with `git wip`. You can also use
+# `git fixup` to achieve the same result. After this command you can run
+# `git reword` to change the message of the newly-remade commit.
+#
+# See also `git unamend`, which is capable of undoing this operation and
+# returning the commit to its previous state.
+# ==============================================================================
+
+git add --all
+git commit --amend --no-edit --quiet

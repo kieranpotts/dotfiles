@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to untrack a specific file.
+#
+# Usage:
+#
+# ```
+# git untrack [path]
+# ```
+#
+# The `rm` command combined with the `--cache` option removes a file from the
+# staging index but maintains the file in the working tree. When the next
+# commit is made, the untracked file(s) will be removed from the repository,
+# but not deleted from the local filesystem.
+#
+# Usage: `git untrack path/to/file.ext`
+#
+# See:
+# - https://git-scm.com/docs/git-rm
+# ==============================================================================
+
+file="${1}"
+
+if [ -z "${file}" ]; then
+  echo "Require a file path" >&2
+  exit 1
+fi
+
+git rm --cached -- "${file}"

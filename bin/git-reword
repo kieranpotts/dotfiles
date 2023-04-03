@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to change the message of the previous commit.
+#
+# Usage:
+#
+# ```
+# git reword
+# ```
+#
+# Note: while this operation does not stage anything, files already staged will
+# be added to the previous commit, too.
+#
+# This also changes the hash of the previous commit, so the change may need to
+# be force-pushed into remotes that have the existing commit.
+# ==============================================================================
+
+# TODO: Provide parameter to reword _any_ commit.
+# TODO: Temporarily stage the staging index + working tree, so only edit message
+
+git commit --amend --quiet

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to show the name of the current branch.
+#
+# Usage:
+#
+# ```
+# git branch
+# ```
+#
+# See also the `git upstream` alias, which returns the name of the tracked
+# upstream branch.
+# ==============================================================================
+
+# Git < 2.22
+# git rev-parse --abbrev-ref HEAD
+
+# Git >= 2.22
+git branch --show-current
