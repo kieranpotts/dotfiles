@@ -16,7 +16,8 @@
 # be force-pushed into remotes that have the existing commit.
 # ==============================================================================
 
-# TODO: Provide parameter to reword _any_ commit.
-# TODO: Temporarily stage the staging index + working tree, so only edit message
+# TODO: Provide parameter to reword _any_ commit
+# TODO: Temporarily stage the staging index + working tree, so only edit 
+# https://stackoverflow.com/a/44293458
 
 git commit --amend --quiet
