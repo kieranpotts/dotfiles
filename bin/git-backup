@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to create a backup of the current checked-out branch.
+#
+# Usage:
+# 
+# ```
+# git backup ("[branch]")
+# ```
+# ==============================================================================
+
+branch="${1}"
+
+# Default to current branch
+if [ -z "${branch}" ]; then
+  branch=$(git branch --show-current)
+fi
+
+git branch "backup/${branch}" $branch
+echo "Created branch 'backup/${branch}'"
