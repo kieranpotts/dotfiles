@@ -33,7 +33,8 @@
 # TODO: Prompt the user with a warning
 
 git add --all
-git commit --quiet --message '--SAVEPOINT--'
+# Always disable Git hooks on this type of commit, it's just a backup point for WIP.
+git commit --quiet --no-verify --message '--SAVEPOINT--'
 git reset HEAD~1 --hard
 git clean -fd
 

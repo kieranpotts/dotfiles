@@ -20,4 +20,12 @@
 # TODO: Temporarily stage the staging index + working tree, so only edit 
 # https://stackoverflow.com/a/44293458
 
-git commit --amend --quiet
+# If there's an environment variable called `X_GIT_COMMIT_VERIFY` and its value
+# is `0`, then we apply the `--no-verify` flag to the `git commit` operation.
+VERIFY=${X_GIT_COMMIT_VERIFY:-1}
+
+if [ "$VERIFY" -eq "0" ]; then
+  git commit --amend --no-verify --quiet
+else 
+  git commit --amend --quiet
+fi

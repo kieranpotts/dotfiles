@@ -7,7 +7,7 @@
 # Usage:
 #
 # ```
-# git changes ([commit-hash])
+# git changes ([hash])
 # ```
 #
 # See also `git-staged`, which lists only staged changes, and `git-working`,
