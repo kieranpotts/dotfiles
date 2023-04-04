@@ -86,13 +86,6 @@
     "hte"
   ],
 
-  // Configuration for the ToDo Tree extension. Use only `TODO` notations.
-  // This setting works only in workspace roots.
-  // https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
-  "todo-tree.general.tags": [
-    "TODO",
-  ],
-
   // Render line ending extension.
   // https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf
 
