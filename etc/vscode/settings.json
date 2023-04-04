@@ -55,11 +55,11 @@
   "editor.rulers": [80, 100, 120],
 
   // Prioritize snippet suggestions over all other hints. Pre-select the first.
-  "editor.snippetSuggestions":"none",
+  "editor.snippetSuggestions": "none",
   "editor.suggestSelection": "first",
 
   // Turn on tab completion for snippets.
-  "editor.tabCompletion": "onlySnippets",
+  "editor.tabCompletion": "off",
 
   // Transform tab indents to two spaces.
   "editor.tabSize": 2,
