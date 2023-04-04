@@ -178,5 +178,13 @@
 
   // Zen mode.
   "zenMode.centerLayout": false,
-  "zenMode.hideTabs": true
+  "zenMode.hideTabs": true,
+
+  // EXTENSIONS ================================================================
+
+  // Configuration for the ToDo Tree extension. Use only `TODO` notations.
+  // https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
+  "todo-tree.general.tags": [
+    "TODO",
+  ],
 }
