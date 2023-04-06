@@ -36,7 +36,6 @@
 # ==============================================================================
 
 initialStashCount=$(git rev-list --walk-reflogs --count refs/stash 2> /dev/null)
-
 git stash push --include-untracked
 
 # Get tracked upstream branch (see `upstream` alias).
@@ -50,7 +49,6 @@ else
 fi
 
 newStashCount=$(git rev-list --walk-reflogs --count refs/stash 2> /dev/null)
-
 if [ "${newStashCount:-0}" != "${initialStashCount:-0}" ]; then
   git stash pop
 fi
