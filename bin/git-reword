@@ -28,7 +28,7 @@ VERIFY=${X_GIT_COMMIT_VERIFY:-1}
 initialStashCount=$(git rev-list --walk-reflogs --count refs/stash 2> /dev/null)
 git stash push --include-untracked
 
-if [ -z "${hash}" ]; then
+# if [ -z "${hash}" ]; then
   # TODO: Use interactive rebase to reword a specific commit.
   # This is the methology that LazyGit uses.
   # Reference:https://stackoverflow.com/a/44293458
@@ -37,12 +37,11 @@ if [ -z "${hash}" ]; then
   # [select "edit" for target commit to reword, which should be first in the list]
   # git commit --allow-empty --amend --only -m "[new-commit-message]"
   # git rebase --continue
+# elif [ "$VERIFY" -eq "0" ]; then
+if [ "$VERIFY" -eq "0" ]; then
+  git commit --amend --no-verify --quiet
 else
-  if [ "$VERIFY" -eq "0" ]; then
-    git commit --amend --no-verify --quiet
-  else 
-    git commit --amend --quiet
-  fi
+  git commit --amend --quiet
 fi
 
 # If work-in-progress was stashed, restore it to the working tree.
