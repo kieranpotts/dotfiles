@@ -14,7 +14,7 @@
 - add `l`, `lf` and `ld` aliases for `ls`, and colorize output by default
 - make `mkdir` recursive by default
 - add `s` alias for `sudo`
-- add Git aliases `aliases`, `amend`, `attribute`, `br`, `branches`, `cm`, `changed`, `changes`, `cl`, `co`, `configure`, `contrib`, `current`, `default`, `delete`, `delete-force`, `discard`, `down`, `download`, `experiment`, `feature`, `fell`, `fetched`, `filelog`, `file-history`, `fix`, `fixup`, `fast-forward`|`ff`, `graph`, `history`, `k`, `last`, `maint`, `orphan`, `orphan-fresh`, `pick`, `recent`, `refactor`, `remotes`, `reword`, `state`, `squash`, `staged`, `stashed`, `sw`, `sync`, `tags`, `track`, `tracking`, `unamend`, `uncommit`, `undo`, `unstage`, `untrack`, `up`, `up-force`, `upstream`, `versions` and `wip`
+- add Git aliases `aliases`, `amend`, `attribute`, `br`, `branches`, `cm`, `changed`, `changes`, `cl`, `co`, `configure`, `contrib`, `current`, `default`, `delete`, `discard`, `down`, `download`, `experiment`, `feature`, `fell`, `fetched`, `filelog`, `file-history`, `fix`, `fixup`, `fast-forward`|`ff`, `graph`, `history`, `k`, `last`, `maint`, `orphan`, `orphan-fresh`, `pick`, `recent`, `refactor`, `remotes`, `reword`, `state`, `squash`, `staged`, `stashed`, `sw`, `sync`, `tags`, `track`, `tracking`, `unamend`, `uncommit`, `undo`, `unstage`, `untrack`, `up`, `up-force`, `upstream`, `versions` and `wip`
 - allow Git configuration overrides via (`~/local.gitconfig`)
 - add global Git excludes file (`~/local.gitignore`)
 - record explicit merges by default (`--no-ff`)

@@ -20,8 +20,7 @@ Note: A small subset of these aliases are implemented as shell scripts in this r
 | `git contrib`                         | List all contributors to the repository, ordered by their commit count       |
 | `git current`                         | Show the name of the current branch                                          |
 | `git default`                         | Fetches the name of the default branch, as configured in the "origin" repo   |
-| `git delete [branch_name]`            | Deletes both the local and upstream versions of a branch, if it is merged    |
-| `git delete-force [branch_name]`      | Deletes both the local and upstream versions of a branch, even if not merged |
+| `git delete [branch_name]`            | Deletes both the local and upstream versions of a branch                     |
 | `git discard [file1] [file2]...`      | Discard working changes made to a particular file since the last commit      |
 | `git down`                            | Maps to `git pull` with the rebasing integration strategy enabled            |
 | `git download`                        | Downloads and prunes local objects, tags and branches to match all remotes   |

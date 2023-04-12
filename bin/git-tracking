@@ -14,4 +14,5 @@
 # tracked by the current checked-out downstream branch.
 # ==============================================================================
 
-git for-each-ref --sort='authordate:iso8601' --format='  %(color:green)%(authordate:relative)%09%(color:white)%(refname:short) %(color:cyan)➔ %(upstream:short)' refs/heads
+# Sort by last commit date, newest first.
+git for-each-ref --sort='-authordate:iso8601' --format='  %(color:green)%(authordate:relative)%09%(color:white)%(refname:short) %(color:cyan)➔ %(upstream:short)' refs/heads

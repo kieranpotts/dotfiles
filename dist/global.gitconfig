@@ -7,6 +7,16 @@
 # https://git-scm.com/docs/git-config
 # ==============================================================================
 
+[branch]
+
+  # branch.sort
+  #
+  # Controls the the sort ordering of branches when displayed by git-branch.
+  #
+  # Sort in descending order of last commit date.
+  #
+  sort = -authordate:iso8601
+
 [core]
 
   # core.autocrlf

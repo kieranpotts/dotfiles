@@ -14,4 +14,5 @@
 # bottom of the list.
 # ==============================================================================
 
-git for-each-ref --sort='authordate:iso8601' --format='  %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
+# Sort by last commit date, newest first.
+git for-each-ref --sort='-authordate:iso8601' --format='  %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
