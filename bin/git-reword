@@ -7,7 +7,7 @@
 # Usage:
 #
 # ```
-# git reword ([commit-hash])
+# git reword ([hash])
 # ```
 #
 # Anything in the staging index plus working changes (including new as-yet

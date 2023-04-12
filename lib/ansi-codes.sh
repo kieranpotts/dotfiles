@@ -64,77 +64,79 @@ ON_BRIGHT_WHITE='\033[107m'
 
 # TESTS
 
-echo -e "${BOLD}BOLD${RESET} - RESET"
-echo -e "${DIM}DIM${RESET} - RESET"
-echo -e "${ITALIC}ITALIC${RESET} - RESET"
-echo -e "${UNDERLINE}UNDERLINE${RESET} - RESET"
-echo -e "${BLINKING}BLINKING${RESET} - RESET"
-echo -e "${REVERSED}REVERSED${RESET} - RESET"
-echo -e "${INVISIBLE}INVISIBLE${RESET} - RESET"
-echo -e "${STRIKETHROUGH}STRIKETHROUGH${RESET} - RESET"
+# echo 'DECORATIONS: ============================================================'
 
-echo 'FOREGROUND: ============================================================='
+#echo -e "${BOLD}BOLD${RESET} - RESET"
+#echo -e "${DIM}DIM${RESET} - RESET"
+#echo -e "${ITALIC}ITALIC${RESET} - RESET"
+#echo -e "${UNDERLINE}UNDERLINE${RESET} - RESET"
+#echo -e "${BLINKING}BLINKING${RESET} - RESET"
+#echo -e "${REVERSED}REVERSED${RESET} - RESET"
+#echo -e "${INVISIBLE}INVISIBLE${RESET} - RESET"
+#echo -e "${STRIKETHROUGH}STRIKETHROUGH${RESET} - RESET"
 
-echo -e "${BLACK}BLACK${RESET} - RESET"
-echo -e "${RED}RED${RESET} - RESET"
-echo -e "${GREEN}GREEN${RESET} - RESET"
-echo -e "${YELLOW}YELLOW${RESET} - RESET"
-echo -e "${BLUE}BLUE${RESET} - RESET"
-echo -e "${PURPLE}PURPLE${RESET} - RESET"
-echo -e "${CYAN}CYAN${RESET} - RESET"
-echo -e "${WHITE}WHITE${RESET} - RESET"
+#echo 'FOREGROUND: ============================================================='
 
-echo 'FOREGROUND DIM:=========================================================='
+#echo -e "${BLACK}BLACK${RESET} - RESET"
+#echo -e "${RED}RED${RESET} - RESET"
+#echo -e "${GREEN}GREEN${RESET} - RESET"
+#echo -e "${YELLOW}YELLOW${RESET} - RESET"
+#echo -e "${BLUE}BLUE${RESET} - RESET"
+#echo -e "${PURPLE}PURPLE${RESET} - RESET"
+#echo -e "${CYAN}CYAN${RESET} - RESET"
+#echo -e "${WHITE}WHITE${RESET} - RESET"
 
-echo -e "${BLACK}${DIM}BLACK DIM${RESET} - RESET"
-echo -e "${RED}${DIM}RED DIM${RESET} - RESET"
-echo -e "${GREEN}${DIM}GREEN DIM${RESET} - RESET"
-echo -e "${YELLOW}${DIM}YELLOW DIM${RESET} - RESET"
-echo -e "${BLUE}${DIM}BLUE DIM${RESET} - RESET"
-echo -e "${PURPLE}${DIM}PURPLE DIM${RESET} - RESET"
-echo -e "${CYAN}${DIM}CYAN DIM${RESET} - RESET"
-echo -e "${WHITE}${DIM}WHITE DIM${RESET} - RESET"
+#echo 'FOREGROUND DIM:=========================================================='
 
-echo 'FOREGROUND BOLD: ========================================================'
+#echo -e "${BLACK}${DIM}BLACK DIM${RESET} - RESET"
+#echo -e "${RED}${DIM}RED DIM${RESET} - RESET"
+#echo -e "${GREEN}${DIM}GREEN DIM${RESET} - RESET"
+#echo -e "${YELLOW}${DIM}YELLOW DIM${RESET} - RESET"
+#echo -e "${BLUE}${DIM}BLUE DIM${RESET} - RESET"
+#echo -e "${PURPLE}${DIM}PURPLE DIM${RESET} - RESET"
+#echo -e "${CYAN}${DIM}CYAN DIM${RESET} - RESET"
+#echo -e "${WHITE}${DIM}WHITE DIM${RESET} - RESET"
 
-echo -e "${BLACK}${BOLD}BLACK BOLD${RESET} - RESET"
-echo -e "${RED}${BOLD}RED BOLD${RESET} - RESET"
-echo -e "${GREEN}${BOLD}GREEN BOLD${RESET} - RESET"
-echo -e "${YELLOW}${BOLD}YELLOW BOLD${RESET} - RESET"
-echo -e "${BLUE}${BOLD}BLUE BOLD${RESET} - RESET"
-echo -e "${PURPLE}${BOLD}PURPLE BOLD${RESET} - RESET"
-echo -e "${CYAN}${BOLD}CYAN BOLD${RESET} - RESET"
-echo -e "${WHITE}${BOLD}WHITE BOLD${RESET} - RESET"
+#echo 'FOREGROUND BOLD: ========================================================'
 
-echo 'FOREGROUND BRIGHT: ======================================================'
+#echo -e "${BLACK}${BOLD}BLACK BOLD${RESET} - RESET"
+#echo -e "${RED}${BOLD}RED BOLD${RESET} - RESET"
+#echo -e "${GREEN}${BOLD}GREEN BOLD${RESET} - RESET"
+#echo -e "${YELLOW}${BOLD}YELLOW BOLD${RESET} - RESET"
+#echo -e "${BLUE}${BOLD}BLUE BOLD${RESET} - RESET"
+#echo -e "${PURPLE}${BOLD}PURPLE BOLD${RESET} - RESET"
+#echo -e "${CYAN}${BOLD}CYAN BOLD${RESET} - RESET"
+#echo -e "${WHITE}${BOLD}WHITE BOLD${RESET} - RESET"
 
-echo -e "${BRIGHT_BLACK}BRIGHT_BLACK${RESET} - RESET"
-echo -e "${BRIGHT_RED}BRIGHT_RED${RESET} - RESET"
-echo -e "${BRIGHT_GREEN}BRIGHT_GREEN${RESET} - RESET"
-echo -e "${BRIGHT_YELLOW}BRIGHT_YELLOW${RESET} - RESET"
-echo -e "${BRIGHT_BLUE}BRIGHT_BLUE${RESET} - RESET"
-echo -e "${BRIGHT_PURPLE}BRIGHT_PURPLE${RESET} - RESET"
-echo -e "${BRIGHT_CYAN}BRIGHT_CYAN${RESET} - RESET"
-echo -e "${BRIGHT_WHITE}BRIGHT_WHITE${RESET} - RESET"
+#echo 'FOREGROUND BRIGHT: ======================================================'
 
-echo 'BACKGROUND: ============================================================='
+#echo -e "${BRIGHT_BLACK}BRIGHT_BLACK${RESET} - RESET"
+#echo -e "${BRIGHT_RED}BRIGHT_RED${RESET} - RESET"
+#echo -e "${BRIGHT_GREEN}BRIGHT_GREEN${RESET} - RESET"
+#echo -e "${BRIGHT_YELLOW}BRIGHT_YELLOW${RESET} - RESET"
+#echo -e "${BRIGHT_BLUE}BRIGHT_BLUE${RESET} - RESET"
+#echo -e "${BRIGHT_PURPLE}BRIGHT_PURPLE${RESET} - RESET"
+#echo -e "${BRIGHT_CYAN}BRIGHT_CYAN${RESET} - RESET"
+#echo -e "${BRIGHT_WHITE}BRIGHT_WHITE${RESET} - RESET"
 
-echo -e "${ON_BLACK}ON_BLACK${RESET} - RESET"
-echo -e "${ON_RED}ON_RED${RESET} - RESET"
-echo -e "${ON_GREEN}ON_GREEN${RESET} - RESET"
-echo -e "${ON_YELLOW}ON_YELLOW${RESET} - RESET"
-echo -e "${ON_BLUE}ON_BLUE${RESET} - RESET"
-echo -e "${ON_PURPLE}ON_PURPLE${RESET} - RESET"
-echo -e "${ON_CYAN}ON_CYAN${RESET} - RESET"
-echo -e "${ON_WHITE}ON_WHITE${RESET} - RESET"
+#echo 'BACKGROUND: ============================================================='
 
-echo 'BACKGROUND BRIGHT: ======================================================'
+#echo -e "${ON_BLACK}ON_BLACK${RESET} - RESET"
+#echo -e "${ON_RED}ON_RED${RESET} - RESET"
+#echo -e "${ON_GREEN}ON_GREEN${RESET} - RESET"
+#echo -e "${ON_YELLOW}ON_YELLOW${RESET} - RESET"
+#echo -e "${ON_BLUE}ON_BLUE${RESET} - RESET"
+#echo -e "${ON_PURPLE}ON_PURPLE${RESET} - RESET"
+#echo -e "${ON_CYAN}ON_CYAN${RESET} - RESET"
+#echo -e "${ON_WHITE}ON_WHITE${RESET} - RESET"
 
-echo -e "${ON_BRIGHT_BLACK}ON_BRIGHT_BLACK${RESET} - RESET"
-echo -e "${ON_BRIGHT_RED}ON_BRIGHT_RED${RESET} - RESET"
-echo -e "${ON_BRIGHT_GREEN}ON_BRIGHT_GREEN${RESET} - RESET"
-echo -e "${ON_BRIGHT_YELLOW}ON_BRIGHT_YELLOW${RESET} - RESET"
-echo -e "${ON_BRIGHT_BLUE}ON_BRIGHT_BLUE${RESET} - RESET"
-echo -e "${ON_BRIGHT_PURPLE}ON_BRIGHT_PURPLE${RESET} - RESET"
-echo -e "${ON_BRIGHT_CYAN}ON_BRIGHT_CYAN${RESET} - RESET"
-echo -e "${ON_BRIGHT_WHITE}ON_BRIGHT_WHITE${RESET} - RESET"
+#echo 'BACKGROUND BRIGHT: ======================================================'
+
+#echo -e "${ON_BRIGHT_BLACK}ON_BRIGHT_BLACK${RESET} - RESET"
+#echo -e "${ON_BRIGHT_RED}ON_BRIGHT_RED${RESET} - RESET"
+#echo -e "${ON_BRIGHT_GREEN}ON_BRIGHT_GREEN${RESET} - RESET"
+#echo -e "${ON_BRIGHT_YELLOW}ON_BRIGHT_YELLOW${RESET} - RESET"
+#echo -e "${ON_BRIGHT_BLUE}ON_BRIGHT_BLUE${RESET} - RESET"
+#echo -e "${ON_BRIGHT_PURPLE}ON_BRIGHT_PURPLE${RESET} - RESET"
+#echo -e "${ON_BRIGHT_CYAN}ON_BRIGHT_CYAN${RESET} - RESET"
+#echo -e "${ON_BRIGHT_WHITE}ON_BRIGHT_WHITE${RESET} - RESET"

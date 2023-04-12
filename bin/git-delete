@@ -7,7 +7,7 @@
 # Usage:
 #
 # ```
-# git delete [branch]
+# git delete ([branch])
 # ```
 #
 # This is a safe delete operation. It will succeed only if the commits in the

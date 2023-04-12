@@ -6,7 +6,7 @@
 # Usage:
 #
 # ```
-# git ff
+# git ff ([branch-name])
 # ```
 #
 # This operation fails if there is divergent work in the current (source) branch

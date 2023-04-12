@@ -9,9 +9,9 @@
 # neither the local nor tracked upstream repositories.
 #
 # Usage:
-#s
+#
 # ```
-# git delete-force [branch]
+# git delete-force ([branch])
 # ```
 # ==============================================================================
 

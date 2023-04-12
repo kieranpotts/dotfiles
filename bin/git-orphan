@@ -8,7 +8,7 @@
 # Usage:
 #
 # ```
-# git orphan ([branch-name])
+# git orphan [branch-name]
 # ```
 #
 # Note: unlike the branching aliases, the new branch cannot be immediately
@@ -17,7 +17,7 @@
 # reference.
 # ==============================================================================
 
-# TODO: Combine this with `git orphan`. If there are working/staged changes, 
+# TODO: Combine this with `git orphan`. If there are working/staged changes,
 # prompt the use to keep or discard them.
 
 branch="${1}"

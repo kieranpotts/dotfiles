@@ -8,11 +8,11 @@
 # Usage:
 #
 # ```
-# git orphan-fresh ([branch-name])
+# git orphan-fresh [branch-name]
 # ```
 # ==============================================================================
 
-# TODO: Combine this with `git orphan`. If there are working/staged changes, 
+# TODO: Combine this with `git orphan`. If there are working/staged changes,
 # prompt the use to keep or discard them.
 
 branch="${1}"

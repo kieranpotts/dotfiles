@@ -3,17 +3,82 @@
 # ==============================================================================
 # Git alias to list all configured aliases.
 #
-# Aliases are listed in the order in which they are configured in Git config.
-# This does not capture aliases that are enabled by adding `git-*` files to 
-# the system PATH.
-#
 # Usage:
 #
 # ```
-# git xxx
+# git aliases
 # ```
 # ==============================================================================
 
-# TODO: Pretty-print the full list of aliases.
+# Absolute path to this script, e.g. `/path/to/dotfiles/bin/foo.sh`.
+#
+# TODO: `readlink` is not a POSIX utility, so need to find a better cross-
+# platform way of achieving this.
+FILE_PATH=$(readlink -f "$0")
 
-# git config --get-regexp ^alias\\. | sed --expression s/^alias\\.// --expression s/\\ /\\ =\\ /
+# Absolute path to this script's parent directory, thus `/path/to/dotfiles/bin`.
+BIN_PATH=$(dirname "$FILE_PATH")
+
+# Absolute path this repo, thus `/path/to/dotfiles`.
+REPO_PATH=$(dirname "$BIN_PATH")
+
+# Source ANSI code variables.
+source "${REPO_PATH}/lib/ansi-codes.sh"
+
+# Print help for each alias:
+echo -e "${BRIGHT_BLUE}amend${RESET}                - Add all working changes to last commit"
+echo -e "${BRIGHT_BLUE}attribute ('[msg]')${RESET}  - Commit quality improvements"
+echo -e "${BRIGHT_BLUE}backup ([br])${RESET}        - Create a backup of the current branch or a specified branch"
+echo -e "${BRIGHT_BLUE}br ([branch])${RESET}        - Branch from current position"
+echo -e "${BRIGHT_BLUE}branches${RESET}             - List all branches"
+echo -e "${BRIGHT_BLUE}changes ([ref])${RESET}      - Show changes in last commit or a specified commit"
+echo -e "${BRIGHT_BLUE}cl ([params...])${RESET}     - Shortcut for ${YELLOW}git clone"
+echo -e "${BRIGHT_BLUE}cm ('[msg]')${RESET}         - Quick ${YELLOW}git commit"
+echo -e "${BRIGHT_BLUE}co ([params...])${RESET}     - Shortcut for ${YELLOW}git checkout"
+echo -e "${BRIGHT_BLUE}configure${RESET}            - Open ${YELLOW}~/.gitconfig"
+echo -e "${BRIGHT_BLUE}contrib${RESET}              - List all contributors"
+echo -e "${BRIGHT_BLUE}current${RESET}              - Show the name of the current branch"
+echo -e "${BRIGHT_BLUE}default${RESET}              - Show the name of the default branch"
+echo -e "${BRIGHT_BLUE}delete ([br])${RESET}        - Delete a branch if it's changes have been merged elsewhere"
+echo -e "${BRIGHT_BLUE}delete-force ([br])${RESET}  - Force-delete a branch"
+echo -e "${BRIGHT_BLUE}discard [files...]${RESET}   - Discard working changes to one or more files"
+echo -e "${BRIGHT_BLUE}down ([params...])${RESET}   - Shortcut for ${YELLOW}git pull"
+echo -e "${BRIGHT_BLUE}download${RESET}             - Improved ${YELLOW}git fetch"
+echo -e "${BRIGHT_BLUE}experiment ('[msg]')${RESET} - Commit experimental work"
+echo -e "${BRIGHT_BLUE}feature ('[msg]')${RESET}    - Commit feature work"
+echo -e "${BRIGHT_BLUE}fell ([br])${RESET}          - Delete any branches that have been merged into default or specified branch"
+echo -e "${BRIGHT_BLUE}fetched${RESET}              - List commits added by last ${YELLOW}git fetch"
+echo -e "${BRIGHT_BLUE}ff ([br])${RESET}            - Perform a fast-forward merge"
+echo -e "${BRIGHT_BLUE}filelog [path]${RESET}       - List commits that have changed a specific file"
+echo -e "${BRIGHT_BLUE}fix ('[msg]')${RESET}        - Commit a bug fix"
+echo -e "${BRIGHT_BLUE}fixup ([ref])${RESET}        - Fixup previous or earlier commit"
+echo -e "${BRIGHT_BLUE}graph${RESET}                - Detailed ${YELLOW}git log"
+echo -e "${BRIGHT_BLUE}history${RESET}              - Clean ${YELLOW}git log${RESET}, paged"
+echo -e "${BRIGHT_BLUE}last${RESET}                 - Detailed view of changes in last commit"
+echo -e "${BRIGHT_BLUE}maint ('[msg]')${RESET}      - Commit maintenance work"
+echo -e "${BRIGHT_BLUE}orphan [br]${RESET}          - Create an orphaned branch, add working changes to staging index"
+echo -e "${BRIGHT_BLUE}orphan-fresh [br]${RESET}    - Create an orphaned branch, empty working tree"
+echo -e "${BRIGHT_BLUE}pick ([params...])${RESET}   - Shortcut for ${YELLOW}git cherry-pick"
+echo -e "${BRIGHT_BLUE}recent${RESET}               - Clean ${YELLOW}git log${RESET}, last 25 entries only"
+echo -e "${BRIGHT_BLUE}refactor ('[msg]')${RESET}   - Commit refactoring work"
+echo -e "${BRIGHT_BLUE}remotes${RESET}              - List the URLs of all remotes"
+echo -e "${BRIGHT_BLUE}reword ([ref])${RESET}       - Edit the message of the previous or earlier commit"
+echo -e "${BRIGHT_BLUE}squash${RESET}               - Perform ${YELLOW}git merge --squash"
+echo -e "${BRIGHT_BLUE}staged${RESET}               - List files with changes staged for committing"
+echo -e "${BRIGHT_BLUE}stashed${RESET}              - Show the current number of stash entries"
+echo -e "${BRIGHT_BLUE}state${RESET}                - Concise view of ${YELLOW}git status"
+echo -e "${BRIGHT_BLUE}sw ([params...])${RESET}     - Shortcut for ${YELLOW}git switch"
+echo -e "${BRIGHT_BLUE}sync${RESET}                 - Sync upstream and downstream branches, maintaining linear history"
+echo -e "${BRIGHT_BLUE}track [path]${RESET}         - Start tracking a new file"
+echo -e "${BRIGHT_BLUE}tracking${RESET}             - List all branches including tracked upstream ones"
+echo -e "${BRIGHT_BLUE}unamend${RESET}              - Undo the prior ${YELLOW}git amend${RESET} or ${YELLOW}git commit${RESET} operation"
+echo -e "${BRIGHT_BLUE}uncommit${RESET}             - Undo the last commit, return the changes to the staging index"
+echo -e "${BRIGHT_BLUE}undo${RESET}                 - Reset to last commit with savepoint commit to recover work-in-progress"
+echo -e "${BRIGHT_BLUE}unstage${RESET}              - Empty the staging area, return the changes to the working tree"
+echo -e "${BRIGHT_BLUE}untrack [path]${RESET}       - Untrack a specific file"
+echo -e "${BRIGHT_BLUE}up${RESET}                   - Push commits up to the tracked upstream branch"
+echo -e "${BRIGHT_BLUE}up-force${RESET}             - Force-push changes up to the tracked upstream branch"
+echo -e "${BRIGHT_BLUE}upstream${RESET}             - Show the name of the tracked upstream branch"
+echo -e "${BRIGHT_BLUE}versions${RESET}             - List tags prefixed with 'v'"
+echo -e "${BRIGHT_BLUE}wip ('[msg]')${RESET}        - Commit work-in-progress"
+echo -e "${BRIGHT_BLUE}working${RESET}              - List changed files in working tree"
