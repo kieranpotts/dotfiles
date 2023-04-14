@@ -69,13 +69,13 @@
     "–": true // Don't warn about use of en-dash (–) characters in code.
   },
 
-  // Wrap long lines at the viewport or 120 characters.
+  // Wrap long lines at the viewport up to maximum of 120 characters.
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 120,
 
-  // Don't implement word wrap for HTML documents, and disable guidelines to
-  // indicate there should not be any imposition of maximum line length
-  // for this file type.
+  // Don't implement word wrap for HTML documents (wrap at the viewport), and 
+  // disable guidelines to indicate there should not be any imposition of 
+  // maximum line length for this file type.
   "[html]":{
     "editor.rulers": [],
     "editor.wordWrap": "on",
@@ -187,4 +187,5 @@
   "todo-tree.general.tags": [
     "TODO",
   ],
+  "hediet.vscode-drawio.resizeImages": null,
 }
