@@ -59,7 +59,7 @@
   "editor.suggestSelection": "recentlyUsedByPrefix",
 
   // Turn on tab completion for snippets.
-  "editor.tabCompletion": "off",
+  "editor.tabCompletion": "onlySnippets",
 
   // Transform tab indents to two spaces.
   "editor.tabSize": 2,
