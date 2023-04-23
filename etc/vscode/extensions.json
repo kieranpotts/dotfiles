@@ -49,6 +49,9 @@
     // Markdown Table Prettifier
     "darkriszty.markdown-table-prettify",
 
+    // Pretty TypeScript Errors
+    "yoavbls.pretty-ts-errors",
+
     // Remote - SSH
     "ms-vscode-remote.remote-ssh",
 
