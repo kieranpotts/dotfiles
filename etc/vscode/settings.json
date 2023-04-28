@@ -186,6 +186,5 @@
   // https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
   "todo-tree.general.tags": [
     "TODO",
-  ],
-  "hediet.vscode-drawio.resizeImages": null,
+  ]
 }
