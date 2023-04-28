@@ -61,7 +61,11 @@
   // Turn on tab completion for snippets.
   "editor.tabCompletion": "onlySnippets",
 
-  // Transform tab indents to two spaces.
+  // Transform tab indents to two spaces. Enforce this – don't allow VS Code
+  // to override based on what it thinks is the existing indentation format of
+  // each file.
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
   "editor.tabSize": 2,
 
   // Rules for highlighting special unicode characters.
