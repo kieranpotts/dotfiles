@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# ==============================================================================
+# Restores the changes in the last WIP commit to the working tree.
+#
+# Usage:
+#
+# ```
+# git resume
+# ```
+#
+# This operation will succeed only if the message of the last commit is "wip"
+# or starts with "wip:". This is intended to be used in conjunction with the
+# `git wip` command.
+# ==============================================================================
+
+# Absolute path to this script, e.g. `/path/to/dotfiles/bin/foo.sh`.
+#
+# TODO: `readlink` is not a POSIX utility, so need to find a better cross-
+# platform way of achieving this.
+FILE_PATH=$(readlink -f "$0")
+
+# Absolute path to this script's parent directory, thus `/path/to/dotfiles/bin`.
+BIN_PATH=$(dirname "$FILE_PATH")
+
+# Absolute path this repo, thus `/path/to/dotfiles`.
+REPO_PATH=$(dirname "$BIN_PATH")
+
+# Source ANSI code variables.
+source "${REPO_PATH}/lib/ansi-codes.sh"
+
+# Get message of last commit.
+msg=$(git show -s --format=%B HEAD)
+
+if [ "${msg}" = "wip" ] || [ "${msg:0:4}" = "wip:" ]; then
+  git reset HEAD~1 --mixed
+else 
+  echo -e "${RED}Last commit is not work-in-progress${RESET}" >&2
+  exit 1
+fi

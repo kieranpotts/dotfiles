@@ -9,14 +9,15 @@
 # git wip ("[comment]")
 # ```
 #
-# If an unset-or-empty commit message is provided, "WIP" becomes the commit
-# message, else " - WIP" is appended to the custom message. For example,
-# the command `git wip "My commit message"` produces a new commit with the
-# log message "My commit message - WIP".
+# The provided comment will be prefixed with "wip: ". If no comment is provided
+# the commit message will be "wip".
 #
-# WIP commits are intended for backup purposes and to be fixed-up manually
-# later, or ultimately squashed into another branch. `git fixup` provides
-# an alternative workflow.
+# The purpose of this alias is to allow quick saving and backing up (to a
+# remote repository) of work in progress. WIP commits are expected to be
+# reset and their contents restored to the working tree the next time the 
+# developer continues to work from the current branch.
+#
+# The `git restore` alias provides a shortcut for doing exactly this.
 # ==============================================================================
 
 git add --all
@@ -26,7 +27,7 @@ git add --all
 VERIFY=${X_GIT_COMMIT_VERIFY:-1}
 
 if [ "$VERIFY" -eq "0" ]; then
-  git commit --quiet --no-verify --message "${1:-WIP}${1+ - WIP}"
+  git commit --quiet --no-verify --message "wip${1+: }${1}"
 else
-  git commit --quiet --message "${1:-WIP}${1+ - WIP}"
+  git commit --quiet --message "wip${1+: }${1}"
 fi
