@@ -64,6 +64,9 @@
     // Render Line Endings
     "medo64.render-crlf",
 
+    // Restore Editors
+    "amodio.restore-editors",
+
     // SVG
     "jock.svg",
 
