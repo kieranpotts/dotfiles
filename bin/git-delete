@@ -1,8 +1,7 @@
 #!/bin/sh
 
 # ==============================================================================
-# Git alias to delete both the local and upstream versions of branch, succeeding
-# only if the branches have been merged.
+# Git alias to delete the local version of a branch.
 #
 # Usage:
 #
@@ -10,13 +9,9 @@
 # git delete ([branch])
 # ```
 #
-# This is a safe delete operation. It will succeed only if the commits in the
-# branch exist in other branches – in other words, the branch will be deleted
-# only if it does not contain any unique commits.
-#
-# The `push` operation will fail if remote tracking is not established for
-# the branch, and we can safely ignore that error as it just means there is
-# no upstream version of the branch to delete.
+# This is a safe delete operation. It will not, by default, force-delete local
+# branches, but instead prompt for user confirmation if the branch contains
+# work that is not merged elsewhere. Upstream branches are not deleted.
 # ==============================================================================
 
 # Absolute path to this script, e.g. `/path/to/dotfiles/bin/foo.sh`.
@@ -78,15 +73,12 @@ echo -e "${GREEN}Attempting deletion of ${REVERSED} ${branch} ${RESET}"
 git branch --quiet --delete ${branch} 2> /dev/null
 EXIT_CODE_1=$?
 
-git push --quiet --delete origin ${branch} 2> /dev/null
-EXIT_CODE_2=$?
-
-if [ ${EXIT_CODE_1} -eq 1 ] || [ ${EXIT_CODE_2} -eq 1 ]; then
+if [ ${EXIT_CODE_1} -eq 1 ]; then
 
   echo ""
   echo -e "${RED}Branch deletion failed.${RESET}"
   echo "Would you like to force deletion of this branch?"
-  echo "WARNING: This is a destructive operation. This risks permanently losing commits that don't exist in the history of any other branch, upstream or downstream."
+  echo "WARNING: This is a destructive operation. This risks permanently losing commits that don't exist in the history of any other local branch."
   read -p "Force delete? (y/n) " choice
 
   case "$choice" in
@@ -95,7 +87,6 @@ if [ ${EXIT_CODE_1} -eq 1 ] || [ ${EXIT_CODE_2} -eq 1 ]; then
       # branch almost certainly does not exist or is somehow protected from
       # deletion (for example, it is the current checked out branch).
       git branch --quiet --delete --force ${branch} 2> /dev/null
-      git push --quiet --delete --force origin ${branch} 2> /dev/null
       echo -e "${GREEN}Done.${RESET}"
       ;;
 
@@ -108,4 +99,6 @@ if [ ${EXIT_CODE_1} -eq 1 ] || [ ${EXIT_CODE_2} -eq 1 ]; then
       ;;
   esac
 
+else 
+  echo -e "${GREEN}Done.${RESET}"
 fi
