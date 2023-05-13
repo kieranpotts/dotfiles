@@ -186,7 +186,7 @@
 
   // Zen mode.
   "zenMode.centerLayout": false,
-  "zenMode.hideTabs": true,
+  "zenMode.hideTabs": false,
 
   // EXTENSIONS ================================================================
 
