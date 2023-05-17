@@ -24,4 +24,9 @@ if [ -z "${branch}" ]; then
   exit 1
 fi
 
-git branch ${branch} && git checkout ${branch} && git push --set-upstream origin HEAD
+git branch ${branch} && git checkout ${branch}
+
+# Don't push temporary branches.
+if [ "${branch}" != "tmp" ]; then
+  git push --set-upstream origin HEAD
+fi
