@@ -10,10 +10,19 @@
 # ```
 #
 # Additional parameters are forwarded to the `git pull` operation. Use with
-# `--interactive|-i` to edit the local commit history.
+# `--interactive|-i` to edit the local commit history. Any WIP is stashed and
+# will be returned to the working tree after the `pull` operation.
 #
 # See also the `git up` alias, which mirrors this, and `git sync`, which
 # combines the two into a single operation.
 # ==============================================================================
 
+initialStashCount=$(git rev-list --walk-reflogs --count refs/stash 2> /dev/null)
+git stash push --include-untracked
+
 git pull --rebase --prune ${@:1}
+
+newStashCount=$(git rev-list --walk-reflogs --count refs/stash 2> /dev/null)
+if [ "${newStashCount:-0}" != "${initialStashCount:-0}" ]; then
+  git stash pop
+fi
