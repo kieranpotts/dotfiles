@@ -32,7 +32,7 @@ source "${REPO_PATH}/lib/ansi-codes.sh"
 # Get message of last commit.
 msg=$(git show -s --format=%B HEAD)
 
-if [ "${msg}" = "wip" ] || [ "${msg:0:4}" = "wip:" ]; then
+if [ "${msg}" = "WIP" ] || [ "${msg: -6}" = " - WIP" ]; then
   git reset HEAD~1 --mixed
 else 
   echo -e "${RED}Last commit is not work-in-progress${RESET}" >&2

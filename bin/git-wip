@@ -9,15 +9,14 @@
 # git wip ("[comment]")
 # ```
 #
-# The provided comment will be prefixed with "wip: ". If no comment is provided
-# the commit message will be "wip".
+# The provided comment will be suffixed " - WIP". If no comment is provided
+# the commit message will be "WIP".
 #
 # The purpose of this alias is to allow quick saving and backing up (to a
-# remote repository) of work in progress. WIP commits are expected to be
+# remote repository) of work-in-progress. WIP commits are expected to be
 # reset and their contents restored to the working tree the next time the 
-# developer continues to work from the current branch.
-#
-# The `git restore` alias provides a shortcut for doing exactly this.
+# developer continues to work from the current branch. The `git restore` 
+# alias provides a shortcut for doing exactly this.
 # ==============================================================================
 
 git add --all
@@ -27,7 +26,7 @@ git add --all
 VERIFY=${X_GIT_COMMIT_VERIFY:-1}
 
 if [ "$VERIFY" -eq "0" ]; then
-  git commit --quiet --no-verify --message "wip${1+: }${1}"
+  git commit --quiet --no-verify --message "${1:-WIP}${1+ - WIP}"
 else
-  git commit --quiet --message "wip${1+: }${1}"
+  git commit --quiet --message "${1:-WIP}${1+ - WIP}"
 fi
