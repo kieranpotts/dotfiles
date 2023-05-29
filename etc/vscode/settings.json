@@ -192,5 +192,7 @@
 
   // Configuration for the ToDo Tree extension. Use only `TODO` notations.
   // https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
-  "todo-tree.general.tags": ["TODO"],
+  "todo-tree.general.tags": [
+    "TODO"
+  ],
 }
