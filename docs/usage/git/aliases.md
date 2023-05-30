@@ -9,6 +9,7 @@ Note: A small subset of these aliases are implemented as shell scripts in this r
 | `git aliases`                         | List all configured aliases                                                  |
 | `git amend`                           | Add all working changes to the last commit, including new (untracked) files  |
 | `git attribute "[comment]"`           | Create a commit with the message "attribute: [comment]"                      |
+| `git author ([sha])`                  | Change the author on the last commit or an earlier specified commit          |
 | `git backup`                          | Create a backup copy of the current checked-out branch                       |
 | `git br [branch_name]`                | Create a branch, switch to it, and push immediately to setup tracking        |
 | `git branches`                        | List all branches by order of last commit                                    |
@@ -31,7 +32,7 @@ Note: A small subset of these aliases are implemented as shell scripts in this r
 | `git ff`                              | Do a fast-forward merge                                                      |
 | `git filelog [path/to/file]`          | List all the commits that have modified a specific file                      |
 | `git fix "[comment]"`                 | Create a commit with the message "fix: [comment]"                            |
-| `git fixup ([sha])`                   | Fix something in the previous commit, or an earlier specified commit         |
+| `git fixup ([sha])`                   | Fix something in the previous commit or an earlier specified commit          |
 | `git graph`                           | Detailed graph view of `git log`                                             |
 | `git history`                         | Cleaner `git log`                                                            |
 | `git last`                            | Show detailed information on the last commit                                 |

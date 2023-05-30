@@ -17,7 +17,7 @@
 # have committed there. But it is not a perfect failsafe. For example,
 # `--force-with-lease` will delete upstream commits when the downstream
 # repository has been updated with `git fetch` and not a subsequent `git merge`
-# (or a `git pull` which combines both operations). See the following
+# (or a `git pull`, which combines both operations). See the following
 # Atlassian article for more bakcground to the dangers of force pushing:
 # - https://blog.developer.atlassian.com/force-with-lease/
 #
@@ -25,7 +25,7 @@
 # - https://pbassiner.github.io/blog/git_aliases_to_the_rescue.html
 # ==============================================================================
 
-# TODO: Consider integrating this with `git up`. If `git up` fails, the user 
+# TODO: Consider integrating this with `git up`. If `git up` fails, the user
 # should be prompted if they would like to try a forced push.
 
 git push --set-upstream origin HEAD --follow-tags --force-with-lease

@@ -30,9 +30,8 @@ git stash push --include-untracked
 
 # if [ -z "${hash}" ]; then
   # TODO: Use interactive rebase to reword a specific commit.
-  # This is the methology that LazyGit uses.
-  # Reference:https://stackoverflow.com/a/44293458
-
+  # See `git author` alias as an example implementation. Below is the
+  # methology that LazyGit uses. Reference:https://stackoverflow.com/a/44293458
   # git rebase --interactive --autostash --keep-empty [prior-commit]
   # [select "edit" for target commit to reword, which should be first in the list]
   # git commit --allow-empty --amend --only -m "[new-commit-message]"
