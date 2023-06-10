@@ -1,6 +1,22 @@
 " ==============================================================================
 " The `~/.vimrc` file contains initialization commands for Vim.
 "
+" This configuration is compatible with the full version of Vim. Ubuntu 16.04
+" LTS, Raspberry Pi OS, and presumably other Debian distros, ship with the
+" minimalist version of Vim (`/usr/bin/vim.tiny`), with which this configuration
+" file is not compatible. To check which version of Vim is installed, run:
+"
+" ```
+" readlink -f `which vi`
+" ```
+"
+" To install the full version of Vim, `/usr/bin/vim.basic`, run:
+"
+" ```
+" sudo apt update
+" sudo apt install vim
+" ```
+"
 " See: https://vimhelp.org/starting.txt.html#vimrc
 " ==============================================================================
 
@@ -16,7 +32,7 @@ filetype plugin on
 " Load an indent file for the detected file type.
 filetype indent on
 
-" Turn on syntax highlighting unless Vim is started in diff mode.
+" Turn on syntax highlighting, unless Vim is started in diff mode.
 syntax on
 if &diff
   syntax off
