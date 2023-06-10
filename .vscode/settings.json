@@ -59,6 +59,7 @@
 
   // A list of words to be considered correct spellings.
   "cSpell.words": [
+    "autofetch",
     "dotfile",
     "dotfiles",
     "powerline"

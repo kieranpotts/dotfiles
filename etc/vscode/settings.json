@@ -1,5 +1,5 @@
 {
-  // Disable the breadcrum trail across the top of editors.
+  // Disable the breadcrumb trail across the top of editors.
   "breadcrumbs.enabled": false,
 
   // Clear the terminal before running a new debugging session.
@@ -32,7 +32,7 @@
   "editor.formatOnSave": false,
   "editor.formatOnType": false,
 
-  // Re-inforce disabling of auto-fixes.
+  // Re-enforce disabling of auto-fixes.
   "editor.codeActionsOnSave": {
     "source.fixAll": false
   },
@@ -194,5 +194,5 @@
   // https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
   "todo-tree.general.tags": [
     "TODO"
-  ],
+  ]
 }
