@@ -20,12 +20,6 @@ if [ -f ~/local.bash_profile ]; then
   source ~/local.bash_profile
 fi
 
-# Load the main `~/.bashrc` file, to ensure a consistent environment between
-# interactive login and interactive non-login Bash shells.
-if [ -f ~/.bashrc ]; then
-  source ~/.bashrc
-fi
-
 # Add an alias to reload this script. This will override the alias
 # of the same name included in `~/.profile`.
 alias reload!="source ~/.bash_profile"

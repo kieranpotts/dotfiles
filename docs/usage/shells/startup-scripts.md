@@ -1,10 +1,18 @@
 # Shell startup scripts
 
-A shell environment can be interactive or non-interactive. An **interactive shell** reads and writes to a user's terminal and may operate in login or non-login mode. An **interactive login shell** is spawned when a user starts their terminal program or enters a remote shell environment via SSH. Temporary **interactive non-login shells** are used to run scripts from the terminal and are invoked by the `sh` command (or `bash` etc).
+A shell environment can be interactive or non-interactive. 
+
+An **interactive shell** reads and writes to a user's terminal and may operate in login or non-login mode. An **interactive login shell** is typically spawned when a user enters a remote shell environment via SSH. Temporary **interactive non-login shells** are used to run scripts from the terminal and are invoked by the `sh` command (or `bash` etc).
+
+Confusingly, different terminal programs launch shell environments in login or non-login mode. Windows Terminal, for example, runs shells in interactive login mode. But other user interfaces into local shell environments operate in non-login mode by default. You can check which mode a shell is running in by typing:
+
+```sh
+shopt login_shell
+```
 
 A **non-interactive shell** is not associated with a user interface (terminal).
 
-Various scripts are automatically executed by shells at startup. Which scripts are executed depends on the mode in which the shell is running. Interactive login shells look for a file called `/etc/profile` and, if the file exists and is readable, they run through the script's commands. Then the same happens for the user-level `~/.profile` file. These scripts are loaded automatically by all shells – Bash, Fish, Zsh, etc – at startup of a new interactive login session.
+Various scripts are automatically executed by shells at startup. Which scripts are executed depends on the mode in which the shell is running. Interactive login shells look for a file called `/etc/profile` and, if the file exists and is readable, they run through the script's commands. Then the same happens for the user-level `~/.profile` file. These scripts are loaded automatically by all shells – Bash, Fish, Zsh, etc – at startup of a new _interactive login_ session.
 
 The `bin/update!` script for these dotfiles will install a symlinked `~/.profile` file in your home directory. This is used to set some global environment variables (which will be inherited by all subshells). The `~/.profile` script is also used to load POSIX-compliant, shell-agnostic aliases and functions, as well as a suite of other utilities that will be useful in every interactive shell environment.
 
@@ -12,7 +20,7 @@ Different shells extend the standard startup behaviors with their own proprietar
 
 The `~/.bash_profile` file is also used to configure prompt customizations – using the [Oh My Posh](https://ohmyposh.dev/) framework – and history customizations.
 
-Finally, a `~/bashrc` file is included, too. This "Bash run command" file is used to define additional scripts that should be run every time the `bash` command is called to execute a script (which happens in interactive non-login mode). This is a good place to reset environment variables and other globals that you want to be consistent for every Bash script you run on your system. As per common practice, the `~/.bashrc` file is sourced from `~/.bash_profile`, so ensuring consistent behavior of all commands run in a terminal – whether by direct invocation or via inclusion in a script.
+Finally, a `~/bashrc` file is included, too. This "Bash run command" file is used to define additional scripts that should be run every time the `bash` command is called to execute a script – which happens in interactive non-login mode. This is a good place to reset environment variables and other globals that you want to be consistent for every Bash script you run on your system. As per common practice, the `~/.bashrc` file also sources `~/.bash_profile`, so ensuring consistent behavior regardless of the mode in which the shell is running.
 
 The `bin/update!` script also installs "local" versions of all these files into your user directory:
 
