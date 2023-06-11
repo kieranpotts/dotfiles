@@ -1,6 +1,6 @@
 # Acknowledgments
 
-Inspiration has been taken – and code shamelessly copied – from some of these related repositories:
+Inspiration has been taken – and code shamelessly copied – from some of these related projects:
 
 - [Sebastien Rousseau's dotfiles.io](https://dotfiles.io/)
 - [Thoughtbot's dotfiles](https://github.com/thoughtbot/dotfiles)
