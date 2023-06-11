@@ -194,5 +194,11 @@
   // https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
   "todo-tree.general.tags": [
     "TODO"
-  ]
+  ],
+  "window.zoomLevel": 1,
+  "cSpell.userWords": [
+    "composability",
+    "discoverability"
+  ],
+  "Notes.notesLocation": "c:\\dev\\personal\\notes"
 }
