@@ -1,6 +1,9 @@
 {
   "recommendations": [
 
+    // AsciiDoc
+    "asciidoctor.asciidoctor-vscode",
+
     // Code Spell Checker
     "streetsidesoftware.code-spell-checker",
 
