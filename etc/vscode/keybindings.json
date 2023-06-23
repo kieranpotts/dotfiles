@@ -1,11 +1,4 @@
 [
-  // Toggle built-in panel.
-  {
-    "key": "ctrl+p",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
-  },
-
   // Open external terminal in own window (start at current working directory).
   {
     "key": "ctrl+alt+t",
