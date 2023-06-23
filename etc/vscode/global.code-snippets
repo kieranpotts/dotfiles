@@ -18,7 +18,7 @@
 	 	"body": [
 	 		"—",
 	 	],
-	 	"description": "Replace double-hyphen with a single em-dash"
+	 	"description": "Replace triple-hyphen with a single em-dash"
 	},
   "Right_Arrow": {
 		"prefix": "->",
