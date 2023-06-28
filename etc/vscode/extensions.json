@@ -52,6 +52,9 @@
     // Markdown Table Prettifier
     "darkriszty.markdown-table-prettify",
 
+    // NPM
+    "idered.npm",
+
     // Open in GitHub
     "fabiospampinato.vscode-open-in-github",
 
