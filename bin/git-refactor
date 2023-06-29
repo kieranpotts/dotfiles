@@ -28,7 +28,7 @@ git add --all
 VERIFY=${X_GIT_COMMIT_VERIFY:-1}
 
 if [ "$VERIFY" -eq "0" ]; then
-  git commit --quiet --no-verify --message "refactor: ${msg}"
+  git commit --quiet --no-verify --message "${msg} [refactor]"
 else
-  git commit --quiet --message "refactor: ${msg}"
+  git commit --quiet --message "${msg} [refactor]"
 fi
