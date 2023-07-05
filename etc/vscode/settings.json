@@ -27,14 +27,14 @@
   "editor.fontSize": 13,
   "editor.fontWeight": "400",
 
-  // Disable various auto-formatting mechanisms in the code editor.
-  "editor.formatOnPaste": false,
-  "editor.formatOnSave": false,
-  "editor.formatOnType": false,
+  // Enable various auto-formatting mechanisms in the code editor.
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
 
-  // Re-enforce disabling of auto-fixes.
+  // Enable auto-fixes. Required for EditorConfig.
   "editor.codeActionsOnSave": {
-    "source.fixAll": false
+    "source.fixAll": true
   },
 
   // Render guidelines for indentation and bracket pairs.
