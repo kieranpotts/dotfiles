@@ -190,11 +190,12 @@
 
   // EXTENSIONS ================================================================
 
-  // Configuration for the ToDo Tree extension. Use only `TODO` notations.
-  // https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
-  "todo-tree.general.tags": [
-    "TODO"
-  ],
+  "asciidoc.preview.refreshInterval": 1000,
+  "asciidoc.preview.useEditorStyle": false,
+  "asciidoc.preview.scrollPreviewWithEditor": false,
+  "asciidoc.preview.scrollEditorWithPreview": false,
+  "asciidoc.preview.markEditorSelection": false,
+  "asciidoc.preview.doubleClickToSwitchToEditor": false ,
 
   "cSpell.userWords": [
     "composability",
