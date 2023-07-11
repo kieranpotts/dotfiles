@@ -5,9 +5,21 @@
   // Clear the terminal before running a new debugging session.
   "debug.terminal.clearBeforeReusing": true,
 
-  // Use VS Code's improved diff algorithm for the old Diff Editor as well as
-  // the new Merge Editor (default).
+  // Use VS Code's improved diff algorithm for the old diff editor 
+  // as well as the new one.
   "diffEditor.diffAlgorithm": "advanced",
+
+  // Use the latest version of VS Code's new (experimental) diff editor.
+  "diffEditor.experimental.useVersion2": true,
+
+  // Hide unchanged regions in the new diff editor.
+  "diffEditor.experimental.collapseUnchangedRegions": true,
+
+  // Mark inline deletions and insertions.
+  "diffEditor.experimental.showEmptyDecorations": true,
+
+  // Markup blocks of code that have moved to different lines.
+  "diffEditor.experimental.showMoves": true,
 
   // Disable various auto-complete mechanisms in the code editor.
   "editor.autoClosingBrackets": "never",
