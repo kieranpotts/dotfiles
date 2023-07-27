@@ -1,0 +1,50 @@
+= Installation
+
+WARNING: Some of the operations enabled by the dotfiles are potentially destructive. For example, some Git aliases rewrite commit histories. If you choose to use these dotfiles, you do so at your own risk.
+
+Follow these steps to install the dotfiles on a new computer for the first time. After installing, follow the instructions for link:./configuration.adoc[configuring] and link:./updating.adoc[updating] the dotfiles.
+
+== 1. Clone this repository
+
+You should clone this repository directly into your user home directory.
+
+[source,sh]
+----
+git clone git@github.com:kieranpotts/dotfiles.git
+----
+
+Alternatively, after cloning the repository elsewhere, create a link to it from `~/dotfiles`. (On Windows, use Powershell running with Administrator privileges.)
+
+
+[source,sh]
+----
+ln -s path/to/dotfiles ~/dotfiles
+----
+
+
+[source,powershell]
+----
+New-Item -ItemType SymbolicLink -Path "C:\Users\[Username]\dotfiles" -Target "C:\path\to\dotfiles"
+----
+
+== 2. Run the update script
+
+Change to the root directory of the cloned repository and run the `bin/update!` shell script. If your OS is Windows, your terminal program MUST be run with administrator privileges in order for the script to be able to create the necessary symlinks.
+
+[source,sh]
+----
+cd dotfiles
+sh bin/update!
+----
+
+The update script will install and enable the dotfiles configuration. The first time you do this, you will need to exit your terminal program then restart it. Doing so will create a new login shell, which will load the newly-installed dotfiles configuration at startup.
+
+== 3. Add the `bin` directory to your system PATH environment variable
+
+This repository's `bin` directory contains various executable programs including `oh-my-posh` and `lazygit` binaries (for Windows only), as well as various `git-*` shell scripts that are mapped to Git aliases. It is RECOMMENDED you add the `bin` directory to your system PATH environment variable, which will make these programs available from the command line.
+
+== 4. GitHub Codespaces configuration (optional step)
+
+Go to your https://github.com/settings/codespaces[GitHub Codespaces options] and enable the following setting. This will ensure your terminal environment in github.dev will be consistent with your local terminal.
+
+image::github-automatically-install-dotfiles.png[]

@@ -1,0 +1,20 @@
+= Requirements
+
+* A UNIX-like environment is REQUIRED. https://gitforwindows.org/[Git Bash for Windows] is supported.
+
+* https://git-scm.com/[Git] is REQUIRED. The dotfiles configuration has been tested with Git v29.
+
+* The full version of Vim (`/usr/bin/vim.basic`) is RECOMMENDED. The `.vimrc` file installed from this repository is not compatible with the minimalist version of Vim (`/usr/bin/vim.tiny`), which is installed by default on some Linux distros. To check which version of Vim is installed on your system, run:
+
+[source,sh]
+----
+readlink -f `which vi`
+----
+
+To install the full version of Vim, `/usr/bin/vim.basic`, run:
+
+[source,sh]
+----
+sudo apt update
+sudo apt install vim
+----

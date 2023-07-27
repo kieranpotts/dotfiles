@@ -19,6 +19,13 @@
     "editor.wordWrapColumn": 120,
   },
 
+  "[asciidoc]":{
+    "editor.rulers": [],
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 120,
+  },
+
+
   // Markdownlint rules. Use the default linting ruleset with some tweaks.
   // https://github.com/DavidAnson/vscode-markdownlint#markdownlintconfig
   "markdownlint.config": {

@@ -1,0 +1,30 @@
+= Configuration
+
+The `bin/update!` script will establish various symlinks in your home directory. For example, `~/.gitconfig` will be symlinked to `~/dotfiles/gitconfig`. You SHOULD NOT edit the symlinks and you SHOULD NOT edit the contents of the `~/dotfiles` directory, either. That's because these files will be overwritten whenever you re-run the `bin/update!` script.
+
+The following files will be added to your home directory. These are _not_ symlinked and they will _not_ be overwritten by subsequent `bin/update!` executions. Therefore, you can safely edit these files without risk of your changes being lost. It's via these files that you extend the "global" dotfiles configuration shared from this repository:
+
+* `~/local.profile`
+* `~/local.bash_profile`
+* `~/local.bashrc`
+* `~/local.gitconfig`
+* `~/local.gitignore`
+
+If you already had files like `.profile` or `.gitconfig` in your user directory, the `bin/update!` script will have created backups of these files before replacing them. The backup files will be named with the "backup" prefix. For example, your existing `~/.bashrc` file will be renamed `~/backup.bashrc`. You may need to manually copy-and-paste existing configurations from the old "backup" files to the new "local" files.
+
+== Git configuration
+
+You MUST edit the `~/local.gitconfig` file to configure your Git user profile information. This data will be embedded in commit objects:
+
+[source,txt]
+----
+[user]
+  email = you@example.com
+  name = Your Name
+----
+
+When you ran the `bin/update!` script, your previous Git configuration would have been backed up to `~/backup.gitconfig`. You SHOULD review the contents of this file and copy any other configuration you wish to keep to the new `~/local.gitconfig` file.
+
+Note, from now on you SHOULD NOT use the `git config --global` command to update your Git configuration. If you do, this command will update the file symlinked from `~/.gitconfig` and the changes will be overwritten next time you run the `bin/update!` script. To avoid this, you SHOULD instead edit the `~/local.gitconfig` file directly.
+
+You MAY also edit the `~/local.gitignore` file to configure global https://git-scm.com/docs/gitignore[Git ignore rules]. By default, this file adds rules to ignore files or directories named `__TODO__` or `__NOTES__` in any Git repository anywhere on your local filesystem. It means the contents of these paths will be private to you and will not be committed to source control.

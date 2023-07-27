@@ -1,0 +1,5 @@
+= The `home` directory
+
+The `home` directory contains "local" dotfiles that the `update!` script will copy directly into the user's home directory. These extend the global dotfiles installed from the `dist` directory and may be edited directly by the user.
+
+After the initial installation, subsequent executions of the `update!` script will not overwrite any changes the user makes to the copies of the "local" files installed in their home directory.

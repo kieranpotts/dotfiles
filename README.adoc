@@ -1,0 +1,50 @@
+= Dotfiles
+
+These are my personal dotfiles. They include handy aliases and functions for UNIX-like systems, a better default configuration for Git, and an extensive suite of useful Git aliases – things like `git sync`, `git amend`, `git squash`, `git fixup` and `git undo`.
+
+I've made some effort to make these dotfiles as cross-platform compatible as possible. Most of the shell scripts are POSIX-compliant and will therefore run in all UNIX shells. For Windows, a Linux emulator like Git Bash for Windows or a virtual machine like WSL2 is required.
+
+I maintain this repository for ease of backing up, syncing and porting my system configuration between computers. You are welcome to fork this repository and use it as a basis for designing your own dotfiles. Detailed documentation is included for installing, configuring and updating.
+
+== Documentation
+
+=== Get started
+
+* link:./docs/start/requirements.adoc[Requirements]
+* link:./docs/start/installation.adoc[Installation]
+* link:./docs/start/configuration.adoc[Configuration]
+* link:./docs/start/updating.adoc[Updating]
+
+=== Usage
+
+*Shells:*
+
+* link:./docs/usage/shells/startup-scripts.adoc[Shell startup scripts]
+* link:./docs/usage/shells/environment-variables.adoc[Shell environment variables]
+* link:./docs/usage/shells/aliases.adoc[Shell aliases]
+* link:./docs/usage/shells/functions.adoc[Shell functions]
+
+*Git:*
+
+* link:./docs/usage/git/config.adoc[Git config]
+* link:./docs/usage/git/aliases.adoc[Git aliases]
+
+////
+
+TODO: Add documentation for using Vim and Vimdiff
+
+*Text editors:*
+
+* Vim
+
+////
+
+=== Contributing
+
+The following documentation is for maintainers and contributors of this project.
+
+* link:./docs/contributing/acknowledgments.adoc[Acknowledgments]
+
+''''
+
+Copyright © 2020-2023 Kieran Potts – link:./LICENSE.txt[MIT license]

@@ -1,0 +1,5 @@
+= The `dist` directory
+
+The `dist` directory contains "global" dotfiles that are intended to be symlinked from the user's home directory. These are not intended to be editable by the user. Instead, the user is able to extend the global dotfiles via "local" ones, which are copied from the `home` directory.
+
+Because this directory encapsulates source code and is not compiled from other materials, it is required to be committed to source control.
