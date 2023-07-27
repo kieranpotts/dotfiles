@@ -2,16 +2,14 @@
 name: Support
 about: Request technical help
 title: ''
-labels: support
+labels: SUPPORT
 assignees: ''
 ---
 
-Use this issue to ask for technical help from the project's maintainers. While we do review all support tickets, we regret it may not be possible to respond to all enquiries.
+You may use this issue to request technical help from the project's maintainers. However, while we do review all support tickets, we regret it may not be possible to respond to all enquiries.
 
-Please confirm the following by checking all the boxes `[x]`:
+Before you open a support ticket, please confirm that you have looked for solutions elsewhere by checking the boxes `[x]` below.
 
 - [ ] I have tried to find a solution in the documentation
-- [ ] I have searched for similar questions in this issue tracker
+- [ ] I have searched for similar questions in this issue tracker (including closed issues)
 - [ ] I have looked elsewhere online, such as StackOverflow
-
-If you have not been successful in finding a solution, please describe the problem you're trying to solve.

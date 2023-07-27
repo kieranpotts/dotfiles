@@ -1,13 +1,13 @@
 ---
 name: Maintenance
-about: Plan some general housekeeping work
+about: Plan routine housekeeping and other tasks related to the upkeep of the software system
 title: ''
-labels: maintenance
+labels: MAINTENANCE
 assignees: ''
 ---
 
-Log general maintenance work that needs to be undertaken.
+Use this issue to log general maintenance work that needs to be undertaken.
 
-Maintenance includes the upgrading of dependencies and changes to configuration. It also includes changes to supporting materials under source control such as documentation, specification requirements and test scripts. Trivial changes, such as fixing typos in READMEs, fall into this category of work, too.
+Maintenance work covers any routine housekeeping tasks and general upkeep of the software system. This category of work includes the upgrading of dependencies and changes to configuration of tools and infrastructure. It also includes changes to other artifacts under source control such as documentation, requirements specifications and test scripts. Trivial changes, such as fixing typos in READMEs, also fall under this category of work.
 
-In some cases maintenance work may involve making changes to source code and configuration, for example to maintain compatibility with breaking API changes in dependencies.
+In some cases maintenance work may involve some refactoring of source code and configuration, for example to maintain compatibility with breaking API changes in updated dependencies.
