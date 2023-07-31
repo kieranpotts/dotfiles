@@ -24,7 +24,7 @@ ln -s path/to/dotfiles ~/dotfiles
 
 [source,powershell]
 ----
-New-Item -ItemType SymbolicLink -Path "C:\Users\[Username]\dotfiles" -Target "C:\path\to\dotfiles"
+New-Item -ItemType SymbolicLink -Path "C:\Users\[Username]\dotfiles" -Target "C:\path\to\dotfiles" -Force
 ----
 
 == 2. Run the update script
@@ -41,7 +41,7 @@ The update script will install and enable the dotfiles configuration. The first 
 
 == 3. Add the `bin` directory to your system PATH environment variable
 
-This repository's `bin` directory contains various executable programs including `oh-my-posh` and `lazygit` binaries (for Windows only), as well as various `git-*` shell scripts that are mapped to Git aliases. It is RECOMMENDED you add the `bin` directory to your system PATH environment variable, which will make these programs available from the command line.
+This repository's `bin` directory contains various `git-*` shell scripts that are mapped to Git aliases. It is RECOMMENDED you add the `bin` directory to your system PATH environment variable, which will make these Git aliases available from the command line.
 
 == 4. GitHub Codespaces configuration (optional step)
 
