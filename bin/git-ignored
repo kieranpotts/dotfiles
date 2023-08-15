@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# ==============================================================================
+# Print a list of file paths, changes to which will not be added to Git's
+# staging index because they are being ignored.
+#
+# Usage:
+#
+# ```
+# git ignored
+# ```
+#
+# Use `git ignore [path]` to add a file path to this list, or `git unignore [path]`
+# to remove one.
+#
+# See:
+# - https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-update-index.html
+# ==============================================================================
+
+# Absolute path to this script, e.g. `/path/to/dotfiles/bin/foo.sh`.
+#
+# TODO: `readlink` is not a POSIX utility, so need to find a better cross-
+# platform way of achieving this.
+FILE_PATH=$(readlink -f "$0")
+
+# Absolute path to this script's parent directory, thus `/path/to/dotfiles/bin`.
+BIN_PATH=$(dirname "$FILE_PATH")
+
+# Absolute path this repo, thus `/path/to/dotfiles`.
+REPO_PATH=$(dirname "$BIN_PATH")
+
+# Source ANSI code variables.
+source "${REPO_PATH}/lib/ansi-codes.sh"
+
+echo -e "${BRIGHT_BLUE}Changes to the following files will not be available to add to the staging index:${RESET}"
+git ls-files -v | grep "^[[:lower:]]"

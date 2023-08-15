@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# ==============================================================================
+# Opposite of `git ignore`.
+#
+# Usage:
+#
+# ```
+# git unignore [path]
+# ```
+#
+# Use `git ignored` to see a list of file paths that are currently ignored, and 
+# which can therefore be unignored.
+#
+# See:
+# - https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-update-index.html
+# ==============================================================================
+
+file="${1}"
+
+if [ -z "${file}" ]; then
+  echo "Require a file path" >&2
+  exit 1
+fi
+
+git update-index --no-assume-unchanged "${file}"

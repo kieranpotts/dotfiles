@@ -16,6 +16,8 @@
 #
 # Usage: `git untrack path/to/file.ext`
 #
+# See also `git ignore`, which permanently removes the file path from the index.
+#
 # See:
 # - https://git-scm.com/docs/git-rm
 # ==============================================================================

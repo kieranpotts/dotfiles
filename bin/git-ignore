@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# ==============================================================================
+# Git alias to permanently keep local changes to a file path out of Git's 
+# staging index.
+#
+# Usage:
+#
+# ```
+# git ignore [path]
+# ```
+#
+# This alias uses the `git update-index` operation to tell Git to assume that any
+# changes made to the path can be ignored. This can be useful, for example, for 
+# making local-specific changes to environment configuration files that are
+# checked in to source control. But this operation should be used sparingly, and
+# be aware that unexpected behaviors can arise with other operations such as
+# `git stash`.
+#
+# Usage: `git ignore path/to/file.ext`
+#
+# Use `git unignore [path]` to undo this operation, and `git ignored` to list all 
+# the paths that are currently ignored.
+#
+# See also `git track`/`git untrack`, which is a similar operation but temporary
+# and safer.
+#
+# See:
+# - https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-update-index.html
+# ==============================================================================
+
+file="${1}"
+
+if [ -z "${file}" ]; then
+  echo "Require a file path" >&2
+  exit 1
+fi
+
+git update-index --assume-unchanged "${file}"
