@@ -39,7 +39,13 @@ The update script will install and enable the dotfiles configuration. The first 
 
 == 3. Add the `bin` directory to your system PATH environment variable
 
-This repository's `bin` directory contains various `git-*` shell scripts that are mapped to Git aliases. It is RECOMMENDED you add the `bin` directory to your system PATH environment variable, which will make these Git commands available from the command line.
+This repository's `bin` directory contains various `git-*` shell scripts that are mapped to Git aliases. It is RECOMMENDED you add the `bin` directory to your system PATH environment variable, which will make these Git commands available from the command line. In Unix-like environments, add the following to your `local.bash_profile` file, changing the path as required:
+
+[source,sh]
+----
+# Include the directory of Git alias scripts.
+export PATH=$PATH:/path/to/dotfiles/bin
+----
 
 == 4. GitHub Codespaces configuration (optional step)
 
