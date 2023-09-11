@@ -15,12 +15,10 @@ git clone git@github.com:kieranpotts/dotfiles.git
 
 Alternatively, after cloning the repository elsewhere, create a link to it from `~/dotfiles`. (On Windows, use Powershell running with Administrator privileges.)
 
-
 [source,sh]
 ----
 ln -s path/to/dotfiles ~/dotfiles
 ----
-
 
 [source,powershell]
 ----
