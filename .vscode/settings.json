@@ -1,0 +1,17 @@
+{
+
+  // Render vertical guidelines at 80, 100 120 columns.
+  "editor.rulers": [
+    80,
+    100,
+    120
+  ],
+
+  // Transform tab indents to two spaces. Enforce this — don't allow VS Code
+  // to override based on what it thinks is the existing indentation format of
+  // each file.
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+
+}
