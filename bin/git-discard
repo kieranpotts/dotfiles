@@ -10,7 +10,7 @@
 # git discard [file1] [file2]...
 # ```
 #
-# This is equivalent of the undo operation in VSCode's built-in Git GUI.
+# This is equivalent of the undo operation in VS Code's built-in Git GUI.
 #
 # Multiple file paths may be inputted, but additional options are not accepted
 # (they are disabled by the double hyphen `--` which marks the start of the

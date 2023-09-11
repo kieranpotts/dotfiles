@@ -10,7 +10,7 @@
 # git sync
 # ```
 #
-# The behavior of this alias is equivalent to VSCode's branch syncing
+# The behavior of this alias is equivalent to VS Code's branch syncing
 # operation, and it is equivalent to chaining the `git down &&  git up`
 # aliases. By using the rebasing strategy on `pull`, it maintains a
 # linear commit history even if there is divergent work between the local
