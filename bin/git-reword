@@ -36,6 +36,8 @@ git stash push --include-untracked
   # [select "edit" for target commit to reword, which should be first in the list]
   # git commit --allow-empty --amend --only -m "[new-commit-message]"
   # git rebase --continue
+  #
+  # Use `git rebase -i --root` to rebase to the start of the commit history.
 # elif [ "$VERIFY" -eq "0" ]; then
 if [ "$VERIFY" -eq "0" ]; then
   git commit --amend --no-verify --quiet
