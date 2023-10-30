@@ -13,12 +13,14 @@ You should clone this repository directly into your user home directory.
 git clone git@github.com:kieranpotts/dotfiles.git
 ----
 
-Alternatively, after cloning the repository elsewhere, create a link to it from `~/dotfiles`. (On Windows, use Powershell running with Administrator privileges.)
+Alternatively, after cloning the repository elsewhere, create a link to it from `~/dotfiles`.
 
 [source,sh]
 ----
-ln -s path/to/dotfiles ~/dotfiles
+ln -s /path/to/dotfiles ~/dotfiles
 ----
+
+On Windows, use Powershell running with Administrator privileges.
 
 [source,powershell]
 ----
