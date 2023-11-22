@@ -6,7 +6,7 @@ labels: BUG
 assignees: ''
 ---
 
-Use this issue to report a suspected bug in the software system, or an incident such as an outage that made the software system unusable.
+Use this issue to report a suspected bug in the software system.
 
 Bugs are errors or regressions in the expected behavior of a computer program, either in terms of its functionality and behaviors or its non-functional attributes such as performance and availability, discovered in production. Bugs are caused by changes in a program's business logic or its configuration, causing the system to behave in unintended ways, to produce incorrect results, or to otherwise not work as specified.
 

@@ -6,9 +6,9 @@ labels: REFACTORING
 assignees: ''
 ---
 
-Use this issue to suggest how the internal structure and design of the source code and configuration can be changed in such as way that it will make the system easier to maintain and develop further.
+Use this issue to suggest how the code and structure of the system can be changed to make it easier to further develop and maintain.
 
-This category of work is focused on the needs of the developers and maintainers of the software system, rather than its owners or users. The proposed changes should not impact the external operations and interfaces, or the internal behaviors, of the program. While refactoring work may not directly improve external non-functional attributes such as performance and scalability, good architecture and clean code is the foundation on which high quality systems are built.
+Good architecture and clean code is the foundation on which high quality systems are built. Refactoring will ultimately benefit the users and owners of the software, for example through faster delivery of features, greater robustness and higher scalability. But the focus of this work is on the needs of the developers and maintainers of the software.
 
 Technical debt (aka design debt) is a popular metaphor for explaining the value of refactoring to organizations that pay the development bills.
 
