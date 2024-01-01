@@ -38,7 +38,7 @@
   #
   # https://www.git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config#ch_core_editor
   #
-	editor = vim --nofork
+  editor = vim --nofork
 
   # core.eol
   #
