@@ -28,11 +28,29 @@ if [ -z "${msg}" ]; then
   exit 1
 fi
 
+# Absolute path to this script, e.g. `/path/to/dotfiles/bin/foo.sh`.
+#
+# TODO: `readlink` is not a POSIX utility, so need to find a better cross-
+# platform way of achieving this.
+FILE_PATH=$(readlink -f "$0")
+
+# Absolute path to this script's parent directory, thus `/path/to/dotfiles/bin`.
+BIN_PATH=$(dirname "$FILE_PATH")
+
+# Absolute path this repo, thus `/path/to/dotfiles`.
+REPO_PATH=$(dirname "$BIN_PATH")
+
+# Source ANSI code variables.
+source "${REPO_PATH}/lib/ansi-codes.sh"
+
+echo -e "${REVERSED}git add --all${RESET}"
 git add --all
 
 # If there's an environment variable called `X_GIT_COMMIT_VERIFY` and its value
 # is `0`, then we apply the `--no-verify` flag to the `git commit` operation.
 VERIFY=${X_GIT_COMMIT_VERIFY:-1}
+
+echo -e "${REVERSED}git commit --quiet --message \"${msg}\"${RESET}"
 
 if [ "$VERIFY" -eq "0" ]; then
   git commit --quiet --no-verify --message "${msg}"

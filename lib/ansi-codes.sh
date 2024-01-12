@@ -3,7 +3,6 @@
 # ==============================================================================
 # List of the most useful ANSI color codes.
 #
-#
 # References:
 # - https://stackoverflow.com/a/28938235
 # - https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
@@ -64,7 +63,7 @@ ON_BRIGHT_WHITE='\033[107m'
 
 # TESTS
 
-# echo 'DECORATIONS: ============================================================'
+#echo 'DECORATIONS: ============================================================'
 
 #echo -e "${BOLD}BOLD${RESET} - RESET"
 #echo -e "${DIM}DIM${RESET} - RESET"
