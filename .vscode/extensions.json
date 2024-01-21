@@ -4,6 +4,9 @@
     // AsciiDoc — Provides language support for AsciiDoc.
     "asciidoctor.asciidoctor-vscode",
 
+    // AsciiDoc Snippets — Snippets for AsciiDoc for PDF and HTML output.
+    "travismichette.adoc-snippets",
+
     // EditorConfig — .editorconfig file support.
     "editorconfig.editorconfig",
 
