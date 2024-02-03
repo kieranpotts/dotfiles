@@ -1,6 +1,6 @@
 = Dotfiles
 
-INFO: This repository is no longer maintained. My dotfiles have been merged into my link:https://github.com/kieranpotts/devtools[devtools configuration].
+NOTE: This repository is no longer maintained. My dotfiles have been merged into my link:https://github.com/kieranpotts/devtools[devtools configuration].
 
 These are my personal dotfiles. They include handy aliases and functions for UNIX-like systems, a better default configuration for Git, and an extensive suite of useful Git aliases – things like `git sync`, `git amend`, `git squash`, `git fixup` and `git undo`.
 
