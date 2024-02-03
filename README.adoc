@@ -1,5 +1,7 @@
 = Dotfiles
 
+INFO: This repository is no longer maintained. My dotfiles have been merged into my link:https://github.com/kieranpotts/devtools[devtools configuration].
+
 These are my personal dotfiles. They include handy aliases and functions for UNIX-like systems, a better default configuration for Git, and an extensive suite of useful Git aliases – things like `git sync`, `git amend`, `git squash`, `git fixup` and `git undo`.
 
 I've made some effort to make these dotfiles as cross-platform compatible as possible. Most of the shell scripts are POSIX-compliant and will therefore run in all UNIX shells. For Windows, a Linux emulator like Git Bash for Windows or a virtual machine like WSL2 is required.
