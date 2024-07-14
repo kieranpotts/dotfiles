@@ -19,4 +19,4 @@
 # will be identical to the `git uncommit` alias.
 # ==============================================================================
 
-git reset HEAD@{1} --soft
+git reset "HEAD@{1}" --soft

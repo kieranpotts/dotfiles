@@ -1,3 +1,14 @@
 = Shell environment variables
 
-No environment variables are defined at this time.
+The following environment variables are enabled in shell environments.
+
+[cols="1,1,1"]
+|===
+|Name |Description |Shells
+
+|`X_GIT_COMMIT_VERIFY=1`
+|Change to `0` to apply `--no-verify` flag to aliased `git commit` operations.
+|All
+|===
+
+In addition, in all shell environments, the `PATH` environment variable is extended to include `$HOME/bin` and `$HOME/dotfiles/bin`, if those directories exist.

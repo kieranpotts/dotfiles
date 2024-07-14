@@ -15,4 +15,4 @@
 # Use `git tracking` to list all tracked branches.
 # ==============================================================================
 
-git rev-parse --abbrev-ref --symbolic-full-name @{upstream} 2> /dev/null
+git rev-parse --abbrev-ref --symbolic-full-name "@{upstream}" 2> /dev/null

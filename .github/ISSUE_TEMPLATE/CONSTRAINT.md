@@ -2,7 +2,7 @@
 name: Constraints
 about: Define parameters within which the system must perform, such as speed, security and availability
 title: ''
-labels: CONSTRAINTS
+labels: constraint
 assignees: ''
 ---
 

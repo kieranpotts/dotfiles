@@ -10,4 +10,10 @@
 # ```
 # ==============================================================================
 
-git clone ${@:1}
+# Bash-compatible code, with string indexing that allows additional parameters
+# to be passed on to the `git clone` command.
+#git clone ${@:1}
+
+# POSIX-compatible code, without string indexing. This code only passes the
+# first parameter to the `git clone` command.
+git clone "${1}"

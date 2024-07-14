@@ -34,7 +34,7 @@
 # - https://git-scm.com/docs/git-rev-parse
 # ==============================================================================
 
-REV=$(git rev-parse ${1:-HEAD})
+REV=$(git rev-parse "${1:-HEAD}")
 git add --all
 
 # If there's an environment variable called `X_GIT_COMMIT_VERIFY` and its value
@@ -42,9 +42,13 @@ git add --all
 VERIFY=${X_GIT_COMMIT_VERIFY:-1}
 
 if [ "$VERIFY" -eq "0" ]; then
-  git commit --no-verify --quiet --fixup=${REV} ${@:2}
+  # In Bash, we can forward additional parameters to the `git commit` command.
+  # This is not so easy in POSIX shell.
+  #git commit --no-verify --quiet --fixup="${REV}" "${@:2}"
+  git commit --no-verify --quiet --fixup="${REV}"
 else
-  git commit --quiet --fixup=${REV} ${@:2}
-fi 
+  #git commit --quiet --fixup="${REV}" "${@:2}"
+  git commit --quiet --fixup="${REV}"
+fi
 
-git rebase --interactive --autosquash ${REV}~1
+git rebase --interactive --autosquash "${REV}~1"

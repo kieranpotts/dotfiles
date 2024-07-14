@@ -4,9 +4,25 @@ The following shell functions are enabled.
 
 [cols="1,3,1"]
 |===
-|Function |Description |Compatibility 
+|Function |Description |Compatibility
 
-|`reload!`
-|Reload the shell startup scripts, eg `.profile` or `.bash_profile`
-| POSIX
+|`buildDockerImage (<name_for_created_image>)`
+|Build a Docker image from a Dockerfile in the current directory.
+|POSIX
+
+|`runDockerContainer <image_name>`
+|Run a Docker container from an image.
+|POSIX
+
+|`runDockerFromFile (<name_for_created_image>)`
+|Build an image and immediately run a container in the background from it.
+|POSIX
+
+|`listDockerImages`
+|List all available docker images.
+|POSIX
+
+|`sshDockerContainer <container_id>`
+|SSH into a running container.
+|POSIX
 |===

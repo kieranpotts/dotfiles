@@ -18,7 +18,7 @@
 # may need to be force-pushed into the remotes that have the existing commits.
 # ==============================================================================
 
-hash="${1}"
+#hash="${1}"
 
 # If there's an environment variable called `X_GIT_COMMIT_VERIFY` and its value
 # is `0`, then we apply the `--no-verify` flag to the `git commit` operation.

@@ -1,17 +1,17 @@
 = Updating
 
-It is easy to update your system to use the latest dotfiles configuration from this repository. There's a script for that! From this repository's root directory, run:
+It is easy to update your system to use the latest dotfiles configuration from this repository. There's a script for that! Sync your local instance of the dotfiles repository then, from the local repository's root directory, run:
 
-[source,sh]
+[source]
 ----
 sh bin/update!
 ----
 
-Or, if you have added the repository's `bin` directory to your system PATH, then you can just type:
+Or, if you have added this repository's `bin` directory to your system PATH, then you can just type:
 
-[source,sh]
+[source]
 ----
 update!
 ----
 
-This script will pull the latest updates from the upstream repository and reinstall any files and symlinks as necessary.
+This script reinstalls the dotfiles and symlinks. This is only for the Unix dotfiles. Symlinks for program configurations need to be maintained manually.

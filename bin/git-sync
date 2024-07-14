@@ -39,9 +39,9 @@ initialStashCount=$(git rev-list --walk-reflogs --count refs/stash 2> /dev/null)
 git stash push --include-untracked
 
 # Get tracked upstream branch (see `upstream` alias).
-upstreamBranch=$(git rev-parse --abbrev-ref --symbolic-full-name @{upstream})
+upstreamBranch=$(git rev-parse --abbrev-ref --symbolic-full-name "@{upstream}")
 
-if [ ! -z "$upstreamBranch" ]; then
+if [ -n "$upstreamBranch" ]; then
   git pull --rebase --prune
   git push --follow-tags
 else

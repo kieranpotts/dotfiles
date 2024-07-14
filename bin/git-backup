@@ -17,5 +17,5 @@ if [ -z "${branch}" ]; then
   branch=$(git branch --show-current)
 fi
 
-git branch "backup/${branch}" $branch
+git branch "backup/${branch}" "${branch}"
 echo "Created branch 'backup/${branch}'"

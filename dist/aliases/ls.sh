@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # ==============================================================================
-# Aliases for `ls`
+# Aliases for `ls`.
 # ==============================================================================
 
 # List all files – including dot files – and directories in long-form

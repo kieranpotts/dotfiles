@@ -1,0 +1,34 @@
+
+# <type>: <subject>
+# |<--------  maximum of 50 characters  -------->|
+
+# <body>
+# Provide a detailed description of this change. Wrap text over
+# multiple lines as needed.
+# |<------------   maximum line length of 72 characters   ------------>|
+
+# <footer>
+# Optional footers. Uncomment as needed.
+#Ticket: #<issue number>
+#Closes: #<issue number>
+
+#===============================================================================
+# <type> can be:
+#   constraint  - changes to non-functional attributes
+#   experiment  - technical spike work and proofs-of-concepts
+#   feature     - new, changed, or deprecated features
+#   fix         - fixes for bugs or other unexpected behaviors
+#   maintenance - changes to documentation, and general housekeeping tasks
+#   refactor    - refactoring of production, test or other code
+#
+# Append " - WIP" to the <subject> if the change is being implemented
+# incrementally, eg behind a feature flag.
+#
+# Style guide:
+#   - Do not capitalize the subject line.
+#   - Use the imperative mood in the subject line.
+#   - Do not end the subject line with a period.
+#   - Separate the subject from the body with a single blank line.
+#   - Use the body to explain what and why, now how.
+#   - Use "-" for bullet points in the body.
+#===============================================================================

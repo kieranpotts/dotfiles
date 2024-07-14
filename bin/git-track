@@ -22,6 +22,6 @@ path="${1}"
 
 if [ -z "${path}" ]; then
   git add --all
-elif
+else
   git add "${path}"
 fi

@@ -19,34 +19,34 @@
 # ```
 # ==============================================================================
 
+# @deprecated: The repository should be synced manually.
+# Default branch for this repository.
+# DEFAULT_BRANCH="main"
+
 # This is required for the `ln` command to generate proper symlinks in
 # MSysGit / Git for Windows. Without this configuration the `ln` command in
-# this runtime environment will create copies of the dotfiles rather than
+# this runtime environment will create copies of the dotfiles, rather than
 # symlinks to them.
 windows() { [ -n "$WINDIR" ]; }
 if windows; then
   export MSYS=winsymlinks:nativestrict
 fi
 
-# Absolute path to this script, e.g. /path/to/dotfiles/bin/foo.sh
-#
-# TODO: `readlink` is not a POSIX utility, so need to find a better cross-
-# platform way of achieving this.
+# Absolute path to this script, eg `/path/to/dotfiles/bin/foo.sh`.
 FILE_PATH=$(readlink -f "$0")
 
-# Absolute path to this script's parent directory, thus /path/to/dotfiles/bin
+# Absolute path to the bin directory, thus `/path/to/dotfiles/bin`.
 BIN_PATH=$(dirname "$FILE_PATH")
 
-# Absolute path this repo, thus /path/to/dotfiles
+# Absolute path this repo, thus `/path/to/dotfiles`.
 REPO_PATH=$(dirname "$BIN_PATH")
 
+# @deprecated: The repository should be synced manually.
 # Fetch the latest updates from the upstream dotfiles repository.
-( cd "${REPO_PATH}" && git switch dev && git pull )
+# ( cd "${REPO_PATH}" && git switch "${DEFAULT_BRANCH}" && git pull )
 
-# ------------------------------------------------------------------------------
 # Note: `cp` will not, by default, copy hidden dot-prefixed files. This is why
-# none of the source file are dot-prefixed, eg `.bashrc`.
-# ------------------------------------------------------------------------------
+# none of the source files are dot-prefixed, eg `.bashrc`.
 
 # Copy the `local.*` templates directly into the user's home directory, unless
 # they already exist there (`--no-clobber`).
@@ -55,6 +55,7 @@ cp --no-clobber "${REPO_PATH}/home/local.bash_profile" ~/local.bash_profile
 cp --no-clobber "${REPO_PATH}/home/local.bashrc" ~/local.bashrc
 cp --no-clobber "${REPO_PATH}/home/local.gitconfig" ~/local.gitconfig
 cp --no-clobber "${REPO_PATH}/home/local.gitignore" ~/local.gitignore
+cp --no-clobber "${REPO_PATH}/home/local.gitmessage" ~/local.gitmessage
 
 # Create backups of system files that will be overwritten. This is especially
 # important on the first install, to make sure the user does not lose existing
@@ -74,7 +75,6 @@ ln --symbolic --force "${REPO_PATH}/dist/global.profile" ~/.profile 2> /dev/null
 ln --symbolic --force "${REPO_PATH}/dist/global.bash_profile" ~/.bash_profile 2> /dev/null
 ln --symbolic --force "${REPO_PATH}/dist/global.bashrc" ~/.bashrc 2> /dev/null
 ln --symbolic --force "${REPO_PATH}/dist/global.gitconfig" ~/.gitconfig 2> /dev/null
-ln --symbolic --force "${REPO_PATH}/dist/global.vimrc" ~/.vimrc 2> /dev/null
 
 # If there were errors with the above linking operations, provide useful
 # feedback to the user to help them resolve the issue.
@@ -85,7 +85,8 @@ else
 
   # Try reloading the shell startup scripts. This won't work the first time
   # because the terminal will first need to be restarted to create a new shell
-  # session that sources the startup scripts that define the `reload!` function.
+  # session that sources the startup scripts, which define the `reload!` function.
+
   reload! 2> /dev/null
 
   echo '== UPDATED DOTFILES =='

@@ -1,21 +1,34 @@
 # ==============================================================================
-# Git config
-#
 # This file SHOULD be used to extend and overwrite the default user-level Git
 # configuration symlinked from `~/.gitconfig`. You SHOULD edit this file
 # directly, rather than use the `git config --global` command.
-#
 # https://git-scm.com/docs/git-config
 # ==============================================================================
 
 [user]
 
-  # user.name, user.email
-  #
   # These settings determine what values end up in the `author` and `committer`
   # fields of commit objects.
-  #
   # https://git-scm.com/docs/git-config#Documentation/git-config.txt-username
-  #
   email = [your-email-address]
   name = [your-name-or-username]
+
+[core]
+
+  # Override the `ssh` command called internally by `git fetch` and `git push`.
+  # Use this to load a different identity than the defauls, eg `~/.ssh/id_dsa`.
+  #sshCommand = ssh -i ~/.ssh/id_rsa_kieranpotts2024
+
+# Optional includes. Use configuration like below to load different Git configs
+# based on the current working directory in which `git` is being executed.
+# This is useful for loading different [user] credentials and SSH keys.
+# See https://git-scm.com/docs/git-config#_conditional_includes
+#
+# You can also override these settings on a per-repository basis using
+# `git config --local --edit`.
+#
+#[includeIf "gitdir:~/code/work/"]
+#  path = "~/dev/work/.gitconfig"
+#
+#[includeIf "gitdir:~/code/personal/"]
+#  path = "~/dev/personal/.gitconfig"

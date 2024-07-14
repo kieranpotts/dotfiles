@@ -17,7 +17,12 @@
 branch="${1}"
 
 if [ -z "${branch}" ]; then
-  read -p "Type a branch name: " branch
+  # Bash-compatible code:
+  #read -p "Type a branch name: " branch
+
+  # Posix-compatible code:
+  printf "Type a branch name: " >&2
+  read -r branch
 fi
 
 if [ -z "${branch}" ]; then

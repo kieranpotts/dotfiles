@@ -1,14 +1,7 @@
 #!/bin/sh
 
 # ==============================================================================
-# Aliases for `git`
+# Load all POSIX-compliant shell functions.
 # ==============================================================================
 
-# Shortcut for `git`.
-alias g="git"
-
-# Shortcut for `lazygit`
-alias lg="lazygit"
-
-# Shortcut for `gitk`
-alias gk="gitk"
+. ~/dotfiles/dist/functions/docker.sh

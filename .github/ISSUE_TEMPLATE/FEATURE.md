@@ -2,7 +2,7 @@
 name: Feature
 about: Propose an idea for a new or improved operation or behavior
 title: ''
-labels: FEATURE
+labels: feature
 assignees: ''
 ---
 

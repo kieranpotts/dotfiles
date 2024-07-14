@@ -12,4 +12,4 @@
 # See also `git recent`, which limits the output to the last 25 log entries.
 # ==============================================================================
 
-git log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit
+git log --graph --pretty=format:'%C(red)%h%C(reset)  %<(60,trunc)%s  %C(green)%<(14)%ar  %C(blue)%an %C(yellow)%d%C(reset)' --abbrev-commit

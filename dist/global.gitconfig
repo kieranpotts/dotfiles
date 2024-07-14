@@ -1,196 +1,224 @@
 # ==============================================================================
-# Git config
-#
-# This files establishes global options for the Git version control system.
+# This file establishes global options for the Git version control system.
 # These settings are scoped to the system user.
 #
 # https://git-scm.com/docs/git-config
 # ==============================================================================
 
+[alias]
+
+  # Aliases for testing parameters. Example:
+  # $ git t0a one two three four five
+  ;t0 = "! echo $*"
+  ;t0c = "! echo $* #"
+  ;t1 = "! echo $@"
+  ;t1c = "! echo $@ #"
+  ;t2 = "! f () { echo \"$*\"; }; f"
+  ;t2c = "! f () { echo \"$*\"; }; f #"
+  ;t3 = "! f () { echo \"$@\"; }; f"
+  ;t4 = "! f () { echo \"$1\"; }; f"
+  ;t5 = "! f () { echo \"$2\"; }; f"
+  ;t6 = "! f () { echo \"${@:2}\"; }; f"
+  ;t7 = "! f () { echo \"${@:2:2}\"; }; f"
+  ;t8 = "! f () { echo \"$#\"; }; f"
+  ;t8a = "! f () { echo \"$(($#-2))\"; }; f"
+  ;t8b = "! f () { echo \"${@:$(($#-2)):1}\"; }; f"
+  ;t8c = "! f () { echo \"${@:1:$(($#-2))}\"; }; f"
+  ;t8d = "! f () { echo \"${@:$(($#-2))}\"; }; f"
+
 [branch]
 
-  # branch.sort
-  #
-  # Controls the the sort ordering of branches when displayed by git-branch.
-  #
-  # Sort in descending order of last commit date.
-  #
-  sort = -authordate:iso8601
+  # Change the ordering of branches outputted from `git branch`. Sort in
+  # descending order of last commit date, rather than alphabetically (default)
+  #sort = -authordate:iso8601
+  sort = -committerdate:iso8601
+
+[commit]
+
+  # This adds the whole commit diff in the text editor when you're editing the
+  # commit message. This is useful for reviewing the changes you're committing
+  # and writing a meaningful commit message.
+  verbose = true
+
+  # Custom template for extended (multi-line) commit messages.
+  template = ~/local.gitmessage
+
+[color]
+
+  # Turn off color in CLI output.
+  # ui = false
 
 [core]
 
-  # core.autocrlf
-  #
   # Do not transform line endings to CRLF on Windows clients at checkout. This
   # is unnecessary since all modern code editors can be configured to support
   # Unix line endings (LF).
-  #
   autocrlf = false
 
-  # core.editor
-  #
   # Configure the default text editor that Git will use when it needs you to
   # edit a file or type an extended input message. If not configured, Git
-  # uses your system's default editor.
-  #
-  # Note: LazyGit will also read this setting and use the configured editor
-  # for file editing operations.
-  #
+  # uses your system's default editor. LazyGit will also read this setting and
+  # use the configured editor for file editing operations. Reference:
   # https://www.git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config#ch_core_editor
-  #
-  editor = vim --nofork
+  editor = nvim
 
-  # core.eol
-  #
-  # Normalizes the line endings to the Unix standard (LF) on all files that Git
+  # Normalize the line endings to the Unix standard (LF) on all files that Git
   # auto-detects as being text based. This is equivalent to adding the following
   # rule to `.gitattributes`:
-  #
-  # ```
+  # ----
   # * text=auto eol=lf
-  # ```
-  #
+  # ----
   eol = lf
 
-  # core.excludesFile
-  #
   # Establish a global `.gitignore` file, which will be applied to all local
-  # Git repositories but never be committed to any repository. Use this to
+  # Git repositories but never be committed to any repository. Use this file to
   # include TODOs, scratch files or any other personal materials to the
   # working directories of local Git repositories without running the risk of
-  # those files being committed to the repository.
-  #
+  # those files being committed to any repository. Defaults to
+  # ` ~/.config/git/ignore`.
   excludesFile = ~/local.gitignore
 
-  # core.pager
+  # Ignore file mode changes in Git. If the user changes file permissions
+  # using `chmod`, these changes should not be committed to source control.
+  fileMode = false
+
+  # By default Git uses `less` to page output from commands like `git log` and
+  # `git diff`. I prefer Delta, which is a pager with built-in syntax
+  # highlighting: https://github.com/dandavison/delta
   #
-  # By default Git uses `less` to page output from commands like `log` and
-  # `diff`. This option is used to set a different paging utility. I prefer
-  # Delta: https://github.com/dandavison/delta
+  # Other options include "cat" (for disabling paging altogether), or using
+  # "less" with additional arguments for customizing the pager behavior.
   #
-  pager = delta
+  # @deprecated - Delta is causing too many problems to install in some
+  # environments. Will look to implement an alternative pager, and this
+  # should be moved to local.gitconfig anyway.
+  #pager = delta
 
 [delta]
 
   # Custom configuration for the Delta pager.
 
-  # delta.light
-  #
-  # This needs to be set to true if your terminal has a light
-  # background colour.
-  #
+  # This will need to be changed to true if the terminal uses a light theme.
   light = false
 
-  # delta.line-numbers
-  #
   # Show line numbers with diff output.
-  #
   line-numbers = true
 
-  # delta.navigation
-  #
-  # use `n` and `N` to move between diff sections.
-  #
+  # Use `n` and `N` to move between diff sections.
   navigate = true
 
-  # delta.side-by-side
-  #
-  # Shows diffs in two vertical panels.
-  #
+  # Show diffs in two vertical panels.
   # https://dandavison.github.io/delta/side-by-side-view.html
-  #
   side-by-side = true
 
 [diff]
 
-  # diff.colorMoved
-  #
-  # Color moved lines differently from changed lines. Equivalent to adding the
-  # `--color-moved` flag to all `diff` operations. Options are "no", "default",
-  # "plain", "zebra" and "dimmed_zebra".
-  #
-  # https://git-scm.com/docs/diff-options
-  #
+  # Git's default diff algorithm is `myers`, which is a general-purpose
+  # algorithm that works well for most use cases. However, it can be slow for
+  # large files and the diff output can be hard to read. Other options include
+  # `minimal`, `patience` and `histogram`. The histogram algorithm I've found
+  # to strike a good balance. See Lup Peng's blog post for more details about
+  # how these diff algorithms work:
+  # https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
+  algotithm = histogram
+
+  # Color moved lines differently from changed lines. This is the same as adding
+  # the `--color-moved` flag to `git diff`. Options are "no", "default",
+  # "plain", "zebra" and "dimmed_zebra". https://git-scm.com/docs/diff-options
   colorMoved = default
 
-  # diff.tool
-  #
-  # Use vimdiff as diff tool.
-  #
+  # When `colorMoved` is set to "default", this ignores indentation changes.
+  colorMovedWS = allow-indentation-change
+
+  # Include more context in diffs.
+  context = 10
+
+  # Use vimdiff as diff tool. Other options include difftastic, meld and
+  # nvimdiffs.
   tool = vimdiff
 
 [difftool]
 
-  # difftool.prompt
-  #
-  # Don't prompt to open the configured difftool.
-  #
+  # Don't prompt to open the configured difftool, just open it.
   prompt = false
 
 [fetch]
 
-  # fetch.prune
-  #
-  # Automatically prune from the local repository any references to branches
-  # and tags in the upstream repository that no longer exist there.
-  #
+  # See `transfer.fsckobjects` for an explanation of this setting.
+  fsckobjects = true
+
+  # On `fetch` operations, automatically prune from the local repository any
+  # references to branches in the upstream repository that no longer exist there.
   prune = true
+
+  # Also prune references to non-existent tags.
+  prunetags = true
 
 [filter "lfs"]
 
-  # filter "lfs"
-  #
-  # Default configuration for Git LFS. This configuration was added by the
-  # `git lfs install` command. See: https://git-lfs.com/
-  #
+  # Default configuration for Git LFS. This configuration is what gets added
+  # automatically by the `git lfs install` command. https://git-lfs.com/
   process = git-lfs filter-process
   required = true
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
 
+[help]
+
+  # Git will make suggestions for mistyped commands like  `git ocmmit` in
+  # help text. You can use this option to have Git run the suggested command
+  # automatically, either "immediate" or after a delay in tenths of a second
+  # (eg. "1" for 0.1 seconds). For safety, the best option is to be prompted
+  # if you do indeed intend to run the suggested command. This option
+  # requires Git >= 2.34.
+  autocorrect = prompt
+
 [init]
 
-  # init.defaultBranch
-  #
-  # Change the name of the default branch, which gets sets when a new Git
+  # Change the name of the default branch, which gets set when a new Git
   # repository is initialized the first time.
-  #
   defaultBranch = dev
 
 [interactive]
 
-  # interactive.diffFilter
-  #
   # When an interactive command such as `git add --patch` shows a colorized
   # diff, Git will pipe the diff through the shell command defined by this
   # configuration variable. The command may further markup the diff before
-  # rendering. This can be used to pipe the diff through the Delta pager.
-  # Delta's `--color-only` flag disables Delta from structurally changing the
-  # diff, which is required to maintain compatibility with Git.
-  #
+  # rendering. This is how we pipe the diff through the Delta pager. Delta's
+  # `--color-only` flag disables Delta from structurally changing the diff,
+  # which is required to maintain compatibility with Git.
   # https://git-scm.com/docs/git-config
-  #
   diffFilter = delta --color-only
+
+[log]
+
+  # Display dates as `2024-01-31 12:00:00` instead of `Wed Jan 31 12:00:50 2024`.
+  date = iso
 
 [merge]
 
-  # merge.conflictStyle
+  # The `merge.conflictStyle` option specifies the style in which conflicted
+  # hunks are written out in working tree files. The default option is "merge",
+  # which prints `=======` to demarcate conflicting changes, which are
+  # themselves ringfenced by `<<<<<<<` on one side and `>>>>>>>` on the other.
   #
-  # Specifies the style in which conflicted hunks are written out in working
-  # tree files. The default option is "merge", which prints `=======` to
-  # demarcateconflicting changes, which are themselves ringfenced by `<<<<<<<`
-  # on one side and `>>>>>>>` on the other.
+  # An alternate style, "diff3", adds a `|||||||` marker followed by the original
+  # text before either branch changed it. Being able to see the common ancestor
+  # of the merge conflicts gives a baseline frame of reference for understanding
+  # why the lines were changed differently in each branch. See Edward Anderson's
+  # blog post: https://blog.nilbus.com/take-the-pain-out-of-git-conflict-resolution-use-diff3/
   #
-  # An alternate style, "diff3", adds a `|||||||` marker and the original text
-  # before the `=======` marker. This is not recommended since not all
-  # mainstream merge tools understand this syntax.
+  # A new merge conflict algorithm added in Git 2.35 in January 2022 is better
+  # still. It expands on diff3 but reduces some of the noise by only showing
+  # what is _different_ between the conflicting branches. It automatically
+  # accepts any changes that are the same across both branches. Michael Gattozzi
+  # has written a good explanation of this feature: https://ductile.systems/zdiff3/
   #
+  # The downside of using these alternative diffing algorithms is they are not
+  # all compatible with mainstream GUI merge rools.
   # https://git-scm.com/docs/merge-config
-  #
-  # conflictStyle = diff3
+  conflictStyle = zdiff3
 
-  # merge.ff
-  #
   # By default, Git does not create an explicit merge commit if merging a
   # commit that is a descendant of the current HEAD commit. Instead, the tip
   # of the current branch is simply fast-forwarded to the commit being merged.
@@ -204,136 +232,159 @@
   # operation is possible. This option can't be used with `--squash` for reasons
   # that are well explained here: https://stackoverflow.com/a/14322024
   #
-  # Finally, `merge.ff` can be set to `"only"` or the `--ff-only` flag used.
-  # With this setting, Git will refuse to handle merges that cannot be simply
-  # fast-forwarded. This means, where there is divergent work in the source
-  # branch, the target branch must first be rebased on the source branch before
-  # the merge operation will succeed.
+  # Finally, `merge.ff` can be set to `"only"`, which is the equivalent of
+  # using the `--ff-only` flag. With this setting, Git will refuse to handle
+  # merges that cannot be simply fast-forwarded. This means, where there is
+  # divergent work in the source branch, the target branch must first be rebased
+  # on the source branch before the merge operation will succeed.
   #
   # Squash (`--squash`) and fast-forwarding (`--ff-only`) are the two merge
   # strategies that achieve linear commit histories. It is possible to use
-  # the two options together (`--squash --ff-only`). In this case, tf the source
+  # the two options together (`--squash --ff-only`). In this case, if the source
   # branch has diverged from the target branch (so a fast-forward is not
   # possible) then the merge is rejected. Otherwise, rather than fast-forwarding,
   # all the extra commits on the target branch are squashed onto the source
   # branch, creating a new commit there.
   #
-  # The following resource provides a good summary of Git merge strategies:
+  # The following resource provides a good summary of theseGit merge strategies:
   # https://bit.ly/3ZZ2xOi
   #
-  # My preference is to use `git merge` to perform true merges (ie creating
-  # explicit merge commits, even when not needed to resolve conflicts) and to
+  # My preference is to use `git merge` to perform true merges, ie creating
+  # explicit merge commits even when not needed to resolve conflicts, and to
   # use aliases such as `git squash` and `git fast-forward` to apply other
   # integration strategies.
-  #
   ff = false
 
-  # merge.tool
-  #
-  # Sets default for `git mergetool --tool=[tool]`. For vimdiff, the following
+  # Set the default for `git mergetool --tool=[tool]`. For vimdiff, the following
   # values are supported:
-  #
   # - vimdiff:  use Vim with a custom layout as specified using separate hints
   # - vimdiff1: use Vim with a 2 panes layout: LOCAL and REMOTE
   # - vimdiff2: use Vim with a 3 panes layout: LOCAL, MERGED and REMOTE
   # - vimdiff3: use Vim where only the MERGED file is shown
-  #
+  # Other options include meld, nvim or nvimdiff.
   tool = vimdiff2
 
 [mergetool]
 
-  # mergetool.keepBackup
-  #
   # Prevent generation of `.orig` files, which can all-too-easily get committed
   # to source control by accident.
-  #
   keepBackup = false
 
-  # mergetool.prompt
-  #
   # Don't prompt to open the configured mergetool.
-  #
   prompt = false
+
+[pager]
+
+  # pager.<cmd>
+  # https://git-scm.com/docs/git-config#Documentation/git-config.txt-pagerltcmdgt
+
+  # Enable paged output for the `git status` command.
+  status = true
 
 [pull]
 
-  # pull.rebase
-  #
   # On `git pull` operations, always rebase the current branch on top of the
   # upstream branch after fetching. This helps to maintain a clean, linear
   # commit history.
-  #
   rebase = true
+
+  # An alternative setting is to use `--ff-only` to ensure that the current
+  # branch is only ever fast-forwarded to the upstream branch, and never merged
+  # with an explicit commit. If there is divergent work in the upstream branch,
+  # the pull operation will fail, forcing the user to do an initial `git rebase`.
+  # This setting overrides `merge.ff` when pulling, and it will take precedence
+  # over the `pull.rebase` option.
+  #ff = only
 
 [push]
 
-  # push.followTags
-  #
-  # Push tags with commits by default. Equivalent to `--follow-tags` option.
-  #
+  # Push tags with commits by default. Equivalent to the `--follow-tags` option.
   followTags = true
 
-  # push.default
-  #
-  # By default, push branches to branches of the same name on "origin". It
-  # means you can `git push` excluding the `<remote> <branch>` parameters.
-  #
+  # By default, push branches to branches of the same name in the upstream repo.
+  # It means you can `git push` excluding the `<remote> <branch>` parameters.
   default = current
 
-  # push.autoSetupRemote
-  #
   # Automatically set up branch tracking. This is equivalent to using
-  # `--set-upstream` | `-u` on `git push`. This option must be used in
-  # conjunction with an appropriate `default` option, eg `default = current`.
-  #
-  # This option is enabled since Git 2.37.
-  #
+  # `--set-upstream` | `-u` on `git push`. I think this option is intended for
+  # use with `push.default = simple`, but `push.default = current` achieves
+  # the same thing. This option is available since Git 2.37.
   autoSetupRemote = true
 
 [rebase]
 
-  # rebase.autosquash
-  #
   # Add the `--autosquash` option to every `rebase` operation by default. This
   # will automatically handle commit messages that are prefixed "squash!",
   # "fixup!" or "amend!", changing the rebase action from "pick" to "squash",
-  # "fixup" and "fixup -C" respectively.
+  # "fixup" and "fixup -C" respectively. See https://stackoverflow.com/a/66833278
   #
   # (Note: "fixup -C" is the same as "fixup" except the log message of the
   # "fixup!" commit replaces the message of the target commit, rather than the
   # other way around.)
   #
+  # The aim of this feature is to make it easier to modify old commits.
+  #
   # This is a better default because interactive rebase still gives us the
-  # chance to edit the action per commit, before the rebase operation proper.
-  #
-  # This behavior can be disabled on a case-by-case basis by adding the
-  # `--no-autosquash` option to the `git rebase` command.
-  #
-  # https://stackoverflow.com/a/66833278
-  #
+  # chance to edit the actions per commit, before the rebase operation proper.
+  # And this default behavior can still be disabled on a case-by-case basis by
+  # adding the `--no-autosquash` option to the `git rebase` command.
   autosquash = true
+
+  # Add the `--autostash` option to every `rebase` operation by default. This
+  # will automatically stash local changes before the rebase operation, and
+  # then apply the stash after the rebase operation. This is useful when you
+  # want to rebase a branch while it has uncommitted changes. The downside is
+  # you may end up with merge conflicts in your working tree.
+  autostash = true
+
+  # Don't allow deleting missing commits during a rebase operation.
+  missingCommitsCheck = error
+
+  # Makes it easier to rebase multiple stacked branches at a time. See:
+  # https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs/
+  updateRefs = true
+
+[receive]
+
+  # See `transfer.fsckobjects` for an explanation of this setting.
+  fsckobjects = true
+
+[rerere]
+
+  # This enabled rerere, which stands for "reuse recorded resolution". This
+  # feature records how you resolve conflicts and then automatically applies
+  # the same resolution to the same conflicts in the future. This is useful
+  # when you're working on a long-lived feature branch and you're frequently
+  # rebasing it on top of the latest changes in the main branch.
+  # https://git-scm.com/book/en/v2/Git-Tools-Rerere
+  enabled = true
 
 [safe]
 
-  # safe.directory
-  #
   # If your Git repositories are on an external drive, Git will consider them
   # to be owned by someone else and therefore unsafe by default. This setting
   # completely opts-out of this security check.
-  #
   # https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory
-  #
   directory = *
+
+[transfer]
+
+  # Checks all data objects eagerly for data corruption. This will rarely be
+  # useful when syncing with Git repositories hosted in modern cloud services
+  # like GitHub. But when interacting with legacy Git repositories, data objects
+  # may not be compatible with current Git versions. This setting stops the
+  # transfer of legacy data objects via fetches, therefore preventing corruption
+  # of your local repositories.
+  #
+  # https://git-scm.com/docs/git-fsck
+  # https://git-scm.com/docs/git-config#Documentation/git-config.txt-transferfsckObjects
+  fsckobjects = true
 
 [include]
 
-  # include.path
-  #
   # Allow extensions to this base Git configuration via `~/local.gitconfig`.
-  #
   # Note, the `include.path` config MUST be maintained at the bottom of the
   # `.gitconfig` template, as the contents of the included path are injected
   # at this position and we want the included file to have the opportunity to
-  # override _anything_ in the `.gitconfig` template.
-  #
+  # override anything in the `.gitconfig` template.
   path = ~/local.gitconfig

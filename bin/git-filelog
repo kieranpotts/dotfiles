@@ -13,7 +13,12 @@
 file="${1}"
 
 if [ -z "${file}" ]; then
-  read -p "Type a file path: " file
+  # Bash-compatible code:
+  #read -p "Type a file path: " file
+
+  # Posix-compatible code:
+  printf "Type a file path: " >&2
+  read -r file
 fi
 
 if [ -z "${file}" ]; then
@@ -21,4 +26,4 @@ if [ -z "${file}" ]; then
   exit 1
 fi
 
-git log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>' --abbrev-commit -- "${file}"
+git log --graph --pretty=format:'%C(red)%h%C(reset)  %<(60,trunc)%s  %C(green)%<(14)%ar  %C(blue)%an %C(yellow)%d%C(reset)' --abbrev-commit -- "${file}"

@@ -16,11 +16,16 @@
 branch="${1}"
 
 if [ -z "${branch}" ]; then
-  read -p "Type a branch name: " branch
+  # Bash-compatible code:
+  #read -p "Type a branch name: " branch
+
+  # Posix-compatible code:
+  printf "> " >&2
+  read -r branch
 fi
 
 if [ -z "${branch}" ]; then
-  echo "Require branch name" >&2
+  printf "%b%b Require branch name. %b\n" "${RED}" "${REVERSED}" "${RESET}" >&2
   exit 1
 fi
 

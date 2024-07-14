@@ -14,37 +14,41 @@
 # - https://stackoverflow.com/a/
 # ==============================================================================
 
-# Absolute path to this script, e.g. `/path/to/dotfiles/bin/foo.sh`.
-#
-# TODO: `readlink` is not a POSIX utility, so need to find a better cross-
-# platform way of achieving this.
+# Absolute path to this script, eg `/path/to/dotfiles/bin/foo.sh`.
 FILE_PATH=$(readlink -f "$0")
 
-# Absolute path to this script's parent directory, thus `/path/to/dotfiles/bin`.
+# Absolute path to the bin directory, thus `/path/to/dotfiles/bin`.
 BIN_PATH=$(dirname "$FILE_PATH")
 
 # Absolute path this repo, thus `/path/to/dotfiles`.
 REPO_PATH=$(dirname "$BIN_PATH")
 
 # Source ANSI code variables.
-source "${REPO_PATH}/lib/ansi-codes.sh"
+. "${REPO_PATH}/lib/ansi-codes.sh"
 
 # If there's an environment variable called `X_GIT_COMMIT_VERIFY` and its value
 # is `0`, then we apply the `--no-verify` flag to the `git commit` operation.
-VERIFY=${X_GIT_COMMIT_VERIFY:-1}
+VERIFY="${X_GIT_COMMIT_VERIFY:-1}"
 
 # Get the name of the current branch.
 branch=$(git branch --show-current)
 
 # Target revision.
-REV=$(git rev-parse ${1:-HEAD})
+REV=$(git rev-parse "${1:-HEAD}")
 
 # Checkout the target commit. Git repo enters a "detached HEAD" state.
-git checkout ${REV}
+git checkout "${REV}"
 
 echo ""
-echo -e "${BLUE}Author's name (leave empty to use your default user.name config):${RESET}"
-read -p "> " name
+printf "%bAuthor's name (leave empty to use your default user.name config):%b\n" "${BLUE}" "${RESET}"
+
+# Bash-compatible code:
+#read -p "> " name
+
+# Posix-compatible code:
+printf "> " >&2
+read -r name
+
 echo ""
 
 if [ -z "${name}" ]; then
@@ -57,12 +61,19 @@ if [ -z "${name}" ]; then
 
 else
 
-  echo -e "${BLUE}Author's email address:${RESET}"
-  read -p "> " email
+  printf "%bAuthor's email address:%b\n" "${BLUE}" "${RESET}"
+
+  # Bash-compatible code:
+  #read -p "> " email
+
+  # Posix-compatible code:
+  printf "> " >&2
+  read -r email
+
   echo ""
 
   if [ -z "${email}" ]; then
-    echo -e "${RED}Email not provided, exiting...${RESET}" >&2
+    printf "%b%b Email not provided, exiting. %b\n" "${RED}" "${REVERSED}" "${RESET}" >&2
     exit 1
   fi
 
@@ -76,9 +87,9 @@ fi
 
 # New commit.
 NEW_REV=$(git rev-parse HEAD)
-echo ${NEW_REV}
+echo "${NEW_REV}"
 
 # Switch back to the previous branch then give the user the opportunity
 # to rebase the branch on the new revision.
-git switch ${branch}
-git rebase --interactive ${NEW_REV}
+git switch "${branch}"
+git rebase --interactive "${NEW_REV}"

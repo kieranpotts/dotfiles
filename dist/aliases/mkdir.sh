@@ -1,10 +1,8 @@
 #!/bin/sh
 
 # ==============================================================================
-# Aliases for `grep`
+# Aliases for `mkdir`.
 # ==============================================================================
 
-# Always use colorized output.
-alias grep="grep --color=auto"
-alias fgrep="fgrep --color=auto"
-alias egrep="egrep --color=auto"
+# Make directories recursively by default.
+alias mkdir="mkdir -p"

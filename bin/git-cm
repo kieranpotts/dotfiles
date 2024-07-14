@@ -17,43 +17,108 @@
 # rules. See https://git-scm.com/docs/gitignore.
 # ==============================================================================
 
-msg="${1}"
-
-if [ -z "${msg}" ]; then
-  read -p "Type a short commit message: " msg
-fi
-
-if [ -z "${msg}" ]; then
-  echo "Require commit message" >&2
-  exit 1
-fi
-
-# Absolute path to this script, e.g. `/path/to/dotfiles/bin/foo.sh`.
-#
-# TODO: `readlink` is not a POSIX utility, so need to find a better cross-
-# platform way of achieving this.
+# Absolute path to this script, eg `/path/to/dotfiles/bin/foo.sh`.
 FILE_PATH=$(readlink -f "$0")
 
-# Absolute path to this script's parent directory, thus `/path/to/dotfiles/bin`.
+# Absolute path to the bin directory, thus `/path/to/dotfiles/bin`.
 BIN_PATH=$(dirname "$FILE_PATH")
 
 # Absolute path this repo, thus `/path/to/dotfiles`.
 REPO_PATH=$(dirname "$BIN_PATH")
 
 # Source ANSI code variables.
-source "${REPO_PATH}/lib/ansi-codes.sh"
+. "${REPO_PATH}/lib/ansi-codes.sh"
 
-echo -e "${REVERSED}git add --all${RESET}"
+# Capture optional message from the command line.
+msg="${1}"
+
+# Require the user to input a commit message if one is not provided yet.
+if [ -z "${msg}" ]; then
+  # Bash-compatible code:
+  #read -p "Type a short comment > " msg
+
+  # Posix-compatible code:
+  printf "%bType a short comment. %b\n" "${BLUE}" "${RESET}" >&2
+  printf "> " >&2
+  read -r msg
+fi
+
+if [ -z "${msg}" ]; then
+  printf "%b%b Require commit message. %b\n" "${RED}" "${REVERSED}" "${RESET}" >&2
+  exit 1
+fi
+
+printf "%bWhat type of change is this?%b\n" "${BLUE}" "${RESET}" >&2
+printf "bug fix [%bb%b]     - Fix for an error or regression in expected behavior\n" "${UNDERLINE}" "${RESET}"
+printf "constraint [%bc%b]  - Changed parameter within which the system must perform\n" "${UNDERLINE}" "${RESET}"
+printf "feature [%bf%b]     - New or improved operation or behavior\n" "${UNDERLINE}" "${RESET}"
+printf "maintenance [%bm%b] - Routine housekeeping\n" "${UNDERLINE}" "${RESET}"
+printf "refactor [%br%b]    - Design and code improvements\n" "${UNDERLINE}" "${RESET}"
+printf "other [%bx%b]       - General changes\n" "${UNDERLINE}" "${RESET}"
+printf "> " >&2
+read -r type
+
+case "${type}" in
+  b|c|f|m|r|x)
+    # Valid type, continue with the script.
+    ;;
+  *)
+    printf "%b%b Invalid option. %b\n" "${RED}" "${REVERSED}" "${RESET}" >&2
+    exit 1
+    ;;
+esac
+
+printf "%bIs this work-in-progress? (y/n) %b\n" "${BLUE}" "${RESET}" >&2
+printf "> " >&2
+read -r wip
+
+case "${wip}" in
+  y|n)
+    ;;
+  *)
+    printf "%b%b Invalid option. %b\n" "${RED}" "${REVERSED}" "${RESET}" >&2
+    exit 1
+    ;;
+esac
+
+echo "\n"
+printf "%bgit add --all%b\n" "${DIM}" "${RESET}"
 git add --all
 
 # If there's an environment variable called `X_GIT_COMMIT_VERIFY` and its value
 # is `0`, then we apply the `--no-verify` flag to the `git commit` operation.
 VERIFY=${X_GIT_COMMIT_VERIFY:-1}
 
-echo -e "${REVERSED}git commit --quiet --message \"${msg}\"${RESET}"
+compiled_msg=""
+case "${type}" in
+  b)
+    compiled_msg="fix: ${msg}"
+    ;;
+  c)
+    compiled_msg="constraint: ${msg}"
+    ;;
+  f)
+    compiled_msg="feature: ${msg}"
+    ;;
+  m)
+    compiled_msg="maintenance: ${msg}"
+    ;;
+  r)
+    compiled_msg="refactor: ${msg}"
+    ;;
+  x)
+    compiled_msg="${msg}"
+    ;;
+esac
+
+if [ "${wip}" = "y" ]; then
+  compiled_msg="${compiled_msg} - WIP"
+fi
 
 if [ "$VERIFY" -eq "0" ]; then
-  git commit --quiet --no-verify --message "${msg}"
+  printf "%bgit commit --quiet --no-verify --message \"${compiled_msg}\"%b\n" "${DIM}" "${RESET}"
+  git commit --quiet --no-verify --message "${compiled_msg}"
 else
-  git commit --quiet --message "${msg}"
+  printf "%bgit commit --quiet --message \"${compiled_msg}\"%b\n" "${DIM}" "${RESET}"
+  git commit --quiet --message "${compiled_msg}"
 fi

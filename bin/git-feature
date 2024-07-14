@@ -8,27 +8,29 @@
 # ```
 # git feature ("[comment]")
 # ```
+#
+# TODO: Integrate this into the `git cm` alias.
 # ==============================================================================
 
-msg="${1}"
+# msg="${1}"
 
-if [ -z "${msg}" ]; then
-  read -p "Type a short commit message: " msg
-fi
+# if [ -z "${msg}" ]; then
+#   read -p "Type a short commit message: " msg
+# fi
 
-if [ -z "${msg}" ]; then
-  echo "Require commit message" >&2
-  exit 1
-fi
+# if [ -z "${msg}" ]; then
+#   echo "Require commit message" >&2
+#   exit 1
+# fi
 
-git add --all
+# git add --all
 
-# If there's an environment variable called `X_GIT_COMMIT_VERIFY` and its value
-# is `0`, then we apply the `--no-verify` flag to the `git commit` operation.
-VERIFY=${X_GIT_COMMIT_VERIFY:-1}
+# # If there's an environment variable called `X_GIT_COMMIT_VERIFY` and its value
+# # is `0`, then we apply the `--no-verify` flag to the `git commit` operation.
+# VERIFY=${X_GIT_COMMIT_VERIFY:-1}
 
-if [ "$VERIFY" -eq "0" ]; then
-  git commit --quiet --no-verify --message "${msg} [feature]"
-else
-  git commit --quiet --message "${msg} [feature]"
-fi
+# if [ "$VERIFY" -eq "0" ]; then
+#   git commit --quiet --no-verify --message "${msg} [feature]"
+# else
+#   git commit --quiet --message "${msg} [feature]"
+# fi

@@ -27,4 +27,12 @@ if [ -z "${1}" ]; then
   exit 1
 fi
 
-git checkout -q -- ${@:1}
+# Bash-compatible code, with string indexing that allows additional parameters
+# to be passed on to the `git checkout` command. This allows multiple files
+# to be inputted in a single command.
+#git checkout -q -- ${@:1}
+
+# POSIX-compatible code, without string indexing. This code only passes the
+# first parameter to the `git checkout` command, which means only one file
+# can be processed at a time.
+git checkout -q -- "${1}"

@@ -2,7 +2,7 @@
 name: Maintenance
 about: Plan routine housekeeping and other tasks related to the upkeep of the software system
 title: ''
-labels: MAINTENANCE
+labels: maintenance
 assignees: ''
 ---
 

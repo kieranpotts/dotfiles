@@ -1,3 +1,5 @@
 = The `bin` directory
 
-The `bin` directory contains binaries. This directory is intended to be added to the user's system PATH, thus making the binaries executable from the command line.
+The `bin` directory is intended to be added to the user's system PATH, thus making the Git aliases and shell script "binaries" executable from any working directory.
+
+All shell scripts in this directory are POSIX-compliant and will run in all UNIX shells. For Windows, a Linux emulator like Git Bash or a virtual machine like WSL2 is required.

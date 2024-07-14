@@ -2,78 +2,82 @@
 
 The following shell aliases are enabled.
 
-
 [cols="1,2,3,1"]
 |===
-|Alias |Command |Description |Compatibility 
+|Alias |Command |Description |Compatibility
 
 |`..`
 |`cd ..`
-|Change up one directory
-| POSIX
+|Change up one directory.
+|POSIX
 
 |`...`
 |`cd ../..`
-|Change up two directories
-| POSIX
+|Change up two directories.
+|POSIX
 
 |`....`
 |`ch ../../..`
-|Change up three directories
-| POSIX
+|Change up three directories.
+|POSIX
 
 |`.....`
 |`cd ../../../..`
-|Change up four directories
-| POSIX
+|Change up four directories.
+|POSIX
 
 |`egrep`
 |`egrep --color=auto`
-|Enable colorized output by default
-| POSIX
+|Enable colorized output by default.
+|POSIX
 
 |`fgrep`
 |`fgrep --color=auto`
-|Enable colorized output by default
-| POSIX
+|Enable colorized output by default.
+|POSIX
 
 |`g`
 |`git`
-|Shortcut for the oft-typed `git` command
-| POSIX
+|Shortcut for the oft-typed `git` command.
+|POSIX
 
 |`grep`
 |`grep --color=auto`
-|Enable colorized output by default
-| POSIX
+|Enable colorized output by default.
+|POSIX
 
 |`l`
 |`ls -laF --color`
-|List all files (including hidden ones) in long-form
-| POSIX
+|List all files (including hidden ones) in long-form.
+|POSIX
 
 |`ld`
 |`ls -laF --color \| grep --color=never '^d'`
-|List only directories
-| POSIX
+|List only directories.
+|POSIX
 
 |`lf`
 |`ls -laF --color \| grep --color=never '^-'`
-|List only files
-| POSIX
+|List only files.
+|POSIX
 
 |`ls`
 |`ls --color`
-|Enable colorized output by default
-| POSIX
+|Enable colorized output by default.
+|POSIX
 
 |`mkdir`
 |`mkdir -p`
-|Make directories recursively by default
-| POSIX
+|Make directories recursively by default.
+|POSIX
+
+|`reload!`
+|`. ~/.profile` | `. ~/.bash_profile`
+|Reload the shell startup scripts, eg `.profile` or `.bash_profile`. Run this after you make changes to those files.
+|POSIX
 
 |`s`
 |`sudo`
-|Shortcut for `sudo` ("superuser do")
-| POSIX
+|Shortcut for `sudo` ("superuser do").
+|POSIX
 |===

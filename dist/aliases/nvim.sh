@@ -1,11 +1,9 @@
 #!/bin/sh
 
 # ==============================================================================
-# Aliases for `cd`
+# Map `vi` and `vim` to `nvim`.
+# The older text editors can still be opened using `\vi` and `\vim`.
 # ==============================================================================
 
-# Faster navigation!
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
+alias vim="nvim"
+alias vi="nvim"

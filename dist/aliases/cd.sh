@@ -1,8 +1,11 @@
 #!/bin/sh
 
 # ==============================================================================
-# Aliases for `mkdir`
+# Aliases for `cd`.
 # ==============================================================================
 
-# Make directories recursively by default.
-alias mkdir="mkdir -p"
+# Faster navigation!
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
