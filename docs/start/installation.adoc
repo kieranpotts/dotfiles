@@ -41,7 +41,7 @@ The update script will install and enable the dotfiles. The first time you do th
 
 == 3. Add the `bin/*` directories to your system PATH environment variable
 
-This repository's `bin` directory contains various `git-*` shell scripts that are mapped to Git aliases. It is RECOMMENDED you add the `bin` directory to your system PATH environment variable, to make these Git commands available from the command line. 
+This repository's `bin` directory contains various `git-*` shell scripts that are mapped to Git aliases. It is RECOMMENDED you add the `bin` directory to your system PATH environment variable, to make these Git commands available from the command line.
 
 For Unix shells, the `local.profile` file already includes a script to add `~/dotfiles/bin` to the `PATH` environment variable. On Windows, the PATH needs to be updated manually, to make the Git aliases available in the Git Bash emulator.
 
@@ -53,7 +53,7 @@ The theme is enabled via the following command in the `~/local.bash_profile` fil
 
 [source]
 ----
-eval "$(oh-my-posh init bash --config ~/dotfiles/etc/oh-my-posh/themes/kp.omp.json 2> /dev/null)"
+eval "$(oh-my-posh init bash --config ~/dotfiles/etc/oh-my-posh/themes/ocean.omp.json 2> /dev/null)"
 ----
 
 Either restart the terminal or call the `reload!` function to re-source the shell startup scripts.
@@ -89,7 +89,7 @@ TODO: Add docs for configuring PowerShell, eg to use same Oh-My-Posh config
 
 === 5. Create symlinks to the configuration files
 
-Configuration files are included for various command line development tools. To use these configuration, you will need to create symlinks to them. 
+Configuration files are included for various command line development tools. To use these configuration, you will need to create symlinks to them.
 
 .WSL and UNIX-like systems
 [source]

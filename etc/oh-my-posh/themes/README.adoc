@@ -1,0 +1,5 @@
+= Custom Oh-My-Posh themes
+
+The "ocean" theme was originally a fork of Agnoster, a popular theme included with Oh-My-Posh by default. The color scheme was modified to use the terminal's enabled color palette (https://ohmyposh.dev/docs/configuration/colors), and the theme is intended to be used with the "Ocean" theme I have configured for Windows Terminal and VS Code's built-in terminal, via my link:https://github.com/kieranpotts/devtools[devtools] configuration.
+
+The Ocean theme is based on: https://glitchbone.github.io/vscode-base16-term/#/ocean
