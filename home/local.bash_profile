@@ -11,9 +11,9 @@
 # https://ohmyposh.dev/
 #eval "$(oh-my-posh init bash --config ~/dotfiles/etc/oh-my-posh/themes/kp.omp.json 2> /dev/null)"
 
-# Alternatively, load the `git-prompt.sh` file, which adds Git repo
+# Alternatively, enable the `git-prompt.sh` file, which adds Git repo 
 # information to the prompt line.
-#source ~/.gitprompt.sh
+#source ~/dotfiles/lib/git-prompt.sh
 
 # Git prompt configuration.
 #PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
