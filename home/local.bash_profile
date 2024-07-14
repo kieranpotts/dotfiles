@@ -15,7 +15,8 @@
 # information to the prompt line.
 #source ~/dotfiles/lib/git-prompt.sh
 
-# Git prompt configuration.
+# Git prompt configuration. This will show username, at-sign, host, colon, cwd, 
+# then the Git status, followed by dollar and space, for the prompt text.
 #PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
 
 # Load nvm at startup.
