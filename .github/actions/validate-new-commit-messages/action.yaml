@@ -18,3 +18,5 @@ runs:
             exit 1
           fi
         done
+      # For custom actions, unlike workflows, we do need to specify the shell for run commands:
+      shell: bash
