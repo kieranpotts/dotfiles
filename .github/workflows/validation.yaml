@@ -24,7 +24,11 @@ jobs:
           git log --format=%s ${{ github.event.before }}..${{ github.sha }} | while read -r line; do
             echo "Validating commit message: $line"
             if [[ ! $line =~ ^((constraint|experiment|feature|fix|maintenance|merge|refactor): [a-z].*)$ ]]; then
-              echo "Invalid commit message: $line"
+              echo "Invalid commit message: '$line'"
+              exit 1
+            fi
+            if [[ $line =~ ^(experiment: [a-z].*)$ ]]; then
+              echo "Experiments should not be pushed upstream ('$line')"
               exit 1
             fi
           done
