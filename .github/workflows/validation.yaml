@@ -1,14 +1,22 @@
 name: Validation
 
 on:
-  - push
+  push:
+    branches:
+      - dev
 
 jobs:
   validate-commit-messages:
     runs-on: ubuntu-latest
     steps:
+
+      # Checkout the repository and fetch its full log history.
+      # https://github.com/actions/checkout?tab=readme-ov-file#fetch-all-history-for-all-tags-and-branches
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - name: Validate commit message
         run: |
           # Equivalent to `git log ORIG_HEAD..HEAD`.
