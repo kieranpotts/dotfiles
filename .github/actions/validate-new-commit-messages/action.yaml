@@ -2,6 +2,7 @@ name: Validate new commit messages
 description: This action validates the format of commit messages for commits added since the last push.
 
 runs:
+  using: composite
   steps:
     - name: Validate
       run: |
