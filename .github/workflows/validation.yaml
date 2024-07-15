@@ -22,7 +22,7 @@ jobs:
           # Equivalent to `git log ORIG_HEAD..HEAD`.
           # `github.event.before` is the last commit SHA before the push.
           git log --format=%s ${{ github.event.before }}..${{ github.sha }} | while read -r line; do
-            echo "Validating commit message: $line"
+            echo "Validating commit message: '$line'"
             if [[ ! $line =~ ^((constraint|experiment|feature|fix|maintenance|merge|refactor): [a-z].*)$ ]]; then
               echo "Invalid commit message: '$line'"
               exit 1
