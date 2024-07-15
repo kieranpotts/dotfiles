@@ -18,18 +18,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Validate commit message
-        run: |
-          # Equivalent to `git log ORIG_HEAD..HEAD`.
-          # `github.event.before` is the last commit SHA before the push.
-          git log --format=%s ${{ github.event.before }}..${{ github.sha }} | while read -r line; do
-            echo "Validating commit message: '$line'"
-            if [[ ! $line =~ ^((constraint|experiment|feature|fix|maintenance|merge|refactor): [a-z].*)$ ]]; then
-              echo "Invalid commit message: '$line'"
-              exit 1
-            fi
-            if [[ $line =~ ^(experiment: [a-z].*)$ ]]; then
-              echo "Experiments should not be pushed upstream ('$line')"
-              exit 1
-            fi
-          done
+      - name: Validate new commit messages
+        uses: ./.github/actions/validate-new-commit-messages
+
