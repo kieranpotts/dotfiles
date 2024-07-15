@@ -45,6 +45,16 @@ This repository's `bin` directory contains various `git-*` shell scripts that ar
 
 For Unix shells, the `local.profile` file already includes a script to add `~/dotfiles/bin` to the `PATH` environment variable. On Windows, the PATH needs to be updated manually, to make the Git aliases available in the Git Bash emulator.
 
+.Permissions
+****
+Ensure you have execute permissions on all the scripts in the `bin/*` directory:
+
+[source]
+----
+chmod u+x ~/dotfiles/bin/*
+----
+****
+
 === 4. Enable the shell theme
 
 A custom prompt theme is included. It is a fork of the popular Agnoster theme, which is included with Oh-My-Posh, a cross-platform prompt theming framework for Powershell, Git Bash, WSL, and other shells.
