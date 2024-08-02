@@ -2,21 +2,23 @@
 
 # ==============================================================================
 # Git alias to push commits and tags to the upstream "origin" repository. Setup
-# branch tracking if it is not already established.
+# branch tracking if it is not already established – and make the assumption
+# that the name of the tracked remote branch should match the local one.
 #
 # Usage:
 #
 # ```
 # git up
 # ```
-#
-# This command assumes that the tracked upstream branch will always have
-# an identical name to the local one.
+
 #
 # See also the `git down` alias, with mirrors this one, and `git sync`,
 # which combines the two into a single operation.
 # ==============================================================================
 
-# TODO: Only set the upstream branch if it is not already set. 
-
-git push --set-upstream origin HEAD --follow-tags
+# Check if the upstream branch is already set.
+if ! git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1; then
+  git push --set-upstream origin HEAD --follow-tags
+else
+  git push --follow-tags
+fi
