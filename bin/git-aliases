@@ -25,88 +25,88 @@ REPO_PATH=$(dirname "$BIN_PATH")
 # Print help for each alias:
 
 printf "%baliases%b            \
-  Print this list of aliases\n" \
+  print this list of aliases\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bamend%b              \
-  Add all working changes to last commit, including new (untracked) files\n" \
+  add all working changes to last commit, including new (untracked) files\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bauthor ([ref])%b     \
-  Change the author of the last commit or an earlier specified commit\n" \
+  change the author of the last commit or an earlier specified commit\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bbackup ([branch])%b  \
-  Create a backup of the current checked-out branch or a specified branch\n" \
+  create a backup of the current checked-out branch or a specified branch\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bbr ([branch])%b      \
-  Branch from current position, switch to it, and push upstream to setup tracking\n" \
+  branch from current position, switch to it, and push upstream to setup tracking\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bbranches%b           \
-  List all branches by order of last commit\n" \
+  list all branches by order of last commit\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bchanges ([ref])%b    \
-  Show changes in a specified commit, or introduced to the working tree + staging area since the last commit\n" \
+  show changes in a specified commit, or introduced to the working tree + staging area since the last commit\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bcl ([params...])%b   \
-  Shortcut for %bgit clone\n" \
+  shortcut for %bgit clone\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}"
 
 printf "%bcm ('[msg]')%b       \
-  Quick %bgit commit%b operation: stage and commit all changes in the working tree, including new (untracked) files\n" \
+  quick %bgit commit%b operation: stage and commit all changes in the working tree, including new (untracked) files\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}" \
   "${RESET}"
 
 printf "%bco ([params...])%b   \
-  Shortcut for %bgit checkout\n" \
+  shortcut for %bgit checkout\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}"
 
 printf "%bconfigure%b          \
-  Open %b~/.gitconfig%b in your default text editor\n" \
+  open %b~/.gitconfig%b in your default text editor\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}" \
   "${RESET}"
 
 printf "%bcontrib%b            \
-  List all contributors, ordered by their total commit count\n" \
+  list all contributors, ordered by their total commit count\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bcurrent%b            \
-  Show the name of the current branch\n" \
+  show the name of the current branch\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bdefault%b            \
-  Show the name of the default branch, as configured in the \"origin\" repo\n" \
+  show the name of the default branch, as configured in the \"origin\" repo\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bdelete ([br])%b      \
-  Delete a local branch, but only if it's changes have been merged elsewhere\n" \
+  delete a local branch, but only if it's changes have been merged elsewhere\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bdiscard [paths...]%b \
-  Discard working changes to one or more files\n" \
+  discard working changes to one or more files\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
@@ -118,147 +118,147 @@ printf "%bdown%b               \
   "${RESET}"
 
 printf "%bdownload%b           \
-  Improved %bgit fetch%b: download and prune local objects, tags and branches to match all remotes\n" \
+  improved %bgit fetch%b: download and prune local objects, tags and branches to match all remotes\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}" \
   "${RESET}"
 
 printf "%bfell ([br])%b        \
-  Delete any branches that have been merged into the default or the specified branch\n" \
+  delete any branches that have been merged into the default or the specified branch\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bfetched%b            \
-  List commits added by the last %bgit fetch%b operation\n" \
+  list commits added by the last %bgit fetch%b operation\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}" \
   "${RESET}"
 
 printf "%bff ([br])%b          \
-  Perform a fast-forward merge\n" \
+  perform a fast-forward merge\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bfilelog [path]%b     \
-  List al the commits that have changed a specific file\n" \
+  list al the commits that have changed a specific file\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bfixup ([ref])%b      \
-  Fix something in the previous commit or an earlier specified commit\n" \
+  fix something in the previous commit or an earlier specified commit\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bgraph%b              \
-  Detailed %bgit log\n" \
+  detailed %bgit log\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}"
 
 printf "%bhistory%b            \
-  Clean %bgit log%b, paged\n" \
+  clean %bgit log%b, paged\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}" \
   "${RESET}"
 
 printf "%bignore [path]%b      \
-  Ignore changes made to a file\n" \
+  ignore changes made to a file\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bignored%b            \
-  List all ignored files\n" \
+  list all ignored files\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%blast%b               \
-  Show detailed information on the changes in the last commit\n" \
+  show detailed information on the changes in the last commit\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%borphan [br]%b        \
-  Create an orphaned branch, add working changes to staging index\n" \
+  create an orphaned branch, add working changes to staging index\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%borphan-fresh [br]%b  \
-  Create an orphaned branch, switch to it and empty the working tree\n" \
+  create an orphaned branch, switch to it and empty the working tree\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bpick ([params...])%b \
-  Shortcut for %bgit cherry-pick\n" \
+  shortcut for %bgit cherry-pick\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}"
 
 printf "%brecent%b             \
-  Clean %bgit log%b, last 25 entries only\n" \
+  clean %bgit log%b, last 25 entries only\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}" \
   "${RESET}"
 
 printf "%bremotes%b            \
-  List the URLs of all remotes\n" \
+  list the URLs of all remotes\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bresume%b             \
-  Resume work-in-progress committed via the last %bgit wip${RESET} operation\n" \
+  resume work-in-progress committed via the last %bgit wip${RESET} operation\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}"
 
 printf "%breword ([ref])%b     \
-  Change the message of the previous commit or an earlier commit; adds staged files to the commit, too\n" \
+  change the message of the previous commit or an earlier commit; adds staged files to the commit, too\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bsquash%b             \
-  Perform a %bgit merge --squash%b operation\n" \
+  perform a %bgit merge --squash%b operation\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}" \
   "${RESET}"
 
 printf "%bstaged%b             \
-  List files with changes staged for committing\n" \
+  list files with changes staged for committing\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bstashed%b            \
-  Show the current number of stash entries\n" \
+  show the current number of stash entries\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bstate%b              \
-  Concise view of %bgit status\n" \
+  concise view of %bgit status\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}"
 
 printf "%bsw ([params...])%b   \
-  Shortcut for %bgit switch\n" \
+  shortcut for %bgit switch\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}"
 
 printf "%bsync%b               \
-  Sync the local checked-out branch with its tracked upstream branch, maintaining linear history\n" \
+  sync the local checked-out branch with its tracked upstream branch, maintaining linear history\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%btags%b               \
-  List all tags, sorted by commit date\n" \
+  list all tags, sorted by commit date\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%btrack [path]%b       \
-  Start tracking a new file; alias for %bgit add%b and the opposite action of the %bgit untrack%b alias\n" \
+  start tracking a new file; alias for %bgit add%b and the opposite action of the %bgit untrack%b alias\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}" \
@@ -267,14 +267,14 @@ printf "%btrack [path]%b       \
   "${RESET}"
 
 printf "%btracking%b           \
-  Same as %bgit branches%b but shows tracked upstream branches, too\n" \
+  same as %bgit branches%b but shows tracked upstream branches, too\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}" \
   "${RESET}"
 
 printf "%bunamend%b            \
-  Undo the prior %bgit amend%b or %bgit commit%b operation\n" \
+  undo the prior %bgit amend%b or %bgit commit%b operation\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}" \
@@ -283,61 +283,61 @@ printf "%bunamend%b            \
   "${RESET}"
 
 printf "%buncommit%b           \
-  Undo the last commit, return the changes to the staging index\n" \
+  undo the last commit, return the changes to the staging index\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bundo%b               \
-  Reset to the last commit, undoing all staged and working changes; a savepoint commit is made so the work will be recoverable using %bgit reflog\n" \
+  reset to the last commit, undoing all staged and working changes; a savepoint commit is made so the work will be recoverable using %bgit reflog\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}"
 
 printf "%bunignore [path]%b    \
-  Stop ignoring changes made to a file\n" \
+  stop ignoring changes made to a file\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bunstage%b            \
-  Alias for %bgit reset%b, this removes everything from the staging index, returning the changes to the working tree\n" \
+  alias for %bgit reset%b, this removes everything from the staging index, returning the changes to the working tree\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}" \
   "${RESET}"
 
 printf "%buntrack [path]%b     \
-  Untrack a specified file\n" \
+  untrack a specified file\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bup%b                 \
-  Push commits up to the tracked upstream branch; push tags and set up tracking, too\n" \
+  push commits up to the tracked upstream branch; push tags and set up tracking, too\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bup-force%b           \
-  Force-push changes up to the tracked upstream branch, overwriting own work but not other people's\n" \
+  force-push changes up to the tracked upstream branch, overwriting own work but not other people's\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bupstream%b           \
-  Show the name of the tracked upstream branch\n" \
+  show the name of the tracked upstream branch\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bversions%b           \
-  List tags prefixed with the lower case letter \"v\", sorted numerically\n" \
+  list tags prefixed with the lower case letter \"v\", sorted numerically\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
 printf "%bwip ('[msg]')%b      \
-  Save work-in-progress; continue where you left off with %bgit resume\n" \
+  save work-in-progress; continue where you left off with %bgit resume\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}" \
   "${YELLOW}"
 
 printf "%bworking%b            \
-  List all changed files in the working tree\n" \
+  list all changed files in the working tree\n" \
   "${BRIGHT_BLUE}" \
   "${RESET}"
 
