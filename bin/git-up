@@ -10,15 +10,17 @@
 # ```
 # git up
 # ```
-
 #
 # See also the `git down` alias, with mirrors this one, and `git sync`,
 # which combines the two into a single operation.
 # ==============================================================================
 
+# Get tracked upstream branch.
+upstreamBranch=$(git rev-parse --abbrev-ref --symbolic-full-name "@{upstream}")
+
 # Check if the upstream branch is already set.
-if ! git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1; then
-  git push --set-upstream origin HEAD --follow-tags
-else
+if [ -n "$upstreamBranch" ]; then
   git push --follow-tags
+else
+  git push --set-upstream origin HEAD --follow-tags
 fi
