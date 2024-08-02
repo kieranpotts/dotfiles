@@ -6,12 +6,11 @@
 # Usage:
 #
 # ```
-# git down ([params...])
+# git down
 # ```
 #
-# Additional parameters are forwarded to the `git pull` operation. Use with
-# `--interactive|-i` to edit the local commit history. Any WIP is stashed and
-# will be returned to the working tree after the `pull` operation.
+# Any WIP is stashed and will be returned to the working tree after the `pull`
+# operation. Cleans up references to non-existent remote branches (`--prune`).
 #
 # See also the `git up` alias, which mirrors this, and `git sync`, which
 # combines the two into a single operation.
@@ -20,13 +19,7 @@
 initialStashCount=$(git rev-list --walk-reflogs --count refs/stash 2> /dev/null)
 git stash push --include-untracked
 
-# Bash-compatible code, with string indexing that allows additional parameters
-# to be passed on to the `git pull` command.
-#git pull --rebase --prune ${@:1}
-
-# POSIX-compatible code, without string indexing. This code only passes the
-# first parameter to the `git pull` command.
-git pull --rebase --prune "${1}"
+git pull --rebase --prune
 
 newStashCount=$(git rev-list --walk-reflogs --count refs/stash 2> /dev/null)
 if [ "${newStashCount:-0}" != "${initialStashCount:-0}" ]; then
