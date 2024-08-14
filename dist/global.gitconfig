@@ -363,7 +363,9 @@
 
   # If your Git repositories are on an external drive, Git will consider them
   # to be owned by someone else and therefore unsafe by default. This setting
-  # completely opts-out of this security check.
+  # completely opts-out of this security check. This is RECOMMENDED when
+  # working across both Windows and WSL, where some files read by Git are 
+  # mounted from either the host or the guest.
   # https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory
   directory = *
 
