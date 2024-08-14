@@ -49,4 +49,5 @@ export X_GIT_COMMIT_VERIFY=1
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # Loads Bash completion for NVM
 
 # Change to a specific directory when starting a new terminal session.
+#cd /c/dev
 #cd ~/dev
