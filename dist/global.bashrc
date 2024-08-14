@@ -1,6 +1,6 @@
 # ==============================================================================
-# The `~/.bashrc` file is automatically loaded whenever a Bash shell is spawned
-# in non-login mode (ie without the `-l` parameter).
+# The `~/.bashrc` file is automatically loaded whenever a new Bash shell is
+# started, whether in login (`-l`) or non-login mode.
 #
 # You SHOULD NOT edit this file, as your changes here will be lost next time you
 # fetch updates from the dotfiles repository. Instead, you MAY extend this
@@ -12,6 +12,6 @@ if [ -f ~/local.bashrc ]; then
   . ~/local.bashrc
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Add an alias to reload this script, which is useful when making any
+# changes to it.
+alias reload!=". ~/.bashrc"

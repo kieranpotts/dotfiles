@@ -17,7 +17,7 @@
 
   # Override the `ssh` command called internally by `git fetch` and `git push`.
   # Use this to load a different identity than the defauls, eg `~/.ssh/id_dsa`.
-  #sshCommand = ssh -i ~/.ssh/id_rsa_kieranpotts2024
+  #sshCommand = ssh -i ~/.ssh/id_rsa_xxxxxx
 
 # Optional includes. Use configuration like below to load different Git configs
 # based on the current working directory in which `git` is being executed.

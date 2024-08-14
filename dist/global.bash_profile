@@ -29,7 +29,3 @@ fi
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
-
-# Add an alias to reload this script. This will override the alias
-# of the same name included in `~/.profile`.
-alias reload!=". ~/.bash_profile"
