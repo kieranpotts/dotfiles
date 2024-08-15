@@ -47,8 +47,9 @@ export X_GIT_COMMIT_VERIFY=1
 eval "$(oh-my-posh init bash --config ~/dotfiles/etc/oh-my-posh/themes/ocean.omp.json 2> /dev/null)"
 
 # Alternatively, enable the `git-prompt.sh` file, which adds Git repo
-# information to the prompt line. The `PROMPT_COMMAND` configuration will show
-# username, as-sign, host, colon, cwd, then the Git status, followed by
-# dollar and space, for the prompt text.
+# information to the prompt line. This is configurable.
 #source ~/dotfiles/lib/git-prompt.sh
-#PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
+#export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]$(__git_ps1)\[\033[00m\]\$ '
+#GIT_PS1_SHOWDIRTYSTATE=1
+#GIT_PS1_SHOWUPSTREAM="auto"
+#GIT_PS1_UPSTREAMEQUALS=""
