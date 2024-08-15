@@ -77,7 +77,7 @@ if [ -z "${CODESPACES}" ]; then
     # session, which will source the startup scripts that define the `reload!` function.
     reload! 2> /dev/null
 
-    echo '== INSTALLED DOTFILES =='
+    echo '== Installed dotfiles =='
     echo "Restart your terminal for the changes to take effect."
 
   fi
@@ -98,6 +98,7 @@ else
 
   . "$DIR_PATH/dist/functions/docker.sh"
 
-  echo '== INSTALLED DOTFILES =='
-  echo 'Dotfiles have been sourced.'
+  echo '== Installed dotfiles for GitHub Codespaces =='
+  echo "DIRECTORY: $DIR_PATH"
+
 fi
