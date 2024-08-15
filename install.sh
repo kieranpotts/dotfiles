@@ -96,7 +96,7 @@ else
   cp --no-clobber "${DIR_PATH}/dist/aliases/grep.sh" ~/.aliases/grep.sh
   cp --no-clobber "${DIR_PATH}/dist/aliases/ls.sh" ~/.aliases/ls.sh
   cp --no-clobber "${DIR_PATH}/dist/aliases/mkdir.sh" ~/.aliases/mkdir.sh
-  cp --no-clobber "${DIR_PATH}/dist/aliases/nvim.sh" ~/.aliases/nvim.sh
+  #cp --no-clobber "${DIR_PATH}/dist/aliases/nvim.sh" ~/.aliases/nvim.sh -- NeoVim is not available in Codespaces
   cp --no-clobber "${DIR_PATH}/dist/aliases/rm.sh" ~/.aliases/rm.sh
   cp --no-clobber "${DIR_PATH}/dist/aliases/sudo.sh" ~/.aliases/sudo.sh
 
@@ -112,9 +112,10 @@ else
   echo "source ~/.aliases/grep.sh" >> ~/.bash_aliases
   echo "source ~/.aliases/ls.sh" >> ~/.bash_aliases
   echo "source ~/.aliases/mkdir.sh" >> ~/.bash_aliases
-  echo "source ~/.aliases/nvim.sh" >> ~/.bash_aliases
+  #echo "source ~/.aliases/nvim.sh" >> ~/.bash_aliases -- NeoVim is not available in Codespaces
   echo "source ~/.aliases/rm.sh" >> ~/.bash_aliases
   echo "source ~/.aliases/sudo.sh" >> ~/.bash_aliases
+
   echo "source ~/.functions/docker.sh" >> ~/.bash_aliases
 
   # Done.
