@@ -14,13 +14,20 @@
 DIR_PATH="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 
 # Load aliases that are compatible with all POSIX-compliant shells.
-if [ -f "$DIR_PATH/dist/aliases/index.sh" ]; then
-  . "$DIR_PATH/dist/aliases/index.sh"
+if [ -d "$DIR_PATH/aliases" ]; then
+  . "$DIR_PATH/aliases/cd.sh"
+  . "$DIR_PATH/aliases/git.sh"
+  . "$DIR_PATH/aliases/grep.sh"
+  . "$DIR_PATH/aliases/ls.sh"
+  . "$DIR_PATH/aliases/mkdir.sh"
+  . "$DIR_PATH/aliases/nvim.sh"
+  . "$DIR_PATH/aliases/rm.sh"
+  . "$DIR_PATH/aliases/sudo.sh"
 fi
 
 # Load utility functions that are compatible with all POSIX-compliant shells.
-if [ -f "$DIR_PATH/dist/functions/index.sh" ]; then
-  . "$DIR_PATH/dist/functions/index.sh"
+if [ -d "$DIR_PATH/functions" ]; then
+  . "$DIR_PATH/functions/docker.sh"
 fi
 
 # Load this repository's bin directory into the system PATH. This makes

@@ -130,4 +130,4 @@ New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Local\nvim\init.v
 
 Go to your https://github.com/settings/codespaces[GitHub Codespaces options] and enable the following setting. This will ensure your terminal environment in Codespaces will be consistent with your local terminal.
 
-image::./github-automatically-install-dotfiles.png[]
+image::./_/github-automatically-install-dotfiles.png[]
