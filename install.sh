@@ -24,7 +24,7 @@ FILE_PATH=$(readlink -f "$0")
 # Absolute path to this directory, eg `/path/to/dotfiles`.
 DIR_PATH=$(dirname "$FILE_PATH")
 
-if [ -z "${CODESPACES}" ] || [ "${CODESPACES}" -eq 0 ]; then
+if [ -z "${CODESPACES}" ]; then
 
   # Installation for all environments *except* GitHub Codespaces.
 
