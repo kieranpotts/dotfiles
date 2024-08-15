@@ -77,8 +77,9 @@ if [ -z "${CODESPACES}" ]; then
     # session, which will source the startup scripts that define the `reload!` function.
     reload! 2> /dev/null
 
+    # Done.
     echo "== Installed dotfiles =="
-    echo "Restart your terminal for the changes to take effect."
+    echo "Restart your terminal for all changes to take effect."
 
   fi
 
@@ -86,23 +87,37 @@ else
 
   # Minimal installation for GitHub Codespaces.
 
-  # Source the aliases and functions.
-  # . "${DIR_PATH}/dist/aliases/cd.sh"
-  # . "${DIR_PATH}/dist/aliases/git.sh"
-  # . "${DIR_PATH}/dist/aliases/grep.sh"
-  # . "${DIR_PATH}/dist/aliases/ls.sh"
-  # . "${DIR_PATH}/dist/aliases/mkdir.sh"
-  # . "${DIR_PATH}/dist/aliases/nvim.sh"
-  # . "${DIR_PATH}/dist/aliases/rm.sh"
-  # . "${DIR_PATH}/dist/aliases/sudo.sh"
+  mkdir -p ~/.aliases
+  mkdir -p ~/.functions
 
-  # . "${DIR_PATH}/dist/functions/docker.sh"
+  # Copy the aliases and functions directly into the user's home directory.
+  cp --no-clobber "${DIR_PATH}/dist/aliases/cd.sh" ~/.aliases/cd.sh
+  cp --no-clobber "${DIR_PATH}/dist/aliases/git.sh" ~/.aliases/git.sh
+  cp --no-clobber "${DIR_PATH}/dist/aliases/grep.sh" ~/.aliases/grep.sh
+  cp --no-clobber "${DIR_PATH}/dist/aliases/ls.sh" ~/.aliases/ls.sh
+  cp --no-clobber "${DIR_PATH}/dist/aliases/mkdir.sh" ~/.aliases/mkdir.sh
+  cp --no-clobber "${DIR_PATH}/dist/aliases/nvim.sh" ~/.aliases/nvim.sh
+  cp --no-clobber "${DIR_PATH}/dist/aliases/rm.sh" ~/.aliases/rm.sh
+  cp --no-clobber "${DIR_PATH}/dist/aliases/sudo.sh" ~/.aliases/sudo.sh
 
-  alias ..="cd .."
-  alias ...="cd ../.."
-  alias ....="cd ../../.."
-  alias .....="cd ../../../.."
+  cp --no-clobber "${DIR_PATH}/dist/functions/docker.sh" ~/.functions/docker.sh
 
+  # Create a file at ~/.bash_aliases and edit the contents to include
+  # sourcing of ~/aliases/cd.sh etc. GitHub Codespaces will automatically
+  # source this file when a new terminal is opened.
+  touch ~/.bash_aliases
+
+  echo "source ~/.aliases/cd.sh" >> ~/.bash_aliases
+  echo "source ~/.aliases/git.sh" >> ~/.bash_aliases
+  echo "source ~/.aliases/grep.sh" >> ~/.bash_aliases
+  echo "source ~/.aliases/ls.sh" >> ~/.bash_aliases
+  echo "source ~/.aliases/mkdir.sh" >> ~/.bash_aliases
+  echo "source ~/.aliases/nvim.sh" >> ~/.bash_aliases
+  echo "source ~/.aliases/rm.sh" >> ~/.bash_aliases
+  echo "source ~/.aliases/sudo.sh" >> ~/.bash_aliases
+  echo "source ~/.functions/docker.sh" >> ~/.bash_aliases
+
+  # Done.
   echo "== Installed dotfiles for Codespaces =="
 
 fi
