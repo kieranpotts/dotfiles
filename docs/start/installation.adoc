@@ -61,7 +61,7 @@ chmod u+x ~/dotfiles/bin/*
 
 A custom prompt theme is included. It is a fork of the popular Agnoster theme, which is included with Oh-My-Posh, a cross-platform prompt theming framework for Powershell, Git Bash, WSL, and other shells.
 
-The theme is enabled via the following command in the `~/local.bash_profile` file. You just need to uncomment the line to enable it.
+The theme is enabled via the following command in the `~/local.bashrc` file. You just need to uncomment the line to enable it.
 
 [source]
 ----
@@ -88,7 +88,7 @@ NOTE: `wget` is not pre-installed in the Git Bash emulator. I've included the Wi
 Oh My Posh is highly customizable. See https://ohmyposh.dev/docs/[the website] for more options. As a cross-platform framework, configurations can be shared between shells. So you can expose your Powershell, Git Bash and WSL environments to the same configuration, ensuring a consistent prompt in every shell environment running in every terminal program.
 ****
 
-Alternatively, you can enable the `git-prompt.sh` file, which adds Git repo information to the standard prompt line. Uncomment the following line in the `~/local.bash_profile` file, instead.
+Alternatively, you can enable the `git-prompt.sh` file, which adds Git repo information to the standard prompt line. Uncomment the following line in the `~/local.bashrc` file, instead.
 
 [source]
 ----

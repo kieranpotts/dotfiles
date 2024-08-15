@@ -72,9 +72,9 @@ The following shell aliases are enabled.
 |POSIX
 
 |`reload!`
-|`. ~/.profile` | `. ~/.bash_profile`
-|Reload the shell startup scripts, eg `.profile` or `.bash_profile`. Run this after you make changes to those files.
-|POSIX
+|`. ~/.bashrc`
+|Reload the Bash shell run command script, whenever you make changes to its config.
+|Bash
 
 |`s`
 |`sudo`
