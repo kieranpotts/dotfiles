@@ -31,6 +31,8 @@ New-Item -ItemType SymbolicLink -Path "C:\Users\[Username]\dotfiles" -Target "C:
 
 Change to the root directory of the cloned repository and run the `bin/update!` shell script.
 
+IMPORTANT: For Git Bash on Windows, run the terminal program as administrator.
+
 [source]
 ----
 cd ~/dotfiles
