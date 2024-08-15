@@ -7,26 +7,32 @@
 # script via the `~/local.bashrc` file.
 # ==============================================================================
 
+# Determine the directory of the current script.
+# DIR_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Determine the directory of the current script, accounting for symbolic links.
+DIR_PATH="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+
 # Load aliases that are compatible with all POSIX-compliant shells.
-if [ -f "$HOME/dotfiles/dist/aliases/index.sh" ]; then
-  . "$HOME/dotfiles/dist/aliases/index.sh"
+if [ -f "$DIR_PATH/dist/aliases/index.sh" ]; then
+  . "$DIR_PATH/dist/aliases/index.sh"
 fi
 
 # Load utility functions that are compatible with all POSIX-compliant shells.
-if [ -f "$HOME/dotfiles/dist/functions/index.sh" ]; then
-  . "$HOME/dotfiles/dist/functions/index.sh"
+if [ -f "$DIR_PATH/dist/functions/index.sh" ]; then
+  . "$DIR_PATH/dist/functions/index.sh"
 fi
 
 # Load this repository's bin directory into the system PATH. This makes
 # available the Git aliases and other scripts defined in this directory.
-if [ -d "$HOME/dotfiles/bin" ] ; then
-  PATH="$PATH:$HOME/dotfiles/bin"
+if [ -d "$DIR_PATH/bin" ] ; then
+  PATH="$PATH:$DIR_PATH/bin"
 fi
 
 # Add ~/bin to PATH, allowing additional autoloadable binaries to be
 # installed directly in ~/bin.
-if [ -d "$HOME/bin" ] ; then
-  PATH="$PATH:$HOME/bin"
+if [ -d ~/bin ] ; then
+  PATH="$PATH:~/bin"
 fi
 
 # Load the user's `~/local.bashrc` file.

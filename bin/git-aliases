@@ -10,14 +10,8 @@
 # ```
 # ==============================================================================
 
-# Absolute path to this script, eg `/path/to/dotfiles/bin/foo.sh`.
-FILE_PATH=$(readlink -f "$0")
-
-# Absolute path to the bin directory, thus `/path/to/dotfiles/bin`.
-BIN_PATH=$(dirname "$FILE_PATH")
-
-# Absolute path this repo, thus `/path/to/dotfiles`.
-REPO_PATH=$(dirname "$BIN_PATH")
+# Absolute path to the repository, thus `/path/to/dotfiles`.
+REPO_PATH=$(dirname "$(dirname "$(readlink -f "$0")")")
 
 # Source ANSI code variables.
 . "${REPO_PATH}/lib/ansi-codes.sh"
