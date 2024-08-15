@@ -77,7 +77,7 @@ if [ -z "${CODESPACES}" ]; then
     # session, which will source the startup scripts that define the `reload!` function.
     reload! 2> /dev/null
 
-    echo '== Installed dotfiles =='
+    echo "== Installed dotfiles =="
     echo "Restart your terminal for the changes to take effect."
 
   fi
@@ -87,18 +87,22 @@ else
   # Minimal installation for GitHub Codespaces.
 
   # Source the aliases and functions.
-  . "$DIR_PATH/dist/aliases/cd.sh"
-  . "$DIR_PATH/dist/aliases/git.sh"
-  . "$DIR_PATH/dist/aliases/grep.sh"
-  . "$DIR_PATH/dist/aliases/ls.sh"
-  . "$DIR_PATH/dist/aliases/mkdir.sh"
-  . "$DIR_PATH/dist/aliases/nvim.sh"
-  . "$DIR_PATH/dist/aliases/rm.sh"
-  . "$DIR_PATH/dist/aliases/sudo.sh"
+  # . "${DIR_PATH}/dist/aliases/cd.sh"
+  # . "${DIR_PATH}/dist/aliases/git.sh"
+  # . "${DIR_PATH}/dist/aliases/grep.sh"
+  # . "${DIR_PATH}/dist/aliases/ls.sh"
+  # . "${DIR_PATH}/dist/aliases/mkdir.sh"
+  # . "${DIR_PATH}/dist/aliases/nvim.sh"
+  # . "${DIR_PATH}/dist/aliases/rm.sh"
+  # . "${DIR_PATH}/dist/aliases/sudo.sh"
 
-  . "$DIR_PATH/dist/functions/docker.sh"
+  # . "${DIR_PATH}/dist/functions/docker.sh"
 
-  echo '== Installed dotfiles for GitHub Codespaces =='
-  echo "DIRECTORY: $DIR_PATH"
+  alias ..="cd .."
+  alias ...="cd ../.."
+  alias ....="cd ../../.."
+  alias .....="cd ../../../.."
+
+  echo "== Installed dotfiles for Codespaces =="
 
 fi
