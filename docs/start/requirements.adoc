@@ -2,7 +2,7 @@
 
 The dotfiles and Git aliases are compatible with POSIX-compliant shell environments. On Windows, https://gitforwindows.org/[Git Bash] and Ubuntu running in WSL2 are both supported.
 
-The following programs are REQUIRED:
+== REQUIRED programs
 
 * Git >= v2.35
 * Delta
@@ -16,20 +16,22 @@ https://github.com/dandavison/delta[Delta], is a paging utility. The Git configu
 sudo apt install git-extras
 ----
 
-The following programs are OPTIONAL. See the links for installation instructions.
+== OPTIONAL programs
 
 * link:https://github.com/jesseduffield/lazygit#installation[LazyGit]
 * link:https://github.com/neovim/neovim/blob/master/INSTALL.md[Neovim]
 * link:https://ohmyposh.dev/docs/installation/linux[Oh-My-Posh]
 
-.Windows binaries
-****
-My link:https://github.com/kieranpotts/devtools[devtools] repository includes Windows binaries for `delta`, `lazygit`, `oh-my-posh`, and others. These can be enabled in Git Bash simply by appending that repository's `bin` directory to Windows' `PATH` environment variable. NeoVim needs to be installed manually on Windows.
-****
+Follow the link links above for installation instructions.
+
+[NOTE]
+======
+My link:https://github.com/kieranpotts/devtools[devtools] repository includes Windows binaries for `delta`, `lazygit`, `oh-my-posh`, and others. These can be enabled in Git Bash simply by appending the devtools repository's `bin` directory to Windows' `PATH` environment variable. (NeoVim needs to be installed manually on Windows.)
+======
 
 == Git
 
-The Git configuration has been tested with https://git-scm.com/[Git] v2.39.1 and is expected to be incompatible with versions after v2.35. For Debian distros, run the following command to check which is the current version of Git available via the APT package manager.
+The Git configuration has been tested with https://git-scm.com/[Git] v2.39.1 and is expected to be compatible with versions after v2.35. For Debian distros, run the following command to check which is the current version of Git available via the APT package manager.
 
 [source]
 ----
@@ -64,7 +66,7 @@ If you want to install a newer version of Git than is available via the default 
 wget https://github.com/git/git/archive/refs/tags/v2.35.0.tar.gz
 ----
 
-Before extracting the package, install the following packages.
+Before extracting the files from the archive, install the following packages.
 
 [source]
 ----
@@ -72,7 +74,7 @@ sudo apt-get update
 sudo apt-get install libz-dev libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext cmake gcc
 ----
 
-Extract the Git package, then navigate to the extracted directory. (Path names may differ from the example below).
+Extract the source files for the Git package, then navigate to the extracted directory. (Path names may differ from the example below).
 
 [source]
 ----
@@ -80,7 +82,7 @@ tar -zxf v2.35.0.tar.gz
 cd git-2.35.0
 ----
 
-Run the following command to build and install the package. This is a slow operation.
+Run the following command to build and install the Git package. This is a slow operation.
 
 [source]
 ----
@@ -88,11 +90,11 @@ make prefix=/usr/local all
 sudo make prefix=/usr/local install
 ----
 
-Restart your terminal then check the installed Git version with the command `git --version`. Use `rm` to remove the temporary files and directories.
+Restart your terminal, then check the installed Git version with the command `git --version`. Use `rm` to clean-up the temporary files and directories created in this process.
 
 == Git LFS
 
-Some of my other repositories use https://git-lfs.com/[Git Large File Storage]. This is a Git extension that removes large files from the repository and stores them elsewhere, cross-referenced from the Git repository using pointers.
+Some of my other repositories use link:https://git-lfs.com/[Git Large File Storage]. This is a Git extension that removes large files from the repository and stores them elsewhere, cross-referenced from the Git repository using pointers.
 
 To install Git LFS locally, first download and install the Git command line extension from the https://git-lfs.com/[Git LFS website]. Git LFS is available from the APT package manager – `sudo apt-get install git-lfs` – else see the https://github.com/git-lfs/git-lfs/blob/main/INSTALLING.md[installation instructions].
 
@@ -103,13 +105,13 @@ Then run the following command:
 git lfs install
 ----
 
-In each Git repository where you want to use Git LFS, run the following command to configure the file types that you'd like Git LFS to manage. Alternatively, you can edit the `.gitattributes` file directly (this file MUST be committed).
+In each Git repository where you want to use Git LFS, run the following command to configure the file types that you'd like Git LFS to manage. Alternatively, you can edit the `.gitattributes` file directly (changes to this file MUST be committed).
 
 [source]
 ----
 git lfs track "*.pdf"
 ----
 
-Then commit and push as you normally would. To convert existing files previously committed to the repository use the `git lfs migrate` command. See the https://github.com/git-lfs/git-lfs/blob/main/docs/man/git-lfs-migrate.adoc[documentation].
+Then commit and push as normal. To convert existing files previously committed to the repository use the `git lfs migrate` command. See the https://github.com/git-lfs/git-lfs/blob/main/docs/man/git-lfs-migrate.adoc[Git LFS documentation] for further instructions.
 
-See also link:https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github[About large files on GitHub].
+Read link:https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github[about large files on GitHub].
