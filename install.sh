@@ -67,7 +67,7 @@ if [ -z "${CODESPACES}" ]; then
 
   # Add excecute privilegs to all the contents of this repository's `bin`
   # directory.
-  chmod u+x "${DIR_PATH}/bin/*"
+  chmod -R u+x "${DIR_PATH}/bin"
 
   if [ ! $retval -eq 0 ]; then
     echo "Failed to create symbolic links in your home directory, try again with elevated privileges"
