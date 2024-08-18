@@ -119,22 +119,8 @@ This repository's `bin` directory contains various `git-*` shell scripts that ar
 
 ==== 3. Create symlinks to the configuration files
 
-Configuration files are included for various command line development tools. To use these configurations, you will need to create symlinks to them, from the filesystem locations the programs expect them to be.
+Configuration files are included for various command line development tools. To use these configurations, symlinks must be created to them from the filesystem locations the programs expect them to be. The `./install.sh` script does this automatically for non-Windows environments. To use the LazyGit and Neovim configurations in Git Bash for Windows, run Windows Powershell in administrator mode and execute the following commands, changing the filesystem paths as required.
 
-.WSL and Unix-like systems
-[source,sh]
-----
-# LazyGit
-ln --symbolic --force /path/to/dotfiles/etc/lazygit/config.yml ~/.config/lazygit/config.yml
-
-# Nvim
-mkdir -p ~/.config/nvim
-ln --symbolic --force /path/to/dotfiles/etc/nvim/init.vim ~/.config/nvim/init.vim
-----
-
-To use the LazyGit and Neovim configurations in Git Bash for Windows, run Windows Powershell in administrator mode and execute the following commands, changing the filesystem paths as required.
-
-.Windows (required for Git Bash)
 [source,powershell]
 ----
 # LazyGit

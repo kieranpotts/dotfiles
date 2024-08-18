@@ -61,6 +61,18 @@ if [ -z "${CODESPACES}" ]; then
   ln --symbolic --force "${DIR_PATH}/dist/global.bashrc" ~/.bashrc 2> /dev/null
   ln --symbolic --force "${DIR_PATH}/dist/global.gitconfig" ~/.gitconfig 2> /dev/null
 
+  # Create symbolic links to the configuration files for LazyGit and Neovim. On
+  # Windows, to use these programs in the Git Bash emulator, equivalent symbolic
+  # links must be created on the host system using PowerShell - see the README for
+  # instructions, this has not been automated.
+  if !windows; then
+    mkdir -p ~/.config/lazygit
+    ln --symbolic --force "${DIR_PATH}/etc/lazygit/config.yml" ~/.config/lazygit/config.yml
+
+    mkdir -p ~/.config/nvim
+    ln --symbolic --force "${DIR_PATH}/etc/nvim/init.vim" ~/.config/nvim/init.vim
+  fi
+
   # If there were errors with the above linking operations, provide useful
   # feedback to the user to help them resolve the issue.
   retval=$?
