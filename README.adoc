@@ -374,9 +374,11 @@ To see what aliases are available, run the command `git aliases` – itself an a
 
 WARNING: Some of the operations enabled via the Git aliases are potentially destructive. For example, some Git aliases rewrite commit histories.
 
-== Acknowledgments
+''''
 
-Inspiration has been taken – and code shamelessly copied – from some of these related projects:
+Copyright © 2020-present Kieran Potts, link:./LICENSE.txt[MIT license]
+
+*Acknowledgments*: Inspiration has been taken – and code shamelessly copied – from some of these related projects:
 
 * https://dotfiles.io/[Sebastien Rousseau's dotfiles.io]
 * https://github.com/thoughtbot/dotfiles[Thoughtbot's dotfiles]
@@ -386,7 +388,3 @@ Inspiration has been taken – and code shamelessly copied – from some of thes
 * https://github.com/haacked/dotfiles[Phil Haack's dotfiles]
 * https://github.com/michaelbiven/dotfiles[Michael Biven's dotfiles]
 * https://git.wiki.kernel.org/index.php/Aliases[Git Wiki: Aliases]
-
-
-''''
-Copyright © 2020-present Kieran Potts, link:./LICENSE.txt[MIT license]
