@@ -65,7 +65,7 @@ if [ -z "${CODESPACES}" ]; then
   # Windows, to use these programs in the Git Bash emulator, equivalent symbolic
   # links must be created on the host system using PowerShell - see the README for
   # instructions, this has not been automated.
-  if !windows; then
+  if ! windows; then
     mkdir -p ~/.config/lazygit
     ln --symbolic --force "${DIR_PATH}/etc/lazygit/config.yml" ~/.config/lazygit/config.yml
 
