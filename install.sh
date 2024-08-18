@@ -100,7 +100,7 @@ else
   mkdir -p ~/.functions
 
   # Copy the aliases and functions directly into the user's home directory. The
-  # Neovim aliases are excluded because NeoVim isn't available in Codespaces.
+  # Neovim aliases are excluded because Neovim isn't available in Codespaces.
   cp --no-clobber "${DIR_PATH}/dist/aliases/cd.sh" ~/.aliases/cd.sh
   cp --no-clobber "${DIR_PATH}/dist/aliases/git.sh" ~/.aliases/git.sh
   cp --no-clobber "${DIR_PATH}/dist/aliases/grep.sh" ~/.aliases/grep.sh

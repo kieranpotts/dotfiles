@@ -1,5 +1,5 @@
 " ==============================================================================
-" Initialization commands for NeoVim.
+" Initialization commands for Neovim.
 "
 " https://neovim.io/doc/user/starting.html#config
 " https://vimhelp.org/starting.txt.html#vimrc
