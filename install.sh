@@ -33,8 +33,8 @@ if [ -z "${CODESPACES}" ]; then
   cp --no-clobber "${DIR_PATH}/home/local.gitmessage" ~/local.gitmessage
 
   # Copy the prompt themes, too.
-  mkdir ~/.prompt-themes
-  mkdir ~/.prompt-themes/oh-my-posh
+  mkdir -p ~/.prompt-themes
+  mkdir -p ~/.prompt-themes/oh-my-posh
   cp --no-clobber "${DIR_PATH}/home/.prompt-themes/oh-my-posh/ocean.omp.json" ~/.prompt-themes/oh-my-posh/ocean.omp.json
   cp --no-clobber "${DIR_PATH}/home/.prompt-themes/git-prompt.sh" ~/.prompt-themes/git-prompt.sh
 
