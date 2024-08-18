@@ -1,3 +1,0 @@
-= The `docs` directory
-
-This directory encapsulates this project's documentation. All documentation is linked from the repository-level link:../README.adoc[README].

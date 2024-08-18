@@ -40,7 +40,7 @@
   # and writing a meaningful commit message.
   verbose = true
 
-  # Custom template for extended (multi-line) commit messages.
+  # Load the custom template for extended (multi-line) commit messages.
   template = ~/local.gitmessage
 
 [color]
@@ -73,43 +73,15 @@
   # Establish a global `.gitignore` file, which will be applied to all local
   # Git repositories but never be committed to any repository. Use this file to
   # include TODOs, scratch files or any other personal materials to the
-  # working directories of local Git repositories without running the risk of
+  # working directories of local Git repositories, without running the risk of
   # those files being committed to any repository. Defaults to
   # ` ~/.config/git/ignore`.
   excludesFile = ~/local.gitignore
 
   # Ignore file mode changes in Git. If the user changes file permissions
-  # using `chmod`, these changes should not be committed to source control.
+  # using `chmod`, these changes should not be committed to source control,
+  # generally.
   fileMode = false
-
-  # By default Git uses `less` to page output from commands like `git log` and
-  # `git diff`. I prefer Delta, which is a pager with built-in syntax
-  # highlighting: https://github.com/dandavison/delta
-  #
-  # Other options include "cat" (for disabling paging altogether), or using
-  # "less" with additional arguments for customizing the pager behavior.
-  #
-  # @deprecated - Delta is causing too many problems to install in some
-  # environments. Will look to implement an alternative pager, and this
-  # should be moved to local.gitconfig anyway.
-  #pager = delta
-
-[delta]
-
-  # Custom configuration for the Delta pager.
-
-  # This will need to be changed to true if the terminal uses a light theme.
-  light = false
-
-  # Show line numbers with diff output.
-  line-numbers = true
-
-  # Use `n` and `N` to move between diff sections.
-  navigate = true
-
-  # Show diffs in two vertical panels.
-  # https://dandavison.github.io/delta/side-by-side-view.html
-  side-by-side = true
 
 [diff]
 
@@ -179,17 +151,6 @@
   # repository is initialized the first time.
   defaultBranch = dev
 
-[interactive]
-
-  # When an interactive command such as `git add --patch` shows a colorized
-  # diff, Git will pipe the diff through the shell command defined by this
-  # configuration variable. The command may further markup the diff before
-  # rendering. This is how we pipe the diff through the Delta pager. Delta's
-  # `--color-only` flag disables Delta from structurally changing the diff,
-  # which is required to maintain compatibility with Git.
-  # https://git-scm.com/docs/git-config
-  diffFilter = delta --color-only
-
 [log]
 
   # Display dates as `2024-01-31 12:00:00` instead of `Wed Jan 31 12:00:50 2024`.
@@ -246,7 +207,7 @@
   # all the extra commits on the target branch are squashed onto the source
   # branch, creating a new commit there.
   #
-  # The following resource provides a good summary of theseGit merge strategies:
+  # The following resource provides a good summary of these Git merge strategies:
   # https://bit.ly/3ZZ2xOi
   #
   # My preference is to use `git merge` to perform true merges, ie creating
@@ -364,7 +325,7 @@
   # If your Git repositories are on an external drive, Git will consider them
   # to be owned by someone else and therefore unsafe by default. This setting
   # completely opts-out of this security check. This is RECOMMENDED when
-  # working across both Windows and WSL, where some files read by Git are 
+  # working across both Windows and WSL, where some files read by Git are
   # mounted from either the host or the guest.
   # https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory
   directory = *

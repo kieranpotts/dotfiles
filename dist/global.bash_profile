@@ -1,5 +1,5 @@
 # ==============================================================================
-# The `~/.bash_profile` file is a user-scoped startup script for interative
+# The `~/.bash_profile` file is a user-scoped startup script for interactive
 # logins to the Bash shell. In Bash, this overrides `~/.profile` and
 # `~/.bash_login`.
 #

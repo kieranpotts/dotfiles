@@ -13,10 +13,6 @@ export X_GIT_COMMIT_VERIFY=1
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # Loads NVM
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # Loads Bash completion for NVM
 
-# Change to a specific directory when starting a new terminal session.
-#cd /c/dev
-#cd ~/dev
-
 # Start Oh My Posh and load your preferred prompt theme. Errors are redirected
 # to standard error because `oh-my-posh` is an optional dependency, so we don't
 # want to assume it is installed. Do this last because, even if oh-my-posh is
@@ -26,8 +22,12 @@ export X_GIT_COMMIT_VERIFY=1
 
 # Alternatively, enable the `git-prompt.sh` file, which adds Git repo
 # information to the prompt line. This is configurable.
-#source ~/.prompt-themes/oh-my-posh/git-prompt.sh
+#source ~/.prompt-themes/git-prompt.sh
 #export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]$(__git_ps1)\[\033[00m\]\$ '
 #GIT_PS1_SHOWDIRTYSTATE=1
 #GIT_PS1_SHOWUPSTREAM="auto"
 #GIT_PS1_UPSTREAMEQUALS=""
+
+# Change to a specific directory when starting a new terminal session.
+#cd /c/dev
+#cd ~/dev

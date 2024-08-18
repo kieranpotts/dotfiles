@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # ==============================================================================
-# Aliases for `cd`.
+# Aliases for common `docker` commands.
 # ==============================================================================
 
 # Build a Docker image from a Dockerfile in the current directory.

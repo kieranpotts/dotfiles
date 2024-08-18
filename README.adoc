@@ -1,46 +1,392 @@
 = Dotfiles
 
-These are my personal dotfiles. They include handy aliases and functions for UNIX-like systems, a better default configuration for Git, and an extensive suite of useful Git aliases – things like `git sync`, `git amend`, `git squash`, `git fixup`, and `git undo`.
+These are my personal dotfiles. They include:
 
-I've made some effort to make these dotfiles as cross-platform compatible as possible. Most of the shell scripts are POSIX-compliant and will therefore run in all UNIX shells. For Windows, a Linux emulator like Git Bash or a virtual machine like WSL2 is required.
+* Handy shell aliases and functions for UNIX-like systems.
+* A better default configuration for Git.
+* And an extensive suite of useful Git aliases – things like `git sync`, `git amend`, `git squash`, `git fixup`, and `git undo`.
 
-I maintain this repository for ease of backing up and porting my system configuration between development environments. You are welcome to fork this repository and use it as a basis for designing your own dotfiles. Detailed documentation is included for installing, configuring and updating.
+I install these dotfiles on Debian-based systems, but I've made some effort to make them as cross-platform compatible as possible. Most of the shell scripts are POSIX-compliant and will therefore run in all UNIX shells. They can be used on Windows too, via a Linux emulator like Git Bash or a virtual machine like WSL.
 
-.Devtools vs Dotfiles
-****
-My dotfiles are for UNIX-like systems and I commonly install them in development VMs and containers. The dotfiles are not intended for installing directly on Windows but may be installed in a compatible guest OS such as Ubuntu running in WSL2, or an emulator like Git Bash. I also maintain a link:https://github.com/kieranpotts/devtools[devtools] repository that encapsulates additional tools and configuration for use directly on Windows.
-****
+These dotfiles complement my link:https://github.com/kieranpotts/devtools[devtools] – additional tools and configuration for use directly on Windows.
 
 == Documentation
 
-=== Get started
+=== Requirements
 
-* link:./docs/start/requirements.adoc[Requirements]
-* link:./docs/start/installation.adoc[Installation]
-* link:./docs/start/configuration.adoc[Configuration]
-* link:./docs/start/updating.adoc[Updating]
+The dotfiles and Git aliases are compatible with POSIX-compliant shell environments. On Windows, https://gitforwindows.org/[Git Bash] and Ubuntu running in WSL2 are both supported.
+
+TIP: On Debian systems, my link:https://github.com/kieranpotts/bootstrap[bootstrap scripts] can be used to install all REQUIRED and OPTIONAL programs, so automating the following steps. For Git Bash on Windows, my link:https://github.com/kieranpotts/devtools[devtools] bundle most of these programs, but some of the below steps still need to be done manually.
+
+==== REQUIRED programs
+
+The only REQUIRED program is *Git*. The Git configuration has been tested with https://git-scm.com/[Git] v2.39.1 and is expected to be compatible with versions after 2.35. For Debian distros, run the following command to check which is the current version of Git available via the APT package manager.
+
+[source,sh]
+----
+apt-cache policy git
+----
+
+If the available version is ≥ v2.35, go ahead and install from the default artifact registry.
+
+[source,sh]
+----
+sudo apt-get update
+sudo apt-get install git -y
+----
+
+If you want to install a newer version of Git than is available via the default package registries, use `wget` to download the version directly from the source. For example, to download the source for Git v2.35.0, run the following command.
+
+[source,sh]
+----
+wget https://github.com/git/git/archive/refs/tags/v2.35.0.tar.gz
+----
+
+Before extracting the files from the archive, install the following packages.
+
+[source,sh]
+----
+sudo apt-get update
+sudo apt-get install libz-dev libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext cmake gcc
+----
+
+Extract the source files for the Git package, then navigate to the extracted directory.
+
+[source,sh]
+----
+tar -zxf v2.35.0.tar.gz
+cd git-2.35.0
+----
+
+Run the following command to build and install the Git package. This is a slow operation.
+
+[source,sh]
+----
+make prefix=/usr/local all
+sudo make prefix=/usr/local install
+----
+
+Restart your terminal, then check the installed Git version with the command `git --version`. Use `rm` to clean-up the temporary files and directories created in this process.
+
+==== OPTIONAL programs
+
+It is RECOMMENDED to install Git Large File Storage (LFS). This is a Git extension that removes large files from repositories and stores them elsewhere, cross-referenced from the Git repositories using pointers. Git LFS is included in the distribution of link:https://gitforwindows.org/[Git for Windows], while link:https://github.com/git-lfs/git-lfs/blob/main/INSTALLING.md[packages are available for popular Linux distributions]. Once installed, run the following command to set up Git LFS globally in your local Git instance:
+
+[source,sh]
+----
+git lfs install
+----
+
+In each Git repository where you want to use Git LFS, run the following command to configure the file types that you'd like Git LFS to manage. Alternatively, you can edit the `.gitattributes` file directly (changes to this file MUST be committed).
+
+[source,sh]
+----
+git lfs track "*.pdf"
+----
+
+Then commit and push as normal. To convert existing files previously committed to the repository use the `git lfs migrate` command. See the https://github.com/git-lfs/git-lfs/blob/main/docs/man/git-lfs-migrate.adoc[Git LFS documentation] for further instructions, and more link:https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github[about large files on GitHub].
+
+Besides Git LFS, the following programs are also OPTIONAL:
+
+* link:https://github.com/dandavison/delta[Delta]
+* link:https://github.com/jesseduffield/lazygit#installation[LazyGit]
+* link:https://github.com/neovim/neovim/blob/master/INSTALL.md[Neovim]
+* link:https://ohmyposh.dev/docs/installation/linux[Oh-My-Posh]
+
+My dotfiles include configurations for LazyGit and NeoVim, while Delta and Oh-My-Posh may be used to enhance Git and the terminal prompt, respectively. For Debian systems, you can use my link:https://github.com/kieranpotts/bootstrap[bootstrap scripts] to install these programs, or follow the instructions from the links above to install manually. For Git Bash on Windows, most of these programs are bundled with my link:https://github.com/kieranpotts/devtools[devtools] – except for NeoVim, which is not available as a standalone binary.
+
+=== Installation
+
+To install these dotfiles, fork-and-clone the upstream repository to any location on your local machine, then follow the steps below. This process needs to be repeated for each environment – so, once for WSL and once for Git Bash, if using both on the same Windows machine.
+
+==== 1. Run the `./install.sh` script
+
+Change to the root directory of the cloned repository and run the `./install.sh` shell script.
+
+IMPORTANT: For Git Bash on Windows, run the terminal program as administrator.
+
+[source,sh]
+----
+cd /path/to/dotfiles
+sh install.sh
+----
+
+The install script will install and enable the dotfiles. The first time you do this, you will need to exit your terminal program then restart it. Doing so will create a new login shell, which will load the newly-installed dotfiles at startup.
+
+The `install.sh` script can be safely run multiple times, and it is RECOMMENDED to re-run it whenever you `git pull` the latest changes from the upstream dotfiles repository, so that any new symlinks are created as required.
+
+==== 2. Add the `bin/*` directories to your system PATH environment variable
+
+This repository's `bin` directory contains various `git-*` shell scripts that are mapped to Git aliases. It is RECOMMENDED you add the `bin` directory to your system PATH environment variable, to make these Git commands available from the command line. For Bash, this is done automatically via configuration in the installed `.bashrc` file. To make the Git aliases available in the Git Bash emulator on Window, you will need to manually update your PATH environment variable.
+
+==== 3. Create symlinks to the configuration files
+
+Configuration files are included for various command line development tools. To use these configuration, you will need to create symlinks to them.
+
+.WSL and UNIX-like systems
+[source,sh]
+----
+# LazyGit
+ln --symbolic --force /full/path/to/dotfiles/etc/lazygit/config.yml ~/.config/lazygit/config.yml
+
+# Nvim
+mkdir -p ~/.config/nvim
+ln --symbolic --force /full/path/to/dotfiles/etc/nvim/init.vim ~/.config/nvim/init.vim
+----
+
+To use the LazyGit and NeoVim configurations in Git Bash for Windows, run Windows Powershell in administrator mode and execute the following commands, changing the filesystem paths as required.
+
+.Windows (required for Git Bash)
+[source,powershell]
+----
+# LazyGit
+New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Roaming\lazygit\config.yml" -Target "C:\path\to\dotfiles\etc\lazygit\config.yml" -Force
+
+# Neovim
+New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Local\nvim\init.vim" -Target "C:\path\to\dotfiles\etc\nvim\init.vim" -Force
+----
+
+==== 4. GitHub Codespaces configuration
+
+The `./install.sh` script can be used to bootstrap your GitHub Codespaces environments, too. Only a subset of the dotfiles configuration are enabled in Codespaces – limited only to Bash aliases and functions at this time. Go to your https://github.com/settings/codespaces[GitHub Codespaces options] and enable the following setting.
+
+image::./_/github-automatically-install-dotfiles.png[]
+
+=== Configuration
+
+The `./install.sh` script will have established various symlinks in your home directory for the Unix dotfiles. For example, `~/.gitconfig` will be symlinked to `/path/to/dotfiles/dist/global.gitconfig`.
+
+IMPORTANT: You SHOULD NOT change the dotfiles symlinks (eg. `~/.gitconfig`) or edit the contents of their target files in this repository's `dist` directory. Instead, you can make changes to your dotfiles configuration via the "local" files that have been added to your home directory – as explained below.
+
+The following files will be added to your home directory.
+
+* `~/local.profile`
+* `~/local.bash_profile`
+* `~/local.bashrc`
+* `~/local.gitconfig`
+* `~/local.gitignore`
+* `~/local.gitmessage`
+
+These are _not_ symlinked and they are not kept under version control, either. Therefore, you can safely edit these files to make configuration changes in each individual environment in which you have installed these dotfiles. It's via these "local" files that you extend the "global" dotfiles configuration shared via this repository.
+
+[TIP]
+=====
+Whenever you make changes to any of the "local" shell startup scripts – `~/local.bashrc`, `~/local.bash_profile`, or `~/local.profile` – you can call the `reload!` function to re-source the shell startup scripts, so your changes take effect immediately without needing to restart the shell session.
+
+[source]
+----
+reload!
+----
+=====
+
+If you already had files like `.profile` or `.gitconfig` in your user directory, the `./install.sh` script will have created backups of these files before replacing them. The backup files will be named with the "backup" prefix. For example, your existing `~/.bashrc` file will have been renamed `~/backup.bashrc`. You may need to manually copy-and-paste existing configurations from the old "backup" files to the new "local" files.
+
+==== Git configuration
+
+You MUST edit the `~/local.gitconfig` file to configure your Git user profile information. This data will be embedded in commit objects:
+
+[source,ini]
+----
+[user]
+  email = you@example.com
+  name = Your Name
+----
+
+When you ran the `./install.sh` script, your previous Git configuration would have been backed up to `~/backup.gitconfig`. You SHOULD review the contents of this file and copy any other configuration you wish to keep to the new `~/local.gitconfig` file.
+
+NOTE: From now on you SHOULD NOT use the `git config --global` command to update your Git configuration. If you do, this command will update the file symlinked from `~/.gitconfig`. To avoid this, you SHOULD instead directly edit the `~/local.gitconfig` file.
+
+You MAY also edit the `~/local.gitignore` file to configure global https://git-scm.com/docs/gitignore[Git ignore rules]. By default, this file adds rules to ignore files or directories named `__TODO__`, `__NOTES__` or `__SCRIPTS__` in any Git repository anywhere on your local filesystem. It means the contents of these paths will be private to you and will not be committed to source control.
+
+==== Prompt themes
+
+A couple of different solutions for customizing the command line prompt are included with these dotfiles.
+
+The first solution depends on Oh-My-Posh, a cross-platform prompt theming framework. It means the prompt theme can be used in Powershell, Git Bash, WSL, and other shells. The theme is enabled via the following command in the `~/local.bashrc` file. You just need to uncomment the line to enable it.
+
+[source,sh]
+----
+eval "$(oh-my-posh init bash --config ~/.prompt-themes/oh-my-posh/ocean.omp.json 2> /dev/null)"
+----
+
+Then either restart the terminal or call the `reload!` function to re-source the shell startup scripts.
+
+Alternatively, you can enable the `git-prompt.sh` file, which adds Git repo information to the standard prompt line. Uncomment the following line in the `~/local.bashrc` file, instead.
+
+[source,sh]
+----
+source ~/.prompt-themes/git-prompt.sh
+export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]$(__git_ps1)\[\033[00m\]\$ '
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUPSTREAM="auto"
+GIT_PS1_UPSTREAMEQUALS=""
+----
 
 === Usage
 
-==== Shells
+==== Shell environment variables
 
-* link:./docs/usage/shells/startup-scripts.adoc[Shell startup scripts]
-* link:./docs/usage/shells/environment-variables.adoc[Shell environment variables]
-* link:./docs/usage/shells/aliases.adoc[Shell aliases]
-* link:./docs/usage/shells/functions.adoc[Shell functions]
+The following environment variables are enabled.
 
-==== Git
+[cols="1,1,1"]
+|===
+|Name |Description |Shells
 
-* link:./docs/usage/git/config.adoc[Git config]
-* link:./docs/usage/git/aliases.adoc[Git aliases]
+|`X_GIT_COMMIT_VERIFY=1`
+|Change to `0` to apply `--no-verify` flag to aliased `git commit` operations done by any of the Git aliases.
+|Bash
+|===
 
-////
-TODO: Add documentation for using Vim and Vimdiff
-////
+In addition, in Bash the `PATH` environment variable is extended to include `$HOME/bin` and `[/path/to]/dotfiles/bin`, if those directories exist.
 
-=== Contributing
+==== Shell aliases
 
-* link:./docs/contributing/acknowledgments.adoc[Acknowledgments]
+The following shell aliases are enabled.
+
+[cols="1,2,3,1"]
+|===
+|Alias |Command |Description |Compatibility
+
+|`..`
+|`cd ..`
+|Change up one directory.
+|POSIX
+
+|`...`
+|`cd ../..`
+|Change up two directories.
+|POSIX
+
+|`....`
+|`ch ../../..`
+|Change up three directories.
+|POSIX
+
+|`.....`
+|`cd ../../../..`
+|Change up four directories.
+|POSIX
+
+|`egrep`
+|`egrep --color=auto`
+|Enable colorized output by default.
+|POSIX
+
+|`fgrep`
+|`fgrep --color=auto`
+|Enable colorized output by default.
+|POSIX
+
+|`g`
+|`git`
+|Shortcut for the oft-typed `git` command.
+|POSIX
+
+|`grep`
+|`grep --color=auto`
+|Enable colorized output by default.
+|POSIX
+
+|`l`
+|`ls -laF --color`
+|List all files (including hidden ones) in long-form.
+|POSIX
+
+|`ld`
+|`ls -laF --color \| grep --color=never '^d'`
+|List only directories.
+|POSIX
+
+|`lf`
+|`ls -laF --color \| grep --color=never '^-'`
+|List only files.
+|POSIX
+
+|`ls`
+|`ls --color`
+|Enable colorized output by default.
+|POSIX
+
+|`mkdir`
+|`mkdir -p`
+|Make directories recursively by default.
+|POSIX
+
+|`reload!`
+|`. ~/.bashrc`
+|Reload the Bash shell run command script, whenever you make changes to its config.
+|Bash
+
+|`s`
+|`sudo`
+|Shortcut for `sudo` ("superuser do").
+|POSIX
+|===
+
+
+==== Shell functions
+
+
+The following shell functions are enabled.
+
+[cols="1,3,1"]
+|===
+|Function |Description |Compatibility
+
+|`buildDockerImage ([name_for_created_image])`
+|Build a Docker image from a Dockerfile in the current directory.
+|POSIX
+
+|`runDockerContainer [image_name]`
+|Run a Docker container from an image.
+|POSIX
+
+|`runDockerFromFile ([name_for_created_image])`
+|Build an image and immediately run a container in the background from it.
+|POSIX
+
+|`listDockerImages`
+|List all available docker images.
+|POSIX
+
+|`sshDockerContainer [container_id]`
+|SSH into a running container.
+|POSIX
+|===
+
+==== Git config
+
+The `.gitconfig` file modifies Git's default behavior in the following ways:
+
+* `git merge` always records explicit merge commits (ie `--no-ff` is the default).
+* `git fetch` automatically prunes refs to non-existent upstream branches and deletes non-existent tags.
+* `git pull` rebases by default.
+* `--autosquash` rules are automatically applied on rebase operations.
+* `git push` pushes new tags, as well as new commits.
+* Upstream branches are tracked automatically, and tracked branches are constrained to have the same names.
+* Opts-out of security checks for Git repositories on external storage devices (`safe.directory`).
+
+==== Git aliases
+
+50+ Git aliases are included with these dotfiles. These extend Git's built-in operations, providing shortcuts for common Git workflows. All the Git aliases are implemented as shell scripts in the `bin` directory. For the aliases to work, the `bin` directory MUST be added to your system path.
+
+To see what aliases are available, run the command `git aliases` – itself an alias! – in your terminal.
+
+WARNING: Some of the operations enabled via the Git aliases are potentially destructive. For example, some Git aliases rewrite commit histories.
+
+== Acknowledgments
+
+Inspiration has been taken – and code shamelessly copied – from some of these related projects:
+
+* https://dotfiles.io/[Sebastien Rousseau's dotfiles.io]
+* https://github.com/thoughtbot/dotfiles[Thoughtbot's dotfiles]
+* https://github.com/durdn/cfg[Nicola Paolucci's dotfiles]
+* https://github.com/skwp/dotfiles[YADR – Yet Another Dotfile Repo]
+* https://github.com/codeforester/base[Ramesh Padmanabhaiah's Base framework]
+* https://github.com/haacked/dotfiles[Phil Haack's dotfiles]
+* https://github.com/michaelbiven/dotfiles[Michael Biven's dotfiles]
+* https://git.wiki.kernel.org/index.php/Aliases[Git Wiki: Aliases]
+
 
 ''''
 Copyright © 2020-present Kieran Potts, link:./LICENSE.txt[MIT license]

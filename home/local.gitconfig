@@ -19,6 +19,46 @@
   # Use this to load a different identity than the defauls, eg `~/.ssh/id_dsa`.
   #sshCommand = ssh -i ~/.ssh/id_rsa_xxxxxx
 
+  # By default Git uses `less` to page output from commands like `git log` and
+  # `git diff`. I prefer Delta, which is a pager with built-in syntax
+  # highlighting: https://github.com/dandavison/delta. Other options include
+  # `cat` (for disabling paging altogether), or using `less` with additional
+  # arguments for customizing the pager behavior.
+  #
+  # Delta can be tricky to install in some environments, so this option is
+  # commented-out by default.
+  #pager = delta
+
+[interactive]
+
+  # When an interactive command such as `git add --patch` shows a colorized
+  # diff, Git will pipe the diff through the shell command defined by this
+  # configuration variable. The command may further markup the diff before
+  # rendering. This is how we pipe the diff through the Delta pager. Delta's
+  # `--color-only` flag disables Delta from structurally changing the diff,
+  # which is required to maintain compatibility with Git.
+  # https://git-scm.com/docs/git-config
+  #diffFilter = delta --color-only
+
+[delta]
+
+  # Custom configuration for the Delta pager, if enabled for paging.
+
+  # This will need to be changed to true if the terminal uses a light theme.
+  light = false
+
+  # Show line numbers with diff output.
+  line-numbers = true
+
+  # Use `n` and `N` to move between diff sections.
+  navigate = true
+
+  # Show diffs in two vertical panels.
+  # https://dandavison.github.io/delta/side-by-side-view.html
+  side-by-side = true
+
+# ------------------------------------------------------------------------------
+
 # Optional includes. Use configuration like below to load different Git configs
 # based on the current working directory in which `git` is being executed.
 # This is useful for loading different [user] credentials and SSH keys.
@@ -26,9 +66,9 @@
 #
 # You can also override these settings on a per-repository basis using
 # `git config --local --edit`.
-#
+
 #[includeIf "gitdir:~/code/work/"]
 #  path = "~/dev/work/.gitconfig"
-#
+
 #[includeIf "gitdir:~/code/personal/"]
 #  path = "~/dev/personal/.gitconfig"
