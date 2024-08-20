@@ -105,6 +105,7 @@ else
   # my dotfiles are installed in Codespaces, and the configuration is designed
   # to extend, not override, the default Codespaces environment.
   #
+  # https://github.com/codespaces-contrib/dotfiles
   # https://docs.github.com/en/codespaces/setting-your-user-preferences/personalizing-github-codespaces-for-your-account#dotfiles
   # https://docs.github.com/en/codespaces/troubleshooting/troubleshooting-personalization-for-codespaces#troubleshooting-dotfiles
 
