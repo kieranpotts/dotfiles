@@ -17,6 +17,13 @@ export X_GIT_COMMIT_VERIFY=1
 #export JABBA_VERSION=0.11.2
 #[ -s /home/kieran/.jabba/jabba.sh ] && source /home/kieran/.jabba/jabba.sh
 
+# Load phpenv at startup.
+# See https://github.com/phpenv/phpenv?tab=readme-ov-file#neckbeard-configuration
+#export PATH="$HOME/.phpenv/bin:$PATH"
+#eval "$(phpenv init -)"
+
+# Required for pipenv. ~/.local/bin is the location of the virtualenv executable.
+#export PATH="$HOME/.local/bin:$PATH"
 
 # Start Oh My Posh and load your preferred prompt theme. Errors are redirected
 # to standard error because `oh-my-posh` is an optional dependency, so we don't
