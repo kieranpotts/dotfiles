@@ -10,8 +10,9 @@ export X_GIT_COMMIT_VERIFY=1
 
 # Load nvm at startup.
 #export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # Loads NVM
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # Loads Bash completion for NVM
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads NVM
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # Loads Bash completion for NVM
+
 
 # Start Oh My Posh and load your preferred prompt theme. Errors are redirected
 # to standard error because `oh-my-posh` is an optional dependency, so we don't
