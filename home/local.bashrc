@@ -25,6 +25,10 @@ export X_GIT_COMMIT_VERIFY=1
 # Required for pipenv. ~/.local/bin is the location of the virtualenv executable.
 #export PATH="$HOME/.local/bin:$PATH"
 
+# Fixes for dbus errors when launching Google Chrome from WSL.
+#export XDG_RUNTIME_DIR=/run/user/$(id -u)
+#export DBUS_SESSION_BUS_ADDRESS=unix:path=$XDG_RUNTIME_DIR/bus
+
 # Start Oh My Posh and load your preferred prompt theme. Errors are redirected
 # to standard error because `oh-my-posh` is an optional dependency, so we don't
 # want to assume it is installed. Do this last because, even if oh-my-posh is
