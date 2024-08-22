@@ -13,6 +13,10 @@ export X_GIT_COMMIT_VERIFY=1
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads NVM
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # Loads Bash completion for NVM
 
+# Load Jabba at startup.
+#export JABBA_VERSION=0.11.2
+#[ -s /home/kieran/.jabba/jabba.sh ] && source /home/kieran/.jabba/jabba.sh
+
 
 # Start Oh My Posh and load your preferred prompt theme. Errors are redirected
 # to standard error because `oh-my-posh` is an optional dependency, so we don't
