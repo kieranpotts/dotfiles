@@ -307,9 +307,7 @@ The following shell aliases are enabled.
 |POSIX
 |===
 
-
 ==== Shell functions
-
 
 The following shell functions are enabled.
 
