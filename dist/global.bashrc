@@ -30,6 +30,13 @@ if [ -d "$DIR_PATH/functions" ]; then
   . "$DIR_PATH/functions/docker.sh"
 fi
 
+# Load command line completions for Bash.
+if [ -d "$DIR_PATH/completions" ]; then
+  for file in "$DIR_PATH/completions"/*; do
+    [ -f "$file" ] && . "$file"
+  done
+fi
+
 # Load this repository's bin directory into the system PATH. This makes
 # available the Git aliases and other scripts defined in this directory.
 if [ -d "$DIR_PATH/bin" ] ; then

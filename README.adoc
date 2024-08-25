@@ -360,7 +360,11 @@ WARNING: Some of the operations enabled via the Git aliases are potentially dest
 
 Copyright © 2020-present Kieran Potts, link:./LICENSE.txt[MIT license]
 
-*Acknowledgments*: Inspiration has been taken – and code shamelessly copied – from some of these related projects:
+*Third-party components*: These dotfiles integrate the following third-party components:
+
+* https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash[Git Bash completion script]
+
+*Acknowledgments*: For the custom scripts and configuration, inspiration has been taken – and, in some cases, code shamelessly copied – from some of these related projects:
 
 * https://dotfiles.io/[Sebastien Rousseau's dotfiles.io]
 * https://github.com/thoughtbot/dotfiles[Thoughtbot's dotfiles]

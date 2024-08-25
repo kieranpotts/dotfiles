@@ -112,6 +112,8 @@ else
   mkdir -p ~/.aliases
   mkdir -p ~/.functions
 
+  # TODO: Add Git completion script? This might already be included in Codespaces.
+
   # Copy the aliases and functions directly into the user's home directory. The
   # Neovim aliases are excluded because Neovim isn't available in Codespaces.
   cp --no-clobber "${DIR_PATH}/dist/aliases/cd.sh" ~/.aliases/cd.sh
