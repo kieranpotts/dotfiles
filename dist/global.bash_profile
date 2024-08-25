@@ -26,6 +26,9 @@ fi
 
 # Load the user's `~/.bashrc` file, to ensure a consistent environment
 # between interactive login and interactive non-login terminal sessions.
+# For example, tmux loads `~/.bash_profile` but not `~/.bashrc`. This
+# code ensures that the bash shell environments loaded within tmux are
+# consistent with the bash shell environments loaded outside of tmux.
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
