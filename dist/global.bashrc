@@ -15,19 +15,16 @@ DIR_PATH="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 
 # Load aliases that are compatible with all POSIX-compliant shells.
 if [ -d "$DIR_PATH/aliases" ]; then
-  . "$DIR_PATH/aliases/cd.sh"
-  . "$DIR_PATH/aliases/git.sh"
-  . "$DIR_PATH/aliases/grep.sh"
-  . "$DIR_PATH/aliases/ls.sh"
-  . "$DIR_PATH/aliases/mkdir.sh"
-  . "$DIR_PATH/aliases/nvim.sh"
-  . "$DIR_PATH/aliases/rm.sh"
-  . "$DIR_PATH/aliases/sudo.sh"
+  for file in "$DIR_PATH/aliases"/*; do
+    [ -f "$file" ] && . "$file"
+  done
 fi
 
 # Load utility functions that are compatible with all POSIX-compliant shells.
 if [ -d "$DIR_PATH/functions" ]; then
-  . "$DIR_PATH/functions/docker.sh"
+  for file in "$DIR_PATH/functions"/*; do
+    [ -f "$file" ] && . "$file"
+  done
 fi
 
 # Load command line completions for Bash.
