@@ -72,6 +72,8 @@ if [ -z "${CODESPACES}" ]; then
 
     mkdir -p ~/.config/nvim
     ln --symbolic --force "${DIR_PATH}/etc/nvim/init.vim" ~/.config/nvim/init.vim
+
+    ln --symbolic --force "${DIR_PATH}/etc/tmux/tmux.conf" ~/.tmux.conf
   fi
 
   # If there were errors with the above linking operations, provide useful

@@ -119,7 +119,7 @@ This repository's `bin` directory contains various `git-*` shell scripts that ar
 
 ==== 3. Create symlinks to the configuration files
 
-Configuration files are included for various command line development tools. To use these configurations, symlinks must be created to them from the filesystem locations the programs expect them to be. The `./install.sh` script does this automatically for non-Windows environments. To use the LazyGit and Neovim configurations in Git Bash for Windows, run Windows Powershell in administrator mode and execute the following commands, changing the filesystem paths as required.
+Configuration files are included for various command line development tools. To use these configurations, symlinks must be created to them from the filesystem locations the programs expect them to be. The `./install.sh` script does this automatically for non-Windows environments. To use the LazyGit, Neovim and tmux configurations in Git Bash for Windows, run Windows Powershell in administrator mode and execute the following commands, changing the filesystem paths as required.
 
 [source,powershell]
 ----
@@ -128,6 +128,9 @@ New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Roaming\lazygit\c
 
 # Neovim
 New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Local\nvim\init.vim" -Target "C:\path\to\dotfiles\etc\nvim\init.vim" -Force
+
+# tmux
+New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\.tmux.conf" -Target "C:\path\to\dotfiles\etc\tmux\tmux.conf" -Force
 ----
 
 ==== 4. GitHub Codespaces configuration
