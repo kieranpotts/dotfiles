@@ -37,6 +37,7 @@ if [ -z "${CODESPACES}" ]; then
   mkdir -p ~/.prompt-themes/oh-my-posh
   cp --no-clobber "${DIR_PATH}/home/.prompt-themes/oh-my-posh/ocean.omp.json" ~/.prompt-themes/oh-my-posh/ocean.omp.json
   cp --no-clobber "${DIR_PATH}/home/.prompt-themes/git-prompt.sh" ~/.prompt-themes/git-prompt.sh
+  cp --no-clobber "${DIR_PATH}/home/.prompt-themes/git-prompt-simple.bash" ~/.prompt-themes/git-prompt-simple.bash
 
   # Create backups of system files that will be overwritten. This is especially
   # important on the first install, to make sure the user does not lose existing

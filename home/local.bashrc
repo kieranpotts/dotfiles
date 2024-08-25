@@ -44,6 +44,9 @@ export X_GIT_COMMIT_VERIFY=1
 #GIT_PS1_SHOWUPSTREAM="auto"
 #GIT_PS1_UPSTREAMEQUALS=""
 
+# Or:
+#source ~/.prompt-themes/git-prompt-simple.bash
+
 # Change to a specific directory when starting a new terminal session.
 #cd /c/dev
 #cd ~/dev
