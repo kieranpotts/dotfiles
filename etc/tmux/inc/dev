@@ -1,0 +1,18 @@
+# ==============================================================================
+# Script to automate the creation of panes within tmux.
+# ==============================================================================
+
+# Select the first (0) pane.
+selectp -t 0
+
+# Split it into two halves, horizontally.
+splitw -h -p 50
+
+# Select the new, second (1) pane.
+selectp -t 1
+
+# Split it into two halves, vertically.
+splitw -v -p 50
+
+# Go back to the first pane, so it has focus initially.
+selectp -t 0

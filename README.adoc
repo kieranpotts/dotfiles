@@ -131,6 +131,7 @@ New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\AppData\Local\nvim\init.v
 
 # tmux
 New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\.tmux.conf" -Target "C:\path\to\dotfiles\etc\tmux\tmux.conf" -Force
+New-Item -ItemType SymbolicLink -Path "C:\Users\[User]\.tmux\dev" -Target "C:\path\to\dotfiles\etc\tmux\inc\dev" -Force
 ----
 
 ==== 4. GitHub Codespaces configuration
