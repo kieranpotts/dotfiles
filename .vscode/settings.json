@@ -37,11 +37,6 @@
     "source.fixAll": "always",
   },
 
-  /* JS/TS formatting and validation MUST be set per-repo AND per-workspace. */
-  "javascript.format.enable": false,
-  "javascript.validate.enable": false,
-  "js/ts.implicitProjectConfig.checkJs": false,
-
   /* Don't allow commits to protected branches. */
   "git.branchProtectionPrompt": "alwaysPrompt",
   "git.branchProtection": [
