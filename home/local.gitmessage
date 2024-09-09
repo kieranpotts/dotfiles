@@ -21,8 +21,8 @@
 #   maintenance - changes to documentation, and general housekeeping tasks
 #   refactor    - refactoring of production, test or other code
 #
-# Append " - WIP" to the <subject> if the change is being implemented
-# incrementally, eg behind a feature flag.
+# Append " - wip" to the <subject> if the change is being implemented
+# incrementally, eg. behind a feature flag.
 #
 # Style guide:
 #   - Do not capitalize the subject line.

@@ -24,10 +24,10 @@ REPO_PATH=$(dirname "$(dirname "$(readlink -f "$0")")")
 msg=$(git show -s --format=%B HEAD)
 
 # Bash-specific way to get the last 6 characters of a string.
-#if [ "${msg}" = "WIP" ] || [ "${msg: -6}" = " - WIP" ]; then
+#if [ "${msg}" = "wip" ] || [ "${msg: -6}" = " - wip" ]; then
 
 msg_end=`echo ${msg} | tail -c 7`
-if [ "${msg}" = "WIP" ] || [ "${msg_end}" = " - WIP" ]; then
+if [ "${msg}" = "wip" ] || [ "${msg_end}" = " - wip" ]; then
   git reset HEAD~1 --mixed
 else
   printf "%bLast commit is not work-in-progress%b" "${RED}" "${RESET}" >&2

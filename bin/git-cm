@@ -106,7 +106,7 @@ case "${type}" in
 esac
 
 if [ "${wip}" = "y" ]; then
-  compiled_msg="${compiled_msg} - WIP"
+  compiled_msg="${compiled_msg} - wip"
 fi
 
 if [ "$VERIFY" -eq "0" ]; then
