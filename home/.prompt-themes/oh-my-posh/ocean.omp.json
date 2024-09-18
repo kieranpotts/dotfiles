@@ -11,7 +11,7 @@
           "type": "shell",
           "style": "powerline",
           "background": "darkGray",
-          "foreground": "white",
+          "foreground": "black",
           "properties": {
             "mapped_shell_names": {
               "pwsh": "PS"
