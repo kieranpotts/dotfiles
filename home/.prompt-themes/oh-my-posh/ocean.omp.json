@@ -35,14 +35,22 @@
           "type": "project",
           "style": "powerline",
           "powerline_symbol": "\uE0B0",
+          "background": "red",
+          "foreground": "white",
+          "template": "{{ if .Error }}\u00A0{{ .Error }}\u00A0{{ end }}"
+        },
+        {
+          "type": "project",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
           "background": "yellow",
           "foreground": "black",
-          "template": "\u00A0{{ if .Error }}{{ .Error }}{{ else }}{{ if .Name }}{{ .Name }}{{ end }}{{ if .Version }}{{ .Version }}{{ end }}{{ end }}\u00A0"
+          "template": "{{ if .Name }}\u00A0{{ .Name }}\u00A0{{ end }}{{ if .Version }}\u00A0{{ .Version }}\u00A0{{ end }}"
         },
         {
           "type": "git",
           "style": "powerline",
-          "powerline_symbol": "\ue0b0",
+          "powerline_symbol": "\uE0B0",
           "background": "yellow",
           "foreground": "black",
           "template": "\u00A0{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }}\u00A0"
