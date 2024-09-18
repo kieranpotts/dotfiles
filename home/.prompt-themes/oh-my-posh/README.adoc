@@ -1,7 +1,18 @@
 = Custom Oh-My-Posh themes
 
-The "ocean" theme was originally a fork of Agnoster, a popular theme included with Oh-My-Posh by default.
+:link-omp-colors: https://ohmyposh.dev/docs/configuration/colors
+:link-devtools: https://github.com/kieranpotts/devtools
+:link-ocean-theme: https://marketplace.visualstudio.com/items?itemName=kieranpotts.ocean-vscode-theme
+:link-terminal-theme: https://glitchbone.github.io/vscode-base16-term/#/ocean
 
-The color scheme uses the link:https://ohmyposh.dev/docs/configuration/colors[terminal's own color palette]. It is designed to be used with the "ocean" theme I have configured for Windows Terminal (via my link:https://github.com/kieranpotts/devtools[devtools]) and VS Code's integrated terminal (via link:https://marketplace.visualstudio.com/items?itemName=kieranpotts.ocean-vscode-theme[this VS Code extension]).
+The "ocean" theme was originally a fork of Agnoster, a popular theme included
+with Oh-My-Posh by default.
 
-My own "ocean" theme was originally inspired by the "ocean" theme of Adrien Glitchbone's link:https://glitchbone.github.io/vscode-base16-term/#/ocean[base16 terminal color scales generator] for VS Code.
+The color scheme uses the {link-omp-colors}[terminal's own color palette]. It is
+designed to be used with the "ocean" theme I have configured for Windows
+Terminal (via my {link-devtools}[devtools]) and VS Code's integrated terminal
+(via {link-ocean-theme}[this VS Code extension]).
+
+My own "ocean" theme was originally inspired by the "ocean" theme of Adrien
+Glitchbone's {link-terminal-theme}[base16 terminal color scales generator] for
+VS Code.
