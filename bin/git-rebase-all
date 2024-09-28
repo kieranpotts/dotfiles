@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# ==============================================================================
+# Rebase all branches on the trunk branch.
+#
+# Usage:
+#
+# ```
+# git rebase-all ([trunk])
+# ```
+# ==============================================================================
+
+# Get the name of the trunk branch, default to main.
+trunk_branch=${1:-main}
+
+# Get the names of all local branches except the trunk branch
+branches=$(git branch --format='%(refname:short)' | grep -v "^${trunk_branch}$")
+
+# Rebase each branch on the trunk branch.
+for branch in $branches; do
+  git checkout $branch
+  git rebase $trunk_branch
+done
+
+# Switch back to the trunk branch.
+git checkout $trunk_branch
