@@ -189,6 +189,16 @@ printf "%bpick ([params...])%b \
   "${RESET}" \
   "${YELLOW}"
 
+printf "%bpush-all ([remote])%b             \
+  push all local branches on the name remote (defaults to origin)\n" \
+  "${BRIGHT_BLUE}" \
+  "${RESET}"
+
+printf "%brebase-all ([trunk])%b             \
+  rebase all local branches on the trunk branch (defaults to main)\n" \
+  "${BRIGHT_BLUE}" \
+  "${RESET}"
+
 printf "%brecent%b             \
   clean %bgit log%b, last 25 entries only\n" \
   "${BRIGHT_BLUE}" \
