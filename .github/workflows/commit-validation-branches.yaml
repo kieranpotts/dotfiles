@@ -1,16 +1,21 @@
-name: Commit validation
+name: Commit validation (branches)
 
 on:
   push:
     branches:
-      - dev
+      - constraint/*
+      - feature/*
+      - fix/*
+      - maintenance/*
+      - refactor/*
+      - release/*
 
 jobs:
   validate-commit-messages:
-    name: Validate commit messages
+    name: Validate commit messages on branches
     runs-on: ubuntu-latest
-    steps:
 
+    steps:
       # Checkout the repository and fetch its full log history.
       # https://github.com/actions/checkout?tab=readme-ov-file#fetch-all-history-for-all-tags-and-branches
       - name: Checkout repository
@@ -20,3 +25,5 @@ jobs:
 
       - name: Validate new commit messages
         uses: kieranpotts/actions/validate-new-commit-messages@dev
+        with:
+          trunk: false
