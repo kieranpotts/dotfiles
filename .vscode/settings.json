@@ -29,7 +29,7 @@
 
   /* Enable all auto-formatting mechanisms. */
   "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "editor.formatOnType": true,
 
   /* Enable auto-fixes. */
