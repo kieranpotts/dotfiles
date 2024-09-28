@@ -32,12 +32,12 @@ if [ -z "${CODESPACES}" ]; then
   cp --no-clobber "${DIR_PATH}/home/local.gitignore" ~/local.gitignore
   cp --no-clobber "${DIR_PATH}/home/local.gitmessage" ~/local.gitmessage
 
-  # Copy the prompt themes, too.
+  # Copy the prompt themes, too. These can be overwritten.
   mkdir -p ~/.prompt-themes
   mkdir -p ~/.prompt-themes/oh-my-posh
-  cp --no-clobber "${DIR_PATH}/home/.prompt-themes/oh-my-posh/ocean.omp.json" ~/.prompt-themes/oh-my-posh/ocean.omp.json
-  cp --no-clobber "${DIR_PATH}/home/.prompt-themes/git-prompt.sh" ~/.prompt-themes/git-prompt.sh
-  cp --no-clobber "${DIR_PATH}/home/.prompt-themes/git-prompt-simple.bash" ~/.prompt-themes/git-prompt-simple.bash
+  cp "${DIR_PATH}/home/.prompt-themes/oh-my-posh/ocean.omp.json" ~/.prompt-themes/oh-my-posh/ocean.omp.json
+  cp "${DIR_PATH}/home/.prompt-themes/git-prompt.sh" ~/.prompt-themes/git-prompt.sh
+  cp "${DIR_PATH}/home/.prompt-themes/git-prompt-simple.bash" ~/.prompt-themes/git-prompt-simple.bash
 
   # Create backups of system files that will be overwritten. This is especially
   # important on the first install, to make sure the user does not lose existing
@@ -82,7 +82,7 @@ if [ -z "${CODESPACES}" ]; then
   # feedback to the user to help them resolve the issue.
   retval=$?
 
-  # Add excecute privilegs to all the contents of this repository's `bin`
+  # Add excecute privileges to all the contents of this repository's `bin`
   # directory.
   chmod -R u+x "${DIR_PATH}/bin"
 
