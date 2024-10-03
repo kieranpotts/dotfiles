@@ -46,13 +46,13 @@ fi
 # Add ~/bin to PATH, allowing additional autoloadable binaries to be
 # installed directly in ~/bin. (This directory is optional, and it needs to be
 # created by the user, if it does not already exist.)
-if [ -d "~/bin" ] ; then
+if [ -d ~/bin ] ; then
   PATH="$PATH:~/bin"
 fi
 
 # Load the user's `~/local.bashrc` file. This file can be used to override
 # and extend the configuration in this file.
-if [ -f "~/local.bashrc" ]; then
+if [ -f ~/local.bashrc ]; then
   . ~/local.bashrc
 fi
 
