@@ -33,3 +33,19 @@ max_line_length = 120
 
 # No whitespace on the end of lines.
 trim_trailing_whitespace = true
+
+# Go overrides.
+[*.go]
+indent_style = tab
+
+# Makefile overrides.
+[Makefile]
+indent_style = tab
+
+# PHP overrides.
+[*.php]
+indent_size = 4
+
+# Python overrides.
+[*.py]
+indent_size = 4
