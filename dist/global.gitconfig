@@ -210,7 +210,7 @@
   # The following resource provides a good summary of these Git merge strategies:
   # https://bit.ly/3ZZ2xOi
   #
-  # My preference is to use `git merge` to perform true merges, ie creating
+  # My preference is to use `git merge` to perform true merges, ie. creating
   # explicit merge commits even when not needed to resolve conflicts, and to
   # use aliases such as `git squash` and `git fast-forward` to apply other
   # integration strategies.
