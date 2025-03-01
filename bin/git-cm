@@ -9,9 +9,10 @@
 # git cm ("[comment]")
 # ```
 #
-# Both tracked and untracked files that have been added or modified in the
-# working tree are added to the repository's staging index, and then
-# immediately committed – this is a common Git workflow.
+# If changes have been staged, only those changes will be committed, and other
+# changes will be left in the working tree. If no changes have been staged, all
+# changes in the working tree will be automatically staged before being committed
+# in full.
 #
 # Files that should remain untracked will need to be added to `gitignore`
 # rules. See https://git-scm.com/docs/gitignore.
@@ -23,37 +24,51 @@ REPO_PATH=$(dirname "$(dirname "$(readlink -f "$0")")")
 # Source ANSI code variables.
 . "${REPO_PATH}/lib/ansi-codes.sh"
 
+# If there's an environment variable called `X_GIT_COMMIT_VERIFY` and its value
+# is `0`, then we apply the `--no-verify` flag to the `git commit` operation.
+VERIFY=${X_GIT_COMMIT_VERIFY:-1}
+
 # Capture optional message from the command line.
 msg="${1}"
 
-# Require the user to input a commit message if one is not provided yet.
-if [ -z "${msg}" ]; then
-  # Bash-compatible code:
-  #read -p "Type a short comment > " msg
+# Print an empty line before command's main output.
+echo "\n"
 
-  # Posix-compatible code:
-  printf "%bType a short comment. %b\n" "${BLUE}" "${RESET}" >&2
-  printf "> " >&2
-  read -r msg
-fi
+# If the user has supplied a commit message, commit it verbatim.
+if [ -n "${msg}" ]; then
 
-if [ -z "${msg}" ]; then
-  printf "%b%b Require commit message. %b\n" "${RED}" "${REVERSED}" "${RESET}" >&2
-  exit 1
+  staged=$(git diff --stat --cached)
+  if [ -z "${staged}" ]; then
+    printf "%bgit add --all%b\n" "${DIM}" "${RESET}"
+    git add --all
+  fi
+
+  if [ "$VERIFY" -eq "0" ]; then
+    printf "%bgit commit --quiet --no-verify --message \"${msg}\"%b\n" "${DIM}" "${RESET}"
+    git commit --quiet --no-verify --message "${msg}"
+  else
+    printf "%bgit commit --quiet --message \"${msg}\"%b\n" "${DIM}" "${RESET}"
+    git commit --quiet --message "${msg}"
+  fi
+
+  exit 0
+
 fi
 
 printf "%bWhat type of change is this?%b\n" "${BLUE}" "${RESET}" >&2
-printf "bug fix [%bb%b]     - Fix for an error or regression in expected behavior\n" "${UNDERLINE}" "${RESET}"
-printf "constraint [%bc%b]  - Changed parameter within which the system must perform\n" "${UNDERLINE}" "${RESET}"
-printf "feature [%bf%b]     - New or improved operation or behavior\n" "${UNDERLINE}" "${RESET}"
+printf "chore [%bc%b]       - Odd jobs\n" "${UNDERLINE}" "${RESET}"
+printf "dev [%bd%b]         - An incremental change in code or configuration\n" "${UNDERLINE}" "${RESET}"
+printf "feature [%bf%b]     - A new, changed, or deprecated operation or behavior\n" "${UNDERLINE}" "${RESET}"
+printf "fix [%bb%b]         - Fix for a bug, error, or regression in expected behavior\n" "${UNDERLINE}" "${RESET}"
 printf "maintenance [%bm%b] - Routine housekeeping\n" "${UNDERLINE}" "${RESET}"
-printf "refactor [%br%b]    - Design and code improvements\n" "${UNDERLINE}" "${RESET}"
-printf "other [%bx%b]       - General changes\n" "${UNDERLINE}" "${RESET}"
+printf "performance [%bp%b] - An improvement to a runtime quality attribute\n" "${UNDERLINE}" "${RESET}"
+printf "refactor [%br%b]    - An improvement to the code or static design\n" "${UNDERLINE}" "${RESET}"
+printf "release [%bv%b]     - Preparation for a new release\n" "${UNDERLINE}" "${RESET}"
 printf "> " >&2
 read -r type
 
 case "${type}" in
-  b|c|f|m|r|x)
+  c|d|f|b|m|p|r|v|x)
     # Valid type, continue with the script.
     ;;
   *)
@@ -62,26 +77,37 @@ case "${type}" in
     ;;
 esac
 
-printf "%bIs this work-in-progress? (y/n) %b\n" "${BLUE}" "${RESET}" >&2
+# Bash-compatible code:
+#read -p "Type a short comment > " msg
+
+# Posix-compatible code:
+printf "%bType a short comment. %b\n" "${BLUE}" "${RESET}" >&2
 printf "> " >&2
-read -r wip
+read -r msg
 
-case "${wip}" in
-  y|n)
-    ;;
-  *)
-    printf "%b%b Invalid option. %b\n" "${RED}" "${REVERSED}" "${RESET}" >&2
-    exit 1
-    ;;
-esac
+if [ -z "${msg}" ]; then
+  printf "%b%b Require a commit message. %b\n" "${RED}" "${REVERSED}" "${RESET}" >&2
+  exit 1
+fi
 
-echo "\n"
-printf "%bgit add --all%b\n" "${DIM}" "${RESET}"
-git add --all
+#printf "%bIs this work-in-progress? (y/n) %b\n" "${BLUE}" "${RESET}" >&2
+#printf "> " >&2
+#read -r wip
 
-# If there's an environment variable called `X_GIT_COMMIT_VERIFY` and its value
-# is `0`, then we apply the `--no-verify` flag to the `git commit` operation.
-VERIFY=${X_GIT_COMMIT_VERIFY:-1}
+#case "${wip}" in
+#  y|n)
+#    ;;
+#  *)
+#    printf "%b%b Invalid option. %b\n" "${RED}" "${REVERSED}" "${RESET}" >&2
+#    exit 1
+#    ;;
+#esac
+
+staged=$(git diff --stat --cached)
+if [ -z "${staged}" ]; then
+  printf "%bgit add --all%b\n" "${DIM}" "${RESET}"
+  git add --all
+fi
 
 compiled_msg=""
 case "${type}" in
@@ -89,7 +115,10 @@ case "${type}" in
     compiled_msg="fix: ${msg}"
     ;;
   c)
-    compiled_msg="constraint: ${msg}"
+    compiled_msg="chore: ${msg}"
+    ;;
+  d)
+    compiled_msg="dev: ${msg}"
     ;;
   f)
     compiled_msg="feature: ${msg}"
@@ -97,17 +126,23 @@ case "${type}" in
   m)
     compiled_msg="maintenance: ${msg}"
     ;;
+  p)
+    compiled_msg="performance: ${msg}"
+    ;;
   r)
     compiled_msg="refactor: ${msg}"
     ;;
+  v)
+    compiled_msg="release: ${msg}"
+    ;;
   x)
-    compiled_msg="${msg}"
+    exit 0
     ;;
 esac
 
-if [ "${wip}" = "y" ]; then
-  compiled_msg="${compiled_msg} - wip"
-fi
+#if [ "${wip}" = "y" ]; then
+#  compiled_msg="${compiled_msg} - WIP"
+#fi
 
 if [ "$VERIFY" -eq "0" ]; then
   printf "%bgit commit --quiet --no-verify --message \"${compiled_msg}\"%b\n" "${DIM}" "${RESET}"
