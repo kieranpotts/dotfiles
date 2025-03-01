@@ -1,13 +1,35 @@
 ---
 name: Feature
-about: Propose an idea for a new or improved operation or behavior.
+about: Propose an idea for a new or improved operation or behavior
 title: ""
-labels: feature
+labels: FEATURE
 assignees: ""
 ---
 
-Use this issue to specify new or modified functionality, or to propose that existing operations or behaviors be deprecated, removed or superseded.
+## Description
 
-The purpose of functional changes is to provide specific capabilities to end users. Changes may be made to external interfaces such as APIs, CLIs and GUIs, or be scoped to internal processes, algorithms and persistence.
+Write a concise description of the feature you're requesting.
 
-Please describe which users will be impacted by this change, and make a note of any alternative solutions considered.
+## Use cases
+
+Explain why this feature would be useful, and how it would be used. Which users would benefit from this feature?
+
+## Benefits
+
+List the benefits of this feature, such as improved user experience, increased efficiency, or new capabilities.
+
+## Requirements
+
+Outline any specific requirements or criteria for the feature, such as performance considerations, compatibility with existing systems, or any other relevant factors.
+
+## Mock-ups
+
+If applicable, include mock-ups or other design artifacts that help to illustrate the proposed changes.
+
+## Alternatives
+
+What alternative solutions were considered, if any?
+
+## Additional notes
+
+Add any other context, background information, or references that might be helpful in understanding the requirements.

@@ -1,14 +1,16 @@
 ---
 name: Support
-about: Request technical help.
+about: Request technical help
 title: ""
-labels: support
+labels: SUPPORT
 assignees: ""
 ---
 
-You may use this issue to request technical help from the project's maintainers. However, while we review all support requests, we regret it may not be possible to respond to all of them.
+## How can we help?
 
-Before you open a support ticket, please confirm that you have looked for solutions elsewhere by checking the boxes `[x]` below.
+## Checklist
+
+Please check the boxes `[x]`:
 
 - [ ] I have tried to find a solution in the documentation.
 - [ ] I have searched for similar questions in this issue tracker.
