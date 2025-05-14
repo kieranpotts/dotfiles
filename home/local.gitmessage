@@ -1,5 +1,5 @@
 
-# <type>: <subject>
+# <type>: <subject> - <flag>
 # |<--------  maximum of 50 characters  -------->|
 
 # <body>
@@ -9,26 +9,37 @@
 
 # <footer>
 # Optional footers. Uncomment as needed.
-#Ticket: #<issue number>
-#Closes: #<issue number>
+#Refs: #<issue>
+#Closes: #<issue>
 
 #===============================================================================
 # <type> can be:
-#   constraint  - changes to non-functional attributes
-#   experiment  - technical spike work and proofs-of-concepts
-#   feature     - new, changed, or deprecated features
-#   fix         - fixes for bugs or other unexpected behaviors
-#   maintenance - changes to documentation, and general housekeeping tasks
-#   refactor    - refactoring of production, test or other code
+#   - feature      A new, changed, or removed user-facing operation or behavior.
+#   - performance  Optimization of the system's runtime performance. Any
+#                  improvements to quality attributes such as security,
+#                  availability, latency, etc.
+#   - fix          A fix for a bug, error, regression, or incident.
+#   - dev          An increment toward implementing a feature, fix, or
+#                  performance optimization.
+#   - refactor     An improvement to the static structure of the source code,
+#                  data, configuration, or tests.
+#   - maintenance  Updates to dependency configurations, improvements to 
+#                  automated tests, extensions to technical documentation, and
+#                  other changes to support the upkeep of the software.
+#   - chore        Small, general housekeeping tasks that are not normally
+#                  logged in an issue tracker.
+#   - release      Marks a new numbered version of the software.
 #
-# Append " - wip" to the <subject> if the change is being implemented
-# incrementally, eg. behind a feature flag.
+# <flag> can be:
+#   - WIP          Work-in-progress that breaks the build.
+#   - BREAKING     A breaking change, either to the internal or external API.
+#   - EXPERIMENT   A code experiment or other temporary change.
 #
-# Style guide:
-#   - Do not capitalize the subject line.
+# Tips:
+#   - Capitalize the subject line.
 #   - Use the imperative mood in the subject line.
 #   - Do not end the subject line with a period.
-#   - Separate the subject from the body with a single blank line.
+#   - Separate subject from body with a single blank line.
 #   - Use the body to explain what and why, now how.
 #   - Use "-" for bullet points in the body.
 #===============================================================================
