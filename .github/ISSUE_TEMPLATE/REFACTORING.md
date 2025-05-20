@@ -1,8 +1,8 @@
 ---
-name: Improvement
-about: Record refactoring or other work that will improve the developer experience
+name: Refactoring
+about: Suggest how code can be redesigned to improve the developer experience
 title: ""
-labels: IMPROVEMENT
+labels: REFACTORING
 assignees: ""
 ---
 
