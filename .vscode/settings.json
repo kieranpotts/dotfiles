@@ -1,5 +1,4 @@
 {
-
   /* Vertical guidelines for line wrapping. */
   "editor.rulers": [
     80,
@@ -7,41 +6,38 @@
     120,
   ],
 
-  /* Wrap long code lines at the viewport or 120 characters, whichever is
-  narrowest. For documentation, wrap lines at the viewport edge. */
+  /* By default, wrap long lines at the viewport or 120 characters, whichever is narrowest. */
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 120,
-  "[asciidoc]": {
-    "editor.wordWrap": "on",
-  },
-  "[markdown]": {
-    "editor.wordWrap": "on",
-  },
-
-  /* Enforce 2 spaces for indentation. */
-  "editor.detectIndentation": false,
-  "editor.insertSpaces": true,
-  "editor.tabSize": 2,
 
   /* Show control and empty space characters. */
   "editor.renderControlCharacters": true,
   "editor.renderWhitespace": "all",
 
-  /* Enable all auto-formatting mechanisms. */
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": false,
-  "editor.formatOnType": true,
+  /* Enforce 2 spaces for indentation by default. */
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
 
-  /* Enable auto-fixes. */
+  /* Disable auto-formatting by default. */
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.formatOnType": false,
+
+  /* Disable auto-fixes by default. */
   "editor.codeActionsOnSave": {
-    "source.fixAll": "always",
+    "source.fixAll": "never"
   },
 
-  /* Don't allow commits to protected branches. */
-  "git.branchProtectionPrompt": "alwaysPrompt",
-  "git.branchProtection": [
-    // "stable",
-    // "release/*",
-  ],
-
+  /* Language-specific overrides. */
+  "[asciidoc]": {
+    "editor.rulers": [100],
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 100,
+  },
+  "[markdown]": {
+    "editor.rulers": [100],
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 100,
+  },
 }
