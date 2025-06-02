@@ -40,4 +40,23 @@
     "editor.wordWrap": "bounded",
     "editor.wordWrapColumn": 100,
   },
+
+  /*
+  EXTENSION SETTINGS
+  The following settings are applicable for the extensions listed in
+  the extension recommendations in `extensions.json`.
+  */
+
+  /*
+  Asciidoc extension.
+  https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode
+  */
+
+  /* Enable Antora support. */
+  "asciidoc.antora.showEnableAntoraPrompt": true,
+
+  /* When previewing Asciidoc files, use VS Code's workbench color theme,
+  rather than the default Asciidoc style. This ensures the colors of the
+  preview are consistent with the enabled VS Code theme. */
+  "asciidoc.preview.useEditorStyle": true,
 }
