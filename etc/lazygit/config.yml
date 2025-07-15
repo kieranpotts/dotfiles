@@ -36,7 +36,8 @@ gui:
       - default
 git:
   branchLogCmd: "git log --graph --color=always --decorate --date=relative --oneline {{branchName}} --"
-  allBranchesLogCmd: "git log --graph --all --color=always --decorate --date=relative  --oneline"
+  allBranchesLogCmds:
+    - git log --graph --all --color=always --decorate --date=relative  --oneline
 customCommands:
   # Overrides built-in 'c' hotkey. The built-in 'C' hotkey may still be used to
   # edit the commit message manually in the default system text editor program.
@@ -44,7 +45,6 @@ customCommands:
     description: "commit using source control convention"
     command: 'git commit --message="{{index .PromptResponses 0}}: {{index .PromptResponses 1}}"'
     context: "files"
-    subprocess: true
     prompts:
       - type: "menu"
         title: "What kind of change is this?"
@@ -60,3 +60,4 @@ customCommands:
       - type: "input"
         title: "Describe the change briefly (lower case text)"
         initialValue: ""
+    output: terminal
