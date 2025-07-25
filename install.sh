@@ -82,7 +82,7 @@ if [ -z "${CODESPACES}" ]; then
   # feedback to the user to help them resolve the issue.
   retval=$?
 
-  # Add excecute privileges to all the contents of this repository's `bin`
+  # Add execute privileges to all the contents of this repository's `bin`
   # directory.
   chmod -R u+x "${DIR_PATH}/bin"
 

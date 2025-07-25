@@ -126,7 +126,9 @@ The `install.sh` script can be safely run multiple times, and it is RECOMMENDED 
 
 ==== 2. Add the `bin/*` directories to your system PATH environment variable
 
-This repository's `bin` directory contains various `git-*` shell scripts that are mapped to Git aliases. It is RECOMMENDED you add the `bin` directory to your system PATH environment variable, to make these Git commands available from the command line. For Bash, this is done automatically via configuration in the global `.bashrc` file. To make the Git aliases available in the Git Bash emulator on Window, you will need to manually update Windows' PATH environment variable.
+This repository's `bin` directory contains various `git-*` shell scripts that are mapped to Git aliases. It is RECOMMENDED you add the `bin` directory to your system PATH environment variable, to make these Git commands available from the command line.
+
+For Bash on Unix, this is done automatically via configuration in the global `.bashrc` file. To make the Git aliases available in the Git Bash emulator on Windows, you will need to manually update Windows' PATH environment variable.
 
 ==== 3. Create symlinks to the configuration files
 
