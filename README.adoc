@@ -23,9 +23,9 @@ These dotfiles complement my {link-devtools}[devtools] – additional tools and 
 
 === Requirements
 
-These dotfiles are intended for use in Bash on Debian-based systems, but I've made some effort to make them as cross-platform compatible as possible. Most of the shell scripts are POSIX-compliant and will therefore run in all Unix shells. They can be used on Windows too, via a Linux emulator like {link-gitforwindows}[Git Bash for] or a virtual machine like WSL.
+These dotfiles are intended for use in Bash on Debian-based systems, but I've made some effort to make them as cross-platform compatible as possible. Most of the shell scripts are POSIX-compliant and will therefore run in all Unix shells. They can be used on Windows too, via a Linux emulator like {link-gitforwindows}[Git Bash for Windows] or a virtual machine like WSL.
 
-TIP: On Debian systems, my {link-bootstrap}[bootstrap scripts] can be used to install all dependencies, so automating the following steps. For Git Bash on Windows, my {link-devtools}[devtools] repository bundles most of the required programs, but some of the below steps still need to be done manually.
+On Debian systems, my {link-bootstrap}[bootstrap scripts] can be used to install all dependencies, so automating the following steps. For Git Bash on Windows, my {link-devtools}[devtools] repository bundles most of the required programs, but some of the below steps still need to be done manually.
 
 ==== REQUIRED programs
 
@@ -103,6 +103,12 @@ Besides Git LFS, the following programs are also OPTIONAL:
 * link:https://ohmyposh.dev/docs/installation/linux[Oh-My-Posh]
 
 My dotfiles include configurations for LazyGit and Neovim, while Delta and Oh-My-Posh may be used to enhance Git and the terminal prompt, respectively. For Debian systems, you can use my {link-bootstrap}[bootstrap scripts] to install these programs, or follow the instructions from the links above to install manually. For Git Bash on Windows, most of these programs are bundled with my {link-devtools}[devtools] – except for Neovim, which is not available as a standalone binary.
+
+==== Other requirements
+
+If using Docker Desktop for Windows with the WSL back-end, it is RECOMMENDED to disable Docker's resource saver feature, as it is known to https://github.com/docker/for-win/issues/14656[freeze WSL].
+
+image::./_/docker-desktop-resource-saver.png[]
 
 === Installation
 
