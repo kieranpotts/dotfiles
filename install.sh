@@ -24,13 +24,13 @@ if [ -z "${CODESPACES}" ]; then
   # Installation for all environments *except* GitHub Codespaces.
 
   # Copy the `local.*` templates directly into the user's home directory, unless
-  # they already exist there (`--update=none`, which replaces `--no-clobber|-n`).
-  cp --update=none "${DIR_PATH}/home/local.profile" ~/local.profile
-  cp --update=none "${DIR_PATH}/home/local.bash_profile" ~/local.bash_profile
-  cp --update=none "${DIR_PATH}/home/local.bashrc" ~/local.bashrc
-  cp --update=none "${DIR_PATH}/home/local.gitconfig" ~/local.gitconfig
-  cp --update=none "${DIR_PATH}/home/local.gitignore" ~/local.gitignore
-  cp --update=none "${DIR_PATH}/home/local.gitmessage" ~/local.gitmessage
+  # they already exist there (`--no-clobber|-n`).
+  cp --no-clobber "${DIR_PATH}/home/local.profile" ~/local.profile
+  cp --no-clobber "${DIR_PATH}/home/local.bash_profile" ~/local.bash_profile
+  cp --no-clobber "${DIR_PATH}/home/local.bashrc" ~/local.bashrc
+  cp --no-clobber "${DIR_PATH}/home/local.gitconfig" ~/local.gitconfig
+  cp --no-clobber "${DIR_PATH}/home/local.gitignore" ~/local.gitignore
+  cp --no-clobber "${DIR_PATH}/home/local.gitmessage" ~/local.gitmessage
 
   # Copy the prompt themes, too. These can be overwritten.
   mkdir -p ~/.prompt-themes
@@ -41,14 +41,14 @@ if [ -z "${CODESPACES}" ]; then
 
   # Create backups of system files that will be overwritten. This is especially
   # important on the first install, to make sure the user does not lose existing
-  # dotfile configurations. For this reason, we use the `--update=none` option so
+  # dotfile configurations. For this reason, we use the `--no-clobber|-n` option so
   # we don't overwrite existing backups. Symbolic links are followed to ensure the
   # actual files – not their symlinks – are backed up (`--dereference`). Errors
   # are hidden because it is okay for the source files to not exist.
-  cp --update=none --dereference ~/.profile ~/backup.profile 2> /dev/null
-  cp --update=none --dereference ~/.bash_profile ~/backup.bash_profile 2> /dev/null
-  cp --update=none --dereference ~/.bashrc ~/backup.bashrc 2> /dev/null
-  cp --update=none --dereference ~/.gitconfig ~/backup.gitconfig 2> /dev/null
+  cp --no-clobber --dereference ~/.profile ~/backup.profile 2> /dev/null
+  cp --no-clobber --dereference ~/.bash_profile ~/backup.bash_profile 2> /dev/null
+  cp --no-clobber --dereference ~/.bashrc ~/backup.bashrc 2> /dev/null
+  cp --no-clobber --dereference ~/.gitconfig ~/backup.gitconfig 2> /dev/null
 
   # Create symbolic links (not hard links) in the user's home directory to this
   # repository's various "global" dotfiles such as `.gitconfig` and `.profile`.
@@ -121,14 +121,14 @@ else
 
   # Copy the aliases and functions directly into the user's home directory. The
   # Neovim aliases are excluded because Neovim isn't available in Codespaces.
-  cp --update=none "${DIR_PATH}/dist/aliases/cd.sh" ~/.aliases/cd.sh
-  cp --update=none "${DIR_PATH}/dist/aliases/git.sh" ~/.aliases/git.sh
-  cp --update=none "${DIR_PATH}/dist/aliases/grep.sh" ~/.aliases/grep.sh
-  cp --update=none "${DIR_PATH}/dist/aliases/ls.sh" ~/.aliases/ls.sh
-  cp --update=none "${DIR_PATH}/dist/aliases/mkdir.sh" ~/.aliases/mkdir.sh
-  cp --update=none "${DIR_PATH}/dist/aliases/rm.sh" ~/.aliases/rm.sh
-  cp --update=none "${DIR_PATH}/dist/aliases/sudo.sh" ~/.aliases/sudo.sh
-  cp --update=none "${DIR_PATH}/dist/functions/docker.sh" ~/.functions/docker.sh
+  cp --no-clobber "${DIR_PATH}/dist/aliases/cd.sh" ~/.aliases/cd.sh
+  cp --no-clobber "${DIR_PATH}/dist/aliases/git.sh" ~/.aliases/git.sh
+  cp --no-clobber "${DIR_PATH}/dist/aliases/grep.sh" ~/.aliases/grep.sh
+  cp --no-clobber "${DIR_PATH}/dist/aliases/ls.sh" ~/.aliases/ls.sh
+  cp --no-clobber "${DIR_PATH}/dist/aliases/mkdir.sh" ~/.aliases/mkdir.sh
+  cp --no-clobber "${DIR_PATH}/dist/aliases/rm.sh" ~/.aliases/rm.sh
+  cp --no-clobber "${DIR_PATH}/dist/aliases/sudo.sh" ~/.aliases/sudo.sh
+  cp --no-clobber "${DIR_PATH}/dist/functions/docker.sh" ~/.functions/docker.sh
 
   # Create a file at ~/.bash_aliases and edit the contents to include
   # sourcing of ~/aliases/cd.sh etc. GitHub Codespaces will automatically
