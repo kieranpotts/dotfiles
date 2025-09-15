@@ -8,6 +8,14 @@
 # Change to `0` to apply `--no-verify` flag to aliased `git commit` operations.
 export X_GIT_COMMIT_VERIFY=1
 
+# Set the TTY to use for GnuPG, required for inputting key passphrases.
+# Test this works by running the following command to sign a test message.
+# You should be prompted for your GPG key's passphrase.
+# -----------------------------
+# echo "test" | gpg --clearsign
+# -----------------------------
+export GPG_TTY=$(tty)
+
 # Load nvm at startup.
 #export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads NVM
