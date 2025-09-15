@@ -10,6 +10,10 @@
   # These settings determine what values end up in the `author` and `committer`
   # fields of commit objects.
   # https://git-scm.com/docs/git-config#Documentation/git-config.txt-username
+  #
+  # GitHub offers private email aliases for commits. Enable the setting
+  # "Keep my email address private" in your GitHub email settings, then use the
+  # provided no-reply email address below.
   email = [your-email-address]
   name = [your-name-or-username]
 
