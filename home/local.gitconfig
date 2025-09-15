@@ -17,6 +17,10 @@
   email = [your-email-address]
   name = [your-name-or-username]
 
+  # It is RECOMMENDED to sign your Git commits with a GPG key. Add the
+  # key ID here.
+  #signingkey = XXXXXXXXXXXXXXXX
+
 [core]
 
   # Override the `ssh` command called internally by `git fetch` and `git push`.
@@ -32,6 +36,12 @@
   # Delta can be tricky to install in some environments, so this option is
   # commented-out by default.
   #pager = delta
+
+[commit]
+
+  # It is RECOMMENDED to enable GPG signing of commits. This helps to prevent
+  # impersonation and ensures the integrity of your commit history.
+	#gpgsign = true
 
 [interactive]
 
