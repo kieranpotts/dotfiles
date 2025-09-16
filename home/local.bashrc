@@ -14,7 +14,7 @@ export X_GIT_COMMIT_VERIFY=1
 # -----------------------------
 # echo "test" | gpg --clearsign
 # -----------------------------
-export GPG_TTY=$(tty)
+#export GPG_TTY=$(tty)
 
 # Load nvm at startup.
 #export NVM_DIR="$HOME/.nvm"
