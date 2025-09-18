@@ -397,6 +397,8 @@ On the next GPG command, it will take a few seconds for the agent to startup, an
 You can use Kleopatra to manage your GPG configuration. For example, to adjust the period of time that your key passphrases are "remembered" for, go to *Settings > Configure Kleopatra > GnuPG System > Private Keys*. Locate the *Expire cached PINS after N seconds setting* and adjust the value to your desired duration (in seconds). For instance, 86400 seconds is equivalent to one day.
 ======
 
+It is RECOMMENDED to start `gpg-agent.exe` automatically when you log in to Windows, otherwise the pinentry dialog may not appear when you first try to sign a commit from a Git GUI like VS Code. Just create a shortcut to `C:\Program Files (x86)\GnuPG\bin\gpg-agent.exe` in your Windows startup folder (press `Win+R` then type `shell:startup` to open the folder).
+
 ==== Prompt themes
 
 A couple of different solutions for customizing the command line prompt are included with these dotfiles.
