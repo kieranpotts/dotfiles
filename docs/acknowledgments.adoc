@@ -1,0 +1,20 @@
+= Acknowledgments
+
+These dotfiles integrate the following third-party
+components:
+
+* https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash[Git Bash completion script]
+* https://github.com/necolas/dotfiles/blob/master/shell/bash_prompt[Nicolas Gallagher's Bash prompt]
+
+For the custom scripts and configuration, inspiration has been taken – and, in some cases, code shamelessly copied – from some of these related projects:
+
+* https://dotfiles.io/[Sebastien Rousseau's dotfiles.io]
+* https://github.com/thoughtbot/dotfiles[Thoughtbot's dotfiles]
+* https://github.com/durdn/cfg[Nicola Paolucci's dotfiles]
+* https://github.com/skwp/dotfiles[YADR – Yet Another Dotfile Repo]
+* https://github.com/codeforester/base[Ramesh Padmanabhaiah's Base framework]
+* https://github.com/haacked/dotfiles[Phil Haack's dotfiles]
+* https://github.com/michaelbiven/dotfiles[Michael Biven's dotfiles]
+* https://github.com/necolas/dotfiles[Nicolas Gallagher's OS X dotfiles]
+* https://github.com/codespaces-contrib/dotfiles[GitHub Codespaces examples dotfiles]
+* https://git.wiki.kernel.org/index.php/Aliases[Git Wiki: Aliases]
