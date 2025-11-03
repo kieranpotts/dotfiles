@@ -1,3 +1,0 @@
-= The `lib` directory
-
-This directory encapsulates any general-purpose libraries that are sourced from other scripts.
