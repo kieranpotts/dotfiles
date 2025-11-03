@@ -13,9 +13,6 @@
 # Determine the directory of the current script, accounting for symbolic links.
 DIST_PATH="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 
-# Determine the root path of this repository.
-REPO_PATH="$(dirname "$DIST_PATH")"
-
 # Load aliases that are compatible with all POSIX-compliant shells.
 if [ -d "$DIST_PATH/aliases" ]; then
   for file in "$DIST_PATH/aliases"/*; do
@@ -35,12 +32,6 @@ if [ -d "$DIST_PATH/completions" ]; then
   for file in "$DIST_PATH/completions"/*; do
     [ -f "$file" ] && . "$file"
   done
-fi
-
-# Load this repository's bin directory into the system PATH. This makes
-# available the Git aliases and other scripts defined in this directory.
-if [ -d "$REPO_PATH/bin" ] ; then
-  PATH="$PATH:$REPO_PATH/bin"
 fi
 
 # Add ~/bin to PATH, allowing additional autoloadable binaries to be

@@ -82,9 +82,6 @@ if [ -z "${CODESPACES}" ]; then
   # feedback to the user to help them resolve the issue.
   retval=$?
 
-  # Add execute privileges to all the contents of this repository's `bin`
-  # directory.
-  chmod -R u+x "${DIR_PATH}/bin"
 
   if [ ! $retval -eq 0 ]; then
     echo "Failed to create symbolic links in your home directory, try again with elevated privileges"
