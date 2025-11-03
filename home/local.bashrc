@@ -55,6 +55,8 @@ export X_GIT_COMMIT_VERIFY=1
 # Or:
 #source ~/.prompt-themes/git-prompt-simple.bash
 
+# Enable auto-completion for Terraform commands.
+#complete -C /usr/bin/terraform terraform
 
 # Load `gitex` Git extensions, if installed.
 #if [ -d ~/dev/kieranpotts/gitex/bin ] ; then
