@@ -5,10 +5,6 @@
 # Commands in this script MAY be dependent upon Bash-specific syntax and APIs.
 # ==============================================================================
 
-# Change to `1` to apply `--no-verify` flag to aliased `git` operations.
-# See <https://github.com/kieranpotts/gitex>.
-#export X_GITEX_SKIP_HOOKS=1
-
 # Set the TTY to use for GnuPG, required for inputting key passphrases.
 # Test this works by running the following command to sign a test message.
 # You should be prompted for your GPG key's passphrase.
