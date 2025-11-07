@@ -2,18 +2,7 @@
 
 == Shell environment variables
 
-The following environment variables are enabled.
-
-[cols="1,1,1"]
-|===
-|Name |Description |Shells
-
-|`X_GIT_COMMIT_VERIFY=1`
-|Change to `0` to apply `--no-verify` flag to `git commit` operations done via the Git aliases.
-|Bash
-|===
-
-In addition, in Bash the `PATH` environment variable is extended to include `$HOME/bin` and `/path/to/dotfiles/bin`, if those directories exist.
+In Bash the `PATH` environment variable is extended to include `$HOME/bin` and `/path/to/dotfiles/bin`, if those directories exist.
 
 == Shell aliases
 
