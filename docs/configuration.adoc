@@ -88,6 +88,8 @@ If you set a passphrase for your key, add the following line to your `~/local.ba
 export GPG_TTY=$(tty)
 ----
 
+Re-source your `~/local.bashrc` for the change to take effect.
+
 Before adding the GPG key to your Git config, check that you've configured your key correctly. You can do this by using it to sign an arbitrary piece of text:
 
 ----
