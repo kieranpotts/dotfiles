@@ -5,6 +5,9 @@
 # Commands in this script MAY be dependent upon Bash-specific syntax and APIs.
 # ==============================================================================
 
+# Use more vivid colors in the terminal.
+#COLORTERM=truecolor
+
 # Set the TTY to use for GnuPG, required for inputting key passphrases.
 # Test this works by running the following command to sign a test message.
 # You should be prompted for your GPG key's passphrase.
