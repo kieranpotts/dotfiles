@@ -7,6 +7,12 @@
 # script via the `~/local.bashrc` file.
 # ==============================================================================
 
+# If not running interactively, don't do anything.
+case $- in
+  *i*) ;;
+    *) return;;
+esac
+
 # Determine the directory of the current script.
 # DIST_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
