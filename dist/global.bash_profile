@@ -4,7 +4,7 @@
 # `~/.bash_login`.
 #
 # This file also sources `~/.bashrc`, ensuring a consistent environment in all
-# Bash sessions, ie whether Bash is running in interative login or interative
+# Bash sessions, ie. whether Bash is running in interative login or interative
 # non-login modes.
 #
 # You SHOULD NOT edit this file, as your changes here will be lost next time you
