@@ -48,9 +48,10 @@
 # information to the prompt line. This is configurable.
 #source ~/.prompt-themes/git-prompt.sh
 #export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]$(__git_ps1)\[\033[00m\]\$ '
-#GIT_PS1_SHOWDIRTYSTATE=1
-#GIT_PS1_SHOWUPSTREAM="auto"
-#GIT_PS1_UPSTREAMEQUALS=""
+#GIT_PS1_SHOWDIRTYSTATE=1        # * unstaged, + staged
+#GIT_PS1_SHOWUNTRACKEDFILES=1    # % untracked files
+#GIT_PS1_SHOWUPSTREAM="auto"     # < behind, > ahead, <> diverged, = same commit
+#GIT_PS1_SHOWCONFLICTSTATE="yes" # show "|CONFLICT" if conflicts
 
 # Or:
 #source ~/.prompt-themes/git-prompt-simple.bash
