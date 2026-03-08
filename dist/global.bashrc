@@ -41,8 +41,8 @@ if [ -d "$DIST_PATH/completions" ]; then
 fi
 
 # Add ~/bin to PATH, allowing additional autoloadable binaries to be
-# installed directly in ~/bin. Takes priority over other paths. (This directory 
-# is optional, and it needs to be created by the user, if it does not already 
+# installed directly in ~/bin. Takes priority over other paths. (This directory
+# is optional, and it needs to be created by the user, if it does not already
 # exist.)
 if [ -d ~/bin ] ; then
   PATH="${HOME}/bin:$PATH"
