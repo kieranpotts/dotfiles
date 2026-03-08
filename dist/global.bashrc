@@ -26,6 +26,11 @@ if [ -d "${DIST_PATH}/aliases" ]; then
   done
 fi
 
+# Load bash-specific aliases.
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
+
 # Load utility functions that are compatible with all POSIX-compliant shells.
 if [ -d "${DIST_PATH}/functions" ]; then
   for file in "${DIST_PATH}/functions"/*; do
