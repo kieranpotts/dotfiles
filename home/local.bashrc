@@ -16,6 +16,9 @@
 # -----------------------------
 #export GPG_TTY=$(tty)
 
+# Launch the GPG agent at startup.
+# gpgconf --launch gpg-agent
+
 # Load nvm at startup.
 #export NVM_DIR="$HOME/.nvm"
 #[ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh" # Loads NVM
