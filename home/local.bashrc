@@ -33,9 +33,6 @@
 #export PATH="$HOME/.phpenv/bin:$PATH"
 #eval "$(phpenv init -)"
 
-# Required for pipenv. ~/.local/bin is the location of the virtualenv executable.
-#export PATH="$HOME/.local/bin:$PATH"
-
 # Fixes for dbus errors when launching Google Chrome from WSL.
 #export XDG_RUNTIME_DIR=/run/user/$(id -u)
 #export DBUS_SESSION_BUS_ADDRESS=unix:path=$XDG_RUNTIME_DIR/bus
