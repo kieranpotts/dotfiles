@@ -8,6 +8,27 @@
 # Use more vivid colors in the terminal.
 #COLORTERM=truecolor
 
+# Don't put duplicate lines, or lines starting with space, in the history.
+#HISTCONTROL=ignoreboth
+
+# Append to the history file, don't overwrite it.
+#shopt -s histappend
+
+# History length.
+#HISTSIZE=1000
+#HISTFILESIZE=2000
+
+# Check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS to fit the contents.
+#shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# Use lesspipe to make less more friendly for non-text input files.
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
 # Fixes for dbus errors when launching Google Chrome from WSL.
 #export XDG_RUNTIME_DIR=/run/user/$(id -u)
 #export DBUS_SESSION_BUS_ADDRESS=unix:path=$XDG_RUNTIME_DIR/bus
