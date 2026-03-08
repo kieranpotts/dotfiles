@@ -8,12 +8,14 @@
 # Use more vivid colors in the terminal.
 #COLORTERM=truecolor
 
-# Set the TTY to use for GnuPG, required for inputting key passphrases.
-# Test this works by running the following command to sign a test message.
-# You should be prompted for your GPG key's passphrase.
-# -----------------------------
-# echo "test" | gpg --clearsign
-# -----------------------------
+# Fixes for dbus errors when launching Google Chrome from WSL.
+#export XDG_RUNTIME_DIR=/run/user/$(id -u)
+#export DBUS_SESSION_BUS_ADDRESS=unix:path=$XDG_RUNTIME_DIR/bus
+
+# Set the TTY to use for GnuPG, required for inputting key passphrases. Test
+# this works by running the following command to sign a test message. You should
+# be prompted for your GPG key's passphrase.
+# $ echo "test" | gpg --clearsign
 #export GPG_TTY=$(tty)
 
 # Launch the GPG agent at startup.
@@ -32,10 +34,6 @@
 # See https://github.com/phpenv/phpenv?tab=readme-ov-file#neckbeard-configuration
 #export PATH="$HOME/.phpenv/bin:$PATH"
 #eval "$(phpenv init -)"
-
-# Fixes for dbus errors when launching Google Chrome from WSL.
-#export XDG_RUNTIME_DIR=/run/user/$(id -u)
-#export DBUS_SESSION_BUS_ADDRESS=unix:path=$XDG_RUNTIME_DIR/bus
 
 # Start Oh My Posh and load your preferred prompt theme. Errors are redirected
 # to standard error because `oh-my-posh` is an optional dependency, so we don't
