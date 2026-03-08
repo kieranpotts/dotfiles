@@ -20,22 +20,22 @@ esac
 DIST_PATH="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 
 # Load aliases that are compatible with all POSIX-compliant shells.
-if [ -d "$DIST_PATH/aliases" ]; then
-  for file in "$DIST_PATH/aliases"/*; do
+if [ -d "${DIST_PATH}/aliases" ]; then
+  for file in "${DIST_PATH}/aliases"/*; do
     [ -f "$file" ] && . "$file"
   done
 fi
 
 # Load utility functions that are compatible with all POSIX-compliant shells.
-if [ -d "$DIST_PATH/functions" ]; then
-  for file in "$DIST_PATH/functions"/*; do
+if [ -d "${DIST_PATH}/functions" ]; then
+  for file in "${DIST_PATH}/functions"/*; do
     [ -f "$file" ] && . "$file"
   done
 fi
 
 # Load command line completions for Bash.
-if [ -d "$DIST_PATH/completions" ]; then
-  for file in "$DIST_PATH/completions"/*; do
+if [ -d "${DIST_PATH}/completions" ]; then
+  for file in "${DIST_PATH}/completions"/*; do
     [ -f "$file" ] && . "$file"
   done
 fi
@@ -45,12 +45,12 @@ fi
 # is optional, and it needs to be created by the user, if it does not already
 # exist.)
 if [ -d ~/bin ] ; then
-  PATH="${HOME}/bin:$PATH"
+  PATH="${HOME}/bin:${PATH}"
 fi
 
 # Alternative path to the user's private binaries.
 if [ -d "${HOME}/.local/bin" ] ; then
-  PATH="${HOME}/.local/bin:$PATH"
+  PATH="${HOME}/.local/bin:${PATH}"
 fi
 
 # Load the user's `~/local.bashrc` file. This file can be used to override

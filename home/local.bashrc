@@ -18,8 +18,8 @@
 
 # Load nvm at startup.
 #export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Loads NVM
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # Loads Bash completion for NVM
+#[ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh" # Loads NVM
+#[ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion" # Loads Bash completion for NVM
 
 # Load Jabba at startup.
 #export JABBA_VERSION=0.11.2
@@ -60,8 +60,8 @@
 #complete -C /usr/bin/terraform terraform
 
 # Load `gitex` Git extensions, if installed.
-#if [ -d "$HOME/dev/kieranpotts/gitex/bin" ] ; then
-#  PATH="$PATH:$HOME/dev/kieranpotts/gitex/bin"
+#if [ -d "${HOME}/dev/kieranpotts/gitex/bin" ] ; then
+#  PATH="${PATH}:${HOME}/dev/kieranpotts/gitex/bin"
 #fi
 
 # Change to a specific directory when starting a new terminal session.
