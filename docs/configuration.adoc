@@ -130,7 +130,7 @@ The above configuration works fine when using Git exclusively in the WSL environ
 In WSL, create a wrapper script for GPG4Win's `gpg.exe`:
 
 ----
-$ sudo vim /usr/local/bin/gpg
+$ sudo vim /usr/local/bin/gpgwin
 ----
 
 Add the following contents:
@@ -144,15 +144,17 @@ Add the following contents:
 Make it executable:
 
 ----
-$ sudo chmod +x /usr/local/bin/gpg
+$ sudo chmod +x /usr/local/bin/gpgwin
 ----
 
 Configure Git to use the wrapper script instead of the default `gpg` binary. In `~/local.gitconfig`:
 
 ----
 [gpg]
-  program = /usr/local/bin/gpg
+  program = /usr/local/bin/gpgwin
 ----
+
+This configuration means that only Git will use GPG4Win's `gpg.exe` binary, and not the Linux `gpg` binary installed in WSL – typically found at `/usr/bin/gpg`. If you saved the Windows wrapper as `/usr/local/bin/gpg`, this would take precedence over the `/usr/bin/gpg` binary, and thus all `gpg` executions in WSL would use the wrapper.
 
 Export your GPG key pair from WSL, and import the keys into GPG4Win:
 
@@ -192,7 +194,7 @@ Verify the import:
 Delete the original `public.key` and `private.key` files after importing them to GPG.
 ======
 
-To test the configuration, make a commit from a Windows GUI Git client, and you should be prompted for your GPG key's passphrase via a Windows GUI "pinentry" dialog. Also test via WSL, using either of the below commands; you should get the same Windows GUI pinentry dialog, rather than the original terminal prompt, for your passphrase.
+To test the configuration, make a commit from a Windows GUI Git client, and you should be prompted for your GPG key's passphrase via a Windows GUI "pinentry" dialog. Also test via WSL, using either of the below commands; because this is expected to use the native `gpg` binary installed in WSL, you will see the default terminal prompt for your passphrase.
 
 ----
 # Sign an arbitrary piece of text.
