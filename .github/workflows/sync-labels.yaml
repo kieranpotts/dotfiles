@@ -1,0 +1,32 @@
+#
+# Synchronize this repository's labels with the
+# labels defined in the kieranpotts/.github repository,
+# which is the source-of-truth for all "community health"
+# configuration across my personal repositories.
+#
+# The job runs on an overnight schedule, or you can
+# trigger a run manually.
+#
+# https://github.com/EndBug/label-sync
+#
+
+name: Sync labels
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Every day at 5am.
+    - cron: '0 5 * * *'
+
+permissions:
+  issues: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync labels
+        uses: EndBug/label-sync@v2
+        with:
+          source-repo: kieranpotts/.github
+          delete-other-labels: false
