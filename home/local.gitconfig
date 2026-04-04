@@ -43,8 +43,13 @@
   # impersonation and ensures the integrity of your commit history.
   #gpgsign = true
 
+[tag]
+
+  # Same for tagging commits.
+  #gpgsign = true
+
 [gpg]
-  
+
   # Specify the path to the GPG program. This is required if GPG is not in
   # your system `PATH`, or if you want to use a different version of GPG
   # than the default installed version.
