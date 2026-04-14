@@ -15,28 +15,23 @@
 #===============================================================================
 # <type> can be:
 #   - feature      A new, changed, or removed user-facing operation or behavior.
-#   - performance  Optimization of the system's runtime performance. Any
-#                  improvements to quality attributes such as security,
-#                  availability, latency, etc.
+#   - performance  Optimization of the system's runtime performance.
 #   - fix          A fix for a bug, error, regression, or incident.
-#   - dev          An increment toward implementing a feature, fix, or
-#                  performance optimization.
-#   - refactor     An improvement to the static structure of the source code,
-#                  data, configuration, or tests.
-#   - maintenance  Updates to dependency configurations, improvements to 
-#                  automated tests, extensions to technical documentation, and
-#                  other changes to support the upkeep of the software.
-#   - chore        Small, general housekeeping tasks that are not normally
-#                  logged in an issue tracker.
+#   - dev          An increment toward implementing a feature or fix.
+#   - refactor     An improvement to the internal design of the software.
+#   - maintenance  A routine housekeeping task.
+#   - chore        A small, insignificant change to non-production artifacts.
 #   - release      Marks a new numbered version of the software.
 #
 # <flag> can be:
 #   - WIP          Work-in-progress that breaks the build.
-#   - BREAKING     A breaking change, either to the internal or external API.
-#   - EXPERIMENT   A code experiment or other temporary change.
+#   - BREAKING     A breaking change to an external API.
+#   - INCOMPAT     Internal breaking API change.
+#   - EXPERIMENT   A code experiment.
+#   - TEMPORARY    A temporary commit that will be reverted.
 #
 # Tips:
-#   - Capitalize the subject line.
+#   - Do not capitalize the subject line.
 #   - Use the imperative mood in the subject line.
 #   - Do not end the subject line with a period.
 #   - Separate subject from body with a single blank line.
