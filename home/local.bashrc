@@ -60,6 +60,13 @@
 # which means local agents soon lose context in long-running sessions.
 #export OLLAMA_CONTEXT_LENGTH=65536
 
+# Configure Claude Code to use Ollama as the default provider, and set
+# default model selections.
+#export ANTHROPIC_BASE_URL=http://localhost:11434
+#export ANTHROPIC_AUTH_TOKEN=ollama
+#export ANTHROPIC_MODEL=qwen3-coder:30b
+#export ANTHROPIC_SMALL_FAST_MODEL=qwen2.5-coder:3b # For fast subtasks.
+
 # Start Oh My Posh and load your preferred prompt theme. Errors are redirected
 # to standard error because `oh-my-posh` is an optional dependency, so we don't
 # want to assume it is installed. Do this last because, even if oh-my-posh is
