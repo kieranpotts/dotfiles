@@ -56,6 +56,10 @@
 #export PATH="$HOME/.phpenv/bin:$PATH"
 #eval "$(phpenv init -)"
 
+# Increase Ollama's context window. Ollama defaults to just 4096 tokens,
+# which means local agents soon lose context in long-running sessions.
+#export OLLAMA_CONTEXT_LENGTH=65536
+
 # Start Oh My Posh and load your preferred prompt theme. Errors are redirected
 # to standard error because `oh-my-posh` is an optional dependency, so we don't
 # want to assume it is installed. Do this last because, even if oh-my-posh is
