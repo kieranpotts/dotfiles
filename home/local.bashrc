@@ -56,6 +56,10 @@
 #export PATH="$HOME/.phpenv/bin:$PATH"
 #eval "$(phpenv init -)"
 
+# Docker Hub login credentials, required for publishing images.
+#export DOCKER_USERNAME=<your-username>
+#export DOCKER_TOKEN=<your-personal-access-token>
+
 # Increase Ollama's context window. Ollama defaults to just 4096 tokens,
 # which means local agents soon lose context in long-running sessions.
 #export OLLAMA_CONTEXT_LENGTH=65536
