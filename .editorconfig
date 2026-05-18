@@ -1,11 +1,11 @@
-; ==============================================================================
+;
 ; This file helps to enforce a consistent coding style across different editors.
 ;
 ; Single-line comments, rather than end-of-line comments, are used for
 ; compatibility with Neovim!
 ;
 ; https://editorconfig.org/
-; ==============================================================================
+;
 
 # This is the project's root directory.
 root = true
