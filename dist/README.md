@@ -2,6 +2,20 @@
 
 The `dist` directory contains "global" dotfiles that are intended to be symlinked from the user's home directory. These are not intended to be editable by the user. Instead, the user is able to extend the "global" dotfiles via "local" ones (see [`home/`](../home/README.md)).
 
+Contents:
+
+- [`global.profile`](./global.profile), [`global.bash_profile`](./global.bash_profile), [`global.bashrc`](./global.bashrc): Bash startup scripts. See the [shell startup scripts](#shell-startup-scripts) section below.
+
+- [`global.gitconfig`](./global.gitconfig): Git configuration. Includes a trailing `[include]` directive that pulls in `~/local.gitconfig`, where user-specific settings (name, email, signing key) belong.
+
+- [`aliases/`](./aliases): POSIX-compatible shell aliases, each grouped by topic in its own `*.sh` file (`cd`, `git`, `docker`, `grep`, `ls`, etc.). Every file in this directory is sourced automatically by `global.bashrc` at shell startup.
+
+- [`functions/`](./functions): Shell functions, sourced automatically alongside the aliases. Currently contains Docker helpers.
+
+- [`completions/`](./completions): Bash completion scripts, also sourced automatically. Currently contains the official `git-completion.bash`.
+
+To add a new alias, function, or completion, drop a new `*.sh` file into the corresponding directory – no further wiring is needed.
+
 ## Shell startup scripts
 
 A shell environment can be interactive or non-interactive:
