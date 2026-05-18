@@ -92,7 +92,7 @@
   # to strike a good balance. See Lup Peng's blog post for more details about
   # how these diff algorithms work:
   # https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
-  algotithm = histogram
+  algorithm = histogram
 
   # Color moved lines differently from changed lines. This is the same as adding
   # the `--color-moved` flag to `git diff`. Options are "no", "default",
