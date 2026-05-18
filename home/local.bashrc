@@ -1,12 +1,12 @@
 # shellcheck shell=bash
 # shellcheck disable=SC1090,SC1091
 
-# ==============================================================================
+#
 # You MAY edit this file to extend the `~/.bashrc` startup script, the
 # content of which is managed via the dotfiles repository.
 #
 # Commands in this script MAY be dependent upon Bash-specific syntax and APIs.
-# ==============================================================================
+#
 
 # Use more vivid colors in the terminal.
 #COLORTERM=truecolor

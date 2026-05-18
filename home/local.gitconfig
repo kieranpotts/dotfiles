@@ -1,9 +1,9 @@
-# ==============================================================================
+#
 # This file SHOULD be used to extend and overwrite the default user-level Git
 # configuration symlinked from `~/.gitconfig`. You SHOULD edit this file
 # directly, rather than use the `git config --global` command.
 # https://git-scm.com/docs/git-config
-# ==============================================================================
+#
 
 [user]
 

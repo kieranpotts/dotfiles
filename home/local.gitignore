@@ -1,4 +1,4 @@
-# ==============================================================================
+#
 # This is a global `.gitignore` file, scoped to the system user via the
 # `core.excludesFiles` configuration in `~/.gitconfig`.
 #
@@ -10,7 +10,7 @@
 # files or any other personal materials to the working directories of local Git
 # repositories, without running the risk of those files being committed to the
 # repositories.
-# ==============================================================================
+#
 
 __NOTES__
 __SCRIPTS__
