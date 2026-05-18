@@ -133,14 +133,16 @@ else
   # source this file, if it exists, when a new terminal session is started.
   touch ~/.bash_aliases
 
-  echo "source ~/.aliases/cd.sh" >> ~/.bash_aliases
-  echo "source ~/.aliases/git.sh" >> ~/.bash_aliases
-  echo "source ~/.aliases/grep.sh" >> ~/.bash_aliases
-  echo "source ~/.aliases/ls.sh" >> ~/.bash_aliases
-  echo "source ~/.aliases/mkdir.sh" >> ~/.bash_aliases
-  echo "source ~/.aliases/rm.sh" >> ~/.bash_aliases
-  echo "source ~/.aliases/sudo.sh" >> ~/.bash_aliases
-  echo "source ~/.functions/docker.sh" >> ~/.bash_aliases
+  {
+    echo "source ~/.aliases/cd.sh"
+    echo "source ~/.aliases/git.sh"
+    echo "source ~/.aliases/grep.sh"
+    echo "source ~/.aliases/ls.sh"
+    echo "source ~/.aliases/mkdir.sh"
+    echo "source ~/.aliases/rm.sh"
+    echo "source ~/.aliases/sudo.sh"
+    echo "source ~/.functions/docker.sh"
+  } >> ~/.bash_aliases
 
   # Done.
   echo "== Installed dotfiles for Codespaces =="
