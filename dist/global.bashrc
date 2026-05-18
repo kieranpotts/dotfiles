@@ -48,17 +48,17 @@ if [ -d "${DIST_PATH}/completions" ]; then
   done
 fi
 
+# Alternative path to the user's private binaries.
+if [ -d "${HOME}/.local/bin" ] ; then
+  PATH="${HOME}/.local/bin:${PATH}"
+fi
+
 # Add ~/bin to PATH, allowing additional autoloadable binaries to be
 # installed directly in ~/bin. Takes priority over other paths. (This directory
 # is optional, and it needs to be created by the user, if it does not already
 # exist.)
 if [ -d ~/bin ] ; then
   PATH="${HOME}/bin:${PATH}"
-fi
-
-# Alternative path to the user's private binaries.
-if [ -d "${HOME}/.local/bin" ] ; then
-  PATH="${HOME}/.local/bin:${PATH}"
 fi
 
 # Load the user's `~/local.bashrc` file. This file can be used to override
