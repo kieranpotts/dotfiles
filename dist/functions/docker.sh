@@ -16,8 +16,8 @@ buildDockerImage() {
 # Run a Docker container from an image.
 runDockerContainer() {
   if [ -z "$1" ]; then
-    echo "Usage: runDockerContainer <image_name>\n"
-    echo "Get the image name by running 'docker image ls'."
+    printf 'Usage: runDockerContainer <image_name>\n\n'
+    printf "Get the image name by running 'docker image ls'.\n"
     return 1
   fi
   docker run --detach "$1"
@@ -47,8 +47,8 @@ listDockerImages() {
 # SSH into a running container.
 sshDockerContainer() {
   if [ -z "$1" ]; then
-    echo "Usage: sshDocker <container_id>\n"
-    echo "Get the container ID by running 'docker ps'."
+    printf 'Usage: sshDockerContainer <container_id>\n\n'
+    printf "Get the container ID by running 'docker ps'.\n"
     return 1
   fi
   docker exec -it "$1" /bin/bash
