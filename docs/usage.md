@@ -2,7 +2,7 @@
 
 ## Shell environment variables
 
-In Bash the `PATH` environment variable is extended to include `$HOME/bin` and `/path/to/dotfiles/bin`, if those directories exist.
+In Bash the `PATH` environment variable is extended to include `$HOME/bin` and `$HOME/.local/bin`, if those directories exist. `$HOME/bin` takes priority.
 
 ## Shell aliases
 

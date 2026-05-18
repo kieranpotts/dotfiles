@@ -15,11 +15,13 @@ The following files will be added to your home directory.
 
 These are _not_ symlinked and they are not kept under version control, either. Therefore, you can safely edit these files to make configuration changes in each environment. It's via these "local" files that you extend the "global" dotfiles configurations shared via this repository.
 
-> **Tip:** Whenever you make changes to any of the "local" shell startup scripts – `~/local.bashrc`, `~/local.bash_profile`, or `~/local.profile` – you can call the `reload!` function to re-source the shell startup scripts, so your changes take effect immediately without needing to restart the shell session.
+> **Tip:** Whenever you make changes to `~/local.bashrc`, you can call the `reload!` function to re-source `~/.bashrc` (which in turn re-sources `~/local.bashrc`), so your changes take effect immediately without needing to restart the shell session.
 >
 > ```
 > reload!
 > ```
+>
+> Changes to `~/local.bash_profile` or `~/local.profile` require a fresh login shell – either restart your terminal or run `exec bash --login`.
 
 If you already had files like `.profile` or `.gitconfig` in your user directory, the `./run/install` script will have created backups of these files before replacing them. The backup files will be named with the "backup" prefix. For example, your existing `~/.bashrc` file will have been renamed `~/backup.bashrc`. You may need to manually copy-and-paste existing configurations from the old "backup" files to the new "local" files.
 

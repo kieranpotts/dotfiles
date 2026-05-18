@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # ==============================================================================
-# Aliases to view HTTTP traffic.
+# Aliases to view HTTP traffic.
 # ==============================================================================
 
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"

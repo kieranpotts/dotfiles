@@ -1,7 +1,9 @@
 # ==============================================================================
 # The `~/.bash_profile` file is a user-scoped startup script for interactive
-# logins to the Bash shell. In Bash, this overrides `~/.profile` and
-# `~/.bash_login`.
+# logins to the Bash shell. When starting an interactive login shell, Bash
+# reads the first of `~/.bash_profile`, `~/.bash_login`, or `~/.profile` that
+# it finds, in that order – so when `~/.bash_profile` exists, `~/.bash_login`
+# and `~/.profile` are not sourced automatically.
 #
 # This file also sources `~/.bashrc`, ensuring a consistent environment in all
 # Bash sessions, ie. whether Bash is running in interative login or interative
