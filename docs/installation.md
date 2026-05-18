@@ -10,7 +10,7 @@ Change to the root directory of the cloned repository and run the `./run/install
 
 ```sh
 cd /path/to/dotfiles
-sh run/install
+./run/install
 ```
 
 The first time you run this, you will need to exit your terminal program then restart it. Doing so will create a new login shell, which will load the newly-installed dotfiles at startup.
