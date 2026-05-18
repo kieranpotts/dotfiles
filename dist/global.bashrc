@@ -1,14 +1,14 @@
 # shellcheck shell=bash
 # shellcheck disable=SC1090,SC1091
 
-# ==============================================================================
+#
 # The `~/.bashrc` file is automatically loaded whenever a new interactive
 # Bash shell is started, whether in login (`-l`) or non-login mode.
 #
 # You SHOULD NOT edit this file, as your changes here will be lost next time you
 # fetch updates from the dotfiles repository. Instead, you MAY extend this
 # script via the `~/local.bashrc` file.
-# ==============================================================================
+#
 
 # If not running interactively, don't do anything.
 case $- in

@@ -1,9 +1,9 @@
-# ==============================================================================
+#
 # This file establishes global options for the Git version control system.
 # These settings are scoped to the system user.
 #
 # https://git-scm.com/docs/git-config
-# ==============================================================================
+#
 
 [alias]
 

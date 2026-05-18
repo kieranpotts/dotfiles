@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 # shellcheck disable=SC1090,SC1091
 
-# ==============================================================================
+#
 # The `~/.bash_profile` file is a user-scoped startup script for interactive
 # logins to the Bash shell. When starting an interactive login shell, Bash
 # reads the first of `~/.bash_profile`, `~/.bash_login`, or `~/.profile` that
@@ -15,7 +15,7 @@
 # You SHOULD NOT edit this file, as your changes here will be lost next time you
 # fetch updates from the dotfiles repository. Instead, you MAY extend this
 # script via the `~/local.bash_profile` file.
-# ==============================================================================
+#
 
 # Load the startup script for all shells, to capture our POSIX-compliant
 # shell configurations, which are intended to be shared by all shells.

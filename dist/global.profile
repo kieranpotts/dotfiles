@@ -1,7 +1,7 @@
 # shellcheck shell=sh
 # shellcheck disable=SC1090,SC1091
 
-# ==============================================================================
+#
 # The `~/.profile` file is a user-scoped startup script for interactive logins
 # to all shell environments – Bash, Fish, Zsh, etc.
 #
@@ -13,7 +13,7 @@
 # You SHOULD NOT edit this file, as your changes here will be lost next time you
 # fetch updates from the dotfiles repository. Instead, you MAY extend this
 # script via the `~/local.profile` file.
-# ==============================================================================
+#
 
 # Load the user's `~/local.profile` file, which can be used to override
 # anything set in this file.

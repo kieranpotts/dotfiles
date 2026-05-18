@@ -1,4 +1,4 @@
-# ==============================================================================
+#
 # LazyGit configuration.
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
 #
@@ -7,7 +7,7 @@
 # TODO: Further refinement of LazyGit config, eg for improved keybindings.
 # - https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
 # - https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Command_Keybindings.md
-# ==============================================================================
+#
 
 gui:
   showIcons: true # Requires Nerd Font
