@@ -1,6 +1,6 @@
 # Configuration
 
-The `./install.sh` script will have established various symlinks in your home directory for the Unix dotfiles. For example, `~/.gitconfig` will be symlinked to `/path/to/dotfiles/dist/global.gitconfig`.
+The `./run/install` script will have established various symlinks in your home directory for the Unix dotfiles. For example, `~/.gitconfig` will be symlinked to `/path/to/dotfiles/dist/global.gitconfig`.
 
 > **Important:** You SHOULD NOT change the dotfiles symlinks (eg. `~/.gitconfig`) or edit the contents of their target files in this repository's `dist` directory. Instead, you can make changes to your dotfiles configuration via the "local" files that have been added to your home directory – as explained below.
 
@@ -21,7 +21,7 @@ These are _not_ symlinked and they are not kept under version control, either. T
 > reload!
 > ```
 
-If you already had files like `.profile` or `.gitconfig` in your user directory, the `./install.sh` script will have created backups of these files before replacing them. The backup files will be named with the "backup" prefix. For example, your existing `~/.bashrc` file will have been renamed `~/backup.bashrc`. You may need to manually copy-and-paste existing configurations from the old "backup" files to the new "local" files.
+If you already had files like `.profile` or `.gitconfig` in your user directory, the `./run/install` script will have created backups of these files before replacing them. The backup files will be named with the "backup" prefix. For example, your existing `~/.bashrc` file will have been renamed `~/backup.bashrc`. You may need to manually copy-and-paste existing configurations from the old "backup" files to the new "local" files.
 
 ## Git configuration
 
@@ -35,7 +35,7 @@ You MUST edit the `~/local.gitconfig` file to configure your Git user profile in
 
 > **Tip:** GitHub provides free aliases for your GitHub account's email address, to help keep your personal email address private. You can enable this via your GitHub account's email settings. If you have a GitHub email alias, you should use that in the `email` field in your local Git config.
 
-When you ran the `./install.sh` script, your previous Git configuration would have been backed up to `~/backup.gitconfig`. You SHOULD review the contents of this file and copy any other configurations you wish to keep to the new `~/local.gitconfig` file.
+When you ran the `./run/install` script, your previous Git configuration would have been backed up to `~/backup.gitconfig`. You SHOULD review the contents of this file and copy any other configurations you wish to keep to the new `~/local.gitconfig` file.
 
 > **Note:** From now on you SHOULD NOT use the `git config --global` command to update your Git configuration. If you do, this command will update the file symlinked from `~/.gitconfig`. To avoid this, you SHOULD instead directly edit the `~/local.gitconfig` file.
 
