@@ -1,3 +1,6 @@
+# shellcheck shell=bash
+# shellcheck disable=SC1090,SC1091
+
 # ==============================================================================
 # The `~/.bashrc` file is automatically loaded whenever a new interactive
 # Bash shell is started, whether in login (`-l`) or non-login mode.

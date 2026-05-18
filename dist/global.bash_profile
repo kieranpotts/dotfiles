@@ -1,3 +1,6 @@
+# shellcheck shell=bash
+# shellcheck disable=SC1090,SC1091
+
 # ==============================================================================
 # The `~/.bash_profile` file is a user-scoped startup script for interactive
 # logins to the Bash shell. When starting an interactive login shell, Bash

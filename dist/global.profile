@@ -1,3 +1,6 @@
+# shellcheck shell=sh
+# shellcheck disable=SC1090,SC1091
+
 # ==============================================================================
 # The `~/.profile` file is a user-scoped startup script for interactive logins
 # to all shell environments – Bash, Fish, Zsh, etc.

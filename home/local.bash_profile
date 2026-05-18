@@ -1,3 +1,6 @@
+# shellcheck shell=bash
+# shellcheck disable=SC1090,SC1091
+
 # ==============================================================================
 # You MAY edit this file to extend the `~/.bash_profile` startup script, the
 # content of which is managed via the dotfiles repository.
