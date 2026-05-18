@@ -87,5 +87,3 @@ These dotfiles include configurations for LazyGit, Neovim, and tmux, while Delta
 ## Other requirements
 
 If using Docker Desktop for Windows with the WSL back-end, it is RECOMMENDED to disable Docker's resource saver feature, as it is known to [freeze WSL](https://github.com/docker/for-win/issues/14656).
-
-![](./_/docker-desktop-resource-saver.png)
