@@ -17,11 +17,14 @@
 #   - feature      A new, changed, or removed user-facing operation or behavior.
 #   - performance  Optimization of the system's runtime performance.
 #   - fix          A fix for a bug, error, regression, or incident.
-#   - dev          An increment toward implementing a feature or fix.
+#   - step         An increment toward implementing a larger change.
 #   - refactor     An improvement to the internal design of the software.
-#   - maintenance  A routine housekeeping task.
+#   - format       Low-level code formatting improvements.
+#   - maintenance  A routine housekeeping task - dependencies, tool config, etc.
 #   - chore        A small, insignificant change to non-production artifacts.
 #   - release      Marks a new numbered version of the software.
+#   - merge        An explicit merge commmit.
+#   - revert       Reverts an earlier commit.
 #
 # <flag> can be:
 #   - WIP          Work-in-progress that breaks the build.
