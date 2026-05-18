@@ -1,12 +1,10 @@
 # Dotfiles
 
-These are my personal Unix dotfiles. They include:
-
-- Handy shell aliases and functions for Unix-like systems.
-- A better default configuration for Git.
+My personal Unix dotfiles.
 
 ## Documentation
 
+- [**Overview**](./docs/overview.md)
 - [**Requirements**](./docs/requirements.md)
 - [**Installation**](./docs/installation.md)
 - [**Configuration**](./docs/configuration.md)
