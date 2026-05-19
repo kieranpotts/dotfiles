@@ -116,7 +116,4 @@ The `.gitconfig` file modifies Git's default behavior in the following ways:
 ## Other configurations
 
 - **Git Bash completion** is loaded from `dist/completions/git-completion.bash`.
-- **Neovim** is configured via `etc/nvim/init.vim`.
-- **LazyGit** is configured via `etc/lazygit/config.yml`.
-- **tmux** is configured via `etc/tmux/tmux.conf`, with an additional `dev` layout in `etc/tmux/inc/dev` (load it with `Ctrl-b D`).
 - **Oh-My-Posh** themes are available in `home/.prompt-themes/oh-my-posh/`; alternative `git-prompt.sh` and `git-prompt-simple.bash` prompts are also provided.

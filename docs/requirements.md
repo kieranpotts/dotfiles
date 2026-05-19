@@ -70,19 +70,13 @@ Then commit and push as normal. Git LFS will automatically manage the large file
 
 To convert existing large files, previously committed to the repository, use the `git lfs migrate` command. See the [Git LFS documentation](https://github.com/git-lfs/git-lfs/blob/main/docs/man/git-lfs-migrate.adoc) for further instructions, and more [about large files on GitHub](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github).
 
----
-
 Besides Git LFS, the following programs are also OPTIONAL:
 
 - [Delta](https://github.com/dandavison/delta)
 - [GPG4Win](https://www.gpg4win.org/)
-- [LazyGit](https://github.com/jesseduffield/lazygit#installation)
-- [Neovim](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 - [Oh-My-Posh](https://ohmyposh.dev/docs/installation/linux)
 
-GPG4Win is required for signing Git commits with a passphrase-protected private key. This must be installed and configured manually – instructions are below.
-
-These dotfiles include configurations for LazyGit, Neovim, and tmux, while Delta and Oh-My-Posh may be used to enhance Git and the terminal prompt, respectively. For Debian systems, you can use my [bootstrap scripts](https://github.com/kieranpotts/bootstrap) to install these programs, or follow the instructions from the links above to install manually. For Git Bash on Windows, most of these programs are bundled with my [devtools](https://github.com/kieranpotts/devtools) – except for Neovim, which is not available as a standalone binary.
+GPG4Win is required for signing Git commits with a passphrase-protected private key. Delta is used for rendering diffs in Git output. Oh-My-Posh is a cross-platform framework for customizing the terminal prompt line.
 
 ## Other requirements
 
