@@ -8,7 +8,7 @@
 # MSysGit / Git for Windows. Without this configuration the `ln` command in
 # this runtime environment will create copies of the dotfiles, rather than
 # symlinks to them.
-#
+
 windows() { [ -n "$WINDIR" ]; }
 if windows; then
   export MSYS=winsymlinks:nativestrict
@@ -16,12 +16,12 @@ fi
 
 # Absolute path to this script,
 # eg `/path/to/dotfiles/run/install`.
-#
+
 FILE_PATH=$(readlink -f "$0")
 
 # Absolute path to the repository root (one directory up from this script),
 # eg `/path/to/dotfiles`.
-#
+
 DIR_PATH=$(dirname "$(dirname "$FILE_PATH")")
 
 if [ -z "${CODESPACES}" ]; then
@@ -30,7 +30,7 @@ if [ -z "${CODESPACES}" ]; then
 
   # Copy the `local.*` templates directly into the user's home directory, unless
   # they already exist there (`--no-clobber|-n`).
-  #
+
   cp --no-clobber "${DIR_PATH}/home/local.profile" ~/local.profile
   cp --no-clobber "${DIR_PATH}/home/local.bash_profile" ~/local.bash_profile
   cp --no-clobber "${DIR_PATH}/home/local.bashrc" ~/local.bashrc
@@ -39,7 +39,7 @@ if [ -z "${CODESPACES}" ]; then
   cp --no-clobber "${DIR_PATH}/home/local.gitmessage" ~/local.gitmessage
 
   # Copy the prompt themes, too, but this time overwrite local changes.
-  #
+
   mkdir -p ~/.prompt-themes
   mkdir -p ~/.prompt-themes/oh-my-posh
   cp "${DIR_PATH}/home/.prompt-themes/oh-my-posh/ocean.omp.json" ~/.prompt-themes/oh-my-posh/ocean.omp.json
@@ -52,7 +52,7 @@ if [ -z "${CODESPACES}" ]; then
   # we don't overwrite existing backups. Symbolic links are followed to ensure the
   # actual files – not their symlinks – are backed up (`--dereference`). Errors
   # are hidden because it is okay for the source files to not exist.
-  #
+
   cp --no-clobber --dereference ~/.profile ~/backup.profile 2> /dev/null
   cp --no-clobber --dereference ~/.bash_profile ~/backup.bash_profile 2> /dev/null
   cp --no-clobber --dereference ~/.bashrc ~/backup.bashrc 2> /dev/null
@@ -65,7 +65,7 @@ if [ -z "${CODESPACES}" ]; then
   # Note: `cp` will not, by default, copy hidden dot-prefixed files. This is why
   # none of the source files are dot-prefixed, eg. `global.bashrc` instead of
   # `.bashrc`.
-  #
+
   ln --symbolic --force "${DIR_PATH}/dist/global.profile" ~/.profile 2> /dev/null
   ln --symbolic --force "${DIR_PATH}/dist/global.bash_profile" ~/.bash_profile 2> /dev/null
   ln --symbolic --force "${DIR_PATH}/dist/global.bashrc" ~/.bashrc 2> /dev/null
@@ -75,7 +75,7 @@ if [ -z "${CODESPACES}" ]; then
   # Windows, to use these programs in the Git Bash emulator, equivalent symbolic
   # links must be created on the host system using PowerShell. See the docs
   # for instructions.
-  #
+
   if ! windows; then
     mkdir -p ~/.config/lazygit
     ln --symbolic --force "${DIR_PATH}/etc/lazygit/config.yml" ~/.config/lazygit/config.yml
@@ -90,7 +90,7 @@ if [ -z "${CODESPACES}" ]; then
 
   # If there were errors with the above linking operations, provide useful
   # feedback to the user to help them resolve the issue.
-  #
+
   retval=$?
 
   if [ ! $retval -eq 0 ]; then
@@ -99,10 +99,11 @@ if [ -z "${CODESPACES}" ]; then
 
     # If successful, try reloading the shell startup scripts. This won't work the
     # first time because the `reload!` function will not yet be available.
-    #
+
     reload! 2> /dev/null
 
     # Done.
+
     echo "== Installed dotfiles =="
     echo "Restart your terminal for all changes to take effect."
 
@@ -110,6 +111,7 @@ if [ -z "${CODESPACES}" ]; then
 
 else
 
+  #
   # Minimal installation for GitHub Codespaces.
   #
   # This installation script is designed to be compatible with GitHub Codespaces,
@@ -120,13 +122,14 @@ else
   # https://github.com/codespaces-contrib/dotfiles
   # https://docs.github.com/en/codespaces/setting-your-user-preferences/personalizing-github-codespaces-for-your-account#dotfiles
   # https://docs.github.com/en/codespaces/troubleshooting/troubleshooting-personalization-for-codespaces#troubleshooting-dotfiles
+  #
 
   mkdir -p ~/.aliases
   mkdir -p ~/.functions
 
   # Copy the aliases and functions directly into the user's home directory. The
   # Neovim aliases are excluded because Neovim isn't available in Codespaces.
-  #
+
   cp --no-clobber "${DIR_PATH}/dist/aliases/cd.sh" ~/.aliases/cd.sh
   cp --no-clobber "${DIR_PATH}/dist/aliases/git.sh" ~/.aliases/git.sh
   cp --no-clobber "${DIR_PATH}/dist/aliases/grep.sh" ~/.aliases/grep.sh
@@ -139,7 +142,7 @@ else
   # Create a file at ~/.bash_aliases and edit the contents to include
   # sourcing of ~/aliases/cd.sh etc. GitHub Codespaces will automatically
   # source this file, if it exists, when a new terminal session is started.
-  #
+
   touch ~/.bash_aliases
 
   {
@@ -154,6 +157,7 @@ else
   } >> ~/.bash_aliases
 
   # Done.
+
   echo "== Installed dotfiles for Codespaces =="
 
 fi
