@@ -17,6 +17,6 @@ The following is included:
 The repository's contents are organized into the following directories:
 
 - `dist/`: "Global" dotfiles that are symlinked into the user's home directory. Not intended to be edited.
-- `home/`: "Local" templates that are copied into the user's home directory on first install. Safe to edit.
+- `home/`: "Local" templates that are copied into the user's home directory on first install. Safe to edit thereafter.
 - `run/`: The installer script. A thin `install.sh` wrapper at the repo root exists for GitHub Codespaces auto-discovery.
 - `docs/`: Documentation.

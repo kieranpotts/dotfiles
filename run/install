@@ -5,8 +5,8 @@
 #
 
 # This is required for the `ln` command to generate proper symlinks in
-# MSysGit / Git for Windows. Without this configuration the `ln` command in
-# this runtime environment will create copies of the dotfiles, rather than
+# MSysGit / Git Bash for Windows. Without this configuration the `ln` command
+# in this runtime environment will create copies of the dotfiles, rather than
 # symlinks to them.
 
 windows() { [ -n "$WINDIR" ]; }

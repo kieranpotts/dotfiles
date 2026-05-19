@@ -1,10 +1,12 @@
 # Installation
 
-To install these dotfiles, fork-and-clone the upstream repository to any location on your local machine, then follow the steps below. This process needs to be repeated for each environment – so, once for WSL and once for Git Bash, if using both on the same Windows machine.
+To install these dotfiles, fork-and-clone the upstream repository to any location on your local machine, then follow the steps below.
+
+This process needs to be repeated for each environment in which you want to use the dotfiles. On Windows, you will need to repeat these steps, once for MSysGit / Git Bash, and again for WSL.
 
 ## Run the `./run/install` script
 
-Change to the root directory of the cloned repository and run the `./run/install` shell script.
+Change to the root directory of the cloned repository and execute the `./run/install` shell script.
 
 > **Important:** For Git Bash on Windows, run the terminal program as administrator.
 

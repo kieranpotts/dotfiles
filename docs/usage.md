@@ -66,18 +66,23 @@ The following shell aliases are enabled. All are POSIX-compliant unless otherwis
 ### Go
 
 - `gotest` → `go test $(go list ./... \| grep -v /vendor/)`
+
 - `gocover` → `go test -coverprofile=coverage.out && go tool cover -html=coverage.out`
+
 - `golint` → `golint $(go list ./... \| grep -v /vendor/)`
 
 ### Editors
 
 - `vi` → `nvim` — Map `vi` to Neovim. The original `vi` is still available as `\vi`.
+
 - `vim` → `nvim` — Map `vim` to Neovim. The original `vim` is still available as `\vim`.
 
 ### HTTP / network
 
 - `sniff` → `sudo ngrep -d 'en1' -t '^(GET\|POST) ' 'tcp and port 80'` — Capture HTTP requests on the `en1` interface.
+
 - `httpdump` → `sudo tcpdump -i en1 -n -s 0 -w - \| grep -a -o -E "Host: .*\|GET /.*"` — Dump HTTP traffic on the `en1` interface.
+
 - `show80` → `sudo lsof -iTCP -sTCP:LISTEN -Pnl \| grep :80` — Show what is listening on port 80.
 
 ### Misc
@@ -90,9 +95,13 @@ The following shell aliases are enabled. All are POSIX-compliant unless otherwis
 The following shell functions are enabled.
 
 - `buildDockerImage [image_name]` — Build a Docker image from the `Dockerfile` in the current directory. If `image_name` is omitted, the image is built without a tag.
-- `runDockerContainer <image_name>` — Run a Docker container in the background from the named image.
+
+- `runDockerContainer <image_name>` — Run a Docker container in the background, from the named image.
+
 - `runDockerFromFile [image_name]` — Build an image from the `Dockerfile` in the current directory and immediately run a container from it in the background.
+
 - `listDockerImages` — List all locally available Docker images.
+
 - `sshDockerContainer <container_id>` — Open an interactive Bash shell inside a running container.
 
 ## Git config
@@ -100,20 +109,33 @@ The following shell functions are enabled.
 The `.gitconfig` file modifies Git's default behavior in the following ways:
 
 - `git merge` always records explicit merge commits (ie. `--no-ff` is the default).
+
 - `git fetch` automatically prunes refs to non-existent upstream branches and deletes non-existent tags.
+
 - `git pull` rebases by default.
+
 - `--autosquash` and `--autostash` rules are automatically applied on rebase operations.
+
 - `--update-refs` is applied to rebases, making it easier to rebase stacked branches.
+
 - `git push` pushes new tags as well as new commits, and tracks the upstream branch automatically.
+
 - Upstream branches are tracked automatically, and tracked branches are constrained to have the same names.
+
 - The `histogram` diff algorithm is used in place of the default `myers`.
+
 - Merge conflicts are rendered in `zdiff3` style, which includes the original common-ancestor text.
+
 - `rerere` ("reuse recorded resolution") is enabled — conflict resolutions are recorded and replayed automatically.
+
 - The default branch name for new repositories is `dev`.
+
 - Git LFS filters are pre-configured.
+
 - Opts-out of security checks for Git repositories on external storage devices (`safe.directory`).
 
 ## Other configurations
 
 - **Git Bash completion** is loaded from `dist/completions/git-completion.bash`.
-- **Oh-My-Posh** themes are available in `home/.prompt-themes/oh-my-posh/`; alternative `git-prompt.sh` and `git-prompt-simple.bash` prompts are also provided.
+
+- **Oh-My-Posh** themes are available in `home/.prompt-themes/oh-my-posh/`; alternative `git-prompt.sh` and `git-prompt-simple.bash` prompts are also provided. These must be explicitly enabled via `local.bashrc`.

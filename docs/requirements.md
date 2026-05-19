@@ -1,6 +1,6 @@
 # Requirements
 
-These dotfiles are intended for use in Bash on Debian-based systems, but I've made some effort to make them as cross-platform compatible as possible. Most of the shell scripts are POSIX-compliant and will therefore run in all Unix shells. They can be used on Windows too, via a Linux emulator like [Git Bash for Windows](https://gitforwindows.org/) or a virtual machine like WSL.
+These dotfiles are intended for use in Bash on Debian-based systems, but I've made some effort to make them as cross-platform compatible as possible. Most of the shell scripts are POSIX-compliant and will therefore run in all Unix shells. They can be used on Windows too, via a Linux emulator like [MSysGit / Git Bash for Windows](https://gitforwindows.org/) or a virtual machine like WSL.
 
 On Debian systems, my [bootstrap scripts](https://github.com/kieranpotts/bootstrap) can be used to install all dependencies, so automating the following steps. For Git Bash on Windows, my [devtools](https://github.com/kieranpotts/devtools) repository bundles most of the required programs, but some of the below steps still need to be done manually.
 
@@ -19,7 +19,7 @@ sudo apt-get update
 sudo apt-get install git -y
 ```
 
-If you want to install a newer version of Git than is available via the package registry, use `wget` to download the source of the desired version. For example, to download the source for Git v2.35.0, run the following command.
+If you want to install a newer version of Git than is available via the package registry, you will need to install from source. Use `wget` to download the source of the desired version. For example, to download the source for Git v2.35.0, run the following command.
 
 ```sh
 wget https://github.com/git/git/archive/refs/tags/v2.35.0.tar.gz
@@ -70,6 +70,8 @@ Then commit and push as normal. Git LFS will automatically manage the large file
 
 To convert existing large files, previously committed to the repository, use the `git lfs migrate` command. See the [Git LFS documentation](https://github.com/git-lfs/git-lfs/blob/main/docs/man/git-lfs-migrate.adoc) for further instructions, and more [about large files on GitHub](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github).
 
+----
+
 Besides Git LFS, the following programs are also OPTIONAL:
 
 - [Delta](https://github.com/dandavison/delta)
@@ -77,7 +79,3 @@ Besides Git LFS, the following programs are also OPTIONAL:
 - [Oh-My-Posh](https://ohmyposh.dev/docs/installation/linux)
 
 GPG4Win is required for signing Git commits with a passphrase-protected private key. Delta is used for rendering diffs in Git output. Oh-My-Posh is a cross-platform framework for customizing the terminal prompt line.
-
-## Other requirements
-
-If using Docker Desktop for Windows with the WSL back-end, it is RECOMMENDED to disable Docker's resource saver feature, as it is known to [freeze WSL](https://github.com/docker/for-win/issues/14656).
