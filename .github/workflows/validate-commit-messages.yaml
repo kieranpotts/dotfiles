@@ -1,4 +1,8 @@
-name: Commit validation
+#
+# Validate message format of newly-pushed commits.
+#
+
+name: Validate commit messages
 
 on:
   push:
@@ -11,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       # Checkout the repository and fetch its full log history.
       # https://github.com/actions/checkout?tab=readme-ov-file#fetch-all-history-for-all-tags-and-branches
       - name: Checkout repository
@@ -19,4 +24,4 @@ jobs:
           fetch-depth: 0
 
       - name: Validate new commit messages
-        uses: kieranpotts/actions/validate-commits@dev
+        uses: kieranpotts/actions/validate-commit-messages@dev
