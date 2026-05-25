@@ -11,6 +11,6 @@ My personal Unix dotfiles.
 - [**Usage**](./docs/usage.md)
 - [**Acknowledgments**](./docs/acknowledgments.md)
 
----
+-----
 
 Copyright © 2020-present Kieran Potts, [MIT license](./LICENSE.txt)
