@@ -66,7 +66,13 @@ sec   rsa4096/3AA5C34371567BD2 2025-09-15 [SC]
       C142F66F50AC8C832C8CF7553AA5C34371567BD2
 ```
 
-If you don't already have a GPG key, create one with the following command.
+If you already have a key you can reuse – one that matches the email address associated with your GitHub/GitLab account – then use the following command to export the public key, and copy the output into your GitHub/GitLab account (in Settings → SSH and GPG keys).
+
+----
+$ gpg --armor --export <key-id>
+----
+
+If you don't already have a suitable GPG key, create one with the following command.
 
 ```
 $ gpg --full-generate-key
