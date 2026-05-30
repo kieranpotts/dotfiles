@@ -9,29 +9,31 @@
 
 # <footer>
 # Optional footers. Uncomment as needed.
+
 #Refs: #<issue>
 #Closes: #<issue>
 
-#===============================================================================
+# **********************************************************************
+#
 # <type> can be:
-#   - feature      A new, changed, or removed user-facing operation or behavior.
-#   - performance  Optimization of the system's runtime performance.
+#   - chore        A insignificant change to non-production artifacts.
+#   - feature      A new/changed/removed user-facing operation/behavior.
 #   - fix          A fix for a bug, error, regression, or incident.
-#   - step         An increment toward implementing a larger change.
-#   - refactor     An improvement to the internal design of the software.
-#   - format       Low-level code formatting improvements.
-#   - maintenance  A routine housekeeping task - dependencies, tool config, etc.
-#   - chore        A small, insignificant change to non-production artifacts.
-#   - release      Marks a new numbered version of the software.
+#   - format       Low-level code formatting changes.
+#   - maintenance  Dependency updates, tool configs, docs edits, etc.
 #   - merge        An explicit merge commmit.
+#   - performance  Optimization of the system's runtime performance.
+#   - refactor     An improvement to the programs's internal design.
+#   - release      Marks a new numbered version of the product.
 #   - revert       Reverts an earlier commit.
+#   - step         An increment toward implementing a larger change.
 #
 # <flag> can be:
-#   - WIP          Work-in-progress that breaks the build.
 #   - BREAKING     A breaking change to an external API.
-#   - INCOMPAT     Internal breaking API change.
 #   - EXPERIMENT   A code experiment.
+#   - INCOMPAT     Internal breaking API change.
 #   - TEMPORARY    A temporary commit that will be reverted.
+#   - WIP          Work-in-progress that breaks the build.
 #
 # Tips:
 #   - Do not capitalize the subject line.
@@ -40,4 +42,5 @@
 #   - Separate subject from body with a single blank line.
 #   - Use the body to explain what and why, not how.
 #   - Use "-" for bullet points in the body.
-#===============================================================================
+#
+# **********************************************************************
