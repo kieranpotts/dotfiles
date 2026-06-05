@@ -1,0 +1,22 @@
+#
+# Pre-commit hooks configuration.
+#
+# See https://pre-commit.com for more information.
+#
+# Install the framework:
+#   pipx install pre-commit
+#
+# Install the git hook scripts:
+#   pre-commit install
+#
+# Run against all files (useful after adding new hooks):
+#   pre-commit run --all-files
+#
+
+default_install_hook_types: [pre-commit, commit-msg]
+
+repos:
+  - repo: https://github.com/kieranpotts/pre-commit-hooks
+    rev: v0.1.0
+    hooks:
+      - id: validate-commit-message
