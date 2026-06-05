@@ -1,11 +1,11 @@
-;
-; This file helps to enforce a consistent coding style across different editors.
-;
-; Single-line comments, rather than end-of-line comments, are used for
-; compatibility with Neovim!
-;
-; https://editorconfig.org/
-;
+#
+# This file helps to enforce a consistent coding style across different editors.
+#
+# Single-line comments, rather than end-of-line comments, are used for
+# compatibility with Neovim!
+#
+# https://editorconfig.org/
+#
 
 # This is the project's root directory.
 root = true
@@ -34,6 +34,10 @@ max_line_length = 120
 # No whitespace on the end of lines.
 trim_trailing_whitespace = true
 
+# AsciiDoc overrides - required for Zed.
+[*.adoc]
+max_line_length = 72
+
 # Go overrides.
 [*.go]
 indent_style = tab
@@ -41,6 +45,10 @@ indent_style = tab
 # Makefile overrides.
 [Makefile]
 indent_style = tab
+
+# Markdown overrides - required for Zed.
+[*.md]
+max_line_length = 72
 
 # PHP overrides.
 [*.php]

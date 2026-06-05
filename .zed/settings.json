@@ -1,0 +1,20 @@
+{
+  /* Vertical guidelines for line wrapping. */
+  "wrap_guides": [80, 100, 120],
+
+  /* By default, wrap long lines at the viewport or
+  120 characters, whichever is narrowest. */
+  "soft_wrap": "bounded",
+  "preferred_line_length": 120,
+
+  "languages": {
+    "AsciiDoc": {
+      "soft_wrap": "bounded",
+      "preferred_line_length": 72 /* IGNORED - MUST be set in .editorconfig, which takes precedence. */,
+    },
+    "Markdown": {
+      "soft_wrap": "bounded",
+      "preferred_line_length": 72 /* IGNORED - MUST be set in .editorconfig, which takes precedence. */,
+    },
+  },
+}
