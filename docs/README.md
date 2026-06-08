@@ -6,4 +6,5 @@
 - [**Configuration**](./configuration.md)
 - [**Windows configuration**](./windows-configuration.md)
 - [**Usage**](./usage.md)
+- [**Releasing**](./releasing.md)
 - [**Acknowledgments**](./acknowledgments.md)

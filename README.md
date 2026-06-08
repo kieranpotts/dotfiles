@@ -9,6 +9,7 @@ My personal Unix dotfiles.
 - [**Installation**](./docs/installation.md)
 - [**Configuration**](./docs/configuration.md)
 - [**Usage**](./docs/usage.md)
+- [**Releasing**](./docs/releasing.md)
 - [**Acknowledgments**](./docs/acknowledgments.md)
 
 -----
