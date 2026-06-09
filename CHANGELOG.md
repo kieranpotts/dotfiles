@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Set `DOCKER_CONTEXT` to "default" to always use default `docker` daemon socket, overriding Docker Desktop's own socket.
+
 ## [1.0.0] - 2026-06-08
 
 Initial versioned release.

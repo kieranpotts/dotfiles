@@ -59,6 +59,17 @@
 #export PATH="$HOME/.phpenv/bin:$PATH"
 #eval "$(phpenv init -)"
 
+# Pin Docker to the native engine's context. Docker Desktop hijacks the
+# active context: it flips `currentContext` to `desktop-linux` while it is
+# running and resets it to `default` when it stops. Tools that follow the
+# active context — notably VS Code's Dev Containers extension — then break
+# when Desktop is not running, because they look for Desktop's socket instead
+# of the native daemon at /var/run/docker.sock. Forcing DOCKER_CONTEXT=default
+# makes the native engine the daemon every time, so devcontainers start
+# whether or not Docker Desktop happens to be running.
+# https://docs.docker.com/engine/manage-resources/contexts/
+export DOCKER_CONTEXT=default
+
 # Docker Hub login credentials, required for publishing images.
 #export DOCKER_USERNAME=<your-username>
 #export DOCKER_TOKEN=<your-personal-access-token>
