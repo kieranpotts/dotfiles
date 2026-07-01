@@ -8,6 +8,11 @@
 # Commands in this script MAY be dependent upon Bash-specific syntax and APIs.
 #
 
+# Set my default editor.
+#EDITOR=nvim
+#VISUAL=$EDITOR
+#export EDITOR VISUAL
+
 # Use more vivid colors in the terminal.
 #COLORTERM=truecolor
 
@@ -68,7 +73,7 @@
 # makes the native engine the daemon every time, so devcontainers start
 # whether or not Docker Desktop happens to be running.
 # https://docs.docker.com/engine/manage-resources/contexts/
-export DOCKER_CONTEXT=default
+#export DOCKER_CONTEXT=default
 
 # Docker Hub login credentials, required for publishing images.
 #export DOCKER_USERNAME=<your-username>
