@@ -36,7 +36,7 @@ trim_trailing_whitespace = true
 
 # AsciiDoc overrides - required for Zed.
 [*.adoc]
-max_line_length = 72
+max_line_length = 100
 
 # Go overrides.
 [*.go]
@@ -48,7 +48,7 @@ indent_style = tab
 
 # Markdown overrides - required for Zed.
 [*.md]
-max_line_length = 72
+max_line_length = 100
 
 # PHP overrides.
 [*.php]

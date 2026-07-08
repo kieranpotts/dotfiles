@@ -10,11 +10,11 @@
   "languages": {
     "AsciiDoc": {
       "soft_wrap": "bounded",
-      "preferred_line_length": 72 /* IGNORED - MUST be set in .editorconfig, which takes precedence. */,
+      "preferred_line_length": 100 /* IGNORED - MUST be set in .editorconfig, which takes precedence. */,
     },
     "Markdown": {
       "soft_wrap": "bounded",
-      "preferred_line_length": 72 /* IGNORED - MUST be set in .editorconfig, which takes precedence. */,
+      "preferred_line_length": 100 /* IGNORED - MUST be set in .editorconfig, which takes precedence. */,
     },
   },
 }
