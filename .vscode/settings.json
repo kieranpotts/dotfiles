@@ -2,10 +2,11 @@
 
   /* Vertical guidelines for line wrapping. */
   "editor.rulers": [
-    72,
     80,
     100,
     120,
+    140,
+    160,
   ],
 
   /* By default, wrap long lines at the viewport or 120 characters,
@@ -14,9 +15,9 @@
   "editor.wordWrapColumn": 120,
 
   "[markdown]": {
-    /* Wrap Markdown files at 100 characters. */
-    "editor.wordWrap": "bounded",
-    "editor.wordWrapColumn": 100,
+    /* Wrap documentation files at the viewport width. Hard-wrapping
+    should be applied at 80 characters, except for tables and long URLs. */
+    "editor.wordWrap": "on",
 
     /* Enable auto-formatting for Markdown files. */
     "editor.formatOnPaste": true,

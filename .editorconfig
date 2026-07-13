@@ -5,6 +5,7 @@
 # compatibility with Neovim!
 #
 # https://editorconfig.org/
+# https://github.com/editorconfig/editorconfig/wiki/editorconfig-properties
 #
 
 # This is the project's root directory.
@@ -28,15 +29,13 @@ indent_size = 2
 # For VCS, end files with an empty line.
 insert_final_newline = true
 
-# Lines should not exceed this length.
-max_line_length = 120
+# Forces hard line wrapping at a max column count. Not universally supported,
+# eg. ignored by VS Code but supported by Zed and JetBrains.
+# Unset to default to using the editor's own settings.
+max_line_length = unset
 
 # No whitespace on the end of lines.
 trim_trailing_whitespace = true
-
-# AsciiDoc overrides - required for Zed.
-[*.adoc]
-max_line_length = 100
 
 # Go overrides.
 [*.go]
@@ -45,10 +44,6 @@ indent_style = tab
 # Makefile overrides.
 [Makefile]
 indent_style = tab
-
-# Markdown overrides - required for Zed.
-[*.md]
-max_line_length = 100
 
 # PHP overrides.
 [*.php]
