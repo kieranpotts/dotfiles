@@ -48,6 +48,14 @@
   # Turn off color in CLI output.
   # ui = false
 
+[format]
+
+  # Default `git log` output: a one-line summary with the abbreviated hash,
+  # ref decorations, subject, ISO date, and author. Scripts that parse log
+  # output should pass `--pretty=` explicitly and not rely on this default.
+  # The date format respects the `log.date` setting (`iso`) defined below.
+  pretty = format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset
+
 [core]
 
   # Do not transform line endings to CRLF on Windows clients at checkout. This

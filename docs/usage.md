@@ -110,6 +110,8 @@ The `.gitconfig` file modifies Git's default behavior in the following ways:
 
 - `git merge` always records explicit merge commits (ie. `--no-ff` is the default).
 
+- `git log` uses a custom one-line default format (`format.pretty`) showing the abbreviated hash, ref decorations, subject, ISO date, and author. Pass `--pretty=` explicitly to override this in scripts.
+
 - `git fetch` automatically prunes refs to non-existent upstream branches and deletes non-existent tags.
 
 - `git pull` rebases by default.
