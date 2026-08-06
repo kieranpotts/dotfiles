@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 - Set `DOCKER_CONTEXT` to "default" to always use default `docker` daemon socket, overriding Docker Desktop's own socket.
+- Set `format.pretty` in the global Git config so `git log` defaults to a one-line summary with abbreviated hash, ref decorations, subject, ISO date, and author.
 
 ## [1.0.0] - 2026-06-08
 
