@@ -91,6 +91,17 @@
   # generally.
   fileMode = false
 
+  # Check out symbolic links as real symlinks, rather than as plain text files
+  # containing the link target. Git auto-detects this per platform, enabling it
+  # on Unix and disabling it on Windows clients that cannot create symlinks.
+  # Setting it explicitly means repositories that commit symlinks – eg. a
+  # `.claude/skills` link pointing to a canonical `.agents/skills` directory –
+  # behave the same everywhere. On Windows this additionally requires either
+  # Developer Mode to be enabled or an elevated shell; without one of those,
+  # `git clone` will report an error rather than silently checking out the
+  # links as text files.
+  symlinks = true
+
 [diff]
 
   # Git's default diff algorithm is `myers`, which is a general-purpose
