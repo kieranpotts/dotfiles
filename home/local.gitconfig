@@ -8,14 +8,15 @@
 [user]
 
   # These settings determine what values end up in the `author` and `committer`
-  # fields of commit objects.
+  # fields of commit objects. Leave these blank will disable `git commit`
+  # operations — this may be desirable in AI agent containers.
   # https://git-scm.com/docs/git-config#Documentation/git-config.txt-username
   #
   # GitHub offers private email aliases for commits. Enable the setting
   # "Keep my email address private" in your GitHub email settings, then use the
   # provided no-reply email address below.
-  email = [your-email-address]
-  name = [your-name-or-username]
+  email =
+  name =
 
   # It is RECOMMENDED to sign your Git commits with a GPG key. Add the
   # key ID here.
