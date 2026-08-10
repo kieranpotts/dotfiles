@@ -1,0 +1,148 @@
+#!/usr/bin/env bash
+
+#
+# Tags a release point.
+#
+# Notifies the user of the last tag, prompts for the new version, moves the
+# CHANGELOG.md `[Unreleased]` entries under a new dated version heading,
+# commits the changelog, and creates an annotated Git tag.
+#
+# This script does NOT push. Once you're ready, push the commit and tag
+# yourself, eg. `git push --follow-tags`.
+#
+
+# Exit immediately on error (-e), treat unset variables as errors (-u), and
+# propagate failures through pipelines (-o pipefail).
+set -euo pipefail
+
+# Resolve the project root (parent of the run/ directory) and change into it.
+# This ensures the script behaves the same regardless of where it's invoked
+# from.
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/.."
+
+changelog="CHANGELOG.md"
+
+if [[ ! -f "${changelog}" ]]; then
+  echo "${changelog} not found." >&2
+  exit 1
+fi
+
+# Clean up any temp files on exit, however the script terminates.
+tmp_files=()
+cleanup() { rm -f "${tmp_files[@]}"; }
+trap cleanup EXIT
+
+# Refuse to run with a dirty working tree, so the version commit contains
+# only the changelog update.
+if [[ -n "$(git status --porcelain)" ]]; then
+  echo "Working tree is not clean. First, commit or stash your changes." >&2
+  exit 1
+fi
+
+# 1. Notify the user of the last tag.
+last_tag="$(git describe --tags --abbrev=0 2>/dev/null || true)"
+if [[ -n "${last_tag}" ]]; then
+  echo "Last tag: ${last_tag}"
+else
+  echo "No tags found yet. This will be the first release."
+fi
+
+# 2. Prompt the user to input the new tag.
+read -rp "Enter the new version (without a leading 'v', eg. 1.2.3): " version
+
+if [[ -z "${version}" ]]; then
+  echo "No version entered." >&2
+  exit 1
+fi
+
+# Accept an accidental leading 'v'/'V' and strip it. The 'v' prefix belongs
+# to the tag convention, not the version string itself.
+version="${version#v}"
+version="${version#V}"
+
+if [[ ! "${version}" =~ ^[0-9][0-9A-Za-z.+-]*$ ]]; then
+  echo "'${version}' doesn't look like a valid version." >&2
+  exit 1
+fi
+
+tag="v${version}"
+
+if git rev-parse -q --verify "refs/tags/${tag}" >/dev/null; then
+  echo "Tag ${tag} already exists." >&2
+  exit 1
+fi
+
+# 3. Locate the [Unreleased] section and the entries it holds.
+unreleased_line="$(grep -n '^## \[Unreleased\]$' "${changelog}" | head -1 | cut -d: -f1)"
+if [[ -z "${unreleased_line}" ]]; then
+  echo "No '## [Unreleased]' section found in ${changelog}." >&2
+  exit 1
+fi
+
+total_lines="$(wc -l < "${changelog}")"
+next_offset="$(tail -n "+$((unreleased_line + 1))" "${changelog}" | grep -n '^## \[' | head -1 | cut -d: -f1 || true)"
+if [[ -n "${next_offset}" ]]; then
+  next_line=$((unreleased_line + next_offset))
+else
+  next_line=$((total_lines + 1))
+fi
+
+# Trim leading and trailing blank lines from the captured entries.
+body="$(sed -n "$((unreleased_line + 1)),$((next_line - 1))p" "${changelog}" \
+  | sed -e '/./,$!d' -e ':a' -e '/^$/{$d;N;ba' -e '}')"
+
+if [[ -z "${body}" ]]; then
+  echo "The [Unreleased] section in ${changelog} is empty. Add entries before releasing." >&2
+  exit 1
+fi
+
+date="$(date -u +%Y-%m-%d)"
+
+echo
+echo "This will:"
+echo "  - Move the [Unreleased] entries into a new '## [${version}] - ${date}' section."
+echo "  - Commit ${changelog}."
+echo "  - Create annotated tag ${tag}."
+echo
+read -rp "Continue? [y/N] " confirm
+if [[ ! "${confirm}" =~ ^[Yy]$ ]]; then
+  echo "Aborted." >&2
+  exit 1
+fi
+
+# 4. Update the [Unreleased] section of the changelog.
+tmp="$(mktemp)"
+tmp_files+=("${tmp}")
+
+{
+  sed -n "1,${unreleased_line}p" "${changelog}"
+  echo ""
+  echo "## [${version}] - ${date}"
+  echo ""
+  printf '%s\n' "${body}"
+  echo ""
+  sed -n "${next_line},\$p" "${changelog}"
+} > "${tmp}"
+
+mv "${tmp}" "${changelog}"
+
+# 5. Commit the changelog change.
+git add "${changelog}"
+git commit -m "release: ${tag}"
+
+# 6. Tag the commit. The tag message reuses the released changelog entries,
+# per the tip in TS-11: Versioning > Tagging.
+tag_message="$(mktemp)"
+tmp_files+=("${tag_message}")
+{
+  echo "${tag}"
+  echo ""
+  printf '%s\n' "${body}"
+} > "${tag_message}"
+
+git tag -a "${tag}" -F "${tag_message}"
+
+echo
+echo "Tagged ${tag}. This has NOT been pushed."
+echo "When you're ready:"
+echo "  git push --follow-tags"
