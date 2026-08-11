@@ -49,6 +49,10 @@
   # Same for tagging commits.
   #gpgsign = true
 
+  # Force annotated tags created without `-a`, `-s`, or `-u` to be signed too,
+  # so a plain `git tag <name>` still gets signed when `gpgsign` is enabled.
+  #forceSignAnnotated = true
+
 [gpg]
 
   # Specify the path to the GPG program. This is required if GPG is not in
