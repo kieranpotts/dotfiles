@@ -128,7 +128,7 @@ mv "${tmp}" "${changelog}"
 
 # 5. Commit the changelog change.
 git add "${changelog}"
-git commit -m "release: ${tag}"
+git commit -m "version: ${version}"
 
 # 6. Tag the commit. The tag message reuses the released changelog entries,
 # per the tip in TS-11: Versioning > Tagging.
