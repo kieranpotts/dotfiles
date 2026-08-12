@@ -36,6 +36,18 @@
     "source=${localEnv:HOME}/local.gitignore,target=/home/code/local.gitignore,type=bind,readonly",
     "source=${localEnv:HOME}/.gnupg,target=/home/code/.gnupg,type=bind",
     "source=${localEnv:HOME}/.ssh,target=/home/code/.ssh,type=bind,readonly"
-  ]
+  ],
+
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      // Install these VS Code extensions in the container.
+      // NOTE: Keep the list of extensions synchronized with `../.vscode/extensions.json`.
+      "extensions": [
+        "editorconfig.editorconfig",
+        "timonwong.shellcheck"
+      ]
+    }
+  }
 }
 
