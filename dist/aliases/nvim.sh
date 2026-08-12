@@ -1,9 +1,9 @@
 #!/bin/sh
 
 #
-# Map `vi` and `vim` to `nvim`.
-# The older text editors can still be opened using `\vi` and `\vim`.
+# Map `v` to `nvim`.
+# Older text editors can still be called directly – eg. `vi`, `vim` —
+# without needing to escape — `\vi`, `\vim`.
 #
 
-alias vim="nvim"
-alias vi="nvim"
+alias v="nvim"

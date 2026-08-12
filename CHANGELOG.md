@@ -4,6 +4,9 @@
 
 - Add `tag.forceSignAnnotated` to local Git config.
 
+- Remove alias overriding of `vi` and `vim` — broke in environments where
+  neovim is not installed.
+
 ## [1.1.0] - 2026-08-10
 
 - Set `DOCKER_CONTEXT` to always use "default" `docker` daemon socket,
