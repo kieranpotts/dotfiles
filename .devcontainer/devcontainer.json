@@ -1,0 +1,25 @@
+// Dev container configuration.
+// https://aka.ms/devcontainer.json.
+
+{
+  "name": "Dotfiles",
+  "runArgs": ["--name", "kieranpotts-dotfiles"],
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "args": {
+      "USER_UID": "${localEnv:UID}",
+      "USER_GID": "${localEnv:GID}"
+    }
+  },
+  "remoteUser": "code",
+  // The workspace folder is a Git worktree, one of possibly several
+  // siblings under the repo root, alongside the bare repo they all share.
+  // Worktree links are absolute host paths in both directions (Git doesn't
+  // support relative ones), so we bind-mount the project root at its real path
+  // (ie. `/home/<user>/projects/<name>` is mounted at `/home/<user>/projects/<name>`)
+  // and point workspaceFolder at the worktree subfolder within it.
+  "workspaceFolder": "${localWorkspaceFolder}",
+  "workspaceMount": "source=${localWorkspaceFolder}/..,target=${localWorkspaceFolder}/..,type=bind,consistency=cached"
+}
+
