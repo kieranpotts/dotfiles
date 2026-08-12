@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-08-12
+
 - Add `tag.forceSignAnnotated` to local Git config.
 
 - Remove alias overriding of `vi` and `vim` — broke in environments where
