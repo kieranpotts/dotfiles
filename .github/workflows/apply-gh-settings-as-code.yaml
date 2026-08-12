@@ -1,0 +1,44 @@
+#
+# Apply this repository's configuration, declared in .github/settings.yml,
+# to the repository's actual GitHub settings.
+#
+# https://github.com/Vivswan/github-settings-as-code
+#
+
+name: Apply GitHub Settings as Code
+
+on:
+  push:
+    branches:
+      - latest/dev
+    paths:
+      - .github/settings.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Only the newest run per branch is useful. Cancel any run that a
+# subsequent push has superseded.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  apply-settings:
+    name: Apply repository settings
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # ADMIN_TOKEN is a fine-grained PAT with `administration: write` on this
+      # repository, plus writes on whichever other sections are in use in
+      # `settings.yml`. See the developer docs for setup instructions.
+      - name: Apply settings
+        uses: Vivswan/github-settings-as-code@046adf3b24454f26f569850630809bcf481f8b84 # v2.0.0
+        with:
+          token: ${{ secrets.ADMIN_TOKEN }}

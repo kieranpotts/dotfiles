@@ -1,0 +1,176 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Vivswan/github-settings-as-code/main/lib/settings.schema.json
+
+#
+# GitHub repository configuration-as-code, applied to GitHub by the
+# "Apply GitHub Settings as Code" workflow.
+#
+# Explicit ownership of this file MUST be defined in `CODEOWNERS`. Otherwise,
+# anyone who can push changes to this file to the default branch have admin
+# control over the repository's settings (the apply-settings workflow runs
+# under an admin-scoped token). Users don't need admin privileges themselves
+# to trigger this workflow. The solution is to lock down who can commit/approve
+# changes to this file on the main trunk.
+#
+# https://github.com/Vivswan/github-settings-as-code
+#
+
+repository:
+
+  # The name of the repository. ⚠️ Changing this will rename the repository,
+  # and thereby change its URL.
+  name: dotfiles
+
+  # A short description of the repository that will show up in the GitHub UI.
+  description: 'My UNIX dotfiles.'
+
+  # A URL with more information about the project.
+  homepage: ''
+
+  # A list of topics.
+  topics: []
+
+  # Is this a private repository?
+  private: false
+
+  # Enable issues?
+  has_issues: true
+
+  # Enable projects?
+  has_projects: false
+
+  # Enable a wiki for this repo?
+  has_wiki: false
+
+  # Enable downloads?
+  has_downloads: false
+
+  # The default branch.
+  default_branch: latest/dev
+
+  # Allow PRs to be squash-merged.
+  allow_squash_merge: true
+
+  # Allow PRs to be resolved with explicit merge commits.
+  allow_merge_commit: false
+
+  # Allow PRs to be resolved using the rebase strategy.
+  allow_rebase_merge: false
+
+  # Automatically delete source branches when a PR is merged?
+  delete_branch_on_merge: true
+
+  # Enable automated security fixes?
+  enable_automated_security_fixes: false
+
+  # Enable vulnerability alerts?
+  enable_vulnerability_alerts: false
+
+  # Enable private vulnerability reporting?
+  enable_private_vulnerability_reporting: false
+
+  # Enable immutable releases?
+  enable_immutable_releases: false
+
+  # Enable Git LFS? GitHub exposes no read endpoint for this setting, so
+  # apply re-asserts the declared value on every run.
+  enable_git_lfs: false
+
+  # Show the sponsor button on this repository?
+  enable_sponsorships: false
+
+  # Who can open issues: 'all' or 'collaborators_only'.
+  issue_creation_policy: collaborators_only
+
+# Define labels for issues and PRs.
+# This is handled separately by the "Push Labels" / "Sync Labels" workflows,
+# which effectively allow labels to be defined once in a single repository and
+# from there synced with multiple other repositories.
+##labels:
+##  - name: 'Label Name'
+##    color: FFFFFF
+
+# Issue/PR milestones.
+##milestones:
+
+# Configure branch and classic protection rules.
+branches:
+  - name: latest/dev
+    protection: null
+
+# GitHub's newer branch/tag/push protection rules.
+rulesets:
+  - name: Trunks
+    target: branch
+    enforcement: active
+    conditions:
+      ref_name:
+        include: ['~DEFAULT_BRANCH']
+        exclude: []
+    rules:
+      - type: deletion
+      - type: non_fast_forward
+      - type: required_linear_history
+    bypass_actors: []
+
+# Deployment environments and required reviewers.
+##environments:
+
+# Auto-linking issue-tracker shortcodes.
+##autolinks:
+
+# Workflow permissions and artifact retention.
+##actions:
+
+# Per-user repository permissions.
+##collaborators:
+
+# Term permissions (org only).
+##teams:
+
+# Repository Actions secrets.
+##actions_secrets:
+
+# Repository Actions variables.
+##actions_variables:
+
+# Dependabot registry credentials.
+##dependabot_secrets:
+
+# Codespaces development secrets.
+##codespaces_secrets:
+
+# Copilot agents secrets.
+##agents_secrets:
+
+# Copilot agents variables.
+##agents_variables:
+
+# Per-workflow enable/disable state.
+##workflows:
+
+# Auto-trigger check suite toggles.
+##check_suite_preferences:
+
+# GitHub Pages configuration.
+##pages:
+
+# CodeQL default setup.
+##code_scanning_default_setup:
+
+# Code quality analysis setup.
+##code_quality_setup:
+
+# Repository webhooks.
+##webhooks:
+
+# Organization-defined custom property values.
+##custom_properties:
+
+# SSH deploy keys.
+##deploy_keys:
+
+# Custom secret scanning patterns.
+##secret_scanning_custom_patterns:
+
+# Temporary interaction restrictions.
+##interaction_limits:
