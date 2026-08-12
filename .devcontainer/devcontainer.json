@@ -12,14 +12,30 @@
       "USER_GID": "${localEnv:GID}"
     }
   },
+
   "remoteUser": "code",
-  // The workspace folder is a Git worktree, one of possibly several
-  // siblings under the repo root, alongside the bare repo they all share.
-  // Worktree links are absolute host paths in both directions (Git doesn't
-  // support relative ones), so we bind-mount the project root at its real path
-  // (ie. `/home/<user>/projects/<name>` is mounted at `/home/<user>/projects/<name>`)
-  // and point workspaceFolder at the worktree subfolder within it.
+
+  // The workspace folder is a Git worktree, one of possibly several siblings
+  // under the project root, alongside the bare repo. Worktree links are
+  // absolute host paths in both directions (Git doesn't support relative ones),
+  // so we must bind-mount the project at a path that matches the host – ie.
+  // `/home/<user>/projects/<name>` is mounted at `/home/<user>/projects/<name>`)
+  // — and point workspaceFolder at the worktree subfolder within it.
   "workspaceFolder": "${localWorkspaceFolder}",
-  "workspaceMount": "source=${localWorkspaceFolder}/..,target=${localWorkspaceFolder}/..,type=bind,consistency=cached"
+  "workspaceMount": "source=${localWorkspaceFolder}/..,target=${localWorkspaceFolder}/..,type=bind,consistency=cached",
+
+  // Bind-mount the host's Git config into the container, live, so `user.name`,
+  // `user.email`, etc. always match the host.  `~/.gnupg` is mounted read-write
+  // because `gpg`/`gpg-agent` need to write lock files to actually sign commits.
+  // `~/.ssh` is mounted read-only — that's all that's need for `git push`/`pull`
+  // over SSH to authenticate.
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig,target=/home/code/.gitconfig,type=bind,readonly",
+    "source=${localEnv:HOME}/local.gitconfig,target=/home/code/local.gitconfig,type=bind,readonly",
+    "source=${localEnv:HOME}/local.gitmessage,target=/home/code/local.gitmessage,type=bind,readonly",
+    "source=${localEnv:HOME}/local.gitignore,target=/home/code/local.gitignore,type=bind,readonly",
+    "source=${localEnv:HOME}/.gnupg,target=/home/code/.gnupg,type=bind",
+    "source=${localEnv:HOME}/.ssh,target=/home/code/.ssh,type=bind,readonly"
+  ]
 }
 
