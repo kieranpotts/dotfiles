@@ -49,16 +49,16 @@ SHOULD NOT, OPTIONAL, and MAY are to be interpreted as described in
 
 ## Tools
 
-- **`./run/install`** \
+- `./run/install` \
   Installs/re-installs the dotfiles into the user's home directory. Safe to
   run multiple times.
 
 ## Rules
 
-- MUST keep `run/install` idempotent — it is documented as safe to re-run
+- MUST keep `run/install` idempotent. It is documented as safe to re-run
   after every `git pull`.
 
-- MUST NOT edit files under `dist/` expecting per-user customization; use
+- MUST NOT edit files under `dist/` expecting per-user customization. Use
   `home/` for anything meant to be locally editable after install.
 
 - SHOULD update `docs/` alongside any change to installed behavior, since
@@ -67,7 +67,7 @@ SHOULD NOT, OPTIONAL, and MAY are to be interpreted as described in
 ## References
 
 This project follows Kieran Potts' technical standards. Read the relevant
-standard(s) below for the current task; their RFC 2119 rules MUST be followed
+standard(s) below for the current task. Their RFC 2119 rules MUST be followed
 unless explicitly overridden elsewhere in this file.
 
 - **[TS-9: Version Control](https://kieranpotts.com/standards/009)**
