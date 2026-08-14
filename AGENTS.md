@@ -66,12 +66,25 @@ SHOULD NOT, OPTIONAL, and MAY are to be interpreted as described in
 
 ## References
 
-This project follows Kieran Potts' technical standards. Read the relevant
-standard(s) below for the current task. Their RFC 2119 rules MUST be followed
-unless explicitly overridden elsewhere in this file.
+The following technical standards (TS) govern this project. Fetch and ingest
+the relevant standards as-and-when required for the task at hand.
 
-- **[TS-9: Version Control](https://kieranpotts.com/standards/009)**
-- **[TS-11: Versioning](https://kieranpotts.com/standards/011)**
-- **[TS-25: Technical Documentation](https://kieranpotts.com/standards/025)**
-- **[TS-31: Unix Shells and POSIX Standards](https://kieranpotts.com/standards/031)**
-- **[TS-32: Bash](https://kieranpotts.com/standards/032)**
+- [**TS-9: Version Control**](https://kieranpotts.com/standards/009) \
+  Use when working with Git. Covers commits, branching, merging, integration
+  strategies, cutting releases, and configuring Git/PR/CI tooling.
+
+- [**TS-11: Versioning**](https://kieranpotts.com/standards/011) \
+  Use when choosing a versioning scheme, formatting version strings, or tagging
+  releases (SemVer, CalVer).
+
+- [**TS-25: Technical Documentation**](https://kieranpotts.com/standards/025) \
+  Use when deciding what documentation a project needs, where it should live,
+  who it's for, or whether it's still trustworthy.
+
+- [**TS-31: Unix Shells and POSIX Standards**](https://kieranpotts.com/standards/031) \
+  Use when authoring or modifying shell scripts that must be POSIX-compliant
+  and run across multiple shells (sh, bash, zsh, dash) and platforms.
+
+- [**TS-32: Bash**](https://kieranpotts.com/standards/032) \
+  Use when authoring or modifying scripts that target Bash specifically, and
+  which use Bash extensions ("Bashisms").
