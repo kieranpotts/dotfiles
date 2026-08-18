@@ -35,9 +35,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      # ADMIN_TOKEN is a fine-grained PAT with `administration: write` on this
-      # repository, plus writes on whichever other sections are in use in
-      # `settings.yml`. See the developer docs for setup instructions.
+      # `ADMIN_TOKEN` is a fine-grained PAT with at least `administration: write`
+      # on this repository. See the developer docs for setup instructions.
       - name: Apply settings
         uses: Vivswan/github-settings-as-code@046adf3b24454f26f569850630809bcf481f8b84 # v2.0.0
         with:

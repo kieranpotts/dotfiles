@@ -1,0 +1,22 @@
+#
+# Code owners are automatically requested to review pull requests that touch
+# the files they own. The last matching pattern wins, so order the rules from
+# the most general to the most specific.
+#
+# Every account or team named here MUST have write access to the repository,
+# else GitHub silently ignores the rule.
+#
+# https://tinyurl.com/yn3vhu4h
+#
+
+# Default owner for everything in the repository.
+*                       @kieranpotts
+
+# `settings.yml` is propagated to this repository's _actual_ GitHub configuration
+# by the `apply-gh-settings-as-code` workflow, using an admin-scoped token. The
+# effect is to promote to admin any user who can push the `settings.yml` file to
+# the default branch in the upstream repository. Therefore, it is RECOMMENDED to
+# explicitly define the codeowners for this specific file. These users will need
+# to approve all changes to this file, and thus approve all changes to the
+# repository settings.
+/.github/settings.yml   @kieranpotts
