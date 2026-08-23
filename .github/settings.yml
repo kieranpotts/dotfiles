@@ -63,7 +63,8 @@ repository:
   enable_automated_security_fixes: false
 
   # Enable vulnerability alerts?
-  enable_vulnerability_alerts: false
+  # Required to be true in order to configure automated security fixes.
+  enable_vulnerability_alerts: true
 
   # Enable private vulnerability reporting?
   enable_private_vulnerability_reporting: false
@@ -71,9 +72,8 @@ repository:
   # Enable immutable releases?
   enable_immutable_releases: false
 
-  # Enable Git LFS? GitHub exposes no read endpoint for this setting, so
-  # apply re-asserts the declared value on every run.
-  enable_git_lfs: false
+  # Enable Git LFS? (Disabled because this is mysteriously breaking the pipeline.)
+  ##enable_git_lfs: false
 
   # Show the sponsor button on this repository?
   enable_sponsorships: false
