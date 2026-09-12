@@ -38,6 +38,40 @@ if [ -z "${CODESPACES}" ]; then
   cp --no-clobber "${DIR_PATH}/home/local.gitignore" ~/local.gitignore
   cp --no-clobber "${DIR_PATH}/home/local.gitmessage" ~/local.gitmessage
 
+  # Create the secrets file sourced by `local.bashrc`, if it does not already
+  # exist, and assert mode 0600 on every run so permission drift is repaired.
+  #
+  # Deliberately NOT seeded from a template in `home/`: a tracked file named
+  # `local.secrets` invites someone to edit it in place and commit a real
+  # credential, which is the exact failure this file exists to prevent. The
+  # header is written inline instead.
+  #
+  # The `umask` subshell closes the window in which the file would otherwise
+  # exist at 0644 between creation and `chmod`. Errors from `chmod` are hidden
+  # because file modes are not meaningful under MSysGit / Git Bash on Windows.
+
+  if [ ! -f ~/local.secrets ]; then
+    (
+      umask 077
+      cat > ~/local.secrets <<'EOF'
+# shellcheck shell=bash
+
+#
+# Secrets sourced by `~/local.bashrc`. Not managed by the dotfiles repository
+# beyond its creation, and MUST NOT be committed anywhere. Mode is 0600.
+#
+# Reference these from `~/local.bashrc` by variable name only, never by value.
+# Eg. to authenticate with Docker Hub for publishing images:
+#
+#   export DOCKER_USERNAME=<your-username>
+#   export DOCKER_TOKEN=<your-personal-access-token>
+#
+EOF
+    )
+  fi
+
+  chmod 600 ~/local.secrets 2> /dev/null
+
   # Copy the prompt themes, too, but this time overwrite local changes.
 
   mkdir -p ~/.prompt-themes

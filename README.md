@@ -223,6 +223,31 @@ Therefore, you can safely edit these files to make configuration changes in
 each environment. It's via these "local" files that you extend the "global"
 dotfiles configurations shared via this repository.
 
+### Secrets
+
+Tokens, passwords, and other credentials MUST NOT be written inline in
+`~/local.bashrc`. That file is world-readable by default, and it shares its
+name with a template tracked in this repository, so an inline secret is one
+stray `cp` away from being committed.
+
+Instead, put them in `~/local.secrets`, which `~/local.bashrc` sources if it
+is present.
+
+The installer creates this file for you, empty apart from a header comment,
+and sets its mode to `0600`. It re-asserts that mode on every run, so if the
+permissions drift, re-running the installer repairs them:
+
+```sh
+./run/install
+```
+
+Unlike the other `local.*` files, `~/local.secrets` has no template under
+`home/` in this repository. That is deliberate — a tracked file by that name
+invites editing it in place and committing a real credential, which is the
+failure this file exists to prevent.
+
+Reference secrets from `~/local.bashrc` by variable name only, never by value.
+
 > [!TIP]
 > Whenever you make changes to `~/local.bashrc`, you can call the `reload!`
 > function to re-source `~/.bashrc` (which in turn re-sources `~/local.bashrc`),

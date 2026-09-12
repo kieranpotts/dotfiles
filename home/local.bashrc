@@ -73,11 +73,18 @@
 # makes the native engine the daemon every time, so devcontainers start
 # whether or not Docker Desktop happens to be running.
 # https://docs.docker.com/engine/manage-resources/contexts/
-#export DOCKER_CONTEXT=default
+export DOCKER_CONTEXT=default
 
-# Docker Hub login credentials, required for publishing images.
-#export DOCKER_USERNAME=<your-username>
-#export DOCKER_TOKEN=<your-personal-access-token>
+# Load secrets, if present. Tokens and passwords belong in `~/local.secrets`
+# (mode 0600), never inline in this file. This file is world-readable and
+# shares its name with a template tracked in the dotfiles repository, so an
+# inline secret is one `cp` away from being committed. Eg. to authenticate
+# with Docker Hub for publishing images, put this in `~/local.secrets`:
+#
+#   export DOCKER_USERNAME=<your-username>
+#   export DOCKER_TOKEN=<your-personal-access-token>
+#
+[ -f ~/local.secrets ] && . ~/local.secrets
 
 # Configure Claude Code to use Ollama as the default provider, and set
 # default model selections.
@@ -85,6 +92,19 @@
 #export ANTHROPIC_AUTH_TOKEN=ollama
 #export ANTHROPIC_MODEL=qwen3-coder:30b
 #export ANTHROPIC_SMALL_FAST_MODEL=qwen2.5-coder:3b # For fast subtasks.
+
+# Suppress Ollama's terminal capability probes. Ollama vendors Charm's TUI
+# stack (bubbletea/colorprofile/termenv), which writes an OSC 11 background
+# color query (`ESC]11;?ESC\`) and a cursor position report (`ESC[6n`) before
+# its first line of output, but does not reliably drain the terminal's reply.
+# The unread reply then leaks into the scrollback as literal text, eg.
+# `^[]11;rgb:2828/2c2c/3434`. This affects every subcommand run on a TTY, not
+# just `ollama signin`. NO_COLOR does not suppress the probe; TERM=dumb does.
+# The tradeoff is losing color in `ollama list` and the spinner in `ollama run`.
+# Unlike most of this file, this is active by default: it works around an
+# upstream defect, not a personal preference. Comment it out once Ollama fixes
+# the probe. Harmless when Ollama is not installed.
+ollama() { TERM=dumb command ollama "$@"; }
 
 # Start Oh My Posh and load your preferred prompt theme. Errors are redirected
 # to standard error because `oh-my-posh` is an optional dependency, so we don't
@@ -112,6 +132,33 @@
 #if [ -d "${HOME}/dev/kieranpotts/gitex/bin" ] ; then
 #  PATH="${PATH}:${HOME}/dev/kieranpotts/gitex/bin"
 #fi
+
+# LM Studio's CLI (`lms`), if installed.
+if [ -d "${HOME}/.lmstudio/bin" ] ; then
+  PATH="${PATH}:${HOME}/.lmstudio/bin"
+fi
+
+# OpenCode, if installed. Prepended so it wins over any packaged build.
+if [ -d "${HOME}/.opencode/bin" ] ; then
+  PATH="${HOME}/.opencode/bin:${PATH}"
+fi
+
+# Globally-installed npm packages, if the prefix has been redirected to a
+# user-writable location. Avoids needing root for `npm install --global`.
+if [ -d "${HOME}/.npm-global/bin" ] ; then
+  PATH="${HOME}/.npm-global/bin:${PATH}"
+fi
+
+# Source the Rustup env file to add ~/.cargo/bin to PATH.
+[ -s "${HOME}/.cargo/env" ] && . "${HOME}/.cargo/env"
+
+# Inshellisense autostart on Bash start. Guarded on `$TMUX` being unset, so
+# inshellisense only initializes in a top-level terminal, never inside a tmux
+# pane - nesting inshellisense's pseudo-terminal inside tmux's corrupts pane
+# rendering.
+if [ -z "${TMUX}" ]; then
+  [ -f ~/.local/share/inshellisense/init/bash/init.sh ] && . ~/.local/share/inshellisense/init/bash/init.sh
+fi
 
 # Change to a specific directory when starting a new terminal session.
 #cd /c/dev

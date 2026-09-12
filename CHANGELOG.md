@@ -2,6 +2,28 @@
 
 ## [Unreleased]
 
+- Source `~/local.secrets`, if present, from `local.bashrc`, so credentials no
+  longer need to be written inline in a world-readable file that shares its
+  name with a tracked template.
+
+- Create `~/local.secrets` from the installer, at mode 0600, re-asserting that
+  mode on every run so permission drift is repaired. Ignore `*.secrets` in this
+  repository as a backstop.
+
+- Wrap `ollama` to run with `TERM=dumb`, suppressing the OSC 11 and cursor
+  position probes that Ollama's vendored Charm TUI stack writes without
+  draining the terminal's reply, which leaked escape sequences into the
+  scrollback.
+
+- Add guarded `PATH` entries to `local.bashrc` for LM Studio's `lms` CLI,
+  OpenCode, a user-writable global npm prefix, and Rustup's `env` file.
+
+- Add inshellisense autostart to `local.bashrc`, guarded on `$TMUX` being
+  unset to avoid nesting its pseudo-terminal inside a tmux pane.
+
+- Enable `DOCKER_CONTEXT=default` by default in `local.bashrc`, rather than
+  shipping it commented out.
+
 ## [1.2.0] - 2026-08-12
 
 - Add `tag.forceSignAnnotated` to local Git config.

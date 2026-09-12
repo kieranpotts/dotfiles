@@ -9,3 +9,8 @@
 # GitHub provides a collection of useful `.gitignore` templates for a variety of
 # software stacks here: https://github.com/github/gitignore
 #
+
+# Never track secrets. The installer creates `~/local.secrets` in the user's
+# home directory, not here, so this pattern should never match anything. It is
+# a backstop against a credential being pasted into this repository by mistake.
+*.secrets
