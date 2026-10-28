@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-10-28
+
 - Source `~/local.secrets`, if present, from `local.bashrc`, so credentials no
   longer need to be written inline in a world-readable file that shares its
   name with a tracked template.
