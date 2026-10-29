@@ -1,5 +1,7 @@
+//
 // Dev container configuration.
-// https://aka.ms/devcontainer.json.
+// https://aka.ms/devcontainer.json
+//
 
 {
   "name": "Dotfiles",
@@ -9,41 +11,89 @@
     "context": ".."
   },
 
+  // Run the code editor's server, terminals, and tasks as the non-root user
+  // that's configured in the base Docker image. The project is bind-mounted
+  // from the host, so anything written to it as `root` — build output, Git
+  // objects — would end up root-owned on the host, and so need `sudo` to
+  // clean up.
+  //
+  // The `/home/code` paths, must be kept synchronized with this user name.
+
   "remoteUser": "code",
 
   // The workspace folder is a Git worktree, one of possibly several siblings
-  // under the project root, alongside the bare repo. Worktree links are
-  // absolute host paths in both directions (Git doesn't support relative ones),
-  // so we must bind-mount the project at a path that matches the host – ie.
-  // `/home/<user>/projects/<name>` is mounted at `/home/<user>/projects/<name>`)
-  // — and point workspaceFolder at the worktree subfolder within it.
+  // To support cloning of this repository into Git worktrees that sit
+  // adjacent to a bare repository, we must bind-mount the project
+  // (`workspaceMount`) from the parent directory of the bare repository
+  // and its worktrees.
+  //
+  // Because Git's cross-references between bare repositories and their
+  // worktrees use absolute paths, we must bind-mount the project at a path
+  // that matches exactly the host, ie. `/home/<user>/projects/<name>` is
+  // mounted at `/home/<user>/projects/<name>`.
+  //
+  // We then point `workspaceFolder` at the worktree subfolder, which sits
+  // under the mounted directory.
+
   "workspaceFolder": "${localWorkspaceFolder}",
   "workspaceMount": "source=${localWorkspaceFolder}/..,target=${localWorkspaceFolder}/..,type=bind,consistency=cached",
 
-  // Bind-mount the host's Git config into the container, live, so `user.name`,
-  // `user.email`, etc. always match the host.  `~/.gnupg` is mounted read-write
-  // because `gpg`/`gpg-agent` need to write lock files to actually sign commits.
-  // `~/.ssh` is mounted read-only — that's all that's need for `git push`/`pull`
-  // over SSH to authenticate.
+  // Synchronize the host's Git configuration with the guest's, so `git`
+  // operations can be run either inside or outside the devcontainer without
+  // additional `git config` steps required inside the container.
+  //
+  // Bind-mount the host's Git config into the devcontainer, live, so `user.name`,
+  // `user.email`, etc. in the devcontainer always match the host's Git config.
+  //
+  // `~/.ssh` is mounted read-only. That's all that's need for `git push`/`pull`
+  // to authenticate over SSH.
+  //
+  // `~/.gnupg` is NOT mounted. This is not required, because VS Code's Dev
+  // Containers extension automatically forwards the host's `gpg-agent` into the
+  // devcontainer, and copies the public keyring, so commits are signed by the
+  // host's agent, and passphrase prompts appear in the host's pinentry.
+  // Mounting the `~/.gnupg` would actually break this built-in behavior.
+  //
+  // Docker refuses to start a container if the source of a bind mount is
+  // missing on the host. There's no mechanism to mark a mount as optional.
+  // Since all these mounts are optional, we use the `initializeCommand` to
+  // create any missing targets on the host. This allows devcontainers to start
+  // even if expected Git configuration is missing on the host, the trade-off
+  // being that empty files will be littered around the host's home directory.
+
+  "initializeCommand": "touch ~/.gitconfig ~/local.gitconfig ~/local.gitmessage ~/local.gitignore && mkdir -p -m 700 ~/.ssh",
   "mounts": [
     "source=${localEnv:HOME}/.gitconfig,target=/home/code/.gitconfig,type=bind,readonly",
     "source=${localEnv:HOME}/local.gitconfig,target=/home/code/local.gitconfig,type=bind,readonly",
     "source=${localEnv:HOME}/local.gitmessage,target=/home/code/local.gitmessage,type=bind,readonly",
     "source=${localEnv:HOME}/local.gitignore,target=/home/code/local.gitignore,type=bind,readonly",
-    "source=${localEnv:HOME}/.gnupg,target=/home/code/.gnupg,type=bind",
     "source=${localEnv:HOME}/.ssh,target=/home/code/.ssh,type=bind,readonly"
   ],
 
-  // Configure tool-specific properties.
+  // Run commands after the container is created. Opens in integrated terminal.
+  // Ensure run/* scripts are executable.
+  "postCreateCommand": "chmod +x run/*",
+
+  // On every devcontainer start, install the Git hook declared in
+  // `.pre-commit-config.yaml`.
+  "postStartCommand": "pre-commit install",
+
+  // Tool-specific customizations.
   "customizations": {
+
+    // VS Code customizations.
     "vscode": {
+
       // Install these VS Code extensions in the container.
-      // NOTE: Keep the list of extensions synchronized with `../.vscode/extensions.json`.
+      // Keep the list of extensions synchronized with `../.vscode/extensions.json`.
       "extensions": [
         "editorconfig.editorconfig",
         "timonwong.shellcheck"
       ]
+
     }
+
   }
+
 }
 
