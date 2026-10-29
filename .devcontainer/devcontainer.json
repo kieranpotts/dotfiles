@@ -87,11 +87,32 @@
     "vscode": {
 
       // Install these VS Code extensions in the container.
-      // Keep the list of extensions synchronized with `../.vscode/extensions.json`.
       "extensions": [
+
+        // Keep this list of extensions synchronized with `../.vscode/extensions.json`.
         "editorconfig.editorconfig",
-        "timonwong.shellcheck"
-      ]
+        "timonwong.shellcheck",
+
+        // Keep this list of extensions synchronized with the `personal.code-workspace`
+        // file in the kieranpotts/workspace repository. Inlude a subset of global
+        // extensions that are useful in the context of this repository.
+        "anthropic.claude-code",
+        "streetsidesoftware.code-spell-checker",
+        "dakara.dakara-foldplus",
+        "guodongsun.vscode-git-cruise",
+        "tyriar.lorem-ipsum",
+        "gruntfuggly.todo-tree"
+      ],
+
+      // Container-only VS Code settings.
+      "settings": {
+
+        // Required for the Todo Tree extension. Recent VS Code Server releases
+        // no longer ship ripgrep (`rg`), so we need to point the extension to
+        // the `rg` binary installed in the base image, instead.
+        "todo-tree.ripgrep.ripgrep": "/usr/bin/rg"
+
+      }
 
     }
 
