@@ -93,6 +93,10 @@ export DOCKER_CONTEXT=default
 #export ANTHROPIC_MODEL=qwen3-coder:30b
 #export ANTHROPIC_SMALL_FAST_MODEL=qwen2.5-coder:3b # For fast subtasks.
 
+# Disable Claude Code's memory across all projects and all environments in
+# which Claude Code runs (terminal, IDE, etc.).
+#CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
+
 # Suppress Ollama's terminal capability probes. Ollama vendors Charm's TUI
 # stack (bubbletea/colorprofile/termenv), which writes an OSC 11 background
 # color query (`ESC]11;?ESC\`) and a cursor position report (`ESC[6n`) before
