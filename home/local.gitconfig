@@ -98,8 +98,8 @@
 # You can also override these settings on a per-repository basis using
 # `git config --local --edit`.
 
-#[includeIf "gitdir:~/code/work/"]
-#  path = "~/dev/work/.gitconfig"
+#[includeIf "gitdir:~/dev/github/"]
+#  path = "~/dev/github/local.gitconfig"
 
-#[includeIf "gitdir:~/code/personal/"]
-#  path = "~/dev/personal/.gitconfig"
+#[includeIf "gitdir:~/dev/gitlab/"]
+#  path = "~/dev/gitlab/local.gitconfig"
